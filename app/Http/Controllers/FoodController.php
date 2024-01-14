@@ -14,7 +14,10 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        $foods = Food::all();
+        //Meter un mensajeito en la sesión
+        // Session::flash('message', __('Welcome to role zone'));
+        return view('foods.index', ['foods' => $foods]);
     }
 
     /**
@@ -46,7 +49,11 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        //
+        $food = Food::find($id);
+        if ($food != null)
+            return view('foods.show', ['food' => $food]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
+        else
+            return "No existe esa comida";
     }
 
     /**

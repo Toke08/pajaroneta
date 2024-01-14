@@ -47,7 +47,7 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show($id)
     {
         $food = Food::find($id);
         if ($food != null)

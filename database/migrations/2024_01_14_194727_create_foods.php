@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('foods', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name')->unique();
+            //esto es un experimento jeje
+            $table->decimal('price',8,2);
+            $table->string('img');
+            $table->text('description');
         });
     }
 

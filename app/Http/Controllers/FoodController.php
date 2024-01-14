@@ -15,9 +15,7 @@ class FoodController extends Controller
     public function index()
     {
         $foods = Food::all();
-        //Meter un mensajeito en la sesión
-        // Session::flash('message', __('Welcome to role zone'));
-        return view('foods.index', ['foods' => $foods]);
+        return view("foods.index", ['foods'=> $foods]);
     }
 
     /**

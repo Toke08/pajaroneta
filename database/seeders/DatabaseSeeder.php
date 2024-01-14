@@ -20,5 +20,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\Food::factory()->create([
+            "name"=> "La maleducada",
+            "price"   => 6,
+            "img" => "default.jpg",
+            "description" => "la mejor hamburguesa del mundo ñam ñam",
+        ]);
     }
 }

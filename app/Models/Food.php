@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.

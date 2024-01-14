@@ -18,7 +18,7 @@ background-color: rgb(167, 159, 45)
 
         @foreach ($foods as $food)
         <div class="food-container">
-            <img src="{{$food->img_food}}">
+            <img src="storage/img/{{$food->img}}">
             <h2>{{$food->name}}</h2>
         </div>
         @endforeach

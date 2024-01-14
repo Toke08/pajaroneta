@@ -24,11 +24,3 @@ Route::resource('/blog', App\Http\Controllers\PostController::class);
 Route::resource('/encuentranos', App\Http\Controllers\LocationController::class);
 // Route::view('/encuentranos/{fecha}', App\Http\Controllers\LocationController::class);
 
-
-
-
-
-www.pajaroneta/.com
-
-www.pajaroneta/galeria-comidas.com
-

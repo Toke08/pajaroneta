@@ -32,21 +32,39 @@ body{
 
     }
     .food-container{
-
-
-
+        /* aspect-ratio: 1 / 1; */
+        object-fit: fill;
     }
+
+    .food-container:nth-child(1){
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+.food-container{
+
+
+
+}
+.food-container{
+
+
+
+}
     .food-container img{
-        min-width: 100%;
         border-radius: 5%;
+        width: 100%;
+        /* aspect-ratio:1; */
+
 
     }
+
+
 </style>
     <h1>Galeria de comidas</h1>
         <div class="foods-container">
         @foreach ($foods as $food)
         <div class="food-container">
-            <img src="{{ asset('img/'.$food->img) }}" style="width: 20%; aspect-ratio:1;">
+            <img src="{{ asset('img/'.$food->img) }}">
             <h2>{{$food->name}}</h2>
         </div>
         @endforeach

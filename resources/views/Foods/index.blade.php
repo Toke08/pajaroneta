@@ -51,7 +51,7 @@ body{
 
 }
     .food-container img{
-        border-radius: 5%;
+        border-radius: 2rem;
         width: 100%;
         /* aspect-ratio:1; */
 

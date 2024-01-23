@@ -1,19 +1,49 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="{{route('home')}}">Papaluis</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-          <a class="nav-link" href="#">Features</a>
-          <a class="nav-link" href="#">Pricing</a>
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('galeria-comidas.index')}}">{{__('Galeria de comidas')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('encuentranos.index')}}">{{__('Encuentranos')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('blog.index')}}">{{__('Blog')}}</a>
+          </li>
+
+          @guest
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{__('Register')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{__('Login')}}</a>
+          </li>
+
+          @else
+          @if (auth()->user()->isAdmin())
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Lista de roles <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Lista de cartas <span class="sr-only">(current)</span></a>
+            </li>
+          @endif
+
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();">Logout</a>
+            <form id="logout" action="{{route('logout')}}" method="POST" >
+                @csrf
+            </form>
+          </li>
+          @endguest
+        </ul>
+        <span  class="text-white">
+            <a  href="#">ES</a>
+            <a  href="#">EU</a>
+        </span>
       </div>
-    </div>
-  </nav>
-
-
-
+    </nav>

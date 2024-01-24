@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('foods', function (Blueprint $table) {
+        Schema::create('category_foods', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            //esto es un experimento jeje
-            $table->decimal('price',8,2);
-            $table->string('img');
-            $table->text('description');
+            $table->string('img')->unique();
             $table->timestamps();
+
+            $table->unsignedBigInteger('id');
+            $table->foreign('id')->references('id')->on('foods');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foods');
+        Schema::dropIfExists('category_foods');
     }
 };

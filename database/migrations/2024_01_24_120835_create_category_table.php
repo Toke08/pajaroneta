@@ -18,9 +18,6 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('img')->unique();
             $table->timestamps();
-
-            $table->unsignedBigInteger('id');
-            $table->foreign('id')->references('id')->on('foods');
         });
     }
 

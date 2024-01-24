@@ -22,8 +22,13 @@
 @include('layout.nav')
 </header>
 
+
+
+
+
 <main role="main" class="container">
     @yield('contenido')
+    @yield('estilos')
 </main>
 
 

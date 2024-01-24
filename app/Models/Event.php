@@ -9,10 +9,9 @@ class Event extends Model
 {
     use HasFactory;
 
-
-
-    function locations(){
-        $this->hasMany(Location::class);
+    function location(){
+        $this->belongTo(Location::class);
 
     }
+
 }

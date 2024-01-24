@@ -25,7 +25,8 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        $foods =Food::all();
+        return view('foods.create',['foods' => $foods]);
     }
 
     /**
@@ -83,8 +84,10 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Food $food)
+    public function destroy($id)
     {
-        //
+        $food = Food::findOrFail($id);
+        $food->delete();
+        return redirect()->back();
     }
 }

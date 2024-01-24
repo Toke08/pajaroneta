@@ -26,4 +26,10 @@ Route::resource('/crear-publicacion', App\Http\Controllers\PostController::class
 Route::resource('/encuentranos', App\Http\Controllers\LocationController::class);
 // Route::view('/encuentranos/{fecha}', App\Http\Controllers\LocationController::class);
 
+//Dashboard admin
+Route::resource('/dashboard-admin', App\Http\Controllers\DashboardController::class);
+//Dashboard usuario normal
+Route::resource('/dashboard-user', App\Http\Controllers\DashboardController::class);
+
+
 

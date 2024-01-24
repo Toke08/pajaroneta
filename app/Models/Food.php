@@ -46,4 +46,5 @@ class Food extends Model
         return $this->belongsTo(Category::class);
     }
 
+
 }

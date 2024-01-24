@@ -19,6 +19,7 @@ class Food extends Model
         'price',
         'img',
         'description',
+        'category_id',
     ];
 
     /**

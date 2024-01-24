@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class Event extends Model
 {
     use HasFactory;
 
-    function events(){
-        $this->hasMany(Event::class);
+    function location(){
+        $this->belongTo(Location::class);
 
     }
+
 }

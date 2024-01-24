@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('province');
             $table->string('city');
             $table->Integer('cp'); //codigo postal
+            $table->date('date');
 
         });
     }

@@ -4,27 +4,9 @@
     Galeria de comidas
 @endsection
 
-{{-- @section('estilos')
+@section('estilos')
 <style>
-    body{
-background-color: rgb(167, 159, 45)
-}
-
-.foods-container{
-display: grid;
-}
-
-.food-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-</style>
-@endsection --}}
-
-@section('contenido')
-<style>
-    *{
+    main *{
         box-sizing: border-box;
         margin: 0 auto;
         padding: 0;
@@ -38,7 +20,7 @@ display: grid;
             display: grid;
             grid-gap:0.5rem;
             grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-            grid-auto-rows: 200px;
+            grid-auto-rows: auto;
             grid-auto-flow: dense;
 
 
@@ -81,8 +63,16 @@ display: grid;
             /* aspect-ratio:1; */
     }
 
+    .ancho{
+        aspect-ratio: 2.75;
+    }
+
 
 </style>
+@endsection
+
+@section('contenido')
+
     <h1>Galeria de comidas</h1>
         <div class="foods-container">
         @foreach ($foods as $food)

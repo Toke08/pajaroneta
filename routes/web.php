@@ -18,10 +18,11 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::resource('/galeria-comidas', App\Http\Controllers\FoodController::class);
+Route::resource('/galeria-comidas', App\Http\Controllers\FoodController::class)/*->only('create','update','destroy')->middleware('admin')*/;
 // Route::view('/galeria-comidas/{nombre-comida}', App\Http\Controllers\FoodController::class);
 Route::resource('/blog', App\Http\Controllers\PostController::class);
 // Route::view('/blog/{nombre-post}', App\Http\Controllers\PostController::class);
 Route::resource('/encuentranos', App\Http\Controllers\LocationController::class);
 // Route::view('/encuentranos/{fecha}', App\Http\Controllers\LocationController::class);
+
 

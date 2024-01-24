@@ -1,6 +1,6 @@
 @extends('layout.masterpage')
 @section('titulo')
-    Crear nueva comida
+Crear comida nueva
 @endsection
 
 @section('estilos')
@@ -11,7 +11,7 @@
 
 @section('contenido')
 
-<h1>Crea tu comida</h1>
+<h1>Crear comida nueva</h1>
 
 
     <form action="{{route('galeria-comidas.create')}}" method="post" enctype="multipart/form-data">

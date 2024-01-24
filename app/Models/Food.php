@@ -40,4 +40,9 @@ class Food extends Model
 
     ];
 
+
+    function category(){
+        return $this->belongsTo(Category::class);
+    }
+
 }

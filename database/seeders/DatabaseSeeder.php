@@ -81,5 +81,11 @@ class DatabaseSeeder extends Seeder
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
         ]);
+        \App\Models\Food::create([
+            "name"=> "pajaro loco2",
+            "price"   => 6,
+            "img" => "default.jpg",
+            "description" => "la mejor hamburguesa del mundo ñam ñam",
+        ]);
     }
 }

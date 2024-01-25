@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('img')->unique();
+            $table->string('img')->unique()->default('categorydefaultimg.png');
             $table->timestamps();
         });
     }

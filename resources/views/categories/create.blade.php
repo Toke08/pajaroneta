@@ -20,6 +20,8 @@ Crear categoria nueva
         <label for="name">Nombre:</label>
         <input type="text" id="name" name="name" required>
         <br>
+        <label for="image">Imagen actual:</label><br>
+        <img src="{{asset('img/categories')}}/{{$category->img}}" style="max-width: 200px;"><br>
         <label for="image">imagen:</label>
         <input type="file" name="img">
         <br>

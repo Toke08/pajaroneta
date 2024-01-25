@@ -13,7 +13,7 @@ Ubicación nueva
 
 <h1>Nueva ubicación</h1>
 
-    <form action="{{route('location.create')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('ubicaciones.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="name">Dirección:</label>
         <input type="text" id="name" name="name" required>

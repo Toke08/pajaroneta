@@ -26,13 +26,14 @@ Route::resource('/crear-publicacion', App\Http\Controllers\PostController::class
 Route::resource('/encuentranos', App\Http\Controllers\LocationController::class);
 // Route::view('/encuentranos/{fecha}', App\Http\Controllers\LocationController::class);
 
-Route::resource('/ubicacines', App\Http\Controllers\LocationController::class);
+Route::resource('/ubicaciones', App\Http\Controllers\LocationController::class);
+Route::resource('/eventos', App\Http\Controllers\EventController::class);
+
 Route::resource('/categorias', App\Http\Controllers\CategoryController::class);
 //Dashboard admin
 Route::resource('/dashboard-admin', App\Http\Controllers\DashboardController::class);
 //Dashboard usuario normal
 Route::resource('/dashboard-user', App\Http\Controllers\DashboardController::class);
-
 
 
 

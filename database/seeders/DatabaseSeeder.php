@@ -120,12 +120,5 @@ class DatabaseSeeder extends Seeder
             "category_id" => 1,
         ]);
 
-        //ubicaciones
-        \App\Models\Location::create([
-            "address" => "pajaro loco2",
-            "province"  => "Bizkaia",
-            "city"  =>  "Bilbao",
-            "cp" => 48008,
-        ]);
     }
 }

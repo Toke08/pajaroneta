@@ -24,6 +24,12 @@ Evento nuevo
         <label for="image">Fecha evento:</label>
         <input type="date" id="date" name="date" required>
         <br>
+        <label for="">Dirección</label>
+        <select id="location_id" name="location_id" >
+            <option value=""></option>
+        </select>
+        <br>
+        <input type="Submit" value="Crear evento">
     </form>
 
 @endsection

@@ -40,11 +40,22 @@ class EventController extends Controller
     {
         $datos=$request->all();
 
-        //recoger datso de events
+        //recoger datos de events
         $name=$datos["name"];
         $description=$datos["description"];
         $date=$datos["date"];
+        $location_id=$datos["location_id"];
 
+        $event= new Event();
+        $event->name=$name;
+        $event->description=$description;
+        $event->date=$date;
+        $event->location_id=$location_id;
+
+        //guardar
+        $event->save();
+        //volver a las vista
+        return redirect()->back();
     }
 
     /**

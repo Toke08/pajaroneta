@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Location;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -26,8 +27,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        $events = Event::all();
-        return view("event.create", ['events'=> $events]);
+        $locations = Location::all();
+        return view("event.create", ['locations'=> $locations]);
     }
 
     /**

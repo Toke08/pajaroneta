@@ -140,6 +140,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Tag::create([
             "name"=> "Sin gluten",
+        ]);
 
     }
 }

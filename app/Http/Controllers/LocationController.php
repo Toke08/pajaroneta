@@ -25,7 +25,8 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        $locations = Location::all();
+        return view("location.index", ['locations'=> $locations]);
     }
 
     /**
@@ -36,12 +37,7 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'address'->'required|string',
-        //     'province'->'required|string',
-        //     'city'->'required|string',
-        //     'cp'-> 'required|integer'
-        // ]);
+
 
     }
 

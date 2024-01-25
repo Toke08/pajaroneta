@@ -6,10 +6,10 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{route('galeria-comidas.index')}}">{{__('Galeria de comidas')}}</a>
+            <a class="nav-link" href="{{route('galeria-comidas.index')}}">{{__('Galería de comidas')}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('encuentranos.index')}}">{{__('Encuentranos')}}</a>
+            <a class="nav-link" href="{{route('encuentranos.index')}}">{{__('Encuéntranos')}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('blog.index')}}">{{__('Blog')}}</a>

@@ -14,7 +14,7 @@ Crear categoria nueva
 <h1>Crear categoria nueva</h1>
 
 
-    <form action="{{route('categorias.create')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('categorias.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <label for="name">Nombre:</label>

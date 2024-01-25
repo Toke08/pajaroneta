@@ -7,7 +7,9 @@
 @section('estilos')
 <style>
 
-
+img{
+    width: 200px;
+}
 
 </style>
 @endsection
@@ -17,7 +19,7 @@
 <tr>
     <th scope="row">{{$category->id}}</th>
     <td>{{$category->name}}</td>
-    <td><img src="{{asset('img/categories')}}/{{$letter->img}}"></td>
+    <td><img src="{{asset('img/categories')}}/{{$category->img}}"></td>
     <td><form action="{{ route('categorias.destroy', $category->id) }}" method="POST">
         @csrf
         @method('DELETE')

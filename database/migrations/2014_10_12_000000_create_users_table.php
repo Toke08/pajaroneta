@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('type');
-            $table->Integer('role_id');
+            $table->unsignedBigInteger('role_id');
             $table->rememberToken();
             $table->timestamps();
 

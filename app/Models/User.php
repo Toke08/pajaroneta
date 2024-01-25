@@ -44,4 +44,7 @@ class User extends Authenticatable
     function isAdmin(){
         return $this->role->name === "admin";
     }
+    function category(){
+        $this->belongsTo(Category::class);
+    }
 }

@@ -119,5 +119,25 @@ class DatabaseSeeder extends Seeder
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 1,
         ]);
+
+        \App\Models\Tag::create([
+            "name"=> "Carne",
+        ]);
+
+        \App\Models\Tag::create([
+            "name"=> "Pescado",
+        ]);
+
+        \App\Models\Tag::create([
+            "name"=> "Pollo",
+        ]);
+
+        \App\Models\Tag::create([
+            "name"=> "Lactosa",
+        ]);
+
+        \App\Models\Tag::create([
+            "name"=> "Sin gluten",
+        ]);
     }
 }

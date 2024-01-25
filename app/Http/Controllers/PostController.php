@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -25,6 +27,8 @@ class PostController extends Controller
     public function create()
     {
         //
+        $tags=Tag::all();
+        return view('blog.create',['tags'=>$tags]);
     }
 
     /**
@@ -35,14 +39,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->middleware('admin')->only('show');
+        $datos = $request->all();
+        $nombreImagen = $request->file('img')->getClientOriginalName();
+        $request->file('img')->move('img/post', $nombreImagen);
+
+        //$this->middleware('admin')->only('show');
+
+        $title = $datos['title'];
+        $content = $datos['content'];
+        $date = $datos['date'];
+        $status = $datos['status'];
+        $tag_id = $datos['tag_id'];
         //
         $Post = new Post();
-        $Post->title = $request->input('title');
-        $Post->content = $request->input('content');
-        $Post->img = $request->input('img');
-        $Post->date = $request->input('date');
-        //$Post->status = $request->input('status');
+        $Post->img = $nombreImagen;
+
+        $Post->title = $title;
+        $Post->content = $content;
+
+        $Post->date = $date;
+        $Post->status = $status;
+
+        $Post->tag_id=$tag_id;
         $Post->save();
 
         // Additional logic or redirection after successful data storage

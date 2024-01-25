@@ -16,6 +16,8 @@ class TagController extends Controller
     public function index()
     {
         //
+        $tags=Tag::all();
+        return view('tag.index', ['tags'=>$tags]);
     }
 
     /**
@@ -26,6 +28,8 @@ class TagController extends Controller
     public function create()
     {
         //
+        $tags=Tag::all();
+        return view('tag.create',['tags'=>$tags]);
     }
 
     /**
@@ -36,7 +40,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
+        //Guardar el nuevo tag (categoría)
+        $datos = $request->all();
+        //$this->middleware('admin')->only('show');
+        $name = $datos['name'];
         //
+        $Tag = new Tag();
+        $Tag->name = $name;
+        $Tag->save();
+
     }
 
     /**
@@ -79,8 +91,11 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
         //
+        $Tag = Tag::findOrFail($id);
+        $Tag->delete();
+        return redirect()->back();
     }
 }

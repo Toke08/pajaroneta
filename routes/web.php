@@ -29,14 +29,12 @@ Route::resource('/encuentranos', App\Http\Controllers\LocationController::class)
 Route::resource('/ubicaciones', App\Http\Controllers\LocationController::class);
 Route::resource('/eventos', App\Http\Controllers\EventController::class);
 
+Route::resource('/tags', App\Http\Controllers\TagController::class);
+
 Route::resource('/categorias', App\Http\Controllers\CategoryController::class);
 //Dashboard admin
 Route::resource('/dashboard-admin', App\Http\Controllers\DashboardController::class);
 //Dashboard usuario normal
 Route::resource('/dashboard-user', App\Http\Controllers\DashboardController::class);
 
-
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

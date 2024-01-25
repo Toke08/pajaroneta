@@ -15,7 +15,7 @@
             <a class="nav-link" href="{{route('blog.index')}}">{{__('Blog')}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('blog.create')}}">Crear publicación</a>
+            <a class="nav-link" href="{{route('blog.create')}}">{{__('Crear publicación')}}</a>
           </li>
 
           @guest

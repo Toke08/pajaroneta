@@ -25,7 +25,8 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        $locations = Location::all();
+        return view("location.create", ['locations'=> $locations]);
     }
 
     /**
@@ -36,12 +37,26 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'address'->'required|string',
-        //     'province'->'required|string',
-        //     'city'->'required|string',
-        //     'cp'-> 'required|integer'
-        // ]);
+        //mensaje feedback
+
+
+        $datos=$request->all();
+        //recoger los datos
+        $address=$datos["address"];
+        $province=$datos["province"];
+        $city=$datos["city"];
+        $cp=$datos["cp"];
+
+        $location= new Location();
+        $location->address=$address;
+        $location->province=$province;
+        $location->city=$city;
+        $location->cp=$cp;
+
+        $location->save();
+
+        //vuelta a la vista
+        return redirect()->back();
 
     }
 
@@ -53,7 +68,11 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        //
+        $location= Location::find($id);
+        if ($location != null)
+            return view('location.show', ['location' => $location]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
+        else
+            return "No existe esa ubicación";
     }
 
     /**
@@ -87,6 +106,8 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $location = Location::findOrFail($id);
+        $location->delete();
+        return redirect()->back();
     }
 }

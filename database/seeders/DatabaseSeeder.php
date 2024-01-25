@@ -138,6 +138,13 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Tag::create([
             "name"=> "Sin gluten",
+
+        //ubicaciones
+        \App\Models\Location::create([
+            "address" => "pajaro loco2",
+            "province"  => "Bizkaia",
+            "city"  =>  "Bilbao",
+            "cp" => 48008,
         ]);
     }
 }

@@ -64,7 +64,7 @@
     }
 
     .ancho{
-        aspect-ratio: 2.75;
+        aspect-ratio: auto;
     }
 
 
@@ -76,13 +76,18 @@
     <h1>Galeria de comidas</h1>
         <div class="foods-container">
         @foreach ($foods as $food)
-        @if($food->id %6==0)
+        @if($food->id %8==0)
         <a href="galeria-comidas/{{$food->id}}" class="food-container grande">
             <img src="{{ asset('img/'.$food->img) }}">
                 <!-- <h2>$food->name</h2> -->
             </a>
-        @elseif($food->id %2.5==0)
+        @elseif($food->id %4==0)
         <a href="galeria-comidas/{{$food->id}}" class="food-container alto">
+            <img src="{{ asset('img/'.$food->img) }}">
+                <!-- <h2>$food->name</h2> -->
+            </a>
+        @elseif($food->id %3==0)
+        <a href="galeria-comidas/{{$food->id}}" class="food-container ancho">
             <img src="{{ asset('img/'.$food->img) }}">
                 <!-- <h2>$food->name</h2> -->
             </a>

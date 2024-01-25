@@ -38,7 +38,50 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = $request->all();
+        $nombreImagen = $request->file('img')->getClientOriginalName();
+        // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
+
+        //mover imagen subido desde el form de letters.create al servidor
+        $request->file('img')->move('img/foods', $nombreImagen);
+
+
+
+        //obtener texto y papa
+        $name=$datos['name'];
+        $price=$datos['price'];
+        $categories=$datos['categories'];
+        $description=$datos['description'];
+
+//         //validar los datos
+//         $rules= ['mensaje' => 'required|string',
+//                 'papas' => 'required|numeric'];
+
+// //se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
+//         $messages = array('papas' => 'las papas son requeridas, subnormal',
+//                         'mensaje.string' => 'los mensajes deben ser textos, subnormal',
+//                         'mensaje.required' => 'los mensajes deben ser requeridas, subnormal', );
+//         $validator = validator::make($datos,$rules,$messages);
+
+//         if ($validator->fails()) {
+//             \Session::flash('message','error en las instrucciones de datos');
+//             return redirect()->back()->withErrors($validator);
+//         }else{
+            $food = new Food();
+            $food->name=$name;
+            $food->price=$price;
+            $food->category_id=$categories;
+            $food->img=$nombreImagen;
+            $food->description=$description;
+            $food->save();
+
+// $user=auth()->user();
+// $user=letter->save($letter);
+
+            // \Session::flash('message','gracias por tu carta');
+            return redirect()->back();
+        // }
+
     }
 
     /**

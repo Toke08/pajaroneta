@@ -119,5 +119,13 @@ class DatabaseSeeder extends Seeder
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 1,
         ]);
+
+        //ubicaciones
+        \App\Models\Location::create([
+            "address" => "pajaro loco2",
+            "province"  => "Bizkaia",
+            "city"  =>  "Bilbao",
+            "cp" => 48008,
+        ]);
     }
 }

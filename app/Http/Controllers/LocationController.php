@@ -37,7 +37,26 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
+        //mensaje feedback
 
+
+        $datos=$request->all();
+        //recoger los datos
+        $address=$datos["address"];
+        $province=$datos["province"];
+        $city=$datos["city"];
+        $cp=$datos["cp"];
+
+        $location= new Location();
+        $location->address=$address;
+        $location->province=$province;
+        $location->city=$city;
+        $location->cp=$cp;
+
+        $location->save();
+
+        //vuelta a la vista
+        return redirect()->back();
 
     }
 
@@ -53,7 +72,7 @@ class LocationController extends Controller
         if ($location != null)
             return view('location.show', ['location' => $location]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
         else
-            return "No existe esa categoria";
+            return "No existe esa ubicación";
     }
 
     /**

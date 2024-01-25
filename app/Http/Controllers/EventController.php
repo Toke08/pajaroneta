@@ -38,7 +38,13 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos=$request->all();
+
+        //recoger datso de events
+        $name=$datos["name"];
+        $description=$datos["description"];
+        $date=$datos["date"];
+
     }
 
     /**

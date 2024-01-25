@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('date');
             $table->unsignedBigInteger('location_id');
             //claves foraneas
-            $table->foreign('location_id')->references('id')->on('location');
+            $table->foreign('location_id')->references('id')->on('locations');
 
         });
     }

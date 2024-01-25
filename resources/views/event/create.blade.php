@@ -19,10 +19,10 @@ Evento nuevo
         <input type="text" id="name" name="name" required>
         <br>
         <label for="image">Descripción:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="description" name="description" required>
         <br>
         <label for="image">Fecha evento:</label>
-        <input type="date" id="name" name="name" required>
+        <input type="date" id="date" name="date" required>
         <br>
     </form>
 

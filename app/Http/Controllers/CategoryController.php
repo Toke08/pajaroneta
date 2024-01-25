@@ -51,7 +51,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if ($category != null)
-            return view('categories.show', ['category' => $category]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
+            return view('categories.show', ['category' => $category]);
         else
             return "No existe esa categoria";
     }

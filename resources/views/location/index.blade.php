@@ -14,7 +14,7 @@ Ubicaciones
 
 @section('contenido')
 
-<h1>Crear ubicación nueva</h1>
+<h1>Estas son tus ubicaciones</h1>
 
 
 

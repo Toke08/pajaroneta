@@ -26,7 +26,7 @@ class LocationController extends Controller
     public function create()
     {
         $locations = Location::all();
-        return view("location.index", ['locations'=> $locations]);
+        return view("location.create", ['locations'=> $locations]);
     }
 
     /**
@@ -49,7 +49,11 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        //
+        $location= Location::find($id);
+        if ($location != null)
+            return view('location.show', ['location' => $location]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
+        else
+            return "No existe esa categoria";
     }
 
     /**
@@ -83,6 +87,8 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $location = Location::findOrFail($id);
+        $location->delete();
+        return redirect()->back();
     }
 }

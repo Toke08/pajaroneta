@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -49,33 +50,35 @@ class CategoryController extends Controller
 
 //         //obtener texto y papa
        $nombre=$datos['name'];
-//         $papas=$datos['papas'];
+       $img=$datos['img'];
 
-//         //validar los datos
-//         $rules= ['mensaje' => 'required|string',
-//                 'papas' => 'required|numeric'];
+        //validar los datos
+        $rules= ['name' => 'required|string',];
 
-// //se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
-//         $messages = array('papas' => 'las papas son requeridas, subnormal',
-//                         'mensaje.string' => 'los mensajes deben ser textos, subnormal',
-//                         'mensaje.required' => 'los mensajes deben ser requeridas, subnormal', );
-//         $validator = validator::make($datos,$rules,$messages);
+//se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
+        $messages = array(
+            'name' => 'El nombre es incorrecto',
+            'name.string' => 'El nombre de la categoria debe ser un texto',
+            'name.required' => 'El nombre de la categoria es obligatorio',
 
-//         if ($validator->fails()) {
-//             \Session::flash('message','error en las instrucciones de datos');
-//             return redirect()->back()->withErrors($validator);
-//         }else{
+            );
+        $validator = validator::make($datos,$rules,$messages);
+
+        if ($validator->fails()) {
+            \Session::flash('message','error en las instrucciones de datos');
+            return redirect()->back()->withErrors($validator);
+        }else{
             $category = new Category();
             $category->name=$nombre;
             $category->img=$nombreImagen;
             $category->save();
 
 // $user=auth()->user();
-// $user=letter->save($letter);
+// $user=category->save($category);
 
-            // \Session::flash('message','gracias por tu carta');
+            \Session::flash('message','Categoria creada');
             return redirect()->back();
-        // }
+        }
     }
 
     /**

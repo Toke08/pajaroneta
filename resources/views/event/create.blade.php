@@ -28,7 +28,7 @@ Evento nuevo
 
         <select id="location_id" name="location_id" >
             @foreach ( $locations as $location )
-            {{-- <option value="{{$location_id}}">{{$location->address}}</option> --}}
+            <option value="{{$location->id}}">{{$location->address}}</option>
             @endforeach
 
         </select>

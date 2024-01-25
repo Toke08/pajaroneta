@@ -27,7 +27,26 @@
 
 
 
+
 <main role="main" class="container">
+
+    <!-- mensajes flash -->
+    @if(Session::has('message'))
+    <div class="alert alert-info" role="alert">
+    {{ Session::get('message')}}
+    </div>
+    @endif
+
+    <!-- errores de validador -->
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <div class="alert alert-danger" role="alert">
+            {{$error}}
+        </div>
+    @endforeach
+    @endif
+
+
     @yield('contenido')
     @yield('estilos')
 </main>

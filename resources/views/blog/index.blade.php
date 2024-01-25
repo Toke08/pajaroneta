@@ -10,28 +10,17 @@
 
 @section('contenido')
 <body>
-
     <h2>Datos del Formulario</h2>
+    @foreach ($posts as $post)
+        <div>
+            <strong>Título:</strong> <p>{{ $post->title }}</p>
 
-    <div>
-        <strong>Título:</strong> {{ $datos['title'] }}
-    </div>
+            <strong>Contenido:</strong> <p>{{ $post->content }}</p>
 
-    <div>
-        <strong>Contenido:</strong> {{ $datos['content'] }}
-    </div>
+            <img src="{{asset('img/post')}}/{{ $post->img }}"><img>
 
-    <div>
-        <strong>Imagen:</strong> {{ $datos['img'] }}
-    </div>
-
-    <div>
-        <strong>Fecha:</strong> {{ $datos['date'] }}
-    </div>
-
-    <div>
-        <strong>Tagname:</strong> {{ $datos['tags'] }}
-    </div>
-
+            <strong>Tagname:</strong> <p>{{ $post->tag_id }}</p>
+        </div>
+    @endforeach
 </body>
 @endsection

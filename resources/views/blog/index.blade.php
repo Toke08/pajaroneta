@@ -1,7 +1,14 @@
 @extends('layout.masterpage')
-@section('contenido')
+
 @section('titulo')
 @endsection
 
+@section('estilos')
+<style>
+
+</style>
 @endsection
 
+@section('')
+
+@endsection

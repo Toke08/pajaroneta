@@ -1,5 +1,4 @@
 @extends('layout.masterpage')
-
 @section('titulo')
     Crear publicación
 @endsection
@@ -13,7 +12,7 @@
 @section('contenido')
 
     <h1>Crear publicación</h1>
-    <form action="{{route('crear-publicacion.create')}}" method="POST">
+    <form action="{{route('blog.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <label for="title">Título:</label>
@@ -25,12 +24,19 @@
         <br>
 
         <label for="img">Imagen:</label>
-        <input type="text" id="img" name="img" required>
+        <input type="file" id="img" name="img" required>
         <br>
 
         <label for="date">Fecha:</label>
         <input type="date" id="date" name="date" required>
         <br>
+
+        <label for="tag">Categoría:</label>
+        <select name="tag_id" id="tag_id">
+            @foreach ($tags as $tag)
+                <option value="{{$tag->id}}">{{$tag->name}}</option>
+            @endforeach
+        </select>
 
         <label for="status">Estado:</label>
         <select id="status" name="status" required>

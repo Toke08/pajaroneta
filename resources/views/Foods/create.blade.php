@@ -14,7 +14,7 @@ Crear comida nueva
 <h1>Crear comida nueva</h1>
 
 
-    <form action="{{route('galeria-comidas.create')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('galeria-comidas.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <label for="name">Nombre:</label>

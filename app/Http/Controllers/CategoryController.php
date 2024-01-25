@@ -102,9 +102,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
+        // Encuentra la categoría por su ID
+        $category = Category::findOrFail($id);
 
+        // Retorna la vista del formulario de edición con la categoría encontrada
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -114,9 +118,18 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        //si la imagen esta vacio, manda el select sin la img
+        $data = $request()->only('name');
+        if(trim($request->img)==''){
+            $data = $request->except('img');
+        }else{
+            $data=$request->all();
+        }
+        $category->update($data);
+        return redirect()->back();
     }
 
     /**

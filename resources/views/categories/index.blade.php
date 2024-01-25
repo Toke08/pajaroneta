@@ -25,6 +25,11 @@ img{
         @method('DELETE')
         <button type="submit">Borrar</button>
     </form></td>
+    <td><form action="{{ route('categorias.edit', $category->id) }}" method="GET">
+        @csrf
+        <button type="submit">Editar</button>
+    </form></td>
+
 </tr>
 @endforeach
 

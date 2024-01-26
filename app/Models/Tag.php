@@ -14,10 +14,12 @@ class Tag extends Model
         'name',
     ];
 
-    public $timestamps = false;
-
     function posts(){
         $this->hasMany(Post::class);
+    }
+
+    function restaurants(){
+        $this->hasMany(Restaurant::class);
     }
 
 }

@@ -13,20 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('foods', function (Blueprint $table) {
+        Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            //esto es un experimento jeje
-            $table->decimal('price',8,2);
-            $table->string('img');
-            $table->text('description');
+            $table->string('name');
+            $table->string('description');
+            $table->date('url');
+            $table->date('img');
+            $table->unsignedBigInteger('tag_id');
             $table->timestamps();
-            $table->unsignedBigInteger('category_id');
+
             //
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -35,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foods');
+        Schema::dropIfExists('restaurants');
     }
 };

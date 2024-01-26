@@ -17,7 +17,12 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo e(__('Crear publicación')); ?></a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo e(__('Ver categorías blog')); ?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo e(__('Crear categoría blog')); ?></a>
+          </li>
           <?php if(auth()->guard()->guest()): ?>
           <li class="nav-item">
             <a class="nav-link" href="#"><?php echo e(__('Register')); ?></a>

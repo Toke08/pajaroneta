@@ -42,6 +42,7 @@ return array(
     'App\\Models\\Food' => $baseDir . '/app/Models/Food.php',
     'App\\Models\\Location' => $baseDir . '/app/Models/Location.php',
     'App\\Models\\Post' => $baseDir . '/app/Models/Post.php',
+    'App\\Models\\Restaurant' => $baseDir . '/app/Models/Restaurant.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\Tag' => $baseDir . '/app/Models/Tag.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

@@ -30,6 +30,7 @@ Route::resource('/ubicaciones', App\Http\Controllers\LocationController::class);
 Route::resource('/eventos', App\Http\Controllers\EventController::class);
 
 Route::resource('/tags', App\Http\Controllers\TagController::class);
+Route::resource('/restaurants', App\Http\Controllers\RestaurantController::class);
 
 Route::resource('/categorias', App\Http\Controllers\CategoryController::class);
 //Dashboard admin

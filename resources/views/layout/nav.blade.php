@@ -17,7 +17,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('blog.create')}}">{{__('Crear publicación')}}</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('tags.index')}}">{{__('Ver categorías blog')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('tags.create')}}">{{__('Crear categoría blog')}}</a>
+          </li>
           @guest
           <li class="nav-item">
             <a class="nav-link" href="{{route('register')}}">{{__('Register')}}</a>

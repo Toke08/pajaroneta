@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo'); ?>
     Galeria de comidas
 <?php $__env->stopSection(); ?>
@@ -30,9 +28,8 @@
             display: flex;
             justify-content: center;
             align-items:center;
-
-
-
+            opacity: 0;
+            animation: fadeIn 1.2s ease forwards;
     }
 
     .alto{
@@ -67,6 +64,26 @@
         aspect-ratio: auto;
     }
 
+    @keyframes fadeIn {
+    0% {
+        opacity: 0;
+        filter:blur(10px);
+    }
+    10% {
+        opacity: 1;
+        filter:brightness(1.5) blur(5px);
+    }
+    100% {
+        opacity: 1;
+
+    }
+}
+
+
+
+
+
+
 
 </style>
 <?php $__env->stopSection(); ?>
@@ -77,22 +94,22 @@
         <div class="foods-container">
         <?php $__currentLoopData = $foods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $food): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php if($food->id %8==0): ?>
-        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container grande">
+        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container grande fadeIn" style="animation-delay: <?php echo e($food->id * 0.05); ?>s;">
             <img src="<?php echo e(asset('img/'.$food->img)); ?>">
                 <!-- <h2>$food->name</h2> -->
             </a>
         <?php elseif($food->id %4==0): ?>
-        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container alto">
+        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container alto fadeIn" style="animation-delay: <?php echo e($food->id * 0.05); ?>s;">
             <img src="<?php echo e(asset('img/'.$food->img)); ?>">
                 <!-- <h2>$food->name</h2> -->
             </a>
         <?php elseif($food->id %3==0): ?>
-        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container ancho">
+        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container ancho fadeIn" style="animation-delay: <?php echo e($food->id * 0.05); ?>s;">
             <img src="<?php echo e(asset('img/'.$food->img)); ?>">
                 <!-- <h2>$food->name</h2> -->
             </a>
         <?php else: ?>
-        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container">
+        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container" style="animation-delay: <?php echo e($food->id * 0.05); ?>s;">
             <img src="<?php echo e(asset('img/'.$food->img)); ?>">
                 <!-- <h2>$food->name</h2> -->
             </a>

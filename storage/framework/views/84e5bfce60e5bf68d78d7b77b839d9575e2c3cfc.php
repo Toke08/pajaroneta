@@ -9,7 +9,7 @@
             <a class="nav-link" href="<?php echo e(route('galeria-comidas.index')); ?>"><?php echo e(__('Galería de comidas')); ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('encuentranos.index')); ?>"><?php echo e(__('Encuéntranos')); ?></a>
+            <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo e(__('Encuéntranos')); ?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo e(__('Blog')); ?></a>
@@ -17,7 +17,12 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo e(__('Crear publicación')); ?></a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo e(__('Ver categorías blog')); ?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo e(__('Crear categoría blog')); ?></a>
+          </li>
           <?php if(auth()->guard()->guest()): ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
@@ -33,6 +38,9 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#">Lista de cartas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo e(__('Panel dmin')); ?></a>
             </li>
           <?php endif; ?>
 

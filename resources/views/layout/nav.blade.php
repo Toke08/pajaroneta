@@ -9,7 +9,7 @@
             <a class="nav-link" href="{{route('galeria-comidas.index')}}">{{__('Galería de comidas')}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('encuentranos.index')}}">{{__('Encuéntranos')}}</a>
+            <a class="nav-link" href="{{route('ubicaciones.index')}}">{{__('Encuéntranos')}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('blog.index')}}">{{__('Blog')}}</a>

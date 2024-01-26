@@ -42,7 +42,7 @@ class PostController extends Controller
     {
         $datos = $request->all();
         $nombreImagen = $request->file('img')->getClientOriginalName();
-        $request->file('img')->move('img/post', $nombreImagen);
+        $request->file('img')->move('img/posts', $nombreImagen);
 
         //$this->middleware('admin')->only('show');
 
@@ -52,17 +52,15 @@ class PostController extends Controller
         $status = $datos['status'];
         $tag_id = $datos['tag_id'];
         //
-        $Post = new Post();
-        $Post->img = $nombreImagen;
+        $post = new Post();
+        $post->img = $nombreImagen;
+        $post->title = $title;
+        $post->content = $content;
+        $post->date = $date;
+        $post->status = $status;
+        $post->tag_id=$tag_id;
 
-        $Post->title = $title;
-        $Post->content = $content;
-
-        $Post->date = $date;
-        $Post->status = $status;
-
-        $Post->tag_id=$tag_id;
-        $Post->save();
+        $post->save();
 
         // Additional logic or redirection after successful data storage
 

@@ -21,7 +21,8 @@ return new class extends Migration
             $table->date('date');
             $table->boolean('status');
             $table->unsignedBigInteger('tag_id');
-
+            $table->timestamps();
+            //
             $table->foreign('tag_id')->references('id')->on('tags');
         });
     }

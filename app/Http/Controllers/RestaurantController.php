@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Restaurant;
 use App\Models\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class RestaurantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class TagController extends Controller
     public function index()
     {
         //
-        $tags=Tag::all();
-        return view('tags.index', ['tags'=>$tags]);
+        $restaurants=Restaurant::all();
+        return view('restaurants.index', ['restaurants'=>$restaurants]);
     }
 
     /**
@@ -28,8 +29,8 @@ class TagController extends Controller
     public function create()
     {
         //
-        $tags=Tag::all();
-        return view('tags.create',['tags'=>$tags]);
+        $restaurants=Restaurant::all();
+        return view('restaurants.create',['restaurants'=>$restaurants]);
     }
 
     /**
@@ -40,37 +41,49 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //Guardar el nuevo tag (categoría)
-        $datos = $request->all();
-        //$this->middleware('admin')->only('show');
-        $name = $datos['name'];
         //
-        $Tag = new Tag();
-        $Tag->name = $name;
-        $Tag->save();
+        $datos = $request->all();
+        $nombreImagen = $request->file('img')->getClientOriginalName();
+        $request->file('img')->move('img/restaurants', $nombreImagen);
 
+        //$this->middleware('admin')->only('show');
+
+        $name = $datos['name'];
+        $description = $datos['description'];
+        $url = $datos['url'];
+        $tag_id = $datos['tag_id'];
+        //
+        $restaurant = new Restaurant();
+        $restaurant->name = $name;
+        $restaurant->description = $description;
+        $restaurant->url = $url;
+        $restaurant->img = $nombreImagen;
+        $restaurant->tag_id=$tag_id;
+        $restaurant->save();
+
+        // Additional logic or redirection after successful data storage
+
+        return redirect()->back()->with('success', 'New restaurant added succesfully!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tag  $tag
+     * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Restaurant $restaurant)
     {
         //
-        $tag = Tag::find($id);
-        return view('tags.show',['tag' => $tag]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tag  $tag
+     * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit(Restaurant $restaurant)
     {
         //
     }
@@ -79,10 +92,10 @@ class TagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tag  $tag
+     * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, Restaurant $restaurant)
     {
         //
     }
@@ -90,14 +103,14 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tag  $tag
+     * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $Tag = Tag::findOrFail($id);
-        $Tag->delete();
+        $restaurant = Restaurant::findOrFail($id);
+        $restaurant->delete();
         return redirect()->back();
     }
 }

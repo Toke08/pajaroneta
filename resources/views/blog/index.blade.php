@@ -6,15 +6,18 @@
 <style>
 body {
     display: flex;
-    align-items: left;
+    align-items: flex-start;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
 }
+
 .post {
+    flex: 1; /* Hace que cada contenedor ocupe el espacio disponible */
     padding: 15px;
-    width: 300px; /* Puedes ajustar el ancho según tus necesidades */
-    text-align: center;
+    max-width: 300px; /* Ancho máximo para cada contenedor */
+
 }
 
 strong {
@@ -34,6 +37,7 @@ img {
     object-fit: cover;
     border-radius: 10px; /* Ajusta el valor para cambiar la cantidad de curvatura */
 }
+
 </style>
 @endsection
 
@@ -44,9 +48,11 @@ img {
         <div class="post">
             <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
             <strong>{{ $post->title }}</strong><br>
-             <!--<p>{{ $post->content }}</p>-->
-            <!--<strong>Categorías</strong> <p>{{ $post->tag_id}}</p>-->
             <a href="blog/{{ $post->id }}">Leer más...</a>
+            <form action="{{ route('blog.destroy', $post->id) }}"   method="POST">
+                @csrf
+                @method('DELETE')
+                <td><button type="submit">Borrar</button></td>
         </div>
     @endforeach
 </body>

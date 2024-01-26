@@ -20,13 +20,16 @@
             <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <th><?php echo e($tag->id); ?></th>
-                <td><a href="tags/<?php echo e($tag->name); ?>"><?php echo e($tag->name); ?></a></td>
-                <td><input type="button" value="Eliminar" style="background-color:red;border:none;color:white;"></td>
+                <td><a href="tags/<?php echo e($tag->id); ?>"><?php echo e($tag->name); ?></a></td>
+                <form action="<?php echo e(route('tags.destroy', $tag->id)); ?>"   method="POST">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('DELETE'); ?>
+                    <td><button type="submit">Borrar</button></td>
+                </form>
             </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </div>
-
 </table>
 <?php $__env->stopSection(); ?>
 

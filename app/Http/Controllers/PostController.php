@@ -61,10 +61,8 @@ class PostController extends Controller
         $post->tag_id=$tag_id;
 
         $post->save();
-
-        // Additional logic or redirection after successful data storage
-
-        return redirect()->back()->with('success', 'Comment stored successfully!');
+        \Session::flash('message', 'Categoría de publicación eliminida!');
+        return redirect()->back()->with('success', ' ');
     }
 
     /**
@@ -73,9 +71,15 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
+        $post = Post::with('tag')->find($id);
+
+        if (!$post) {
+            abort(404);
+        }
+        return view('blog.show', ['post' => $post]);
     }
 
     /**

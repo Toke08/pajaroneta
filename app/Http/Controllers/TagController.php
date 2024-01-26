@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -48,6 +49,8 @@ class TagController extends Controller
         $Tag = new Tag();
         $Tag->name = $name;
         $Tag->save();
+        \Session::flash('message', 'Categoría de publicación creada!');
+        return redirect()->route('tags.index')->with('success', 'Categoría de publicación creada!');
 
     }
 
@@ -61,9 +64,13 @@ class TagController extends Controller
     {
         //
         $tag = Tag::find($id);
-        return view('tags.show',['tag' => $tag]);
-    }
+        if (!$tag) {
+            abort(404);
+        }
+        $posts = Post::where('tag_id', $tag->id)->get();
 
+        return view('tags.show', compact('tag', 'posts'));
+}
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,8 +103,9 @@ class TagController extends Controller
     public function destroy($id)
     {
         //
-        $Tag = Tag::findOrFail($id);
-        $Tag->delete();
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+        \Session::flash('message', 'Categoría de publicación eliminida!');
         return redirect()->back();
     }
 }

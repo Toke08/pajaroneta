@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="<?php echo e(route('home')); ?>">Papaluis</a>
+      <a class="navbar-brand" href="<?php echo e(route('home')); ?>">Pajaroneta</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -7,6 +7,9 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('galeria-comidas.index')); ?>"><?php echo e(__('Galería de comidas')); ?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo e(__('Ver categorías comida')); ?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('encuentranos.index')); ?>"><?php echo e(__('Encuéntranos')); ?></a>
@@ -25,10 +28,10 @@
           </li>
           <?php if(auth()->guard()->guest()): ?>
           <li class="nav-item">
-            <a class="nav-link" href="#"><?php echo e(__('Register')); ?></a>
+            <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><?php echo e(__('Login')); ?></a>
+            <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
           </li>
 
           <?php else: ?>

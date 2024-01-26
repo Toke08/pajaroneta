@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="{{route('home')}}">Papaluis</a>
+      <a class="navbar-brand" href="{{route('home')}}">Pajaroneta</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,7 +9,14 @@
             <a class="nav-link" href="{{route('galeria-comidas.index')}}">{{__('Galería de comidas')}}</a>
           </li>
           <li class="nav-item">
+<<<<<<< Updated upstream
             <a class="nav-link" href="{{route('ubicaciones.index')}}">{{__('Encuéntranos')}}</a>
+=======
+            <a class="nav-link" href="{{route('categorias.index')}}">{{__('Ver categorías comida')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('encuentranos.index')}}">{{__('Encuéntranos')}}</a>
+>>>>>>> Stashed changes
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('blog.index')}}">{{__('Blog')}}</a>

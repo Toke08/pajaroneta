@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>pajaroneta - <?php echo $__env->yieldContent('titulo'); ?></title>
 
     
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="<?php echo e(asset('css/navbar-top-fixed.css')); ?>" rel="stylesheet">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -60,7 +66,11 @@
 
 
 
-
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="<?php echo e(asset('css/bootstrap.min.css')); ?>"></script>
 </body>
 </html>
 <?php /**PATH D:\RodDAW2\UniServerZ\www\pajaroneta\resources\views/layout/masterpage.blade.php ENDPATH**/ ?>

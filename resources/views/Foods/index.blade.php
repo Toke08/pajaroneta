@@ -31,7 +31,7 @@
             justify-content: center;
             align-items:center;
             opacity: 0;
-            animation: fadeIn 1s ease forwards;
+            animation: fadeIn 1.2s ease forwards;
     }
 
     .alto{
@@ -96,22 +96,22 @@
         <div class="foods-container">
         @foreach ($foods as $food)
         @if($food->id %8==0)
-        <a href="galeria-comidas/{{$food->id}}" class="food-container grande fadeIn" style="animation-delay: {{$food->id * 0.05}}s;">
+        <a href="galeria-comidas/{{$food->id}}" class="food-container grande fadeIn" style="animation-delay: {{$food->id * 0.1}}s;">
             <img src="{{ asset('img/'.$food->img) }}">
                 <!-- <h2>$food->name</h2> -->
             </a>
         @elseif($food->id %4==0)
-        <a href="galeria-comidas/{{$food->id}}" class="food-container alto fadeIn" style="animation-delay: {{$food->id * 0.05}}s;">
+        <a href="galeria-comidas/{{$food->id}}" class="food-container alto fadeIn" style="animation-delay: {{$food->id * 0.1}}s;">
             <img src="{{ asset('img/'.$food->img) }}">
                 <!-- <h2>$food->name</h2> -->
             </a>
         @elseif($food->id %3==0)
-        <a href="galeria-comidas/{{$food->id}}" class="food-container ancho fadeIn" style="animation-delay: {{$food->id * 0.05}}s;">
+        <a href="galeria-comidas/{{$food->id}}" class="food-container ancho fadeIn" style="animation-delay: {{$food->id * 0.1}}s;">
             <img src="{{ asset('img/'.$food->img) }}">
                 <!-- <h2>$food->name</h2> -->
             </a>
         @else
-        <a href="galeria-comidas/{{$food->id}}" class="food-container" style="animation-delay: {{$food->id * 0.05}}s;">
+        <a href="galeria-comidas/{{$food->id}}" class="food-container" style="animation-delay: {{$food->id * 0.1}}s;">
             <img src="{{ asset('img/'.$food->img) }}">
                 <!-- <h2>$food->name</h2> -->
             </a>

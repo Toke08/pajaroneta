@@ -9,14 +9,17 @@
             <a class="nav-link" href="{{route('galeria-comidas.index')}}">{{__('Galería de comidas')}}</a>
           </li>
           <li class="nav-item">
-<<<<<<< Updated upstream
+
             <a class="nav-link" href="{{route('ubicaciones.index')}}">{{__('Encuéntranos')}}</a>
-=======
-            <a class="nav-link" href="{{route('categorias.index')}}">{{__('Ver categorías comida')}}</a>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('encuentranos.index')}}">{{__('Encuéntranos')}}</a>
->>>>>>> Stashed changes
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('categorias.index')}}">{{__('Ver categorías comida')}}</a>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('blog.index')}}">{{__('Blog')}}</a>

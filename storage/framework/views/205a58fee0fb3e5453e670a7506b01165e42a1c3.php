@@ -1,0 +1,1 @@
+<?php /**PATH G:\UniServerZ\www\pajaroneta\resources\views/foods/show.blade.php ENDPATH**/ ?>

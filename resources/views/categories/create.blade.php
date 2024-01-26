@@ -21,7 +21,8 @@ Crear categoria nueva
         <input type="text" id="name" name="name" required>
         <br>
         <label for="image">Imagen actual:</label><br>
-        <img src="{{asset('img/categories')}}/{{$category->img}}" style="max-width: 200px;"><br>
+        <!-- Hacer con js que por defecto se muestre la imagen categorydefaultimg.png, y si lo cambia que se muestre al mismo momento la foto -->
+        <!-- <img src="{{asset('img/categories')}}/{{$category->img}}" style="max-width: 200px;"><br> -->
         <label for="image">imagen:</label>
         <input type="file" name="img">
         <br>

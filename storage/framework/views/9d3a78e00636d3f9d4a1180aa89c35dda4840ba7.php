@@ -29,7 +29,7 @@
             justify-content: center;
             align-items:center;
             opacity: 0;
-            animation: fadeIn 1.2s ease forwards;
+            animation: fadeIn 1s ease forwards;
     }
 
     .alto{

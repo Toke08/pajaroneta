@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Food;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -105,9 +106,14 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function edit(Food $food)
+    public function edit($id)
     {
-        //
+        // Encuentra la categoría por su ID
+        $food = Food::findOrFail($id);
+        $categories =Category::all();
+
+        // Retorna la vista del formulario de edición con la categoría encontrada
+        return view('foods.edit', compact('food'),['categories' => $categories]);
     }
 
     /**
@@ -117,9 +123,20 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Food $food)
+    public function update(Request $request, $id)
     {
-        //
+        $food = Food::findOrFail($id);
+        //si la imagen esta vacio, manda el select sin la img
+        $data = $request->only('name', 'description', 'price', 'category_id' );
+        if(trim($request->img)==''){
+
+            $data = $request->except('img');
+
+        }else{
+            $data=$request->all();
+        }
+        $food->update($data);
+        return redirect()->back();
     }
 
     /**

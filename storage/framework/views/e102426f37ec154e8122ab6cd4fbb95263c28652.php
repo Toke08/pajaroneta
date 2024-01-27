@@ -4,6 +4,9 @@ Eventos
 
 <?php $__env->startSection('estilos'); ?>
 <style>
+a {
+  text-decoration: none;
+}
 
 
 </style>
@@ -26,9 +29,10 @@ Eventos
             <td><a href="event/<?php echo e($event->description); ?>"><?php echo e($event->description); ?> </a></td>
             <td><a href="event/<?php echo e($event->date); ?>"><?php echo e($event->date); ?></a></td>
             
-            <form action="<?php echo e(route('events.destroy', $event->id)); ?>" method="POST">
-                <td><input type="button" value="Eliminar"></td>
-                <td><input type="button" value="Editar"></td>
+            <form action="<?php echo e(route('eventos.destroy', $event->id)); ?>" method="POST">
+                <?php echo csrf_field(); ?>
+                <?php echo method_field('DELETE'); ?>
+                <button type="submit">Eliminar</button>
             </form>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

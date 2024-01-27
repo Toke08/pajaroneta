@@ -6,6 +6,9 @@ Eventos
 
 @section('estilos')
 <style>
+a {
+  text-decoration: none;
+}
 
 
 </style>
@@ -28,9 +31,15 @@ Eventos
             <td><a href="event/{{ $event->description }}">{{ $event->description}} </a></td>
             <td><a href="event/{{ $event->date }}">{{ $event->date}}</a></td>
             {{-- <td><a href="location/{{ $location->id }}">{{ $location->address }}</a></td> --}}
-            <form action="{{route('events.destroy', $event->id)}}" method="POST">
-                <td><input type="button" value="Eliminar"></td>
-                <td><input type="button" value="Editar"></td>
+            <form action="{{ route('eventos.destroy', $event->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Eliminar</button>
+            </form>
+            <form action="{{ route('eventos.edit', $event->id) }}" method="POST">
+                @csrf
+                @method('EDIT')
+                <button type="submit">Editar</button>
             </form>
         </tr>
         @endforeach

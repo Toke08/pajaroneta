@@ -29,7 +29,7 @@ Ubicaciones
             <td>Provincia: <a href="location/{{ $location->province }}">{{ $location->province}} </a></td>
             <td>Ciudad: <a href="location/{{ $location->city }}">{{ $location->city }}</a></td>
             <td>Código postal: <a href="location/{{ $location->cp }}">{{ $location->cp }}</a></td>
-            <form action="{{route()}}" method="POST">
+            <form action="" method="POST">
                 <td><input type="button" value="Eliminar"></td>
                 <td><input type="button" value="Editar"></td>
             </form>

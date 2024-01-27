@@ -91,7 +91,8 @@ class PostController extends Controller
     {
         //
         $post = Post::findOrFail($id);
-        return view('blog.edit', compact('post'));
+        $tags = Tag::all();
+        return view('blog.edit', compact('post','tags'));
     }
 
     /**
@@ -103,26 +104,27 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
         $post = Post::findOrFail($id);
-        $data = $request->only('title');
+        $data = $request->only('title', 'content', 'tag_id');
 
-        if ($request->hasFile('img') && $request->file('img')->isValid()) {
-            // Elimina la imagen anterior si existe
-        if ($post->img) {
-            // Elimina la imagen anterior si existe
+        if ($request->hasFile('img') && $request->file('img') ->isValid()) {
+
+            if ($post->img) {
             $oldImagePath = public_path('img/posts/' . $post->img);
             if (File::exists($oldImagePath)) {
                 File::delete($oldImagePath);
             }
         }
+
         $imageName = $request->file('img')->getClientOriginalName();
         $request->file('img')->move(public_path('img/posts'), $imageName);
         $data['img'] = $imageName;
-
-    } else {
-        $data['img'] = $post->img;
-    }
+        } else {
+            $data['img'] = $post->img;
+        }
         $post->update($data);
+
         return redirect()->route('blog.index')->with('success', 'El post se ha actualizado exitosamente.');
     }
 

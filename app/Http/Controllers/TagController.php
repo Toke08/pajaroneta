@@ -7,6 +7,8 @@ use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 
 
 class TagController extends Controller
@@ -64,15 +66,17 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
         $tag = Tag::find($id);
         if (!$tag) {
             abort(404);
         }
-        $posts = Post::where('tag_id', $tag->id)->get();
-
-        return view('tags.show', compact('tag', 'posts'));
-}
+        $post = Post::where('tag_id', $tag->id)->get();
+        if ($post->isEmpty()) {
+            $message = 'No hay posts con este tag.';
+            return view('tags.show', compact('tag', 'message'));
+        }
+        return view('tags.show', compact('tag', 'post'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -102,12 +106,28 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        //
         $tag = Tag::findOrFail($id);
-        $tag->delete();
-        \Session::flash('message', 'Categoría de publicación eliminida!');
+        $postsCount = Post::where('tag_id', $tag->id)->count();
+
+    if ($postsCount > 0) {
+        // Hay publicaciones asociadas
+        $message = 'Hay publicaciones relacionadas con este tag. Al eliminar el tag, se eliminarán las publicaciones también.';
+        \Session::flash('error', $message);
+
+        // Elimina las publicaciones relacionadas
+        DB::transaction(function () use ($tag) {
+            Post::where('tag_id', $tag->id)->delete();
+            $tag->delete();
+        });
+        } else {
+            // No hay publicaciones asociadas
+            $tag->delete();
+            \Session::flash('message', 'Categoría de publicación eliminida!');
+        }
+
         return redirect()->back();
     }
 }

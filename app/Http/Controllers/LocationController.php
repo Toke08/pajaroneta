@@ -15,7 +15,7 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::all();
-        return view("location.index", ['locations'=> $locations]);
+        return view("locations.index", ['locations'=> $locations]);
     }
 
     /**
@@ -26,7 +26,7 @@ class LocationController extends Controller
     public function create()
     {
         $locations = Location::all();
-        return view("location.create", ['locations'=> $locations]);
+        return view("locations.create", ['locations'=> $locations]);
     }
 
     /**
@@ -66,13 +66,13 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function show(Location $location)
+    public function show($id)
     {
-        $location= Location::find($id);
-        if ($location != null)
-            return view('location.show', ['location' => $location]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
-        else
-            return "No existe esa ubicación";
+        // $location= Location::find($id);
+        // if ($location != null)
+        //     return view('locations.show', ['location' => $location]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
+        // else
+        //     return "No existe esa ubicación";
     }
 
     /**

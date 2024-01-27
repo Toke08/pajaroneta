@@ -22,7 +22,7 @@ Ubicaciones
     <tbody>
         <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
-            <th>id: <?php echo e($location->id); ?></th>
+            
             <td>Dirección: <a href="location/<?php echo e($location->address); ?>"><?php echo e($location->address); ?></a></td>
             <td>Provincia: <a href="location/<?php echo e($location->province); ?>"><?php echo e($location->province); ?> </a></td>
             <td>Ciudad: <a href="location/<?php echo e($location->city); ?>"><?php echo e($location->city); ?></a></td>

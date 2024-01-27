@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -45,7 +46,6 @@ class PostController extends Controller
         $request->file('img')->move('img/posts', $nombreImagen);
 
         //$this->middleware('admin')->only('show');
-
         $title = $datos['title'];
         $content = $datos['content'];
         $date = $datos['date'];
@@ -75,7 +75,6 @@ class PostController extends Controller
     {
         //
         $post = Post::with('tag')->find($id);
-
         if (!$post) {
             abort(404);
         }
@@ -88,9 +87,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
         //
+        $post = Post::findOrFail($id);
+        return view('blog.edit', compact('post'));
     }
 
     /**
@@ -100,9 +101,29 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $data = $request->only('title');
+
+        if ($request->hasFile('img') && $request->file('img')->isValid()) {
+            // Elimina la imagen anterior si existe
+        if ($post->img) {
+            // Elimina la imagen anterior si existe
+            $oldImagePath = public_path('img/posts/' . $post->img);
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+        }
+        $imageName = $request->file('img')->getClientOriginalName();
+        $request->file('img')->move(public_path('img/posts'), $imageName);
+        $data['img'] = $imageName;
+
+    } else {
+        $data['img'] = $post->img;
+    }
+        $post->update($data);
+        return redirect()->route('blog.index')->with('success', 'El post se ha actualizado exitosamente.');
     }
 
     /**

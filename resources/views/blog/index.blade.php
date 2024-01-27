@@ -49,10 +49,16 @@ img {
             <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
             <strong>{{ $post->title }}</strong><br>
             <a href="blog/{{ $post->id }}">Leer más...</a>
+
             <form action="{{ route('blog.destroy', $post->id) }}"   method="POST">
                 @csrf
                 @method('DELETE')
-                <td><button type="submit">Borrar</button></td>
+                <button type="submit">Borrar</button>
+            </form>
+            <form action="{{ route('blog.edit', $post->id) }}" method="GET">
+                @csrf
+                <button type="submit">Editar</button>
+            </form>
         </div>
     @endforeach
 </body>

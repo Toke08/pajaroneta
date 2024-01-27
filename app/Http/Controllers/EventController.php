@@ -17,7 +17,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view("event.index", ['events'=> $events]);
+        return view("events.index", ['events'=> $events]);
     }
 
     /**
@@ -28,7 +28,7 @@ class EventController extends Controller
     public function create()
     {
         $locations = Location::all();
-        return view("event.create", ['locations'=> $locations]);
+        return view("events.create", ['locations'=> $locations]);
     }
 
     /**
@@ -90,7 +90,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+
     }
 
     /**
@@ -99,7 +99,7 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
         $event = Event::findOrFail($id);
         $event->delete();

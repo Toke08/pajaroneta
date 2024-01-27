@@ -73,8 +73,8 @@ class CategoryController extends Controller
             $category->img=$nombreImagen;
             $category->save();
 
-// $user=auth()->user();
-// $user=category->save($category);
+            // $user=auth()->user();
+            // $user=category->save($category);
 
             \Session::flash('message','Categoria creada');
             return redirect()->back();
@@ -126,7 +126,7 @@ class CategoryController extends Controller
     if(trim($request->img)==''){
             $data = $request->except('img');
             $data = $request()->only('name');
-ll();
+            ll();
         }
         $category->update($data);
         return redirect()->back();

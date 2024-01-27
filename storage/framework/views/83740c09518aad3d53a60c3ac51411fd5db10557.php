@@ -9,14 +9,17 @@
             <a class="nav-link" href="<?php echo e(route('galeria-comidas.index')); ?>"><?php echo e(__('Galería de comidas')); ?></a>
           </li>
           <li class="nav-item">
-<<<<<<< Updated upstream
+
             <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo e(__('Encuéntranos')); ?></a>
-=======
-            <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo e(__('Ver categorías comida')); ?></a>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('encuentranos.index')); ?>"><?php echo e(__('Encuéntranos')); ?></a>
->>>>>>> Stashed changes
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo e(__('Ver categorías comida')); ?></a>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo e(__('Blog')); ?></a>

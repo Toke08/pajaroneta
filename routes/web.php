@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Food;
+use App\Http\Controllers\TagController;
+
 
 
 /*

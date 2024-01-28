@@ -35,12 +35,23 @@ Ubicaciones
                 @csrf
                 @method('DELETE')
                 <td><button type="submit">Eliminar</button></td>
-                <td><button type="submit">Editar</button></td>
             </form>
+            {{-- <td><form action="{{ route('ubicaciones.edit', $location->id) }}" method="GET">
+                @csrf
+                <button type="submit">Editar</button>
+            </form></td> --}}
         </tr>
         @endforeach
     </tbody>
 </table>
 
 @endsection
+
+<script>
+    const dlt_btn= document.getElementsByTagName("button")[0];
+
+    dlt_btn.addEventListener('click', function(){
+        alert("Si borras esta dirección, se borrarán todos los eventos que contengan dicha ubi")
+    })
+</script>
 

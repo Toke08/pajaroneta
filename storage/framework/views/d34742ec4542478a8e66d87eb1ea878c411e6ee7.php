@@ -33,14 +33,22 @@ Ubicaciones
                 <?php echo csrf_field(); ?>
                 <?php echo method_field('DELETE'); ?>
                 <td><button type="submit">Eliminar</button></td>
-                <td><button type="submit">Editar</button></td>
             </form>
+            
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
 </table>
 
 <?php $__env->stopSection(); ?>
+
+<script>
+    const dlt_btn= document.getElementsByTagName("button")[0];
+
+    dlt_btn.addEventListener('click', function(){
+        alert("Si borras esta dirección, se borrarán todos los eventos que contengan dicha ubi")
+    })
+</script>
 
 
 <?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\uni_server\UniServerZ\www\pajaroneta\resources\views/locations/index.blade.php ENDPATH**/ ?>

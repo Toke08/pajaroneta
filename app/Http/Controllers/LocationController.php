@@ -81,9 +81,13 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(Location $location)
+    public function edit($id)
     {
-        //
+        // Encuentra la categoría por su ID
+        $location =Location::findOrFail($id);
+
+        // Retorna la vista del formulario de edición con la categoría encontrada
+        return view('locations.edit', compact('location'));
     }
 
     /**
@@ -93,9 +97,13 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Location $location)
+    public function update(Request $request, $id)
     {
-        //
+        $location = Location::findOrFail($id);
+        $datos = $request->all;
+        $location->update($datos);
+
+        return redirect()->route('locations.index')->with('success', 'La ubi se ha actualizado exitosamente.');
     }
 
     /**
@@ -104,8 +112,7 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $location = Location::findOrFail($id);
         $location->delete();
         return redirect()->back();

@@ -123,7 +123,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         //si la imagen esta vacio, manda el select sin la img
         $data = $request->only('name');
-    if(trim($request->img)==''){
+        if(trim($request->img)==''){
             $data = $request->except('img');
 
         }else{

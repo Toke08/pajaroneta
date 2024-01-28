@@ -38,18 +38,22 @@ img {
 @endsection
 
 @section('contenido')
-@if(Session::has('error'))
-    <p>{{ Session::get('error') }}</p>
-@else
-    <h2>Publicaciones relacionadas con {{$tag->name}}</h2>
-    @foreach($posts as $post)
-    <div class="post">
-        <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}"><br>
-        <strong>{{ $post->title }}</strong>
-        <br>
-        <a href="../blog/{{ $post->id }}">Leer más...</a>
-        </form>
-    </div>
-    @endforeach
-@endif
+    @if(Session::has('error'))
+        <p>{{ Session::get('error') }}</p>
+    @else
+        @if($posts->isEmpty())
+            <strong>No hay publicaciones relacionadas con {{$tag->name}}.</strong> <BR></BR>
+            <a href="{{ route('tags.index') }}">Volver a las categorías</a>
+        @else
+            <h2>Publicaciones relacionadas con {{$tag->name}}</h2>
+            @foreach($posts as $post)
+                <div class="post">
+                    <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}"><br>
+                    <strong>{{ $post->title }}</strong>
+                    <br>
+                    <a href="../blog/{{ $post->id }}">Leer más...</a>
+                </div>
+            @endforeach
+        @endif
+    @endif
 @endsection

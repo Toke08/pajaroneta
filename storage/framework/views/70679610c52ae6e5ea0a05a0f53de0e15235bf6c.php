@@ -22,7 +22,8 @@
             <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
                     <th><?php echo e($tag->id); ?></th>
-                    <td><a href="<?php echo e(route('tags.show', ['id' => $tag->id])); ?>"><?php echo e($tag->name); ?></a></td>
+                    <td><a href="<?php echo e(route('tags.show', $tag)); ?>"><?php echo e($tag->name); ?></a></td>
+
                     <td>
                         <form action="<?php echo e(route('tags.destroy', $tag->id)); ?>" method="POST">
                             <?php echo csrf_field(); ?>

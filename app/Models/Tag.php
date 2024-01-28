@@ -14,8 +14,12 @@ class Tag extends Model
         'name',
     ];
 
+    function getRouteKeyName(){
+        return 'id';
+    }
+
     function posts(){
-        $this->hasMany(Post::class);
+       return $this->hasMany(Post::class, 'tag_id');
     }
 
     function restaurants(){

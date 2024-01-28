@@ -4,8 +4,9 @@
 <?php $__env->startSection('contenido'); ?>
     <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>">
     <h1><?php echo e($post->title); ?></h1>
-    <a href="<?php echo e(route('tags.show', ['id' => $post->tag->id])); ?>"><?php echo e($post->tag->name); ?></a><br>
+    <a href="<?php echo e(route('tags.show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a><br>
     <p><?php echo e($post->content); ?></p>
+    <a href="<?php echo e(route('blog.index')); ?>" >Volver al blog</a>
 <?php $__env->stopSection(); ?>
 
 

@@ -23,7 +23,8 @@
             @foreach ($tags as $tag)
                 <tr>
                     <th>{{ $tag->id }}</th>
-                    <td><a href="{{ route('tags.show', ['id' => $tag->id]) }}">{{ $tag->name }}</a></td>
+                    <td><a href="{{ route('tags.show', $tag) }}">{{ $tag->name }}</a></td>
+
                     <td>
                         <form action="{{ route('tags.destroy', $tag->id) }}" method="POST">
                             @csrf

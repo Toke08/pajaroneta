@@ -37,26 +37,24 @@ img {
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-<?php if(Session::has('error')): ?>
-    <p><?php echo e(Session::get('error')); ?></p>
-<?php else: ?>
-    <h2>Publicaciones relacionadas con <?php echo e($tag->name); ?></h2>
-    <!-- Tu lógica para mostrar los posts -->
-    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <div class="post">
-        <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>"><br>
-        <strong><?php echo e($post->title); ?></strong>
-        <br>
-        <a href="../blog/<?php echo e($post->id); ?>">Leer más...</a>
-    </div>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-    <!-- Enlace para eliminar el tag -->
-    <a href="<?php echo e(route('tags.destroy', ['id' => $tag->id, 'confirmation' => 'yes'])); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este tag y sus publicaciones asociadas?')">Eliminar Tag</a>
-
-    <!-- Enlace para cancelar la eliminación -->
-    <a href="<?php echo e(route('tags.index')); ?>">Cancelar Eliminación</a>
-<?php endif; ?>
+    <?php if(Session::has('error')): ?>
+        <p><?php echo e(Session::get('error')); ?></p>
+    <?php else: ?>
+        <?php if($posts->isEmpty()): ?>
+            <strong>No hay publicaciones relacionadas con <?php echo e($tag->name); ?>.</strong> <BR></BR>
+            <a href="<?php echo e(route('tags.index')); ?>">Volver a las categorías</a>
+        <?php else: ?>
+            <h2>Publicaciones relacionadas con <?php echo e($tag->name); ?></h2>
+            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="post">
+                    <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>"><br>
+                    <strong><?php echo e($post->title); ?></strong>
+                    <br>
+                    <a href="../blog/<?php echo e($post->id); ?>">Leer más...</a>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php endif; ?>
+    <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/tags/show.blade.php ENDPATH**/ ?>

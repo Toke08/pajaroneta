@@ -10,7 +10,7 @@
           </li>
           <li class="nav-item">
 
-            <a class="nav-link" href="{{route('ubicaciones.index')}}">{{__('Encuéntranos')}}</a>
+            <a class="nav-link" href="{{route('ubicaciones.index')}}">{{__('Ubicaciones')}}</a>
 
           </li>
           <li class="nav-item">
@@ -32,6 +32,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('tags.create')}}">{{__('Crear categoría blog')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('restaurants.create')}}">{{__('Nuevo restaurante')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('restaurants.index')}}">{{__('Ver restaurantes')}}</a>
           </li>
           @guest
           <li class="nav-item">

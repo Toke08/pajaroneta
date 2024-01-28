@@ -29,8 +29,8 @@ class RestaurantController extends Controller
     public function create()
     {
         //
-        $restaurants=Restaurant::all();
-        return view('restaurants.create',['restaurants'=>$restaurants]);
+        $tags=Tag::all();
+        return view('restaurants.create',['tags'=>$tags]);
     }
 
     /**
@@ -62,7 +62,7 @@ class RestaurantController extends Controller
         $restaurant->save();
 
         // Additional logic or redirection after successful data storage
-
+        \Session::flash('message', '¡Nueva sugerencia agregada!');
         return redirect()->back()->with('success', 'New restaurant added succesfully!');
     }
 

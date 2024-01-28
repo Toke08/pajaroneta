@@ -20,7 +20,7 @@ class Post extends Model
     ];
 
     function tag(){
-        return $this->belongsTo(tag::class);
+        return $this->belongsTo(Tag::class);
     }
 
 }

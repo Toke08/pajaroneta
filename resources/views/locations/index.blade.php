@@ -20,18 +20,22 @@ Ubicaciones
         <th scope="col">Provincia</th>
         <th scope="col">Ciudad</th>
         <th scope="col">Código postal</th>
+        <th scope="col">Eliminar</th>
+        <th scope="col">Editar</th>
     </thead>
     <tbody>
         @foreach ($locations as $location)
         <tr>
             {{-- <th>id: {{ $location->id }}</th> --}}
-            <td>Dirección: <a href="location/{{ $location->address }}">{{ $location->address }}</a></td>
-            <td>Provincia: <a href="location/{{ $location->province }}">{{ $location->province}} </a></td>
-            <td>Ciudad: <a href="location/{{ $location->city }}">{{ $location->city }}</a></td>
-            <td>Código postal: <a href="location/{{ $location->cp }}">{{ $location->cp }}</a></td>
-            <form action="" method="POST">
-                <td><input type="button" value="Eliminar"></td>
-                <td><input type="button" value="Editar"></td>
+            <td><a href="location/{{ $location->address }}">{{ $location->address }}</a></td>
+            <td><a href="location/{{ $location->province }}">{{ $location->province}} </a></td>
+            <td><a href="location/{{ $location->city }}">{{ $location->city }}</a></td>
+            <td><a href="location/{{ $location->cp }}">{{ $location->cp }}</a></td>
+            <form action="{{route('ubicaciones.destroy', $location->id)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <td><button type="submit">Eliminar</button></td>
+                <td><button type="submit">Editar</button></td>
             </form>
         </tr>
         @endforeach

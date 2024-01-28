@@ -20,7 +20,7 @@ a {
         <th scope="col">Nombre</th>
         <th scope="col">Descripción</th>
         <th scope="col">Fecha del evento</th>
-        
+        <th scope="col">Dirección</th>
     </thead>
     <tbody>
         <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -28,13 +28,14 @@ a {
             <td><a href="event/<?php echo e($event->name); ?>"><?php echo e($event->name); ?></a></td>
             <td><a href="event/<?php echo e($event->description); ?>"><?php echo e($event->description); ?> </a></td>
             <td><a href="event/<?php echo e($event->date); ?>"><?php echo e($event->date); ?></a></td>
-            
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <td><a href="location/<?php echo e($location->id); ?>"><?php echo e($location->address); ?></a></td>
+
         <form action="<?php echo e(route('eventos.destroy', $event->id)); ?>" method="POST">
             <?php echo csrf_field(); ?>
             <?php echo method_field('DELETE'); ?>
-            <button type="submit">Eliminar</button>
+            <td><button type="submit">Eliminar</button></td>
         </form>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tr>
     </tbody>
 </table>

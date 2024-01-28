@@ -22,7 +22,7 @@ a {
         <th scope="col">Nombre</th>
         <th scope="col">Descripción</th>
         <th scope="col">Fecha del evento</th>
-        {{-- <th scope="col">Dirección</th> --}}
+        <th scope="col">Dirección</th>
     </thead>
     <tbody>
         @foreach ($events as $event)
@@ -30,13 +30,14 @@ a {
             <td><a href="event/{{ $event->name }}">{{ $event->name}}</a></td>
             <td><a href="event/{{ $event->description }}">{{ $event->description}} </a></td>
             <td><a href="event/{{ $event->date }}">{{ $event->date}}</a></td>
-            {{-- <td><a href="location/{{ $location->id }}">{{ $location->address }}</a></td> --}}
-        @endforeach
+            <td><a href="location/{{ $location->id }}">{{ $location->address }}</a></td>
+
         <form action="{{ route('eventos.destroy', $event->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit">Eliminar</button>
+            <td><button type="submit">Eliminar</button></td>
         </form>
+        @endforeach
     </tr>
     </tbody>
 </table>

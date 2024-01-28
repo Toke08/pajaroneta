@@ -18,18 +18,22 @@ Ubicaciones
         <th scope="col">Provincia</th>
         <th scope="col">Ciudad</th>
         <th scope="col">Código postal</th>
+        <th scope="col">Eliminar</th>
+        <th scope="col">Editar</th>
     </thead>
     <tbody>
         <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
             
-            <td>Dirección: <a href="location/<?php echo e($location->address); ?>"><?php echo e($location->address); ?></a></td>
-            <td>Provincia: <a href="location/<?php echo e($location->province); ?>"><?php echo e($location->province); ?> </a></td>
-            <td>Ciudad: <a href="location/<?php echo e($location->city); ?>"><?php echo e($location->city); ?></a></td>
-            <td>Código postal: <a href="location/<?php echo e($location->cp); ?>"><?php echo e($location->cp); ?></a></td>
-            <form action="" method="POST">
-                <td><input type="button" value="Eliminar"></td>
-                <td><input type="button" value="Editar"></td>
+            <td><a href="location/<?php echo e($location->address); ?>"><?php echo e($location->address); ?></a></td>
+            <td><a href="location/<?php echo e($location->province); ?>"><?php echo e($location->province); ?> </a></td>
+            <td><a href="location/<?php echo e($location->city); ?>"><?php echo e($location->city); ?></a></td>
+            <td><a href="location/<?php echo e($location->cp); ?>"><?php echo e($location->cp); ?></a></td>
+            <form action="<?php echo e(route('ubicaciones.destroy', $location->id)); ?>" method="POST">
+                <?php echo csrf_field(); ?>
+                <?php echo method_field('DELETE'); ?>
+                <td><button type="submit">Eliminar</button></td>
+                <td><button type="submit">Editar</button></td>
             </form>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

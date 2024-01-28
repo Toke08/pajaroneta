@@ -9,14 +9,14 @@ class Role extends Model
 {
     use HasFactory;
 
-    use HasFactory;
-    protected $table = 'foods';
+    protected $table = 'roles';
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
     ];
 
     /**

@@ -1,6 +1,6 @@
 @extends('layout.masterpage')
 @section('titulo')
-    Crear comida nueva
+Editar categoria
 @endsection
 
 @section('estilos')
@@ -10,7 +10,7 @@
 @endsection
 
 @section('contenido')
-    <h1>Editar categoria nueva</h1>
+    <h1>Editar categoria</h1>
 
     <form action="{{ route('categorias.update', $category->id) }}" method="post" enctype="multipart/form-data">
         @csrf

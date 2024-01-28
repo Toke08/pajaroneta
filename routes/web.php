@@ -27,6 +27,7 @@ Route::resource('/blog', App\Http\Controllers\PostController::class);
 // Route::view('/blog/{nombre-post}', App\Http\Controllers\PostController::class);
 Route::resource('/encuentranos', App\Http\Controllers\LocationController::class);
 // Route::view('/encuentranos/{fecha}', App\Http\Controllers\LocationController::class);
+Route::resource('/roles', App\Http\Controllers\RoleController::class);
 
 Route::resource('/ubicaciones', App\Http\Controllers\LocationController::class);
 Route::resource('/eventos', App\Http\Controllers\EventController::class);

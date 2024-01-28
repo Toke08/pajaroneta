@@ -22,6 +22,17 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
+        \App\Models\Role::create([
+            "id"   => 1,
+            "name" => "admin",
+        ]);
+        \App\Models\Role::create([
+            "id"   => 2,
+            "name" => "user",
+        ]);
+
+
+
         \App\Models\Category::create([
             "id"   => 1,
             "name" => "Hamburguesas",

@@ -67,16 +67,12 @@
     @keyframes fadeIn {
     0% {
         opacity: 0;
-        filter:blur(10px);
-    }
-    10% {
-        opacity: 1;
-        filter:brightness(1.5) blur(5px);
     }
     100% {
         opacity: 1;
 
     }
+
 }
 
 

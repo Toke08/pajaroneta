@@ -125,11 +125,13 @@ class CategoryController extends Controller
         $data = $request->only('name');
     if(trim($request->img)==''){
             $data = $request->except('img');
-            $data = $request()->only('name');
-            ll();
+
+        }else{
+            $data=$request->all();
         }
         $category->update($data);
         return redirect()->back();
+
     }
 
     /**

@@ -10,7 +10,7 @@
           </li>
           <li class="nav-item">
 
-            <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo e(__('Encuéntranos')); ?></a>
+            <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo e(__('Ubicaciones')); ?></a>
 
           </li>
           <li class="nav-item">
@@ -32,6 +32,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo e(__('Crear categoría blog')); ?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('restaurants.create')); ?>"><?php echo e(__('Nuevo restaurante')); ?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('restaurants.index')); ?>"><?php echo e(__('Ver restaurantes')); ?></a>
           </li>
           <?php if(auth()->guard()->guest()): ?>
           <li class="nav-item">

@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Food;
-use App\Http\Controllers\TagController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +19,20 @@ Route::get('/', function () {
 })->name('home');
 
 Route::resource('/galeria-comidas', App\Http\Controllers\FoodController::class)/*->only('create','update','destroy')->middleware('admin')*/;
-// Route::view('/galeria-comidas/{nombre-comida}', App\Http\Controllers\FoodController::class);
+
 Route::resource('/blog', App\Http\Controllers\PostController::class);
-// Route::view('/blog/{nombre-post}', App\Http\Controllers\PostController::class);
+
+//Route::resource('/comments', App\Http\Controllers\CommentController::class)->except(['edit', 'update']);
+
+Route::post('/comments/{post_id}', 'App\Http\Controllers\CommentController@store')->name('comments.store');
+
+
 Route::resource('/encuentranos', App\Http\Controllers\LocationController::class);
-// Route::view('/encuentranos/{fecha}', App\Http\Controllers\LocationController::class);
+
 Route::resource('/roles', App\Http\Controllers\RoleController::class);
 
 Route::resource('/ubicaciones', App\Http\Controllers\LocationController::class);
+
 Route::resource('/eventos', App\Http\Controllers\EventController::class);
 
 Route::resource('/tags', App\Http\Controllers\TagController::class);

@@ -39,6 +39,7 @@ return array(
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+    'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
     'App\\Models\\Event' => $baseDir . '/app/Models/Event.php',
     'App\\Models\\Food' => $baseDir . '/app/Models/Food.php',
     'App\\Models\\Location' => $baseDir . '/app/Models/Location.php',

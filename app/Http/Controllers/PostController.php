@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -48,7 +49,6 @@ class PostController extends Controller
         //$this->middleware('admin')->only('show');
         $title = $datos['title'];
         $content = $datos['content'];
-        $date = $datos['date'];
         $status = $datos['status'];
         $tag_id = $datos['tag_id'];
         //
@@ -56,7 +56,6 @@ class PostController extends Controller
         $post->img = $nombreImagen;
         $post->title = $title;
         $post->content = $content;
-        $post->date = $date;
         $post->status = $status;
         $post->tag_id=$tag_id;
 
@@ -73,12 +72,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
-        $post = Post::with('tag')->find($id);
-        if (!$post) {
-            abort(404);
-        }
-        return view('blog.show', ['post' => $post]);
+        $post = Post::with('tag')->findOrFail($id);
+        $comments = Comment::where('post_id', $post->id)->get();
+
+        return view('blog.show', compact('post', 'comments'));
     }
 
     /**

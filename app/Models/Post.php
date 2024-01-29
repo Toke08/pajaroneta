@@ -14,13 +14,16 @@ class Post extends Model
         'title',
         'content',
         'img',
-        'date',
         'status',
         'tag_id'
     ];
 
     function tag(){
         return $this->belongsTo(Tag::class);
+    }
+
+    function comments(){
+        return $this->hasMany(Comment::class);
     }
 
 }

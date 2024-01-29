@@ -52,9 +52,9 @@
     @endforeach
     @endif
 
-
-    @yield('contenido')
     @yield('estilos')
+    @yield('contenido')
+
 </main>
 
 

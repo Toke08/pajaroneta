@@ -174,14 +174,14 @@ class DatabaseSeeder extends Seeder
             "title"=> "Post por defecto2",
             "content"=> "Post por defecto",
             "img"=> "default.jpg",
-            "status"=> 0,
+            "status"=> 1,
             "tag_id"=> 3,
         ]);
         \App\Models\Post::create([
             "title"=> "Post por defecto3",
             "content"=> "Post por defecto",
             "img"=> "default.jpg",
-            "status"=> 0,
+            "status"=> 1,
             "tag_id"=> 4,
         ]);
 

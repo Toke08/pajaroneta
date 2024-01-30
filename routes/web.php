@@ -46,6 +46,9 @@ Route::resource('/dashboard-admin', App\Http\Controllers\DashboardController::cl
 //Dashboard usuario normal
 Route::resource('/dashboard-user', App\Http\Controllers\DashboardController::class);
 
+//esto es una prueba
+
+
 Auth::routes();
 
 Route::get('idiomas/{locale}',[App\Http\Controllers\LanguageController::class,'setLanguage'])->name('setLanguage');

@@ -23,7 +23,7 @@ class Tag extends Model
     }
 
     function restaurants(){
-        $this->hasMany(Restaurant::class);
+        return $this->hasMany(Restaurant::class);
     }
 
 }

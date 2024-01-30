@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
     Crear publicación
 <?php $__env->stopSection(); ?>

@@ -28,6 +28,7 @@ Evento nuevo
 
         <select id="location_id" name="location_id" >
             @foreach ( $locations as $location )
+            <option value="">No hay ubicación asignada</option>
             <option value="{{$location->id}}">{{$location->address}}</option>
             @endforeach
 

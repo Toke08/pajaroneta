@@ -17,7 +17,9 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view("events.index", ['events'=> $events]);
+        $location = Location::all();
+        return view("events.index", ['events'=> $events, 'location'=>$location]);
+
     }
 
     /**
@@ -67,7 +69,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -76,9 +78,10 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit($id)
     {
-        //
+        $event =Event::findOrFail($id);
+        return view('eventos.edit', compact('event'));
     }
 
     /**
@@ -88,9 +91,12 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id)
     {
-
+        $event = Event::findOrFail($id);
+        $datos = $request->only(['name', 'description', 'date', 'address']);
+        $event->update($datos);
+        return redirect()->route('eventos.index')->with('success', 'La ubicaión se ha actualizado exitosamente.');
     }
 
     /**

@@ -26,7 +26,7 @@ Ubicación nueva
         <br>
         <label for="image">Código postal</label>
         <input type="text" inputmode="numeric" id="cp" name="cp" required>
-
+        <br>
         <input type="submit" name="" id="" value="Crear ubicación">
     </form>
 

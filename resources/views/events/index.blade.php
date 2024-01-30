@@ -23,19 +23,26 @@ a {
         <th scope="col">Descripción</th>
         <th scope="col">Fecha del evento</th>
         <th scope="col">Dirección</th>
+        <th scope="col">Acciones</th>
     </thead>
     <tbody>
         @foreach ($events as $event)
         <tr>
-            <td><a href="event/{{ $event->name }}">{{ $event->name}}</a></td>
-            <td><a href="event/{{ $event->description }}">{{ $event->description}} </a></td>
-            <td><a href="event/{{ $event->date }}">{{ $event->date}}</a></td>
-            <td><a href="location/{{ $location->id }}">{{ $location->address }}</a></td>
+            <td>{{ $event->name}}</td>
+            <td>{{ $event->description}}</td>
+            <td>{{ $event->date}}</td>
+
+            <td>{{ $event->location->address}}</td>
 
         <form action="{{ route('eventos.destroy', $event->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <td><button type="submit">Eliminar</button></td>
+        </form>
+        <form action="{{ route('eventos.update', $event->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <td><button type="submit">Editar</button></td>
         </form>
         @endforeach
     </tr>

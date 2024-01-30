@@ -67,19 +67,12 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        $tag = Tag::with('posts')->find($id);
-        if (!$tag) {
-            abort(404);
-        }
-
+        $tag = Tag::findOrFail($id);
         $posts = $tag->posts ?? collect();
+        $restaurants = $tag->restaurants ?? collect();
 
-        if ($posts->isEmpty()) {
-            $message = 'No hay posts con este tag.';
-            return view('tags.show', compact('tag', 'message', 'posts'));
-        }
-
-        return view('tags.show', compact('tag', 'posts'));}
+        return view('tags.show', compact('tag', 'posts', 'restaurants'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

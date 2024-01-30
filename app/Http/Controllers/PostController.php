@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=Post::all();
+        $posts=Post::where('status', 1);
         return view('blog.index', ['posts'=>$posts]);
     }
 
@@ -133,9 +133,20 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $Post = Post::findOrFail($id);
-        $Post->delete();
-        return redirect()->back();
+        $post = Post::findOrFail($id);
+
+        // Obtén la ruta completa del archivo de imagen
+        $imagenPath = public_path('img/posts/' . $post->img);
+
+        // Verifica si el archivo existe antes de intentar eliminarlo
+        if (File::exists($imagenPath)) {
+            // Elimina el archivo de imagen
+            File::delete($imagenPath);
+        }
+
+        // Elimina el post
+        $post->delete();
+
+        return redirect()->back()->with('success', 'Post eliminado exitosamente.');
     }
 }

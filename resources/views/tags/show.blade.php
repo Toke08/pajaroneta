@@ -41,20 +41,33 @@ img {
     @if(Session::has('error'))
         <p>{{ Session::get('error') }}</p>
     @else
-        @if($posts->isEmpty())
-            <strong>No hay publicaciones relacionadas con {{$tag->name}}.</strong> <BR></BR>
+        @if($posts->isEmpty() && $restaurants->isEmpty())
+            <strong>No hay publicaciones ni restaurantes relacionados con {{$tag->name}}.</strong> <BR></BR>
             <a href="{{ route('tags.index') }}">Volver a las categorías</a>
         @else
-            <h2>Publicaciones relacionadas con {{$tag->name}}</h2>
-            @foreach($posts as $post)
-                <div class="post">
-                    <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}"><br>
-                    <strong>{{ $post->title }}</strong>
-                    <br>
-                    <a href="../blog/{{ $post->id }}">Leer más...</a>
-                </div>
-            @endforeach
+            @if(!$posts->isEmpty())
+                <strong>Publicaciones relacionadas con {{$tag->name}}</strong>
+                @foreach($posts as $post)
+                    <div class="item">
+                        <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}"><br>
+                        <strong>{{ $post->title }}</strong>
+                        <br>
+                        <a href="{{ route('blog.show', $post->id) }}">Leer más...</a>
+                    </div>
+                @endforeach
+            @endif
+
+            @if(!$restaurants->isEmpty())
+                <strong>Restaurantes relacionados con {{$tag->name}}</strong>
+                @foreach($restaurants as $restaurant)
+                    <div class="item">
+                        <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
+                        <strong>{{ $restaurant->name }}</strong>
+                        <br>
+                        <a href="{{ route('restaurants.show', $restaurant->id) }}">Leer más...</a>
+                    </div>
+                @endforeach
+            @endif
         @endif
     @endif
 @endsection
-

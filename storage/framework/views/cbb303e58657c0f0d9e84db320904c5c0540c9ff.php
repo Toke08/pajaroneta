@@ -32,7 +32,14 @@
                 <option value="<?php echo e($tag->id); ?>"><?php echo e($tag->name); ?></option>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
+
+        <label for="status">Estado:</label>
+        <select id="status" name="status" required>
+            <option value="0">Borrador</option>
+            <option value="1">Publicado</option>
+        </select>
         <br>
+
         <button type="submit">Publicar</button>
     </form>
 

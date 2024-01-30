@@ -20,21 +20,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('blog.index') }}">@lang('Blog')</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('blog.create') }}">@lang('Create Post')</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('tags.index') }}">@lang('View Blog Categories')</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('tags.create') }}">@lang('Create Blog Category')</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('restaurants.create') }}">@lang('New Restaurant')</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('restaurants.index') }}">@lang('View Restaurants')</a>
-        </li>
+
         @guest
         <li class="nav-item">
             <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
@@ -46,7 +32,7 @@
           @else
           @if (auth()->user()->isAdmin())
             <li class="nav-item">
-                <a class="nav-link" href="{{route('blog.create')}}">@lang('Admin Panel')</a>
+                <a class="nav-link" href="{{route('adminHome')}}">@lang('Admin Panel')</a>
             </li>
           @endif
 

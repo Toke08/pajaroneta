@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
 Crear comida nueva
 <?php $__env->stopSection(); ?>
@@ -13,14 +14,22 @@ Crear comida nueva
 <h1>Crear comida nueva</h1>
 
 
-    <form action="<?php echo e(route('galeria-comidas.create')); ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo e(route('galeria-comidas.store')); ?>" method="post" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
 
         <label for="name">Nombre:</label>
+        <br>
         <input type="text" id="name" name="name" required>
         <br>
+        <label for="description">Descripcion:</label>
+        <br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+        <br>
         <label for="price">Precio:</label>
+        <br>
         <input type="text" id="price" name="price" required>
+        <br>
+        <label for="categories">categoria:</label>
         <br>
         <select name="categories" id="">
             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

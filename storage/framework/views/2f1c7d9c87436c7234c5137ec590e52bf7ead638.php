@@ -36,8 +36,8 @@
 
         <label for="status">Estado:</label>
         <select id="status" name="status" required>
-            <option value="1">Borrador</option>
-            <option value="0">Publicado</option>
+            <option value="0">Borrador</option>
+            <option value="1">Publicado</option>
         </select>
         <br>
 

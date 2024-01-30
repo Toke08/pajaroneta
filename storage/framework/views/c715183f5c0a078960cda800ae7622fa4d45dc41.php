@@ -41,19 +41,33 @@ img {
     <?php if(Session::has('error')): ?>
         <p><?php echo e(Session::get('error')); ?></p>
     <?php else: ?>
-        <?php if($posts->isEmpty()): ?>
-            <strong>No hay publicaciones relacionadas con <?php echo e($tag->name); ?>.</strong> <BR></BR>
+        <?php if($posts->isEmpty() && $restaurants->isEmpty()): ?>
+            <strong>No hay publicaciones ni restaurantes relacionados con <?php echo e($tag->name); ?>.</strong> <BR></BR>
             <a href="<?php echo e(route('tags.index')); ?>">Volver a las categorías</a>
         <?php else: ?>
-            <h2>Publicaciones relacionadas con <?php echo e($tag->name); ?></h2>
-            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="post">
-                    <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>"><br>
-                    <strong><?php echo e($post->title); ?></strong>
-                    <br>
-                    <a href="../blog/<?php echo e($post->id); ?>">Leer más...</a>
-                </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php if(!$posts->isEmpty()): ?>
+                <strong>Publicaciones relacionadas con <?php echo e($tag->name); ?></strong>
+                <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="item">
+                        <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>"><br>
+                        <strong><?php echo e($post->title); ?></strong>
+                        <br>
+                        <a href="<?php echo e(route('blog.show', $post->id)); ?>">Leer más...</a>
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
+
+            <?php if(!$restaurants->isEmpty()): ?>
+                <strong>Restaurantes relacionados con <?php echo e($tag->name); ?></strong>
+                <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="item">
+                        <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>"><br>
+                        <strong><?php echo e($restaurant->name); ?></strong>
+                        <br>
+                        <a href="<?php echo e(route('restaurants.show', $restaurant->id)); ?>">Leer más...</a>
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
         <?php endif; ?>
     <?php endif; ?>
 <?php $__env->stopSection(); ?>

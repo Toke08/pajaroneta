@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Food;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FoodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,20 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::resource('/galeria-comidas', App\Http\Controllers\FoodController::class)/*->only('create','update','destroy')->middleware('admin')*/;
+Route::prefix('/admin-dashboard')->group(function () {
+    // Ruta para el método home del DashboardController
+    Route::get('/', [DashboardController::class, 'home'])->name('adminHome');
+    // Rutas para las operaciones bajo el prefijo /admin-dashboard
+    Route::get('/galeria-comidas/create', [FoodController::class, 'create'])->name('galeria-comidas.create');;
+    Route::get('/galeria-comidas/{id}/edit', [FoodController::class, 'edit'])->name('galeria-comidas.edit');;
+    Route::put('/galeria-comidas/{id}', [FoodController::class, 'update'])->name('galeria-comidas.show');;
+    Route::delete('/galeria-comidas/{id}', [FoodController::class, 'destroy'])->name('galeria-comidas.destroy');;
+});
+//crear index y view sin el prefijo /admin-dashboard
+Route::resource('/galeria-comidas', FoodController::class)->except(['create', 'edit','update','destroy']);
+
+
+/*Route::resource('/galeria-comidas', App\Http\Controllers\FoodController::class)*//*->only('create','update','destroy')->middleware('admin')*/;
 
 Route::resource('/blog', App\Http\Controllers\PostController::class);
 
@@ -42,9 +56,7 @@ Route::resource('/restaurants', App\Http\Controllers\RestaurantController::class
 
 Route::resource('/categorias', App\Http\Controllers\CategoryController::class);
 //Dashboard admin
-Route::resource('/dashboard-admin', App\Http\Controllers\DashboardController::class);
-//Dashboard usuario normal
-Route::resource('/dashboard-user', App\Http\Controllers\DashboardController::class);
+// Route::get('/admin-dashboard', [DashboardController::class, 'home'])->name('adminHome');
 
 //esto es una prueba
 

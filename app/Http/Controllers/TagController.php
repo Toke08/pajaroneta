@@ -111,38 +111,39 @@ class TagController extends Controller
      */
 
      public function destroy($id)
-     {
-         $tag = Tag::findOrFail($id);
-         $postsCount = Post::where('tag_id', $tag->id)->count();
-         $restaurantsCount = Restaurant::where('tag_id', $tag->id)->count();
+    {
+        $tag = Tag::findOrFail($id);
+        $postsCount = Post::where('tag_id', $tag->id)->count();
+        $restaurantsCount = Restaurant::where('tag_id', $tag->id)->count();
 
-         try {
-             // Inicia la transacción
-             DB::beginTransaction();
+        try {
+            // Inicia la transacción
+            DB::beginTransaction();
 
-             if ($postsCount > 0 || $restaurantsCount > 0) {
-                 // Hay publicaciones o restaurantes asociados
-                 $message = 'Hay publicaciones o restaurantes relacionados con este tag. Al eliminar el tag, se eliminarán las publicaciones y restaurantes también.';
-                 \Session::flash('error', $message);
+            if ($postsCount > 0 || $restaurantsCount > 0) {
+                // Hay publicaciones o restaurantes asociados
+                $message = 'Hay publicaciones o restaurantes relacionados con este tag. Al eliminar el tag, se cambiará el tag_id a 1 en lugar de eliminarlos.';
+                \Session::now('message', $message);
 
-                 // Elimina las publicaciones y restaurantes relacionados
-                 Post::where('tag_id', $tag->id)->delete();
-                 Restaurant::where('tag_id', $tag->id)->delete();
-             } else {
-                 // No hay publicaciones ni restaurantes asociados
-                 $tag->delete();
-                 \Session::flash('message', 'Categoría de publicación eliminida!');
-             }
+                // Actualiza el tag_id a 1 en las publicaciones y restaurantes asociados
+                Post::where('tag_id', $tag->id)->update(['tag_id' => 1]);
+                Restaurant::where('tag_id', $tag->id)->update(['tag_id' => 1]);
+            } else {
+                // No hay publicaciones ni restaurantes asociados
+                $tag->delete();
+                \Session::now('message', 'Categoría de publicación eliminida!');
+            }
 
-             // Confirma la transacción
-             DB::commit();
-         } catch (\Exception $e) {
-             // Si hay algún error, deshace la transacción y muestra el mensaje
-             DB::rollBack();
-             \Session::flash('error', 'Error al eliminar el tag: ' . $e->getMessage());
-         }
+            // Confirma la transacción
+            DB::commit();
+        } catch (\Exception $e) {
+            // Si hay algún error, deshace la transacción y muestra el mensaje
+            DB::rollBack();
+            \Session::now('error', 'Error al eliminar el tag: ' . $e->getMessage());
+        }
 
-         return redirect()->back();
-     }
+        return redirect()->back();
+
+    }
 
 }

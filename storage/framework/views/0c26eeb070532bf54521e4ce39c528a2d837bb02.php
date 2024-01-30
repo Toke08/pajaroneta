@@ -41,7 +41,7 @@ img {
 
 <?php $__env->startSection('contenido'); ?>
 <body>
-    <h2>PajaroBlog</h2>
+    <h1>PajaroBlog</h1>
     <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="post">
             <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>

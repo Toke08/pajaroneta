@@ -138,7 +138,9 @@ class DatabaseSeeder extends Seeder
             "category_id" => 1,
         ]);
 
-
+        \App\Models\Tag::create([
+            "name"=> "General",
+        ]);
 
         \App\Models\Tag::create([
             "name"=> "Carne",
@@ -166,21 +168,21 @@ class DatabaseSeeder extends Seeder
             "content"=> "Post por defecto",
             "img"=> "default.jpg",
             "status"=> 0,
-            "tag_id"=> 1,
+            "tag_id"=> 2,
         ]);
         \App\Models\Post::create([
             "title"=> "Post por defecto2",
             "content"=> "Post por defecto",
             "img"=> "default.jpg",
             "status"=> 0,
-            "tag_id"=> 1,
+            "tag_id"=> 3,
         ]);
         \App\Models\Post::create([
             "title"=> "Post por defecto3",
             "content"=> "Post por defecto",
             "img"=> "default.jpg",
             "status"=> 0,
-            "tag_id"=> 1,
+            "tag_id"=> 4,
         ]);
 
         \App\Models\Restaurant::create([
@@ -188,7 +190,7 @@ class DatabaseSeeder extends Seeder
             "description"=>"rico y barato",
             "url"=>"https://nakedandsated.com/",
             "img"=>"nakedandsated.jpg",
-            "tag_id"=>1
+            "tag_id"=>3
         ]);
 
     }

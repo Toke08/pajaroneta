@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('titulo'); ?>
     Crear publicación
 <?php $__env->stopSection(); ?>
@@ -27,24 +26,13 @@
         <input type="file" id="img" name="img" required>
         <br>
 
-        <label for="date">Fecha:</label>
-        <input type="date" id="date" name="date" required>
-        <br>
-
         <label for="tag">Categoría:</label>
         <select name="tag_id" id="tag_id">
             <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <option value="<?php echo e($tag->id); ?>"><?php echo e($tag->name); ?></option>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
-
-        <label for="status">Estado:</label>
-        <select id="status" name="status" required>
-            <option value="1">Borrador</option>
-            <option value="0">Publicado</option>
-        </select>
         <br>
-
         <button type="submit">Publicar</button>
     </form>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -109,27 +110,40 @@ class TagController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
+     public function destroy($id)
     {
         $tag = Tag::findOrFail($id);
         $postsCount = Post::where('tag_id', $tag->id)->count();
+        $restaurantsCount = Restaurant::where('tag_id', $tag->id)->count();
 
-    if ($postsCount > 0) {
-        // Hay publicaciones asociadas
-        $message = 'Hay publicaciones relacionadas con este tag. Al eliminar el tag, se eliminarán las publicaciones también.';
-        \Session::flash('error', $message);
+        try {
+            // Inicia la transacción
+            DB::beginTransaction();
 
-        // Elimina las publicaciones relacionadas
-        DB::transaction(function () use ($tag) {
-            Post::where('tag_id', $tag->id)->delete();
-            $tag->delete();
-        });
-        } else {
-            // No hay publicaciones asociadas
-            $tag->delete();
-            \Session::flash('message', 'Categoría de publicación eliminida!');
+            if ($postsCount > 0 || $restaurantsCount > 0) {
+                // Hay publicaciones o restaurantes asociados
+                $message = 'Hay publicaciones o restaurantes relacionados con este tag. Al eliminar el tag, se cambiará el tag_id a 1 en lugar de eliminarlos.';
+                \Session::now('message', $message);
+
+                // Actualiza el tag_id a 1 en las publicaciones y restaurantes asociados
+                Post::where('tag_id', $tag->id)->update(['tag_id' => 1]);
+                Restaurant::where('tag_id', $tag->id)->update(['tag_id' => 1]);
+            } else {
+                // No hay publicaciones ni restaurantes asociados
+                $tag->delete();
+                \Session::now('message', 'Categoría de publicación eliminida!');
+            }
+
+            // Confirma la transacción
+            DB::commit();
+        } catch (\Exception $e) {
+            // Si hay algún error, deshace la transacción y muestra el mensaje
+            DB::rollBack();
+            \Session::now('error', 'Error al eliminar el tag: ' . $e->getMessage());
         }
 
         return redirect()->back();
+
     }
+
 }

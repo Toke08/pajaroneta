@@ -10,7 +10,6 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
 }
 
 .post {
@@ -43,7 +42,7 @@ img {
 
 @section('contenido')
 <body>
-    <h2>PajaroBlog</h2>
+    <h1>PajaroBlog</h1>
     @foreach ($posts as $post)
         <div class="post">
             <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>

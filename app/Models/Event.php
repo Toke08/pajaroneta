@@ -10,8 +10,7 @@ class Event extends Model
     use HasFactory;
 
     function location(){
-        $this->belongsTo(Location::class);
-
+      return $this->belongsTo(Location::class);
     }
 
 }

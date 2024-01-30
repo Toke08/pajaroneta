@@ -28,10 +28,11 @@ a {
     <tbody>
         @foreach ($events as $event)
         <tr>
-            <td>{{ $event->name}}</a></td>
-            <td>{{ $event->description}} </a></td>
-            <td>{{ $event->date}}</a></td>
-            <td>Dirección jeje</a></td>
+            <td>{{ $event->name}}</td>
+            <td>{{ $event->description}}</td>
+            <td>{{ $event->date}}</td>
+
+            <td>{{ $event->location->address}}</td>
 
         <form action="{{ route('eventos.destroy', $event->id) }}" method="POST">
             @csrf

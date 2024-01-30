@@ -16,16 +16,22 @@ Editar evento
         @csrf
         @method('PUT')
         <label for="address">Nombre:</label>
-        <input type="text" id="address" name="address" value="{{ $location->address }}" required>
+        <input type="text" id="name" name="name" value="{{ $location->name }}" required>
         <br>
         <label for="address">Descripción:</label>
-        <input type="text" id="province" name="province" value="{{ $location->province }}" required>
+        <input type="text" id="description" name="description" value="{{ $event->description }}" required>
         <br>
         <label for="address">Fecha</label>
-        <input type="text" id="city" name="city" value="{{ $location->city }}" required>
+        <input type="text" id="date" name="date" value="{{ $event->date }}" required>
         <br>
         <label for="address">Dirección:</label>
-        <input type="text" id="cp" name="cp" value="{{ $location->cp }}" required>
+        <select id="location_id" name="location_id" >
+                @foreach ( $locations as $location )
+                <option value="{{$location->id}}">{{$location->address}}</option>
+                @endforeach
+        </select>
+
+
         <br>
         <button type="submit">Actualizar</button>
     </form>

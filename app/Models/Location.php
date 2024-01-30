@@ -9,8 +9,19 @@ class Location extends Model
 {
     use HasFactory;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($location) {
+            // Eliminación en cascada de eventos
+            $location->events()->delete();
+        });
+    }
+
+
     function events(){
-        $this->hasMany(Event::class);
+       return $this->hasMany(Event::class);
 
     }
 }

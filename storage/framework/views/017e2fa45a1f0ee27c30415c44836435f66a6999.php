@@ -30,12 +30,13 @@ Ubicaciones
             <td><?php echo e($location->province); ?> </a></td>
             <td><?php echo e($location->city); ?></a></td>
             <td><?php echo e($location->cp); ?></a></td>
+
             <form action="<?php echo e(route('ubicaciones.destroy', $location->id)); ?>" method="POST">
                 <?php echo csrf_field(); ?>
                 <?php echo method_field('DELETE'); ?>
-                <td><button type="submit">Eliminar</button></td>
+                <td><button type="button" class="btn-delete" data-location-id="<?php echo e($location->id); ?>">Eliminar</button></td>
             </form>
-           <form action="<?php echo e(route('ubicaciones.edit', $location->id)); ?>" method="GET">
+                <form action="<?php echo e(route('ubicaciones.edit', $location->id)); ?>" method="GET">
                 <?php echo csrf_field(); ?>
                 <td><button type="submit">Editar</button></td>
             </form>
@@ -43,17 +44,22 @@ Ubicaciones
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
 </table>
+<script>
+     const deleteButtons = document.querySelectorAll('.btn-delete');
 
+    deleteButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const locationId = this.getAttribute('data-location-id');
+        const mensaje = confirm("¿Deseas eliminar esta ubicación? Se borrarán los eventos relacionados con dicha información");
+
+        if (mensaje) {
+        }
+    });
+});
+</script>
 <?php $__env->stopSection(); ?>
 
-<script>
-    const dlt_btn= document.getElementsByTagName("button")[0];
 
-    dlt_btn.addEventListener('click', function(){
-        //IF( Hay un evento relacionado con esta ubi )
-        alert("Si borras esta dirección, se borrarán todos los eventos que contengan dicha ubi")
-    })
-</script>
 
 
 <?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ1\www\pajaroneta\resources\views/locations/index.blade.php ENDPATH**/ ?>

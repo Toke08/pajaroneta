@@ -26,10 +26,11 @@ a {
     <tbody>
         <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
-            <td><?php echo e($event->name); ?></a></td>
-            <td><?php echo e($event->description); ?> </a></td>
-            <td><?php echo e($event->date); ?></a></td>
-            <td>Dirección jeje</a></td>
+            <td><?php echo e($event->name); ?></td>
+            <td><?php echo e($event->description); ?></td>
+            <td><?php echo e($event->date); ?></td>
+
+            <td><?php echo e($event->location->address); ?></td>
 
         <form action="<?php echo e(route('eventos.destroy', $event->id)); ?>" method="POST">
             <?php echo csrf_field(); ?>

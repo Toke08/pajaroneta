@@ -27,6 +27,6 @@ Editar ubicación
         <label for="address">Código postal:</label>
         <input type="text" id="cp" name="cp" value="{{ $location->cp }}" required>
         <br>
-        <button type="submit">=Actualizar</button>
+        <button type="submit">Actualizar</button>
     </form>
 @endsection

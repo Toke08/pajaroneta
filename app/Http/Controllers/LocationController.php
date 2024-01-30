@@ -46,12 +46,14 @@ class LocationController extends Controller
         $province=$datos["province"];
         $city=$datos["city"];
         $cp=$datos["cp"];
+        $event_name=$datos["event_name"];
 
         $location= new Location();
         $location->address=$address;
         $location->province=$province;
         $location->city=$city;
         $location->cp=$cp;
+        $location->event_name=$event_name;
 
         $location->save();
 
@@ -83,10 +85,7 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        // Encuentra la categoría por su ID
         $location =Location::findOrFail($id);
-
-        // Retorna la vista del formulario de edición con la categoría encontrada
         return view('locations.edit', compact('location'));
     }
 
@@ -100,10 +99,14 @@ class LocationController extends Controller
     public function update(Request $request, $id)
     {
         $location = Location::findOrFail($id);
-        $datos = $request->all;
-        $location->update($datos);
-
-        return redirect()->route('locations.index')->with('success', 'La ubi se ha actualizado exitosamente.');
+        $datos = $request->validate([
+            'address'   => 'required',
+            'cp'        => 'required',
+            'province'  => 'required',
+            'city'      => 'required',
+        ]);
+        $location->update();
+        return redirect()->route('ubicaciones.index')->with('success', 'La ubicaión se ha actualizado exitosamente.');
     }
 
     /**
@@ -113,6 +116,8 @@ class LocationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
+
+
         $location = Location::findOrFail($id);
         $location->delete();
         return redirect()->back();

@@ -160,5 +160,38 @@ class DatabaseSeeder extends Seeder
             "name"=> "Sin gluten",
         ]);
 
+
+        \App\Models\Post::create([
+            "id"=> 1,
+            "title"=> "Post por defecto",
+            "content"=> "Post por defecto",
+            "img"=> "default.jpg",
+            "status"=> 0,
+            "tag_id"=> 1,
+        ]);
+        \App\Models\Post::create([
+            "id"=> 1,
+            "title"=> "Post por defecto2",
+            "content"=> "Post por defecto",
+            "img"=> "default.jpg",
+            "status"=> 0,
+            "tag_id"=> 1,
+        ]);
+        \App\Models\Post::create([
+            "title"=> "Post por defecto3",
+            "content"=> "Post por defecto",
+            "img"=> "default.jpg",
+            "status"=> 0,
+            "tag_id"=> 1,
+        ]);
+
+        \App\Models\Restaurant::create([
+            "name"=>"naked & sated",
+            "description"=>"rico y barato",
+            "url"=>"https://nakedandsated.com/",
+            "img"=>"nakedandsated.jpg",
+            "tag_id"=>1
+        ]);
+
     }
 }

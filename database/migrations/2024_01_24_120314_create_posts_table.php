@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('content');
-            $table->string('img');            $table->boolean('status');
+            $table->string('img');
+            $table->boolean('status');
             $table->unsignedBigInteger('tag_id');
             $table->timestamps();
             //

@@ -5,15 +5,17 @@
 <style>
 body {
     display: flex;
-    align-items: left;
+    align-items: flex-start;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
+    flex-wrap: wrap;
+    gap: 20px;
 }
+
 .post {
+    flex: 1; /* Hace que cada contenedor ocupe el espacio disponible */
     padding: 15px;
-    width: 300px; /* Puedes ajustar el ancho según tus necesidades */
-    text-align: center;
+    max-width: 300px; /* Ancho máximo para cada contenedor */
+
 }
 
 strong {
@@ -33,6 +35,7 @@ img {
     object-fit: cover;
     border-radius: 10px; /* Ajusta el valor para cambiar la cantidad de curvatura */
 }
+
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -43,9 +46,17 @@ img {
         <div class="post">
             <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
             <strong><?php echo e($post->title); ?></strong><br>
-             <!--<p><?php echo e($post->content); ?></p>-->
-            <!--<strong>Categorías</strong> <p><?php echo e($post->tag_id); ?></p>-->
             <a href="blog/<?php echo e($post->id); ?>">Leer más...</a>
+
+            <form action="<?php echo e(route('blog.destroy', $post->id)); ?>"   method="POST">
+                <?php echo csrf_field(); ?>
+                <?php echo method_field('DELETE'); ?>
+                <button type="submit">Borrar</button>
+            </form>
+            <form action="<?php echo e(route('blog.edit', $post->id)); ?>" method="GET">
+                <?php echo csrf_field(); ?>
+                <button type="submit">Editar</button>
+            </form>
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </body>

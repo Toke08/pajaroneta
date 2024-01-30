@@ -6,62 +6,52 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('galeria-comidas.index')); ?>"><?php echo e(__('Galería de comidas')); ?></a>
+            <a class="nav-link" href="<?php echo e(route('galeria-comidas.index')); ?>"><?php echo app('translator')->get('Food Gallery'); ?></a>
           </li>
           <li class="nav-item">
-
-            <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo e(__('Ubicaciones')); ?></a>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('encuentranos.index')); ?>"><?php echo e(__('Encuéntranos')); ?></a>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo e(__('Ver categorías comida')); ?></a>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo e(__('Blog')); ?></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo e(__('Crear publicación')); ?></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo e(__('Ver categorías blog')); ?></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo e(__('Crear categoría blog')); ?></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('restaurants.create')); ?>"><?php echo e(__('Nuevo restaurante')); ?></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('restaurants.index')); ?>"><?php echo e(__('Ver restaurantes')); ?></a>
-          </li>
-          <?php if(auth()->guard()->guest()): ?>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
-          </li>
+            <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo app('translator')->get('Locations'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('encuentranos.index')); ?>"><?php echo app('translator')->get('Find Us'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo app('translator')->get('View Food Categories'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo app('translator')->get('Blog'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Create Post'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo app('translator')->get('View Blog Categories'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo app('translator')->get('Create Blog Category'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('restaurants.create')); ?>"><?php echo app('translator')->get('New Restaurant'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('restaurants.index')); ?>"><?php echo app('translator')->get('View Restaurants'); ?></a>
+        </li>
+        <?php if(auth()->guard()->guest()): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
+        </li>
 
           <?php else: ?>
           <?php if(auth()->user()->isAdmin()): ?>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Lista de roles <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Lista de cartas <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo e(__('Panel dmin')); ?></a>
+                <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Admin Panel'); ?></a>
             </li>
           <?php endif; ?>
 
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();">Logout</a>
+            <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();"><?php echo app('translator')->get('Logout'); ?></a>
             <form id="logout" action="<?php echo e(route('logout')); ?>" method="POST" >
                 <?php echo csrf_field(); ?>
             </form>
@@ -69,8 +59,11 @@
           <?php endif; ?>
         </ul>
         <span  class="text-white">
-            <a  href="#">ES</a>
-            <a  href="#">EU</a>
+            <a  href="<?php echo e(route('setLanguage','es')); ?>">ES</a>
+            <a  href="<?php echo e(route('setLanguage','eu')); ?>">EU</a>
+            <a href="<?php echo e(route('setLanguage', 'en')); ?>">EN</a>
+
+
         </span>
       </div>
     </nav>

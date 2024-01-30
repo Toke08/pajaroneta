@@ -6,62 +6,52 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{route('galeria-comidas.index')}}">{{__('Galería de comidas')}}</a>
+            <a class="nav-link" href="{{route('galeria-comidas.index')}}">@lang('Food Gallery')</a>
           </li>
           <li class="nav-item">
-
-            <a class="nav-link" href="{{route('ubicaciones.index')}}">{{__('Ubicaciones')}}</a>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('encuentranos.index')}}">{{__('Encuéntranos')}}</a>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('categorias.index')}}">{{__('Ver categorías comida')}}</a>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('blog.index')}}">{{__('Blog')}}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('blog.create')}}">{{__('Crear publicación')}}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('tags.index')}}">{{__('Ver categorías blog')}}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('tags.create')}}">{{__('Crear categoría blog')}}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('restaurants.create')}}">{{__('Nuevo restaurante')}}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('restaurants.index')}}">{{__('Ver restaurantes')}}</a>
-          </li>
-          @guest
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('register')}}">{{__('Register')}}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('login')}}">{{__('Login')}}</a>
-          </li>
+            <a class="nav-link" href="{{ route('ubicaciones.index') }}">@lang('Locations')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('encuentranos.index') }}">@lang('Find Us')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('categorias.index') }}">@lang('View Food Categories')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('blog.index') }}">@lang('Blog')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('blog.create') }}">@lang('Create Post')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('tags.index') }}">@lang('View Blog Categories')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('tags.create') }}">@lang('Create Blog Category')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('restaurants.create') }}">@lang('New Restaurant')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('restaurants.index') }}">@lang('View Restaurants')</a>
+        </li>
+        @guest
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
+        </li>
 
           @else
           @if (auth()->user()->isAdmin())
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Lista de roles <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Lista de cartas <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('blog.create')}}">{{__('Panel dmin')}}</a>
+                <a class="nav-link" href="{{route('blog.create')}}">@lang('Admin Panel')</a>
             </li>
           @endif
 
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();">Logout</a>
+            <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();">@lang('Logout')</a>
             <form id="logout" action="{{route('logout')}}" method="POST" >
                 @csrf
             </form>
@@ -69,8 +59,11 @@
           @endguest
         </ul>
         <span  class="text-white">
-            <a  href="#">ES</a>
-            <a  href="#">EU</a>
+            <a  href="{{route('setLanguage','es')}}">ES</a>
+            <a  href="{{route('setLanguage','eu')}}">EU</a>
+            <a href="{{ route('setLanguage', 'en') }}">EN</a>
+
+
         </span>
       </div>
     </nav>

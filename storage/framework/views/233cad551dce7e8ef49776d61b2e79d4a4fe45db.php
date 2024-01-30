@@ -49,10 +49,16 @@ img {
             <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
             <strong><?php echo e($post->title); ?></strong><br>
             <a href="blog/<?php echo e($post->id); ?>">Leer más...</a>
+
             <form action="<?php echo e(route('blog.destroy', $post->id)); ?>"   method="POST">
                 <?php echo csrf_field(); ?>
                 <?php echo method_field('DELETE'); ?>
-                <td><button type="submit">Borrar</button></td>
+                <button type="submit">Borrar</button>
+            </form>
+            <form action="<?php echo e(route('blog.edit', $post->id)); ?>" method="GET">
+                <?php echo csrf_field(); ?>
+                <button type="submit">Editar</button>
+            </form>
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </body>

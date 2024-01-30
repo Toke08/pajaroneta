@@ -27,10 +27,6 @@
         <input type="file" id="img" name="img" required>
         <br>
 
-        <label for="date">Fecha:</label>
-        <input type="date" id="date" name="date" required>
-        <br>
-
         <label for="tag">Categoría:</label>
         <select name="tag_id" id="tag_id">
             <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

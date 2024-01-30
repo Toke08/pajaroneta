@@ -13,6 +13,7 @@ use App\Models\Food;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['language']], function() {
 
 Route::get('/', function () {
     return view('index');
@@ -46,3 +47,6 @@ Route::resource('/dashboard-admin', App\Http\Controllers\DashboardController::cl
 Route::resource('/dashboard-user', App\Http\Controllers\DashboardController::class);
 
 Auth::routes();
+
+Route::get('idiomas/{locale}',[App\Http\Controllers\LanguageController::class,'setLanguage'])->name('setLanguage');
+});

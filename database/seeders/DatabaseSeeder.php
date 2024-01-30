@@ -162,7 +162,6 @@ class DatabaseSeeder extends Seeder
 
 
         \App\Models\Post::create([
-            "id"=> 1,
             "title"=> "Post por defecto",
             "content"=> "Post por defecto",
             "img"=> "default.jpg",
@@ -170,7 +169,6 @@ class DatabaseSeeder extends Seeder
             "tag_id"=> 1,
         ]);
         \App\Models\Post::create([
-            "id"=> 1,
             "title"=> "Post por defecto2",
             "content"=> "Post por defecto",
             "img"=> "default.jpg",

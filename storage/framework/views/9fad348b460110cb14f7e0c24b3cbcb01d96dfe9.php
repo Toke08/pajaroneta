@@ -45,7 +45,7 @@ img {
             <a href="<?php echo e(route('tags.index')); ?>">Volver a las categorías</a>
         <?php else: ?>
             <?php if(!$posts->isEmpty()): ?>
-                <h2>Publicaciones relacionadas con <?php echo e($tag->name); ?></h2>
+                <strong>Publicaciones relacionadas con <?php echo e($tag->name); ?></strong>
                 <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="item">
                         <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>"><br>
@@ -57,7 +57,7 @@ img {
             <?php endif; ?>
 
             <?php if(!$restaurants->isEmpty()): ?>
-                <h2>Restaurantes relacionados con <?php echo e($tag->name); ?></h2>
+                <strong>Restaurantes relacionados con <?php echo e($tag->name); ?></strong>
                 <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="item">
                         <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>"><br>

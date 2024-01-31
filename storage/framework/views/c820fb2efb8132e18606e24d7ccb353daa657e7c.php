@@ -15,9 +15,6 @@
             <a class="nav-link" href="<?php echo e(route('encuentranos.index')); ?>"><?php echo app('translator')->get('Find Us'); ?></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo app('translator')->get('View Food Categories'); ?></a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo app('translator')->get('Blog'); ?></a>
         </li>
 

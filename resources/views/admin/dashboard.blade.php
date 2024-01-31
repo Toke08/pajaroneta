@@ -15,19 +15,18 @@
 
     <a class="nav-link" href="{{ route('blog.create') }}">@lang('Create Post')</a>
 
-
     <a class="nav-link" href="{{ route('tags.index') }}">@lang('View Blog Categories')</a>
-
 
     <a class="nav-link" href="{{ route('tags.create') }}">@lang('Create Blog Category')</a>
 
-
     <a class="nav-link" href="{{ route('restaurants.create') }}">@lang('New Restaurant')</a>
-
 
     <a class="nav-link" href="{{ route('restaurants.index') }}">@lang('View Restaurants')</a>
 
     <a class="nav-link" href="{{ route('galeria-comidas.create') }}">@lang('Create comida')</a>
+
+    <a class="nav-link" href="{{ route('categorias.index') }}">@lang('View Food Categories')</a>
+
 
 @endsection
 

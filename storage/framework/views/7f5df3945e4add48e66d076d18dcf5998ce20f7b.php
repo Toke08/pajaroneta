@@ -13,19 +13,18 @@
 
     <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Create Post'); ?></a>
 
-
     <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo app('translator')->get('View Blog Categories'); ?></a>
-
 
     <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo app('translator')->get('Create Blog Category'); ?></a>
 
-
     <a class="nav-link" href="<?php echo e(route('restaurants.create')); ?>"><?php echo app('translator')->get('New Restaurant'); ?></a>
-
 
     <a class="nav-link" href="<?php echo e(route('restaurants.index')); ?>"><?php echo app('translator')->get('View Restaurants'); ?></a>
 
     <a class="nav-link" href="<?php echo e(route('galeria-comidas.create')); ?>"><?php echo app('translator')->get('Create comida'); ?></a>
+
+    <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo app('translator')->get('View Food Categories'); ?></a>
+
 
 <?php $__env->stopSection(); ?>
 

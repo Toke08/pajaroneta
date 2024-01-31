@@ -52,6 +52,24 @@ class DatabaseSeeder extends Seeder
             "img" => "hotdogs.jpg",
         ]);
 
+        \App\Models\Category::create([
+            "id"   => 3,
+            "name"=> "Postres",
+            "img" => "postres.jpg",
+        ]);
+
+        \App\Models\Category::create([
+            "id"   => 4,
+            "name"=> "Bocatas",
+            "img" => "bocatas.jpg",
+        ]);
+
+        \App\Models\Category::create([
+            "id"   => 5,
+            "name"=> "Complementos",
+            "img" => "complementos.jpg",
+        ]);
+
         \App\Models\Food::create([
             "name"=> "La maleducada pipi",
             "price"   => 6,

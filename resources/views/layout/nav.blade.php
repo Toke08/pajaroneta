@@ -15,9 +15,6 @@
             <a class="nav-link" href="{{ route('encuentranos.index') }}">@lang('Find Us')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('categorias.index') }}">@lang('View Food Categories')</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="{{ route('blog.index') }}">@lang('Blog')</a>
         </li>
 

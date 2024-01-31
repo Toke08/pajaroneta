@@ -35,7 +35,7 @@ class ClientController extends Controller
     public function blog(){
         $tags = Tag::all();
         $posts = Post::all();
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::where('status', 'Published')->orderBy('created_at', 'desc')->get();
         $restaurants = Restaurant::all();
         return view('client.blog', ['posts'=> $posts, 'tags'=>$tags, 'restaurants'=>$restaurants]);
     }

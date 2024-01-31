@@ -28,7 +28,7 @@ class FoodController extends Controller
     public function create()
     {
         $categories =Category::all();
-        return view('foods.create',['categories' => $categories]);
+        return view('admin.foods.create',['categories' => $categories]);
     }
 
     /**

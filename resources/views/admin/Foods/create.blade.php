@@ -10,6 +10,7 @@ Crear comida nueva
 @endsection
 
 @section('contenido')
+<a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
 
 <h1>Crear comida nueva</h1>
 

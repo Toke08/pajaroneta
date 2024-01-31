@@ -19,7 +19,7 @@ class CommentController extends Controller
         //
         $post = Post::findOrFail($post_id);
         $comments = $post->comments()->orderBy('created_at', 'desc')->get();
-        return view('blog.show', compact('post', 'comments'));
+        return view('blog_show', compact('post', 'comments'));
     }
 
     /**
@@ -31,7 +31,7 @@ class CommentController extends Controller
     {
         //
         $post = Post::findOrFail($post_id);
-        return view('blog.show', compact('post'));
+        return view('blog_show', compact('post'));
     }
 
     /**
@@ -54,7 +54,7 @@ class CommentController extends Controller
             'user_id' => $user->id,
         ]);
 
-        return redirect()->route('blog.show', $post_id)->with('success', 'Comentario agregado exitosamente.');
+        return redirect()->route('blog_show', $post_id)->with('success', 'Comentario agregado exitosamente.');
     }
 
     /**
@@ -68,7 +68,7 @@ class CommentController extends Controller
         //
         $post = Post::findOrFail($post_id);
         $comment = Comment::findOrFail($id);
-        return view('blog.show', compact('post', 'comment'));
+        return view('blog_show', compact('post', 'comment'));
     }
 
     /**

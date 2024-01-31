@@ -49,7 +49,7 @@ img {
     <h1>PajaroBlog</h1>
 
     @foreach ($tags as $tag)
-    <a href="{{ route('tags.show', $tag) }}">{{$tag->name}}</a>
+    <a href="{{ route('tags_show', $tag) }}">{{$tag->name}}</a>
 
     @endforeach
 
@@ -69,17 +69,6 @@ img {
         <p>Tag: {{ $restaurant->tag->name }}</p>
         <a href="{{ $restaurant->url }}" target="_blank">Visitar sitio</a>
         <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}">
-
-        <!-- Agrega aquí tus botones de borrar y editar -->
-        <form action="{{ route('restaurants.destroy', $restaurant->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Borrar</button>
-        </form>
-        <form action="{{ route('restaurants.edit', $restaurant->id) }}" method="GET">
-            @csrf
-            <button type="submit">Editar</button>
-        </form>
     </div>
     @endforeach
 

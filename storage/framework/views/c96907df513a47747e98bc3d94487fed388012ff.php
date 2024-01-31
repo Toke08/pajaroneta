@@ -48,7 +48,7 @@ img {
     <h1>PajaroBlog</h1>
 
     <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <a href="<?php echo e(route('tags.show', $tag)); ?>"><?php echo e($tag->name); ?></a>
+    <a href="<?php echo e(route('tags_show', $tag)); ?>"><?php echo e($tag->name); ?></a>
 
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -68,17 +68,6 @@ img {
         <p>Tag: <?php echo e($restaurant->tag->name); ?></p>
         <a href="<?php echo e($restaurant->url); ?>" target="_blank">Visitar sitio</a>
         <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>">
-
-        <!-- Agrega aquí tus botones de borrar y editar -->
-        <form action="<?php echo e(route('restaurants.destroy', $restaurant->id)); ?>" method="POST">
-            <?php echo csrf_field(); ?>
-            <?php echo method_field('DELETE'); ?>
-            <button type="submit">Borrar</button>
-        </form>
-        <form action="<?php echo e(route('restaurants.edit', $restaurant->id)); ?>" method="GET">
-            <?php echo csrf_field(); ?>
-            <button type="submit">Editar</button>
-        </form>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

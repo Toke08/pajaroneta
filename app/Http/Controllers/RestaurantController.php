@@ -18,7 +18,7 @@ class RestaurantController extends Controller
     {
         //
         $restaurants=Restaurant::all();
-        return view('restaurants.index', ['restaurants'=>$restaurants]);
+        return view('admin.restaurants.index', ['restaurants'=>$restaurants]);
     }
 
     /**
@@ -30,7 +30,7 @@ class RestaurantController extends Controller
     {
         //
         $tags=Tag::all();
-        return view('restaurants.create',['tags'=>$tags]);
+        return view('admin.restaurants.create',['tags'=>$tags]);
     }
 
     /**

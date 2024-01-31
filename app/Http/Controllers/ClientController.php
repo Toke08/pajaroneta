@@ -18,7 +18,8 @@ class ClientController extends Controller
     }
 
     public function blog(){
-        $posts = Post::all();
+
+        $posts = Post::where('status', 1)->get();
         return view("client.blog", ['posts'=> $posts]);
     }
 
@@ -28,10 +29,19 @@ class ClientController extends Controller
         return view('blog.show', compact('post', 'comments'));
     }
 
-    public function category()
+    public function categoria()
     {
         $categories = Category::all();
-        return view("client.categorias", ['categories'=> $categories]);
+        return view("client.categoria", ['categories'=> $categories]);
+    }
+
+    public function categoria_show($id)
+    {
+        $category = Category::find($id);
+        if ($category != null)
+            return view('categoria.show', ['category' => $category]);
+        else
+            return "No existe esa categoria";
     }
 
 }

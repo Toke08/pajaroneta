@@ -10,6 +10,7 @@ Crear comida nueva
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
+<a href="<?php echo e(route('adminHome')); ?>">Volver al panel de administrador</a>
 
 <h1>Crear comida nueva</h1>
 

@@ -32,7 +32,8 @@ class ClientController extends Controller
     public function categoria()
     {
         $categories = Category::all();
-        return view("client.categoria", ['categories'=> $categories]);
+        return view("client.categoria", ['categories'=> $cate
+        gories]);
     }
 
     public function categoria_show($id)

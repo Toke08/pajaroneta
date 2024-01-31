@@ -66,6 +66,43 @@
         aspect-ratio: auto;
     }
 
+    /* CATEGORIAS */
+
+    /* Estilos para el contenedor principal */
+.categorias-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+/* Estilos para cada categoría */
+.categoria {
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+}
+
+/* Estilos para la imagen */
+.categoria img {
+    aspect-ratio: 4/3;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+/* Estilos para el texto debajo de la imagen */
+.categoria p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+    /*EFECTO APARICION*/
+
     @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -83,10 +120,19 @@
 
 
 
+
 </style>
 @endsection
 
 @section('contenido')
+<div class="categorias-menu">
+    @foreach ($categories as $category)
+    <div class="categoria">
+    <img src="{{asset('img/categories')}}/{{$category->img}}">
+    <p>{{$category->name}}</p>
+    </div>
+    @endforeach
+</div>
 
     <h1>Galeria de comidas</h1>
         <div class="foods-container">

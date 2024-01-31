@@ -13,8 +13,6 @@
 
 @section('contenido')
 
-    <a class="nav-link" href="{{ route('blog.index') }}">@lang('View Posts')</a>
-
     <a class="nav-link" href="{{ route('blog.create') }}">@lang('Create Post')</a>
 
     <a class="nav-link" href="{{ route('tags.index') }}">@lang('View Blog Categories')</a>
@@ -25,7 +23,10 @@
 
     <a class="nav-link" href="{{ route('restaurants.index') }}">@lang('View Restaurants')</a>
 
-    <a class="nav-link" href="{{ route('galeria-comidas.create') }}">@lang('Create Food')</a>
+    <a class="nav-link" href="{{ route('galeria-comidas.create') }}">@lang('Create comida')</a>
+
+    <a class="nav-link" href="{{ route('categorias.index') }}">@lang('View Food Categories')</a>
+
 
 @endsection
 

@@ -11,8 +11,6 @@
 
 <?php $__env->startSection('contenido'); ?>
 
-    <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo app('translator')->get('View Posts'); ?></a>
-
     <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Create Post'); ?></a>
 
     <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo app('translator')->get('View Blog Categories'); ?></a>
@@ -23,9 +21,12 @@
 
     <a class="nav-link" href="<?php echo e(route('restaurants.index')); ?>"><?php echo app('translator')->get('View Restaurants'); ?></a>
 
-    <a class="nav-link" href="<?php echo e(route('galeria-comidas.create')); ?>"><?php echo app('translator')->get('Create Food'); ?></a>
+    <a class="nav-link" href="<?php echo e(route('galeria-comidas.create')); ?>"><?php echo app('translator')->get('Create comida'); ?></a>
+
+    <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo app('translator')->get('View Food Categories'); ?></a>
+
 
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\UniServerZ\www\pajaroneta\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>

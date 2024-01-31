@@ -13,11 +13,22 @@ class ClientController extends Controller
 {
    public function galeria_comidas()
     {
+        $categories = Category::all();
         $foods = Food::all();
-        return view("client.galeria_comidas", ['foods'=> $foods]);
+        return view("client.galeria_comidas", ['foods'=> $foods, 'categories'=> $categories]);
+    }
+
+    public function galeria_comidas_show($id)
+    {
+        $food = Food::find($id);
+        if ($food != null)
+            return view('client.galeria_comidas_show', ['food' => $food]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
+        else
+            return "No existe esa comida";
     }
 
     public function blog(){
+        $posts = Post::all();
         $posts = Post::all();
         return view("client.blog", ['posts'=> $posts]);
     }

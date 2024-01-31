@@ -28,6 +28,8 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
+
+
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
@@ -41,11 +43,17 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/categorias', CategoryController::class)/*->middleware('admin')*/;
     Route::resource('/encuentranos', LocationController::class)/*->middleware('admin')*/;
     Route::resource('/blog', PostController::class)/*->middleware('admin')*/;
-    Route::resource('/galeria-comidas', FoodController::class)/*->middleware('admin')*/;
+
+    //rutas admin con prefijo /admin MENOS show
+    Route::resource('/galeria-comidas', FoodController::class)->except('show')/*->middleware('admin')*/;
 });
 
 //ejemplo rutas cleinte y su controlador
 Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
+Route::get('/galeria-comidas/{id}', [ClientController::class, 'galeria_comidas_show'])->name('galeria_comidas_show');
+Route::get('/galeria-comidas/{id}', [FoodController::class, 'show'])->name('galeria-comidas.show');
+
+
 Route::get('/blog', [ClientController::class, 'blog'])->name('blog');
 Route::get('/blog/{id}', [ClientController::class, 'blog_show'])->name('blog_show');
 

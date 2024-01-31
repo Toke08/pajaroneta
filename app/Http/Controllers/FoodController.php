@@ -14,11 +14,11 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     $foods = Food::all();
-    //     return view("admin.foods.index", ['foods'=> $foods]);
-    // }
+    public function index()
+    {
+        $foods = Food::all();
+        return view("admin.foods.index", ['foods'=> $foods]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -95,7 +95,7 @@ class FoodController extends Controller
     {
         $food = Food::find($id);
         if ($food != null)
-            return view('foods.show', ['food' => $food]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
+            return view('client.galeria_comidas_show', ['food' => $food]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
         else
             return "No existe esa comida";
     }

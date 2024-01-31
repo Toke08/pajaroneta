@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('contenido'); ?>
 <?php $__env->startSection('titulo'); ?>
 Vista de burguer

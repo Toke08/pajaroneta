@@ -41,36 +41,30 @@ img {
     border-radius: 10px;
 }
 
+
 </style>
 @endsection
 
 @section('contenido')
 <body>
+    <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
     <h1>PajaroBlog</h1>
-
-    @foreach ($tags as $tag)
-    <a href="{{ route('tags_show', $tag) }}">{{$tag->name}}</a>
-
-    @endforeach
-
     @foreach ($posts as $post)
         <div class="post">
             <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
             <strong>{{ $post->title }}</strong><br>
             <a href="blog/{{ $post->id }}">Leer más...</a>
+
+            <form action="{{ route('blog.destroy', $post->id) }}"   method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Borrar</button>
+            </form>
+            <form action="{{ route('blog.edit', $post->id) }}" method="GET">
+                @csrf
+                <button type="submit">Editar</button>
+            </form>
         </div>
     @endforeach
-
-    @foreach ($restaurants as $restaurant)
-    <h2>Restaurantes sugeridos</h2>
-    <div class="restaurant">
-        <p>Nombre: {{ $restaurant->name }}</p>
-        <p>Descripción: {{ $restaurant->description }}</p>
-        <p>Tag: {{ $restaurant->tag->name }}</p>
-        <a href="{{ $restaurant->url }}" target="_blank">Visitar sitio</a>
-        <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}">
-    </div>
-    @endforeach
-
 </body>
 @endsection

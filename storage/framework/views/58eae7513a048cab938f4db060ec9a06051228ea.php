@@ -46,6 +46,7 @@ img {
 
 <?php $__env->startSection('contenido'); ?>
 <body>
+    <a href="<?php echo e(route('adminHome')); ?>">Volver al panel de administrador</a>
     <h1>PajaroBlog</h1>
     <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="post">
@@ -67,4 +68,4 @@ img {
 </body>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/blog/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/admin/blog/index.blade.php ENDPATH**/ ?>

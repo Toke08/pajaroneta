@@ -23,7 +23,7 @@ class TagController extends Controller
     {
         //
         $tags=Tag::all();
-        return view('tags.index', ['tags'=>$tags]);
+        return view('admin.tags.index', ['tags'=>$tags]);
     }
 
     /**
@@ -35,7 +35,7 @@ class TagController extends Controller
     {
         //
         $tags=Tag::all();
-        return view('tags.create',['tags'=>$tags]);
+        return view('admin.tags.create',['tags'=>$tags]);
     }
 
     /**
@@ -71,7 +71,7 @@ class TagController extends Controller
         $posts = $tag->posts ?? collect();
         $restaurants = $tag->restaurants ?? collect();
 
-        return view('tags.show', compact('tag', 'posts', 'restaurants'));
+        return view('admin.tags.show', compact('tag', 'posts', 'restaurants'));
     }
     /**
      * Show the form for editing the specified resource.

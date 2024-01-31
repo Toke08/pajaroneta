@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view("categories.index", ['categories'=> $categories]);
+        return view("admin.categories.index", ['categories'=> $categories]);
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories =Category::all();
-        return view('categories.create',['categories' => $categories]);
+        return view('admin.categories.create',['categories' => $categories]);
     }
 
     /**
@@ -91,7 +91,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if ($category != null)
-            return view('categories.show', ['category' => $category]);
+            return view('admin.categories.show', ['category' => $category]);
         else
             return "No existe esa categoria";
     }
@@ -108,7 +108,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
 
         // Retorna la vista del formulario de edición con la categoría encontrada
-        return view('categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**

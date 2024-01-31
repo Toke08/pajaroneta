@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('blog.index', ['posts' => $posts]);
+        return view('admin.blog.index', ['posts' => $posts]);
     }
 
     /**
@@ -31,7 +31,7 @@ class PostController extends Controller
     {
         //
         $tags=Tag::all();
-        return view('blog.create',['tags'=>$tags]);
+        return view('admin.blog.create',['tags'=>$tags]);
     }
 
     /**
@@ -70,13 +70,12 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
-    //     $post = Post::with('tag')->findOrFail($id);
-    //     $comments = Comment::where('post_id', $post->id)->get();
-
-    //     return view('blog.show', compact('post', 'comments'));
-    // }
+    public function show($id)
+    {
+        $post = Post::with('tag')->findOrFail($id);
+        $comments = Comment::where('post_id', $post->id)->get();
+        return view('admin.blog.show', compact('post', 'comments'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -89,7 +88,7 @@ class PostController extends Controller
         //
         $post = Post::findOrFail($id);
         $tags = Tag::all();
-        return view('blog.edit', compact('post','tags'));
+        return view('admin.blog.edit', compact('post','tags'));
     }
 
     /**
@@ -122,7 +121,7 @@ class PostController extends Controller
         }
         $post->update($data);
 
-        return redirect()->route('blog.index')->with('success', 'El post se ha actualizado exitosamente.');
+        return redirect()->route('admin.blog.index')->with('success', 'El post se ha actualizado exitosamente.');
     }
 
     /**

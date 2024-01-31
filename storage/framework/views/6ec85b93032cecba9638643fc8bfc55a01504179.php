@@ -37,7 +37,7 @@ img {
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-    <a href="<?php echo e(route('blog')); ?>">Volver al blog</a>
+    <a href="<?php echo e(route('adminHome')); ?>">Volver al panel de administrador</a>
 
     <?php if(Session::has('error')): ?>
         <p><?php echo e(Session::get('error')); ?></p>
@@ -74,4 +74,4 @@ img {
     <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/tags/show.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/admin/tags/show.blade.php ENDPATH**/ ?>

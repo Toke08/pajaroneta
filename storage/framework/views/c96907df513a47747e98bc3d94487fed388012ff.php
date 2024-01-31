@@ -40,31 +40,38 @@ img {
     border-radius: 10px;
 }
 
-
 </style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
 <body>
     <h1>PajaroBlog</h1>
+
+    <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <a href="<?php echo e(route('tags_show', $tag)); ?>"><?php echo e($tag->name); ?></a>
+
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
     <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="post">
             <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
             <strong><?php echo e($post->title); ?></strong><br>
             <a href="blog/<?php echo e($post->id); ?>">Leer más...</a>
-
-            <form action="<?php echo e(route('blog.destroy', $post->id)); ?>"   method="POST">
-                <?php echo csrf_field(); ?>
-                <?php echo method_field('DELETE'); ?>
-                <button type="submit">Borrar</button>
-            </form>
-            <form action="<?php echo e(route('blog.edit', $post->id)); ?>" method="GET">
-                <?php echo csrf_field(); ?>
-                <button type="submit">Editar</button>
-            </form>
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+    <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <h2>Restaurantes sugeridos</h2>
+    <div class="restaurant">
+        <p>Nombre: <?php echo e($restaurant->name); ?></p>
+        <p>Descripción: <?php echo e($restaurant->description); ?></p>
+        <p>Tag: <?php echo e($restaurant->tag->name); ?></p>
+        <a href="<?php echo e($restaurant->url); ?>" target="_blank">Visitar sitio</a>
+        <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>">
+    </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
 </body>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/blog/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/client/blog.blade.php ENDPATH**/ ?>

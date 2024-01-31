@@ -1,1 +1,0 @@
-<?php /**PATH E:\UniServerZ\www\pajaroneta\resources\views/layout/footer.blade.php ENDPATH**/ ?>

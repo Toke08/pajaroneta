@@ -57,6 +57,9 @@ Route::get('/blog/{id}', [ClientController::class, 'blog_show'])->name('blog_sho
 Route::get('/categoria', [ClientController::class, 'categoria'])->name('categoria');
 Route::get('/categoria/{id}', [ClientController::class, 'categoria_show'])->name('categoria_show');
 
+Route::get('/tags/{id}', [ClientController::class, 'tags_show'])->name('tags_show');
+
+
 // function galeria_comidas(){
 
 //     return view('client.galeria_comidas'.['comidas'=>  Food:all());

@@ -46,6 +46,8 @@ Route::prefix('/admin')->group(function () {
 
 //ejemplo rutas cleinte y su controlador
 Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
+Route::get('/blog', [ClientController::class, 'blog'])->name('blog');
+Route::get('/blog/{id}/show', [ClientController::class, 'blog_show'])->name('blog_show');
 
 // function galeria_comidas(){
 

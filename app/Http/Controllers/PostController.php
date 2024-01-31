@@ -18,8 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('status', 1)->get();
-    return view('blog.index', ['posts' => $posts]);
+        $posts = Post::all();
+        return view('blog.index', ['posts' => $posts]);
     }
 
     /**
@@ -70,13 +70,13 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $post = Post::with('tag')->findOrFail($id);
-        $comments = Comment::where('post_id', $post->id)->get();
+    // public function show($id)
+    // {
+    //     $post = Post::with('tag')->findOrFail($id);
+    //     $comments = Comment::where('post_id', $post->id)->get();
 
-        return view('blog.show', compact('post', 'comments'));
-    }
+    //     return view('blog.show', compact('post', 'comments'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

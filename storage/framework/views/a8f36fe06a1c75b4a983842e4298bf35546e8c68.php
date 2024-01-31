@@ -14,38 +14,26 @@ a {
 
 <?php $__env->startSection('contenido'); ?>
 
-<h1>Estas son los eventos creados</h1>
-<table class="table">
-    <thead class="thead-dark">
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
-        <th scope="col">Fecha del evento</th>
-        <th scope="col">Dirección</th>
-        <th scope="col">Acciones</th>
-    </thead>
-    <tbody>
-        <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <tr>
-            <td><?php echo e($event->name); ?></td>
-            <td><?php echo e($event->description); ?></td>
-            <td><?php echo e($event->date); ?></td>
+<h1>Próximos eventos</h1>
+<div
+    ><?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div>
+            <h1>Fecha</h1>
+            <p><?php echo e($event->date); ?></p>
+        </div>
+        <div>
+            <h2>Info general</h2>
+            <p><?php echo e($event->name); ?></p>
+            <p><?php echo e($event->description); ?></p>
+            <p><?php echo e($location->id->city->address); ?></p>
 
-            <td><?php echo e($event->location->address); ?></td>
+        </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
 
-        <form action="<?php echo e(route('eventos.destroy', $event->id)); ?>" method="POST">
-            <?php echo csrf_field(); ?>
-            <?php echo method_field('DELETE'); ?>
-            <td><button type="submit">Eliminar</button></td>
-        </form>
-        <form action="<?php echo e(route('eventos.update', $event->id)); ?>" method="POST">
-            <?php echo csrf_field(); ?>
-            <?php echo method_field('PUT'); ?>
-            <td><button type="submit">Editar</button></td>
-        </form>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </tr>
-    </tbody>
-</table>
+
+
+
 
 <?php $__env->stopSection(); ?>
 

@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('titulo'); ?>
 Ubicaciones
 <?php $__env->stopSection(); ?>
@@ -53,6 +55,8 @@ Ubicaciones
         const mensaje = confirm("¿Deseas eliminar esta ubicación? Se borrarán los eventos relacionados con dicha información");
 
         if (mensaje) {
+            //no se a donde redirigir
+
         }
     });
 });

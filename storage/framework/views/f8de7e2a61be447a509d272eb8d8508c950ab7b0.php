@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+
     <link rel="stylesheet" href="<?php echo e(asset('css/general.css')); ?>">
 
 
@@ -28,10 +29,6 @@
 <header>
 <?php echo $__env->make('layout.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </header>
-
-
-
-
 
 
 <main role="main" class="container">
@@ -56,6 +53,7 @@
 
     <?php echo $__env->yieldContent('estilos'); ?>
     <?php echo $__env->yieldContent('contenido'); ?>
+    <?php echo $__env->yieldContent('script'); ?>
 
 </main>
 
@@ -70,7 +68,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="<?php echo e(asset('css/bootstrap.min.css')); ?>"></script>
+ <!--   <script src="<?php echo e(asset('css/bootstrap.min.css')); ?>"></script>-->
 </body>
 </html>
 <?php /**PATH D:\UniServerZ1\www\pajaroneta\resources\views/layout/masterpage.blade.php ENDPATH**/ ?>

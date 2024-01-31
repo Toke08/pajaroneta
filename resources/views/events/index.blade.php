@@ -16,7 +16,26 @@ a {
 
 @section('contenido')
 
-<h1>Estas son los eventos creados</h1>
+<h1>Próximos eventos</h1>
+<div
+    >@foreach ($events as $event)
+        <div>
+            <h1>Fecha</h1>
+            <p>{{$event->date}}</p>
+        </div>
+        <div>
+            <h2>Info general</h2>
+            <p>{{$event->name}}</p>
+            <p>{{$event->description}}</p>
+            <p>{{$location->id->city}}</p>
+
+        </div>
+    @endforeach
+</div>
+
+
+
+{{--
 <table class="table">
     <thead class="thead-dark">
         <th scope="col">Nombre</th>
@@ -32,6 +51,9 @@ a {
             <td>{{ $event->description}}</td>
             <td>{{ $event->date}}</td>
 
+            <td>{{ $event->location->province}}</td>
+            <td>{{ $event->location->city}}</td>
+            <td>{{ $event->location->cp}}</td>
             <td>{{ $event->location->address}}</td>
 
         <form action="{{ route('eventos.destroy', $event->id) }}" method="POST">
@@ -47,7 +69,7 @@ a {
         @endforeach
     </tr>
     </tbody>
-</table>
+</table> --}}
 
 @endsection
 

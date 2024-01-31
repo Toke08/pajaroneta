@@ -46,14 +46,13 @@ class LocationController extends Controller
         $province=$datos["province"];
         $city=$datos["city"];
         $cp=$datos["cp"];
-        $event_name=$datos["event_name"];
 
         $location= new Location();
         $location->address=$address;
         $location->province=$province;
         $location->city=$city;
         $location->cp=$cp;
-        $location->event_name=$event_name;
+
 
         $location->save();
 

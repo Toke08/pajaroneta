@@ -8,15 +8,19 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
+    flex-wrap: wrap; /* Asegúrate de que el contenido se ajuste al ancho de la pantalla y se envuelva cuando sea necesario */
 }
 
 .post {
-    flex: 1; /* Hace que cada contenedor ocupe el espacio disponible */
+    flex: 1;
     padding: 15px;
-    max-width: 300px; /* Ancho máximo para cada contenedor */
+    max-width: 300px;
+}
 
+/* Añade una nueva regla para los posts para mostrarlos en línea */
+.post {
+    flex-basis: calc(33.33% - 20px); /* Ajusta según el número de posts que desees en una fila y el espacio entre ellos */
 }
 
 strong {
@@ -34,8 +38,9 @@ img {
     height: auto;
     margin-bottom: 10px;
     object-fit: cover;
-    border-radius: 10px; /* Ajusta el valor para cambiar la cantidad de curvatura */
+    border-radius: 10px;
 }
+
 
 </style>
 @endsection

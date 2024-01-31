@@ -38,21 +38,24 @@ img {
 @endsection
 
 @section('contenido')
+    <a href="{{ route('blog') }}">Volver al blog</a>
+
     @if(Session::has('error'))
         <p>{{ Session::get('error') }}</p>
+
     @else
         @if($posts->isEmpty() && $restaurants->isEmpty())
-            <strong>No hay publicaciones ni restaurantes relacionados con {{$tag->name}}.</strong> <BR></BR>
-            <a href="{{ route('tags.index') }}">Volver a las categorías</a>
+            <strong>No hay publicaciones ni restaurantes relacionados con {{$tag->name}}.</strong>
         @else
             @if(!$posts->isEmpty())
-                <strong>Publicaciones relacionadas con {{$tag->name}}</strong>
+                <strong>Publicaciones relacionadas con {{$tag->name}}</strong><br>
+
                 @foreach($posts as $post)
                     <div class="item">
                         <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}"><br>
                         <strong>{{ $post->title }}</strong>
                         <br>
-                        <a href="{{ route('blog.show', $post->id) }}">Leer más...</a>
+                        <a href="{{ route('blog_show', $post->id) }}">Leer más...</a>
                     </div>
                 @endforeach
             @endif

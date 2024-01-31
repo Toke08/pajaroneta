@@ -20,46 +20,35 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::prefix('/admin-dashboard')->group(function () {
+Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
-    Route::get('/', [DashboardController::class, 'home'])->name('adminHome');
-    // Rutas para las operaciones bajo el prefijo /admin-dashboard
-    Route::get('/galeria-comidas/create', [FoodController::class, 'create'])->name('galeria-comidas.create');;
-    Route::get('/galeria-comidas/{id}/edit', [FoodController::class, 'edit'])->name('galeria-comidas.edit');;
-    Route::put('/galeria-comidas/{id}', [FoodController::class, 'update'])->name('galeria-comidas.show');;
-    Route::delete('/galeria-comidas/{id}', [FoodController::class, 'destroy'])->name('galeria-comidas.destroy');;
+    Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
+
+    //rutas admin
+    Route::resource('/roles', App\Http\Controllers\RoleController::class)/*->middleware('admin')*/;
+    Route::resource('/ubicaciones', App\Http\Controllers\LocationController::class)/*->middleware('admin')*/;
+    Route::resource('/eventos', App\Http\Controllers\EventController::class)/*->middleware('admin')*/;
+    Route::resource('/tags', App\Http\Controllers\TagController::class)/*->middleware('admin')*/;
+    Route::resource('/restaurants', App\Http\Controllers\RestaurantController::class)/*->middleware('admin')*/;
+    Route::resource('/categorias', App\Http\Controllers\CategoryController::class)/*->middleware('admin')*/;
+    Route::resource('/encuentranos', App\Http\Controllers\LocationController::class)/*->middleware('admin')*/;
+    Route::resource('/blog', App\Http\Controllers\PostController::class)/*->middleware('admin')*/;
+    Route::resource('/galeria-comidas', FoodController::class)/*->middleware('admin')*/;
 });
-//crear index y view sin el prefijo /admin-dashboard
-Route::resource('/galeria-comidas', FoodController::class)->except(['create', 'edit','update','destroy']);
+
+//ejemplo rutas cleinte y su controlador
+Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria-comidas');
+// function galeria_comidas(){
+
+//     return view('client.galeria_comidas'.['comidas'=>  Food:all());
+// }
 
 
 /*Route::resource('/galeria-comidas', App\Http\Controllers\FoodController::class)*//*->only('create','update','destroy')->middleware('admin')*/;
 
-Route::resource('/blog', App\Http\Controllers\PostController::class);
 
-//Route::resource('/comments', App\Http\Controllers\CommentController::class)->except(['edit', 'update']);
 
 Route::post('/comments/{post_id}', 'App\Http\Controllers\CommentController@store')->name('comments.store');
-
-
-Route::resource('/encuentranos', App\Http\Controllers\LocationController::class);
-
-Route::resource('/roles', App\Http\Controllers\RoleController::class);
-
-Route::resource('/ubicaciones', App\Http\Controllers\LocationController::class);
-
-Route::resource('/eventos', App\Http\Controllers\EventController::class);
-
-Route::resource('/tags', App\Http\Controllers\TagController::class);
-
-Route::resource('/restaurants', App\Http\Controllers\RestaurantController::class);
-
-Route::resource('/categorias', App\Http\Controllers\CategoryController::class);
-//Dashboard admin
-// Route::get('/admin-dashboard', [DashboardController::class, 'home'])->name('adminHome');
-
-//esto es una prueba
-
 
 Auth::routes();
 

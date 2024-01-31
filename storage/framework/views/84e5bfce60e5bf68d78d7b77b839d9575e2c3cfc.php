@@ -20,21 +20,7 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo app('translator')->get('Blog'); ?></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Create Post'); ?></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo app('translator')->get('View Blog Categories'); ?></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo app('translator')->get('Create Blog Category'); ?></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('restaurants.create')); ?>"><?php echo app('translator')->get('New Restaurant'); ?></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(route('restaurants.index')); ?>"><?php echo app('translator')->get('View Restaurants'); ?></a>
-        </li>
+
         <?php if(auth()->guard()->guest()): ?>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
@@ -46,7 +32,7 @@
           <?php else: ?>
           <?php if(auth()->user()->isAdmin()): ?>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Admin Panel'); ?></a>
+                <a class="nav-link" href="<?php echo e(route('adminHome')); ?>"><?php echo app('translator')->get('Admin Panel'); ?></a>
             </li>
           <?php endif; ?>
 

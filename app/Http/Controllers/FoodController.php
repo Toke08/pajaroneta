@@ -14,11 +14,11 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $foods = Food::all();
-        return view("foods.index", ['foods'=> $foods]);
-    }
+    // public function index()
+    // {
+    //     $foods = Food::all();
+    //     return view("admin.foods.index", ['foods'=> $foods]);
+    // }
 
     /**
      * Show the form for creating a new resource.

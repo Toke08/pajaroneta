@@ -3,6 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,19 +33,20 @@ Route::prefix('/admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
 
     //rutas admin
-    Route::resource('/roles', App\Http\Controllers\RoleController::class)/*->middleware('admin')*/;
-    Route::resource('/ubicaciones', App\Http\Controllers\LocationController::class)/*->middleware('admin')*/;
-    Route::resource('/eventos', App\Http\Controllers\EventController::class)/*->middleware('admin')*/;
-    Route::resource('/tags', App\Http\Controllers\TagController::class)/*->middleware('admin')*/;
-    Route::resource('/restaurants', App\Http\Controllers\RestaurantController::class)/*->middleware('admin')*/;
-    Route::resource('/categorias', App\Http\Controllers\CategoryController::class)/*->middleware('admin')*/;
-    Route::resource('/encuentranos', App\Http\Controllers\LocationController::class)/*->middleware('admin')*/;
-    Route::resource('/blog', App\Http\Controllers\PostController::class)/*->middleware('admin')*/;
+    Route::resource('/roles', RoleController::class)/*->middleware('admin')*/;
+    Route::resource('/ubicaciones', LocationController::class)/*->middleware('admin')*/;
+    Route::resource('/eventos', EventController::class)/*->middleware('admin')*/;
+    Route::resource('/tags', TagController::class)/*->middleware('admin')*/;
+    Route::resource('/restaurants', RestaurantController::class)/*->middleware('admin')*/;
+    Route::resource('/categorias', CategoryController::class)/*->middleware('admin')*/;
+    Route::resource('/encuentranos', LocationController::class)/*->middleware('admin')*/;
+    Route::resource('/blog', PostController::class)/*->middleware('admin')*/;
     Route::resource('/galeria-comidas', FoodController::class)/*->middleware('admin')*/;
 });
 
 //ejemplo rutas cleinte y su controlador
-Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria-comidas');
+Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
+
 // function galeria_comidas(){
 
 //     return view('client.galeria_comidas'.['comidas'=>  Food:all());

@@ -35,23 +35,20 @@ Route::prefix('/admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
 
     //rutas admin
-    Route::resource('/roles', RoleController::class)/*->middleware('admin')*/;
-    Route::resource('/ubicaciones', LocationController::class)/*->middleware('admin')*/;
-    Route::resource('/eventos', EventController::class)/*->middleware('admin')*/;
-    Route::resource('/tags', TagController::class)/*->middleware('admin')*/;
-    Route::resource('/restaurants', RestaurantController::class)/*->middleware('admin')*/;
-    Route::resource('/categorias', CategoryController::class)/*->middleware('admin')*/;
-    Route::resource('/encuentranos', LocationController::class)/*->middleware('admin')*/;
-    Route::resource('/blog', PostController::class)/*->middleware('admin')*/;
-
-    //rutas admin con prefijo /admin MENOS show
-    Route::resource('/galeria-comidas', FoodController::class)->except('show')/*->middleware('admin')*/;
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/ubicaciones', LocationController::class);
+    Route::resource('/eventos', EventController::class);
+    Route::resource('/tags', TagController::class);
+    Route::resource('/restaurants', RestaurantController::class);
+    Route::resource('/categorias', CategoryController::class);
+    Route::resource('/encuentranos', LocationController::class);
+    Route::resource('/blog', PostController::class);
+    Route::resource('/galeria-comidas', FoodController::class)/*->middleware('admin')*/;
 });
 
 //ejemplo rutas cleinte y su controlador
 Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
-Route::get('/galeria-comidas/{id}', [ClientController::class, 'galeria_comidas_show'])->name('galeria_comidas_show');
-Route::get('/galeria-comidas/{id}', [FoodController::class, 'show'])->name('galeria-comidas.show');
+Route::get('/galeria-comidas/{id}', [ClientController::class, 'galeria_comidas_show'])->name('galeria-comidas.show');
 
 
 Route::get('/blog', [ClientController::class, 'blog'])->name('blog');

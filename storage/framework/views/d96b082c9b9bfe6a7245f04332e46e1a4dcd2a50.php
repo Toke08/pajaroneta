@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('titulo'); ?>
     Crear publicación
 <?php $__env->stopSection(); ?>
@@ -36,8 +35,8 @@
 
         <label for="status">Estado:</label>
         <select id="status" name="status" required>
-            <option value="0">Borrador</option>
-            <option value="1">Publicado</option>
+            <option value="Draft">Borrador</option>
+            <option value="Published">Publicado</option>
         </select>
         <br>
 

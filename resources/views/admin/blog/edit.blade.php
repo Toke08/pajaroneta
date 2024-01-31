@@ -40,6 +40,18 @@
         <label for="image">Cambiar imagen:</label>
         <input type="file" name="img">
         <br>
+
+         <!-- Sección de estado -->
+        <label for="status">Estado:</label>
+        <select name="status" id="status">
+            <option value="Draft" {{ $post->status == 'Draft' ? 'selected' : '' }}>Borrador</option>
+            <option value="Published" {{ $post->status == 'Published' ? 'selected' : '' }}>Publicado</option>
+        </select>
+        <br>
+
+        <br>
         <input type="submit" value="Actualizar">
+
+
     </form>
 @endsection

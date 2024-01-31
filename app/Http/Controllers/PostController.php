@@ -60,8 +60,8 @@ class PostController extends Controller
         $post->tag_id=$tag_id;
 
         $post->save();
-        \Session::flash('message', 'Categoría de publicación eliminida!');
-        return redirect()->back()->with('success', ' ');
+        \Session::flash('message', 'publicación creada!');
+        return redirect()->back()->with('success', ' publicación creada!');
     }
 
     /**
@@ -102,7 +102,7 @@ class PostController extends Controller
     {
         //
         $post = Post::findOrFail($id);
-        $data = $request->only('title', 'content', 'tag_id');
+        $data = $request->only('title', 'content', 'tag_id','status');
 
         if ($request->hasFile('img') && $request->file('img') ->isValid()) {
 
@@ -121,7 +121,7 @@ class PostController extends Controller
         }
         $post->update($data);
 
-        return redirect()->route('admin.blog.index')->with('success', 'El post se ha actualizado exitosamente.');
+        return redirect()->route('blog.index')->with('success', 'El post se ha actualizado exitosamente.');
     }
 
     /**

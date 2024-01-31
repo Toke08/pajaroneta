@@ -40,14 +40,16 @@ img {
     object-fit: cover;
     border-radius: 10px;
 }
-
+#restaurant{
+    font-size:1.5em;
+}
 </style>
 @endsection
 
 @section('contenido')
 <body>
-    <h1>PajaroBlog</h1>
-
+    <h1>Blog-oneta</h1>
+    <p>Publicaciones, opiniones y más...</p>
     @foreach ($tags as $tag)
     <a href="{{ route('tags_show', $tag) }}">{{$tag->name}}</a>
 
@@ -56,18 +58,19 @@ img {
     @foreach ($posts as $post)
         <div class="post">
             <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
-            <strong>{{ $post->title }}</strong><br>
+            <h3>{{ $post->title }}</h3>
             <a href="blog/{{ $post->id }}">Leer más...</a>
         </div>
     @endforeach
 
+    <h2>¿Estámos lejos?</h2>
+    <p>¡Encuentra más opciones saludables cerca a ti!</p>
+
     @foreach ($restaurants as $restaurant)
-    <h2>Restaurantes sugeridos</h2>
+
     <div class="restaurant">
-        <p>Nombre: {{ $restaurant->name }}</p>
-        <p>Descripción: {{ $restaurant->description }}</p>
-        <p>Tag: {{ $restaurant->tag->name }}</p>
-        <a href="{{ $restaurant->url }}" target="_blank">Visitar sitio</a>
+        <a id="restaurant" href="{{ $restaurant->url }}" target="_blank">{{ $restaurant->name }}</a>
+        <p>{{ $restaurant->description }}</p>
         <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}">
     </div>
     @endforeach

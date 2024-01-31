@@ -204,7 +204,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Restaurant::create([
-            "name"=>"naked & sated",
+            "name"=>"Naked & Sated",
             "description"=>"rico y barato",
             "url"=>"https://nakedandsated.com/",
             "img"=>"nakedandsated.jpg",

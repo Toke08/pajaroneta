@@ -39,14 +39,16 @@ img {
     object-fit: cover;
     border-radius: 10px;
 }
-
+#restaurant{
+    font-size:1.5em;
+}
 </style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
 <body>
-    <h1>PajaroBlog</h1>
-
+    <h1>Blog-oneta</h1>
+    <p>Publicaciones, opiniones y más...</p>
     <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <a href="<?php echo e(route('tags_show', $tag)); ?>"><?php echo e($tag->name); ?></a>
 
@@ -55,18 +57,19 @@ img {
     <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="post">
             <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
-            <strong><?php echo e($post->title); ?></strong><br>
+            <h3><?php echo e($post->title); ?></h3>
             <a href="blog/<?php echo e($post->id); ?>">Leer más...</a>
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
+    <h2>¿Estámos lejos?</h2>
+    <p>¡Encuentra más opciones saludables cerca a ti!</p>
+
     <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <h2>Restaurantes sugeridos</h2>
+
     <div class="restaurant">
-        <p>Nombre: <?php echo e($restaurant->name); ?></p>
-        <p>Descripción: <?php echo e($restaurant->description); ?></p>
-        <p>Tag: <?php echo e($restaurant->tag->name); ?></p>
-        <a href="<?php echo e($restaurant->url); ?>" target="_blank">Visitar sitio</a>
+        <a id="restaurant" href="<?php echo e($restaurant->url); ?>" target="_blank"><?php echo e($restaurant->name); ?></a>
+        <p><?php echo e($restaurant->description); ?></p>
         <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>">
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

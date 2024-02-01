@@ -71,12 +71,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 20px;
+    margin: 10px;
 }
 
 /* Estilos para cada categoría */
 .categoria {
-    width: 200px;
+    width: 150px;
     text-align: center;
     margin: 10px;
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -39,46 +41,38 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $datos = $request->all();
-        $nombreImagen = $request->file('img')->getClientOriginalName();
-        // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
-
-        //mover imagen subido desde el form de letters.create al servidor
-        $request->file('img')->move('img/categories', $nombreImagen);
-
-
-
-        //obtener texto y papa
-        $nombre=$datos['name'];
-        $img=$datos['img'];
-
-        //validar los datos
-        $rules= ['name' => 'required|string',];
-
-        //se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
-        $messages = array(
-            'name' => 'El nombre es incorrecto',
-            'name.string' => 'El nombre de la categoria debe ser un texto',
-            'name.required' => 'El nombre de la categoria es obligatorio',
-            );
-
-        $validator = validator::make($datos,$rules,$messages);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'profile_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Corregir el nombre del campo
+        ], [
+            'name.required' => 'El nombre del usuario es obligatorio',
+            'name.string' => 'El nombre del usuario debe ser un texto',
+            'profile_img.required' => 'La imagen es obligatoria',
+            'profile_img.image' => 'El archivo debe ser una imagen',
+            'profile_img.mimes' => 'Formatos de imagen permitidos: jpeg, png, jpg, gif',
+            'profile_img.max' => 'El tamaño máximo de la imagen es 2MB',
+        ]);
 
         if ($validator->fails()) {
-            \Session::flash('message','error en las instrucciones de datos');
+            \Session::flash('message', 'Error en las instrucciones de datos');
             return redirect()->back()->withErrors($validator);
-        }else{
-            $category = new Category();
-            $category->name=$nombre;
-            $category->img=$nombreImagen;
-            $category->save();
-
-            // $user=auth()->user();
-            // $user=category->save($category);
-
-            \Session::flash('message','Categoria creada');
-            return redirect()->back();
         }
+
+        if ($request->hasFile('profile_img')) {
+            $nombreImagen = $request->file('profile_img')->getClientOriginalName();
+            $request->file('profile_img')->move('public/img/users', $nombreImagen);
+        }
+
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->profile_img = $nombreImagen;
+
+        $user->save();
+
+        \Session::flash('message', 'Usuario creado exitosamente.');
+        return redirect('/');
     }
 
     /**
@@ -87,13 +81,10 @@ class UserController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
-        $category = Category::find($id);
-        if ($category != null)
-            return view('categories.show', ['category' => $category]);
-        else
-            return "No existe esa categoria";
+        $user = User::where('name', $name)->firstOrFail();
+        return view('client.user_show', ['user' => $user]);
     }
 
     /**
@@ -105,10 +96,6 @@ class UserController extends Controller
     public function edit($id)
     {
         // Encuentra la categoría por su ID
-        $category = Category::findOrFail($id);
-
-        // Retorna la vista del formulario de edición con la categoría encontrada
-        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -120,17 +107,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::findOrFail($id);
-        //si la imagen esta vacio, manda el select sin la img
-        $data = $request->only('name');
-    if(trim($request->img)==''){
-            $data = $request->except('img');
-
-        }else{
-            $data=$request->all();
-        }
-        $category->update($data);
-        return redirect()->back();
 
     }
 
@@ -142,8 +118,32 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect()->back();
+
     }
+
+    public function changePassword(Request $request)
+    {
+        // Validar los campos del formulario
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6',
+            'confirm_password' => 'required|same:new_password',
+        ]);
+
+        // Obtener el usuario autenticado
+        $user = auth()->user();
+
+        // Verificar que la contraseña actual sea correcta
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'La contraseña actual no es correcta.']);
+        }
+
+        // Cambiar la contraseña
+        $user->password = bcrypt($request->new_password);
+        $user->save();
+
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('user_show')->with('success', 'Contraseña cambiada con éxito.');
+    }
+
 }

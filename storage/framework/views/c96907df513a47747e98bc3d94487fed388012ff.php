@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
@@ -68,9 +69,11 @@ img {
     <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
     <div class="restaurant">
-        <a id="restaurant" href="<?php echo e($restaurant->url); ?>" target="_blank"><?php echo e($restaurant->name); ?></a>
+        <a href="<?php echo e($restaurant->url_sitio); ?>"><?php echo e($restaurant->name); ?></a>
         <p><?php echo e($restaurant->description); ?></p>
-        <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>">
+        <a href="<?php echo e($restaurant->url_maps); ?>">Encuéntralos aquí</a>
+        <br>
+        <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>"><br>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

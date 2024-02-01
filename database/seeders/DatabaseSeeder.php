@@ -15,13 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
 
         \App\Models\Role::create([
             "id"   => 1,
@@ -37,8 +30,6 @@ class DatabaseSeeder extends Seeder
             "password" => Hash::make('12345678'),
             "role_id" => 1,
         ]);
-
-
 
         \App\Models\Category::create([
             "id"   => 1,
@@ -226,6 +217,11 @@ class DatabaseSeeder extends Seeder
             'city'=> 'Bilbao',
             'address'=> 'Jardines 13',
             'cp' => '48004'
+        ]);
+
+        \App\Models\Event::create([
+            'name'=>'Salida libre',
+            'description'=> 'Ven a comer lo bueno para ti!',
         ]);
 
         \App\Models\Event::create([

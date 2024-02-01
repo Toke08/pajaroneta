@@ -12,6 +12,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,6 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-
-
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
@@ -44,8 +43,9 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/categorias', CategoryController::class);
     Route::resource('/encuentranos', LocationController::class);
     Route::resource('/blog', PostController::class);
-    Route::resource('/galeria-comidas', FoodController::class)/*->middleware('admin')*/;
-    Route::resource('/calendario', CalendarController::class)/*->middleware('admin')*/;
+    Route::resource('/galeria-comidas', FoodController::class);
+    Route::resource('/calendario', CalendarController::class);
+    Route::resource('/user', UserController::class);
 });
 
 //ejemplo rutas cleinte y su controlador
@@ -60,6 +60,10 @@ Route::get('/categoria', [ClientController::class, 'categoria'])->name('categori
 Route::get('/categoria/{id}', [ClientController::class, 'categoria_show'])->name('categoria_show');
 
 Route::get('/tags/{id}', [ClientController::class, 'tags_show'])->name('tags_show');
+
+Route::get('user/{name}', 'App\Http\Controllers\UserController@show')->name('user_show');
+
+
 
 
 // function galeria_comidas(){

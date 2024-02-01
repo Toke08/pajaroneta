@@ -36,7 +36,6 @@
     @endforeach
     @endif
     @yield('contenido')
-    @yield('script')
 </main>
 
 <footer>

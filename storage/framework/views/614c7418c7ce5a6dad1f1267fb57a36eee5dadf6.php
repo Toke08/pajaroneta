@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('titulo'); ?>
 Ubicación nueva
 <?php $__env->stopSection(); ?>
@@ -18,7 +17,7 @@ Ubicación nueva
         <label for="name">Dirección:</label>
         <input type="text" id="address" name="address" required>
         <br>
-        <label for="image">Provincia</label>
+        <label for="image">Provincia:</label>
         <input type="text" id="province" name="province" required>
         <br>
         <label for="image">Cuidad:</label>

@@ -11,6 +11,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/encuentranos', LocationController::class);
     Route::resource('/blog', PostController::class);
     Route::resource('/galeria-comidas', FoodController::class)/*->middleware('admin')*/;
+    Route::resource('/calendario', CalendarController::class)/*->middleware('admin')*/;
 });
 
 //ejemplo rutas cleinte y su controlador

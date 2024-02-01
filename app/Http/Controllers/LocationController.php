@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class LocationController extends Controller
 {
@@ -15,7 +16,8 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::all();
-        return view("locations.index", ['locations'=> $locations]);
+        $events = Event::all();
+        return view("locations.index", ['locations'=> $locations, 'events'=>$events]);
     }
 
     /**
@@ -38,8 +40,6 @@ class LocationController extends Controller
     public function store(Request $request)
     {
 
-
-
         $datos=$request->all();
         //recoger los datos
         $province=$datos["province"];
@@ -57,7 +57,6 @@ class LocationController extends Controller
         \Session::flash('message', 'Ubicación creada correctamente!'); //mensaje feedback
 
         return redirect()->back(); //vuelta a la vista
-
 
     }
 
@@ -115,8 +114,6 @@ class LocationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-
-
         $location = Location::findOrFail($id);
         $location->delete();
         return redirect()->back();

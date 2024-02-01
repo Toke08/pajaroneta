@@ -28,8 +28,7 @@ class Location extends Model
     }
 
 
-    function events(){
-       return $this->hasMany(Event::class);
-
-    }
+    function calendars(){
+        return $this->HasMany(Calendar::class);
+      }
 }

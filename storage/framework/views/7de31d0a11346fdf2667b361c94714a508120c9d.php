@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo'); ?>
 Ubicaciones
 <?php $__env->stopSection(); ?>
@@ -46,6 +44,8 @@ Ubicaciones
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
 </table>
+
+<!--
 <script>
      const deleteButtons = document.querySelectorAll('.btn-delete');
 
@@ -60,7 +60,7 @@ Ubicaciones
         }
     });
 });
-</script>
+</script>-->
 <?php $__env->stopSection(); ?>
 
 

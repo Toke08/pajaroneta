@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Location;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,9 +16,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        $location = Location::all();
-        return view("events.index", ['events'=> $events, 'location'=>$location]);
-
+        return view("admin.events.index", ['events'=> $events]);
     }
 
     /**
@@ -29,8 +26,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        $locations = Location::all();
-        return view("events.create", ['locations'=> $locations]);
+        $events = Event::all();
+        return view("events.create", ['events'=> $events]);
     }
 
     /**
@@ -46,15 +43,10 @@ class EventController extends Controller
         //recoger datos de events
         $name=$datos["name"];
         $description=$datos["description"];
-        $date=$datos["date"];
-        $location_id=$datos["location_id"];
 
         $event= new Event();
         $event->name=$name;
         $event->description=$description;
-        $event->date=$date;
-        $event->location_id=$location_id;
-
 
         $event->save(); //guardar
         \Session::flash('message', 'Evento creado correctamente!'); //mensaje feedback

@@ -13,12 +13,10 @@ class Event extends Model
         'id',
         'name',
         'description',
-        'date',
-        'location_id'
     ];
 
-    function location(){
-      return $this->belongsTo(Location::class);
+    function calendars(){
+      return $this->HasMany(Calendar::class);
     }
 
 }

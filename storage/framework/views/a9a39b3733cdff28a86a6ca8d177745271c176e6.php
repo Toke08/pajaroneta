@@ -38,7 +38,6 @@
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <?php endif; ?>
     <?php echo $__env->yieldContent('contenido'); ?>
-    <?php echo $__env->yieldContent('script'); ?>
 </main>
 
 <footer>

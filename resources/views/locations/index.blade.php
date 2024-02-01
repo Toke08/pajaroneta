@@ -46,6 +46,8 @@ Ubicaciones
         @endforeach
     </tbody>
 </table>
+
+<!--
 <script>
      const deleteButtons = document.querySelectorAll('.btn-delete');
 
@@ -60,7 +62,7 @@ Ubicaciones
         }
     });
 });
-</script>
+</script>-->
 @endsection
 
 

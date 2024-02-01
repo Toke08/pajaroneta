@@ -220,5 +220,17 @@ class DatabaseSeeder extends Seeder
             "img"=>"restaurant2.jpg",
             "tag_id"=>3
         ]);
+
+        \App\Models\Location::create([
+            'province'=>'Vizcaya',
+            'city'=> 'Bilbao',
+            'address'=> 'Jardines 13',
+            'cp' => '48004'
+        ]);
+
+        \App\Models\Event::create([
+            'name'=>'Todayland',
+            'description'=> 'Muy chido',
+        ]);
     }
 }

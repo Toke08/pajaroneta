@@ -37,27 +37,27 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //mensaje feedback
+
 
 
         $datos=$request->all();
         //recoger los datos
-        $address=$datos["address"];
         $province=$datos["province"];
         $city=$datos["city"];
+        $address=$datos["address"];
         $cp=$datos["cp"];
 
         $location= new Location();
-        $location->address=$address;
         $location->province=$province;
         $location->city=$city;
+        $location->address=$address;
         $location->cp=$cp;
 
-
         $location->save();
+        \Session::flash('message', 'ubicación creada correctamente!'); //mensaje feedback
 
-        //vuelta a la vista
-        return redirect()->back();
+        return redirect()->back(); //vuelta a la vista
+
 
     }
 

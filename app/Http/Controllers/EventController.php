@@ -55,10 +55,10 @@ class EventController extends Controller
         $event->date=$date;
         $event->location_id=$location_id;
 
-        //guardar
-        $event->save();
-        //volver a las vista
-        return redirect()->back();
+
+        $event->save(); //guardar
+        \Session::flash('message', 'evento creado correctamente!'); //mensaje feedback
+        return redirect()->back(); //volver a las vista
     }
 
     /**

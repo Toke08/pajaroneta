@@ -119,7 +119,6 @@ Evento nuevo
                 }
             });
 
-
             btnCiu.disabled = false;
         }
 

@@ -54,7 +54,7 @@ class LocationController extends Controller
         $location->cp=$cp;
 
         $location->save();
-        \Session::flash('message', 'ubicación creada correctamente!'); //mensaje feedback
+        \Session::flash('message', 'Ubicación creada correctamente!'); //mensaje feedback
 
         return redirect()->back(); //vuelta a la vista
 

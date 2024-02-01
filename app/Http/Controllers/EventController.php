@@ -57,7 +57,7 @@ class EventController extends Controller
 
 
         $event->save(); //guardar
-        \Session::flash('message', 'evento creado correctamente!'); //mensaje feedback
+        \Session::flash('message', 'Evento creado correctamente!'); //mensaje feedback
         return redirect()->back(); //volver a las vista
     }
 

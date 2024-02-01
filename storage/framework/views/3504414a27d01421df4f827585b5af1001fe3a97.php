@@ -126,8 +126,10 @@
 <div class="categorias-menu">
     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="categoria">
-    <img src="<?php echo e(asset('img/categories')); ?>/<?php echo e($category->img); ?>">
-    <p><?php echo e($category->name); ?></p>
+        <a href="<?php echo e(route('galeria_comidas', ['id' => $category->id])); ?>">
+            <img src="<?php echo e(asset('img/categories')); ?>/<?php echo e($category->img); ?>">
+            <p><?php echo e($category->name); ?></p>
+        </a>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>

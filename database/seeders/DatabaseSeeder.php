@@ -33,30 +33,36 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Category::create([
             "id"   => 1,
+            "name" => "Ver todo",
+            "img" => "ver_todo.jpg",
+        ]);
+
+        \App\Models\Category::create([
+            "id"   => 2,
             "name" => "Hamburguesas",
             "img" => "hamburguesas.jpg",
         ]);
 
         \App\Models\Category::create([
-            "id"   => 2,
+            "id"   => 3,
             "name"=> "Hot-Dogs",
             "img" => "hotdogs.jpg",
         ]);
 
         \App\Models\Category::create([
-            "id"   => 3,
+            "id"   => 4,
             "name"=> "Postres",
             "img" => "postres.jpg",
         ]);
 
         \App\Models\Category::create([
-            "id"   => 4,
+            "id"   => 5,
             "name"=> "Bocatas",
             "img" => "bocatas.jpg",
         ]);
 
         \App\Models\Category::create([
-            "id"   => 5,
+            "id"   => 6,
             "name"=> "Complementos",
             "img" => "complementos.jpg",
         ]);

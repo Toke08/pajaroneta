@@ -128,8 +128,11 @@
 <div class="categorias-menu">
     @foreach ($categories as $category)
     <div class="categoria">
-    <img src="{{asset('img/categories')}}/{{$category->img}}">
-    <p>{{$category->name}}</p>
+        {{-- envia la id para luego poder cogerlo en el request del controllador (?id=1) --}}
+        <a href="{{ route('galeria_comidas', ['id' => $category->id]) }}">
+            <img src="{{asset('img/categories')}}/{{$category->img}}">
+            <p>{{$category->name}}</p>
+        </a>
     </div>
     @endforeach
 </div>

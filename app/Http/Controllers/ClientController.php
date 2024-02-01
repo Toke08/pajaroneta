@@ -13,9 +13,20 @@ use App\Models\Restaurant;
 
 class ClientController extends Controller
 {
-   public function galeria_comidas(){
+   public function galeria_comidas(Request $request){
+        //recoge el id de la url (?id=1)
+        $selectedCategory = $request->input('id');
         $categories = Category::all();
-        $foods = Food::all();
+
+        //si hay categoria seleccionada diferente de 1(?id=2)
+        if ($selectedCategory && $selectedCategory!=1) {
+            //busca las comidas de esa categoriacon la relacion de los modelos
+            $foods = Category::findOrFail($selectedCategory)->foods;
+        } else {
+            // Si no se selecciona una categoría o es 1, muestra todos los productos de todas las categorías.
+            $foods = Food::all();
+        }
+
         return view("client.galeria_comidas", ['foods'=> $foods, 'categories'=> $categories]);
     }
 
@@ -53,5 +64,6 @@ class ClientController extends Controller
 
         return view('client.tags_show', compact('tag', 'posts', 'restaurants'));
     }
+
 
 }

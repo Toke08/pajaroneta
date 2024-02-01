@@ -24,7 +24,7 @@ class ClientController extends Controller
             $foods = Category::findOrFail($selectedCategory)->foods;
         } else {
             // Si no se selecciona una categoría o es 1, muestra todos los productos de todas las categorías.
-            $foods = Food::all();
+            $foods = Food::inRandomOrder()->get();;
         }
 
         return view("client.galeria_comidas", ['foods'=> $foods, 'categories'=> $categories]);

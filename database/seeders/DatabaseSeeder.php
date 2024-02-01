@@ -80,77 +80,105 @@ class DatabaseSeeder extends Seeder
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La Cubana",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La Española",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "No Gluten",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "Cuasó",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "la funfuñosa",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "4kilos",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La maleducada XXL",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La perruna",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "pajaro loco",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "pajaro loco2",
             "price"   => 6,
             "img" => "default.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
+        ]);
+        \App\Models\Food::create([
+            "name"=> "tartiña",
+            "price"   => 6,
+            "img" => "tartas.jpg",
+            "description" => "la mejor hamburguesa del mundo ñam ñam",
+            "category_id" => 4,
+        ]);
+        \App\Models\Food::create([
+            "name"=> "tarta",
+            "price"   => 6,
+            "img" => "tartas.jpg",
+            "description" => "la mejor tarta del mundo ñam ñam",
+            "category_id" => 4,
+        ]);
+        \App\Models\Food::create([
+            "name"=> "tartita",
+            "price"   => 6,
+            "img" => "tartas.jpg",
+            "description" => "la mejor tarta del mundo ñam ñam",
+            "category_id" => 4,
+        ]);
+        \App\Models\Food::create([
+            "name"=> "tartota",
+            "price"   => 6,
+            "img" => "tartas.jpg",
+            "description" => "la mejor tarta del mundo ñam ñam",
+            "category_id" => 4,
         ]);
 
         \App\Models\Tag::create([

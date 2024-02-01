@@ -126,6 +126,7 @@
 <div class="categorias-menu">
     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="categoria">
+        
         <a href="<?php echo e(route('galeria_comidas', ['id' => $category->id])); ?>">
             <img src="<?php echo e(asset('img/categories')); ?>/<?php echo e($category->img); ?>">
             <p><?php echo e($category->name); ?></p>
@@ -133,31 +134,37 @@
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
-
+        <?php
+        $delay = 1;
+        ?>
     <h1>Galeria de comidas</h1>
         <div class="foods-container">
         <?php $__currentLoopData = $foods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $food): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php if($food->id %8==0): ?>
-        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container grande fadeIn" style="animation-delay: <?php echo e($food->id * 0.1); ?>s;">
+        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container grande fadeIn" style="animation-delay: <?php echo e($delay * 0.1); ?>s;">
             <img src="<?php echo e(asset('img/foods/'.$food->img)); ?>">
                 <!-- <h2>$food->name</h2> -->
             </a>
         <?php elseif($food->id %4==0): ?>
-        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container alto fadeIn" style="animation-delay: <?php echo e($food->id * 0.1); ?>s;">
+        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container alto fadeIn" style="animation-delay: <?php echo e($delay * 0.1); ?>s;">
             <img src="<?php echo e(asset('img/foods/'.$food->img)); ?>">
                 <!-- <h2>$food->name</h2> -->
             </a>
         <?php elseif($food->id %3==0): ?>
-        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container ancho fadeIn" style="animation-delay: <?php echo e($food->id * 0.1); ?>s;">
+        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container ancho fadeIn" style="animation-delay: <?php echo e($delay * 0.1); ?>s;">
             <img src="<?php echo e(asset('img/foods/'.$food->img)); ?>">
                 <!-- <h2>$food->name</h2> -->
             </a>
         <?php else: ?>
-        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container" style="animation-delay: <?php echo e($food->id * 0.1); ?>s;">
+        <a href="galeria-comidas/<?php echo e($food->id); ?>" class="food-container" style="animation-delay: <?php echo e($delay * 0.1); ?>s;">
             <img src="<?php echo e(asset('img/foods/'.$food->img)); ?>">
                 <!-- <h2>$food->name</h2> -->
             </a>
         <?php endif; ?>
+
+        <?php
+        $delay++;
+        ?>
 
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

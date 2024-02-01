@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('url');
+            $table->string('url_sitio');
+            $table->string('url_maps');
             $table->string('img');
             $table->unsignedBigInteger('tag_id');
             $table->timestamps();

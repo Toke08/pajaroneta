@@ -6,7 +6,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{route('galeria-comidas.index')}}">@lang('Food Gallery')</a>
+            <a class="nav-link" href="{{route('galeria_comidas')}}">@lang('Food Gallery')</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('ubicaciones.index') }}">@lang('Locations')</a>
@@ -15,7 +15,7 @@
             <a class="nav-link" href="{{ route('encuentranos.index') }}">@lang('Find Us')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('blog.index') }}">@lang('Blog')</a>
+            <a class="nav-link" href="{{ route('blog') }}">@lang('Blog')</a>
         </li>
 
         @guest
@@ -45,8 +45,6 @@
             <a  href="{{route('setLanguage','es')}}">ES</a>
             <a  href="{{route('setLanguage','eu')}}">EU</a>
             <a href="{{ route('setLanguage', 'en') }}">EN</a>
-
-
         </span>
       </div>
     </nav>

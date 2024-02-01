@@ -24,8 +24,12 @@
     <textarea id="description" name="description" required></textarea>
     <br>
 
-    <label for="url">URL:</label>
-    <input type="text" id="url" name="url" required>
+    <label for="url_sitio">URL de sitio web:</label>
+    <input type="text" id="url_sitio" name="url_sitio" required>
+    <br>
+
+    <label for="url_maps">URL Google Maps:</label>
+    <input type="text" id="url_maps" name="url_maps" required>
     <br>
 
     <label for="image">Imagen:</label>

@@ -50,13 +50,15 @@ class RestaurantController extends Controller
 
         $name = $datos['name'];
         $description = $datos['description'];
-        $url = $datos['url'];
+        $url_sitio = $datos['url_sitio'];
+        $url_maps = $datos['url_maps'];
         $tag_id = $datos['tag_id'];
         //
         $restaurant = new Restaurant();
         $restaurant->name = $name;
         $restaurant->description = $description;
-        $restaurant->url = $url;
+        $restaurant->url_sitio = $url_sitio;
+        $restaurant->url_maps = $url_maps;
         $restaurant->img = $nombreImagen;
         $restaurant->tag_id=$tag_id;
         $restaurant->save();

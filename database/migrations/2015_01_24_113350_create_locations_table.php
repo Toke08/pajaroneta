@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('address');
             $table->string('province');
             $table->string('city');
+            $table->string('address');
             $table->Integer('cp'); //codigo postal
-
+            $table->timestamps();
         });
     }
     /**

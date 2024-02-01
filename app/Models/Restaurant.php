@@ -13,7 +13,8 @@ class Restaurant extends Model
         'id',
         'name',
         'description',
-        'url',
+        'url_sitio',
+        'url_maps',
         'img',
         'tag_id'
     ];

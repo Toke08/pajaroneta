@@ -64,10 +64,11 @@ img {
                 <strong>Restaurantes relacionados con {{$tag->name}}</strong>
                 @foreach($restaurants as $restaurant)
                     <div class="item">
-                        <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
-                        <strong>{{ $restaurant->name }}</strong>
+                        <a href="{{ $restaurant->url_sitio }}">{{ $restaurant->name }}</strong>
+                        <p>{{ $restaurant->description }}</p>
+                        <a href="{{ $restaurant->url_maps }}">Encuéntralos aquí</a>
                         <br>
-                        <a href="{{ route('restaurants.show', $restaurant->id) }}">Leer más...</a>
+                        <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
                     </div>
                 @endforeach
             @endif

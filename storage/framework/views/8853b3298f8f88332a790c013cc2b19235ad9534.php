@@ -10,6 +10,19 @@
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
 
     <!-- Estilos personalizados -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+
     <link href="<?php echo e(asset('css/navbar-top-fixed.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/general.css')); ?>" rel="stylesheet">
 
@@ -42,7 +55,7 @@
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <?php endif; ?>
-
+        <?php echo $__env->yieldContent('estilos'); ?>
         <?php echo $__env->yieldContent('contenido'); ?>
         <?php echo $__env->yieldContent('script'); ?>
     </main>

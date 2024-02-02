@@ -12,7 +12,6 @@ Evento nuevo
 @section('contenido')
 
 <h1>Nueva evento</h1>
-
     <form action="{{route('eventos.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="name">Nombre:</label>

@@ -1,51 +1,83 @@
-
-
 <?php $__env->startSection('titulo'); ?>
 Ubicaciones
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
 <style>
+h1{
+    font-family: 'Quicksand', sans-serif;
+}
+#ubicaciones{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    font-family: 'Quicksand', sans-serif;
+}
+.ubi_title{
+    background-color:#A62224;
+    color: #ffffff;
+    display: flex;
+    flex-direction:row;
+    border-bottom: 2px solid #000000;
+}
+label, .ubi_info p{
+    width: 30%;
+    margin:2%
+}
+.ubi_info{
+    color: #000000;
+    display: flex;
+    flex-direction:row;
+}
 
-
+/* botones */
+button{
+    width: 80px;
+    height: 45px;
+    border-radius: 20px;
+    background-color: #A62224;
+    color: #ffffff;
+    border: none;
+    margin: 5%
+}
 </style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-
-<h1>Estas son tus ubicaciones que usarás para asignar a tus eventos</h1>
-<table class="table">
-    <thead class="thead-dark">
-        <th scope="col">Dirección</th>
-        <th scope="col">Provincia</th>
-        <th scope="col">Ciudad</th>
-        <th scope="col">Código postal</th>
-
-        <th scope="col">Eliminar</th>
-        <th scope="col">Editar</th>
-    </thead>
-    <tbody>
+<h1>Tus ubicaciones</h1>
+<p>Estas son tus ubicaciones que usarás para asignar a tus eventos</p>
+<div id="ubicaciones">
+    <div class="ubi_title">
+        <label>Dirección</label>
+        <label>Provincia</label>
+        <label>Ciudad</label>
+        <label>Código postal</label>
+        <label>Eliminar</label>
+        <label>Editar</label>
+    </div>
+    <div>
         <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <tr>
+        <div class="ubi_info">
             
-            <td><?php echo e($location->address); ?></a></td>
-            <td><?php echo e($location->province); ?> </a></td>
-            <td><?php echo e($location->city); ?></a></td>
-            <td><?php echo e($location->cp); ?></a></td>
+            <p><?php echo e($location->address); ?></p>
+            <p><?php echo e($location->province); ?></p>
+            <p><?php echo e($location->city); ?></p>
+            <p><?php echo e($location->cp); ?></p>
 
             <form action="<?php echo e(route('ubicaciones.destroy', $location->id)); ?>" method="POST">
                 <?php echo csrf_field(); ?>
                 <?php echo method_field('DELETE'); ?>
-                <td><button type="button" class="btn-delete" data-location-id="<?php echo e($location->id); ?>">Eliminar</button></td>
+                <button type="button" class="btn-delete" data-location-id="<?php echo e($location->id); ?>">Eliminar</button>
             </form>
-                <form action="<?php echo e(route('ubicaciones.edit', $location->id)); ?>" method="GET">
+            <form action="<?php echo e(route('ubicaciones.edit', $location->id)); ?>" method="GET">
                 <?php echo csrf_field(); ?>
-                <td><button type="submit">Editar</button></td>
+                <button type="submit">Editar</button>
             </form>
-        </tr>
+        </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </tbody>
-</table>
+    </div>
+</div>
 
 <!--
 <script>

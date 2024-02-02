@@ -60,7 +60,7 @@ class UserController extends Controller
 
         if ($request->hasFile('profile_img')) {
             $nombreImagen = $request->file('profile_img')->getClientOriginalName();
-            $request->file('profile_img')->move('public/img/users', $nombreImagen);
+            $request->file('profile_img')->move('img/users', $nombreImagen);
         }
 
         $user = new User();
@@ -68,7 +68,6 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->profile_img = $nombreImagen;
-
         $user->save();
 
         \Session::flash('message', 'Usuario creado exitosamente.');

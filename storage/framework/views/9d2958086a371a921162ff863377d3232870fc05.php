@@ -1,14 +1,12 @@
-@extends('layout.masterpage')
-
-@section('titulo')
+<?php $__env->startSection('titulo'); ?>
     <!-- Puedes agregar el título aquí si es necesario -->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
     <!-- Puedes agregar estilos específicos aquí si es necesario -->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 <div class="container">
     <div class="row">
@@ -19,11 +17,11 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <img src="{{ asset('img/users/' . $user->profile_img) }}" alt="Profile Image" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+                        <img src="<?php echo e(asset('img/users/' . $user->profile_img)); ?>" alt="Profile Image" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Name:</strong> {{ $user->name }}</li>
-                        <li class="list-group-item"><strong>Email:</strong> {{ $user->email }}</li>
+                        <li class="list-group-item"><strong>Name:</strong> <?php echo e($user->name); ?></li>
+                        <li class="list-group-item"><strong>Email:</strong> <?php echo e($user->email); ?></li>
                         <!-- No mostrar la contraseña directamente -->
                     </ul>
                 </div>
@@ -46,8 +44,8 @@
 
                             <div class="modal-body">
                                 <!-- Formulario para cambiar la contraseña -->
-                                <form action="{{ route('cambiar_contrasena') }}" method="post">
-                                    @csrf
+                                <form action="<?php echo e(route('cambiar_contrasena')); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
                                     <!-- Agrega los campos necesarios (contraseña actual, nueva contraseña, confirmación) -->
                                     <div class="form-group">
                                         <label for="current_password">Contraseña Actual</label>
@@ -75,4 +73,6 @@
     </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\RodDAW2\UniServerZ\www\pajaroneta\resources\views/client/user_show.blade.php ENDPATH**/ ?>

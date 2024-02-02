@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view("users.index", ['users'=> $users]);
+        return view("admin.users.index", ['users'=> $users]);
     }
 
     /**
@@ -122,7 +122,7 @@ class UserController extends Controller
 
     public function changePassword(Request $request)
     {
-        // Validar los campos del formulario
+         // Validar los campos del formulario
         $request->validate([
             'current_password' => 'required',
             'new_password' => 'required|min:6',
@@ -138,11 +138,14 @@ class UserController extends Controller
         }
 
         // Cambiar la contraseña
-        $user->password = bcrypt($request->new_password);
+        $user->password = $request->new_password; // No uses bcrypt aquí
         $user->save();
 
+        // Actualizar la contraseña del usuario antes de intentar autenticar
+        auth()->setUser($user);
+
         // Redirigir con un mensaje de éxito
-        return redirect()->route('user_show')->with('success', 'Contraseña cambiada con éxito.');
+        return redirect()->route('user_show', ['name' => $user->name])->with('success', 'Contraseña cambiada con éxito.');
     }
 
 }

@@ -52,7 +52,6 @@ Route::prefix('/admin')->group(function () {
 Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
 Route::get('/galeria-comidas/{id}', [ClientController::class, 'galeria_comidas_show'])->name('galeria-comidas.show');
 
-
 Route::get('/blog', [ClientController::class, 'blog'])->name('blog');
 Route::get('/blog/{id}', [ClientController::class, 'blog_show'])->name('blog_show');
 
@@ -63,6 +62,7 @@ Route::get('/tags/{id}', [ClientController::class, 'tags_show'])->name('tags_sho
 
 Route::get('user/{name}', 'App\Http\Controllers\UserController@show')->name('user_show');
 Route::post('/cambiar-contrasena', [UserController::class, 'changePassword'])->name('cambiar_contrasena');
+
 
 
 // function galeria_comidas(){

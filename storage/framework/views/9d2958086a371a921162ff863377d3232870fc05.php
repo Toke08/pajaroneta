@@ -27,7 +27,7 @@
                 </div>
 
                 <!-- Botón para abrir el modal -->
-                <button type="button" class="btn btn-primary" data-target="#changePasswordModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
                     Cambiar Contraseña
                 </button>
 
@@ -64,14 +64,15 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+
 
 <?php $__env->stopSection(); ?>
 

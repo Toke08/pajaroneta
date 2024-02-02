@@ -19,30 +19,35 @@
             </li>
 
             <?php if(auth()->guard()->guest()): ?>
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
+    </li>
+<?php else: ?>
+    <?php if(auth()->user()->isAdmin()): ?>
+        <!-- Si es un administrador, redirigir al dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('adminHome')); ?>"><?php echo app('translator')->get('Hello,'); ?> <?php echo e(auth()->user()->name); ?></a>
+        </li>
 
-            <?php else: ?>
-            <?php if(auth()->user()->isAdmin()): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('adminHome')); ?>"><?php echo app('translator')->get('Admin Panel'); ?></a>
-                </li>
-            <?php endif; ?>
+    <?php else: ?>
+        <!-- Si no es un administrador, mostrar el nombre del usuario -->
+        <li class="nav-item">
+            <a class="nav-link text-white" href="<?php echo e(route('user_show', ['name' => auth()->user()->name])); ?>"><?php echo app('translator')->get('Hello,'); ?> <?php echo e(auth()->user()->name); ?></a>
+        </li>
+    <?php endif; ?>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();"><?php echo app('translator')->get('Logout'); ?></a>
-                <form id="logout" action="<?php echo e(route('logout')); ?>" method="POST">
-                    <?php echo csrf_field(); ?>
-                </form>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="<?php echo e(route('user_show', ['name' => auth()->user()->name])); ?>"><?php echo app('translator')->get('Hello,'); ?> <?php echo e(auth()->user()->name); ?></a>
-            </li>
-            <?php endif; ?>
+    <!-- Común para usuarios y administradores -->
+    <li class="nav-item">
+        <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();"><?php echo app('translator')->get('Logout'); ?></a>
+        <form id="logout" action="<?php echo e(route('logout')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+        </form>
+    </li>
+<?php endif; ?>
+
         </ul>
         <span class="text-white">
             <a href="<?php echo e(route('setLanguage','es')); ?>">ES</a>

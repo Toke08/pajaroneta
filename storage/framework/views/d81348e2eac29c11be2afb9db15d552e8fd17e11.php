@@ -4,15 +4,9 @@
 
 <?php $__env->startSection('estilos'); ?>
 <style>
-    main *{
-        box-sizing: border-box;
-        margin: 0 auto;
-        padding: 0;
-    }
-    table img {
-        width: 100px;
-        height: auto;
-    }
+
+
+
 
 </style>
 <?php $__env->stopSection(); ?>

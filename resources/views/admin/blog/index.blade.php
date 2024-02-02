@@ -1,4 +1,4 @@
-@extends('layout.masterpage')
+@extends('layout.admin-layout')
 @section('titulo')
 @endsection
 
@@ -21,8 +21,10 @@
                     <th>ID</th>
                     <th>Título</th>
                     <th>Estado</th>
-                    <th>Acciones</th>
                     <th>Imagen</th>
+                    <th>Fecha publicacion</th>
+                    <th>ultima modificacion</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +43,15 @@
                         </form> --}}
                     </td>
                     <td>
+                        <img src="{{asset('img/posts')}}/{{ $post->img }}"><img>
+                    </td>
+                    <td>
+                        {{$post->created_at}}
+                    </td>
+                    <td>
+                        {{$post->updated_at}}
+                    </td>
+                    <td>
                         <form action="{{ route('blog.edit', $post->id) }}" method="GET">
                             @csrf
                             <button type="submit">Editar</button>
@@ -51,9 +62,6 @@
                             @method('DELETE')
                             <button type="submit">Borrar</button>
                         </form>
-                    </td>
-                    <td>
-                        <img src="{{asset('img/posts')}}/{{ $post->img }}"><img>
                     </td>
                 </tr>
                 @endforeach

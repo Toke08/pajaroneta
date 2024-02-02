@@ -13,6 +13,8 @@
     <link href="{{ asset('css/navbar-top-fixed.css') }}" rel="stylesheet">
     <link href="{{ asset('css/general.css') }}" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 
     @yield('estilos')
 </head>
@@ -40,6 +42,7 @@
         @endif
 
         @yield('contenido')
+        @yield('script')
     </main>
 
     <footer>
@@ -50,6 +53,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <!-- jQuery -->
 </body>
 </html>

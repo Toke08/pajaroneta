@@ -62,8 +62,7 @@ Route::get('/categoria/{id}', [ClientController::class, 'categoria_show'])->name
 Route::get('/tags/{id}', [ClientController::class, 'tags_show'])->name('tags_show');
 
 Route::get('user/{name}', 'App\Http\Controllers\UserController@show')->name('user_show');
-
-
+Route::post('/cambiar-contrasena', [UserController::class, 'changePassword'])->name('cambiar_contrasena');
 
 
 // function galeria_comidas(){

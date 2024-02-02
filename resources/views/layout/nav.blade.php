@@ -19,30 +19,35 @@
             </li>
 
             @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
+    </li>
+@else
+    @if (auth()->user()->isAdmin())
+        <!-- Si es un administrador, redirigir al dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('adminHome') }}">@lang('Hello,') {{ auth()->user()->name }}</a>
+        </li>
 
-            @else
-            @if (auth()->user()->isAdmin())
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('adminHome') }}">@lang('Admin Panel')</a>
-                </li>
-            @endif
+    @else
+        <!-- Si no es un administrador, mostrar el nombre del usuario -->
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ route('user_show', ['name' => auth()->user()->name]) }}">@lang('Hello,') {{ auth()->user()->name }}</a>
+        </li>
+    @endif
 
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();">@lang('Logout')</a>
-                <form id="logout" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                </form>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="{{ route('user_show', ['name' => auth()->user()->name]) }}">@lang('Hello,') {{ auth()->user()->name }}</a>
-            </li>
-            @endguest
+    <!-- Común para usuarios y administradores -->
+    <li class="nav-item">
+        <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();">@lang('Logout')</a>
+        <form id="logout" action="{{ route('logout') }}" method="POST">
+            @csrf
+        </form>
+    </li>
+@endguest
+
         </ul>
         <span class="text-white">
             <a href="{{ route('setLanguage','es') }}">ES</a>

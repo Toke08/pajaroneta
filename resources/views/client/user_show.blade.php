@@ -43,28 +43,30 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+
                             <div class="modal-body">
                                 <!-- Formulario para cambiar la contraseña -->
-                                <form action="{{ route('password.update') }}" method="post">
+                                <form action="{{ route('cambiar_contrasena') }}" method="post">
                                     @csrf
                                     <!-- Agrega los campos necesarios (contraseña actual, nueva contraseña, confirmación) -->
                                     <div class="form-group">
                                         <label for="current_password">Contraseña Actual</label>
-                                        <input type="password" name="current_password" class="form-control" required>
+                                        <input type="password" name="current_password" id="current_password" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="new_password">Nueva Contraseña</label>
-                                        <input type="password" name="new_password" class="form-control" required>
+                                        <input type="password" name="new_password" id="new_password" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm_password">Confirmar Nueva Contraseña</label>
-                                        <input type="password" name="confirm_password" class="form-control" required>
+                                        <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                                     <!-- Botón para cerrar el modal -->
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>

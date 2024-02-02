@@ -10,6 +10,13 @@
 </style>
 @endsection
 
+@section('script')
+<script>
+console.log("holaaaa");
+
+</script>
+@endsection
+
 @section('contenido')
 <h1>Calendario</h1>
 

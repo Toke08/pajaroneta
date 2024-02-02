@@ -12,7 +12,6 @@ h1{
 #ubicaciones{
     display: flex;
     flex-direction: column;
-    border: 2px solid #000000;
     border-radius: 10px;
     font-family: 'Quicksand', sans-serif;
 }
@@ -21,7 +20,7 @@ h1{
     color: #ffffff;
     display: flex;
     flex-direction:row;
-    border-bottom: 2px solid #000000;
+    border-radius: 10px;
 }
 label, .ubi_info p{
     width: 30%;

@@ -1,11 +1,33 @@
-
 <?php $__env->startSection('titulo'); ?>
 Ubicación nueva
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
 <style>
+h1{
+    font-family: 'Quicksand', sans-serif;
 
+}
+.ubi_for input{
+    border-radius: 30px;
+    border: none;
+    margin: 2%;
+    height: 50px;
+    width:80%;
+    background: #F4F4F4;
+    padding: 2%;
+    font-family: 'Quicksand', sans-serif;
+}
+.ubi_btn input{
+    width: 30%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #A62224;
+    color: #ffffff;
+    border: none;
+    margin: 2%;
+    font-family: 'Quicksand', sans-serif;
+}
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -15,19 +37,23 @@ Ubicación nueva
 
     <form action="<?php echo e(route('ubicaciones.store')); ?>" method="post" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
-        <label for="name">Dirección:</label>
-        <input type="text" id="address" name="address" required>
-        <br>
-        <label for="image">Provincia:</label>
-        <input type="text" id="province" name="province" required>
-        <br>
-        <label for="image">Cuidad:</label>
-        <input type="text" id="city" name="city" required>
-        <br>
-        <label for="image">Código postal</label>
-        <input type="text" inputmode="numeric" id="cp" name="cp" required>
-        <br>
-        <input type="submit" name="" id="" value="Crear ubicación">
+        <div class="ubi_for">
+            <input type="text" id="address" name="address" placeholder="Dirección" required>
+        </div>
+
+        <div class="ubi_for">
+            <input type="text" id="province" name="province" placeholder="Provincia" required>
+        </div>
+       <div class="ubi_for">
+            <input type="text" id="city" name="city" placeholder="Ciudad" required>
+       </div>
+       <div class="ubi_for">
+            <input type="text" inputmode="numeric" id="cp" name="cp" placeholder="Código postal" required>
+       </div>
+       <div class="ubi_btn">
+            <input type="submit" name="" id="" value="Crear ubicación">
+       </div>
+
     </form>
 
 <?php $__env->stopSection(); ?>

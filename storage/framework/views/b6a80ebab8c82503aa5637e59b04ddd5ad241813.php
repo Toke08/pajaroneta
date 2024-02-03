@@ -13,7 +13,7 @@ Ubicación nueva
 <h1>Nueva fecha</h1>
 <div id="calendario"></div>
 
- <!-- Button trigger modal -->
+    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evento">
     Añadir evento
     </button>

@@ -9,13 +9,6 @@
 </style>
 @endsection
 
-@section('script')
-<script>
-console.log("holaaaa");
-
-</script>
-@endsection
-
 @section('contenido')
 <h1>Calendario</h1>
 <div id="calendario"></div>
@@ -46,3 +39,16 @@ console.log("holaaaa");
     </tbody>
 </table> --}}
 @endsection
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendario');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth'
+
+    });
+      calendar.render();
+    });
+  </script>
+@endsection
+

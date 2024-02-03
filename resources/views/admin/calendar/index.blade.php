@@ -1,7 +1,6 @@
 @extends('layout.masterpage')
 
 @section('titulo')
-    Galeria de comidas
 @endsection
 
 @section('estilos')
@@ -19,8 +18,8 @@ console.log("holaaaa");
 
 @section('contenido')
 <h1>Calendario</h1>
-
-<table class="table table-bordered table-striped">
+<div id="calendario"></div>
+{{-- <table class="table table-bordered table-striped">
     <thead class="thead-dark"> <!-- Añade un fondo oscuro al encabezado de la tabla -->
         <tr>
             <th>Fecha</th>
@@ -45,5 +44,5 @@ console.log("holaaaa");
             </tr>
         @endforeach
     </tbody>
-</table>
+</table> --}}
 @endsection

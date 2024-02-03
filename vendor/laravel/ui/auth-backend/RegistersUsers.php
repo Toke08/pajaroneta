@@ -29,9 +29,22 @@ trait RegistersUsers
      */
     public function register(Request $request)
     {
+
         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
+        //se le envia el data en RegisterController, crear el user
+        $user = $this->create($request->all());
+
+        //movidas para poder guardar la foto que viene en el form de registro, no es obligatorio
+        if($user && $request->hasFile('profile_img')){
+
+            $file = $request->file('profile_img');
+            $filename = $file->getClientOriginalExtension();
+            dd($filename);
+            $file->move(public_path('img/users'), $filename);
+        }
+
+        event(new Registered($user));
 
         $this->guard()->login($user);
 

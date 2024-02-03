@@ -32,6 +32,10 @@ label, p{
     flex-direction:row;
 }
 
+
+
+
+
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -51,11 +55,6 @@ label, p{
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
-
-
-
-
-
 <?php $__env->stopSection(); ?>
 
 

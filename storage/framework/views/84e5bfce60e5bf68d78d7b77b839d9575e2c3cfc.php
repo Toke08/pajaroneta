@@ -5,8 +5,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            <li class="">
-                <a class="" href="<?php echo e(route('galeria_comidas')); ?>"><?php echo app('translator')->get('Food Gallery'); ?></a>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo e(route('galeria_comidas')); ?>"><?php echo app('translator')->get('Food Gallery'); ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo app('translator')->get('Locations'); ?></a>

@@ -23,72 +23,41 @@ Ubicación nueva
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Crea un evento</h5>
+          <h5 class="modal-title" >Añade una fecha</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="<?php echo e(route('eventos.store')); ?>" method="post" enctype="multipart/form-data">
+           <form action="<?php echo e(route('calendario.store')); ?>" method="post">
                 <?php echo csrf_field(); ?>
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
-                <br>
-                <label for="description">Descripción:</label>
-                <textarea id="description" name="description" required></textarea>
-                <br>
-                <button type="submit">Crear Evento</button>
+                
+                <label for="event">Evento:</label>
+                <select id="event" name="event_id" required>
+                    <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($event->id); ?>"><?php echo e($event->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <label for="location">Ubicación:</label>
+                <select id="location" name="location_id" required>
+                    <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($location->id); ?>"><?php echo e($location->city); ?>, <?php echo e($location->address); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+
+
+                <button type="submit">Guardar</button>
             </form>
 
         </div>
-        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Guardar cambios</button>
+        </div>
       </div>
     </div>
   </div>
 
-
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ubicacion">
-    Añadir Ubicación
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="ubicacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >Crea una ubicación</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form action="<?php echo e(route('ubicaciones.store')); ?>" method="post" enctype="multipart/form-data">
-                <?php echo csrf_field(); ?>
-                <div class="ubi_for">
-                    <input type="text" id="address" name="address" placeholder="Dirección" required>
-                </div>
-
-                <div class="ubi_for">
-                    <input type="text" id="province" name="province" placeholder="Provincia" required>
-                </div>
-               <div class="ubi_for">
-                    <input type="text" id="city" name="city" placeholder="Ciudad" required>
-               </div>
-               <div class="ubi_for">
-                    <input type="text" inputmode="numeric" id="cp" name="cp" placeholder="Código postal" required>
-               </div>
-               <div class="ubi_btn">
-                    <input type="submit" name="" id="" value="Crear ubicación">
-               </div>
-
-            </form>
-
-        </div>
-        
-      </div>
-    </div>
-  </div>
 
 
 <?php $__env->stopSection(); ?>
@@ -98,7 +67,16 @@ Ubicación nueva
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendario');
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
+        initialView: 'dayGridMonth',
+
+
+        locale:"es", //idioma español
+
+        dateClick:function(info){   //al hacer click en la fecha que salga un modal jjejjej
+            $("#evento").modal("show");
+            console.log("hola");
+        }
+
 
     });
       calendar.render();
@@ -107,5 +85,31 @@ Ubicación nueva
   </script>
 
 <?php $__env->stopSection(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      
+
 
 <?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/admin/calendar/create.blade.php ENDPATH**/ ?>

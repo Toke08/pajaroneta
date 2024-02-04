@@ -24,39 +24,95 @@ Ubicación nueva
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Crea un evento</h5>
+          <h5 class="modal-title" >Añade una fecha</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{route('eventos.store')}}" method="post" enctype="multipart/form-data">
+           <form action="{{ route('calendario.store') }}" method="post">
                 @csrf
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
-                <br>
-                <label for="description">Descripción:</label>
-                <textarea id="description" name="description" required></textarea>
-                <br>
-                <button type="submit">Crear Evento</button>
+                {{-- <label for="date">Fecha:</label>
+                <input type="date" id="date" name="date" required> --}}
+                <label for="event">Evento:</label>
+                <select id="event" name="event_id" required>
+                    @foreach($events as $event)
+                        <option value="{{ $event->id }}">{{ $event->name }}</option>
+                    @endforeach
+                </select>
+                <label for="location">Ubicación:</label>
+                <select id="location" name="location_id" required>
+                    @foreach($locations as $location)
+                        <option value="{{ $location->id }}">{{ $location->city }}, {{ $location->address }}</option>
+                    @endforeach
+                </select>
+
+
+                <button type="submit">Guardar</button>
             </form>
 
         </div>
-        {{-- <div class="modal-footer">
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
           <button type="button" class="btn btn-primary">Guardar cambios</button>
-        </div> --}}
+        </div>
       </div>
     </div>
   </div>
 
 
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ubicacion">
+@endsection
+@section('script')
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendario');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+
+
+        locale:"es", //idioma español
+
+        dateClick:function(info){   //al hacer click en la fecha que salga un modal jjejjej
+            $("#evento").modal("show");
+            console.log("hola");
+        }
+
+
+    });
+      calendar.render();
+    });
+
+  </script>
+
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ubicacion">
     Añadir Ubicación
     </button>
-
-    <!-- Modal -->
     <div class="modal fade" id="ubicacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -93,45 +149,7 @@ Ubicación nueva
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
           <button type="button" class="btn btn-primary">Guardar cambios</button>
         </div> --}}
-      </div>
+      {{-- </div>
     </div>
-  </div>
-{{-- <form action="{{ route('calendario.store') }}" method="post">
-    @csrf
+  </div> --}}
 
-    <label for="date">Fecha:</label>
-    <input type="date" id="date" name="date" required>
-
-    <label for="location">Ubicación:</label>
-    <select id="location" name="location_id" required>
-        @foreach($locations as $location)
-            <option value="{{ $location->id }}">{{ $location->city }}, {{ $location->address }}</option>
-        @endforeach
-    </select>
-
-    <label for="event">Evento:</label>
-    <select id="event" name="event_id" required>
-        @foreach($events as $event)
-            <option value="{{ $event->id }}">{{ $event->name }}</option>
-        @endforeach
-    </select>
-
-    <button type="submit">Guardar</button>
-</form> --}}
-
-@endsection
-@section('script')
-<script>
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendario');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
-
-    });
-      calendar.render();
-    });
-
-  </script>
-
-@endsection

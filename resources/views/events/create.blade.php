@@ -1,16 +1,15 @@
-<?php $__env->startSection('titulo'); ?>
-Ubicación nueva
-<?php $__env->stopSection(); ?>
+@extends('layout.masterpage')
+@section('titulo')
 
-<?php $__env->startSection('estilos'); ?>
-<style>
+@endsection
 
-</style>
-<?php $__env->stopSection(); ?>
+@section('estilos')
+<style></style>
+@endsection
 
-<?php $__env->startSection('contenido'); ?>
+@section('contenido')
 
-<h1>Nueva fecha</h1>
+<h1>Calendario</h1>
 <div id="calendario"></div>
 
     <!-- Button trigger modal -->
@@ -30,10 +29,9 @@ Ubicación nueva
         </div>
         <div class="modal-body">
             <form action="">
-                <?php echo csrf_field(); ?>
+                {!! csrf_field() !!}
 
-
-                
+                {{-- Agregar id --}}
                 <div class="form-group">
                     <label for="">ID</label>
                     <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId">
@@ -75,8 +73,8 @@ Ubicación nueva
 
 
 
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection('script'); ?>
+@endsection
+@section('script')
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -108,7 +106,12 @@ Ubicación nueva
             console.log(datos);
             console.log(formulario.title.value);
 
-            axios.post("http://localhost/pajaroneta/public/admin/calendario/create", datos)
+            axios.post("http://localhost/pajaroneta/public/eventos/create", datos)
+            .then{
+                (respuesta)=>{
+                    $("#evento").modal("hide");
+                }
+            }
 
       })
 
@@ -119,33 +122,6 @@ Ubicación nueva
 
   </script>
 
-<?php $__env->stopSection(); ?>
+@endsection
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-      
-
-  
-
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/admin/calendar/create.blade.php ENDPATH**/ ?>

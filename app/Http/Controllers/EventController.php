@@ -16,7 +16,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view("admin.events.index", ['events'=> $events]);
+        return view("events.index", ['events'=> $events]);
     }
 
     /**
@@ -27,7 +27,7 @@ class EventController extends Controller
     public function create()
     {
         $events = Event::all();
-        return view("admin.events.create", ['events'=> $events]);
+        return view("events.create", ['events'=> $events]);
     }
 
     /**
@@ -38,19 +38,19 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $datos=$request->all();
+        $request->validate(Event::$rules);
+        $event=Event::create($request->all());
 
-        //recoger datos de events
-        $name=$datos["name"];
-        $description=$datos["description"];
-
-        $event= new Event();
-        $event->name=$name;
-        $event->description=$description;
-
-        $event->save(); //guardar
-        \Session::flash('message', 'Evento creado correctamente!'); //mensaje feedback
-        return redirect()->back(); //volver a las vista
+        // $datos=$request->all();
+        // recoger datos de events
+        // $name=$datos["name"];
+        // $description=$datos["description"];
+        // $event= new Event();
+        // $event->title=$title;
+        // $event->description=$description;
+        // $event->save(); //guardar
+        // \Session::flash('message', 'Evento creado correctamente!'); //mensaje feedback
+        // return redirect()->back(); //volver a las vista
     }
 
     /**

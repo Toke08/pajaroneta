@@ -45,7 +45,7 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
-            'profile_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Corregir el nombre del campo
+            'profile_img' => 'file|mimes:jpeg,png,jpg,gif|max:2048', // Corregir el nombre del campo
         ], [
             'name.required' => 'El nombre del usuario es obligatorio',
             'name.string' => 'El nombre del usuario debe ser un texto',
@@ -62,7 +62,7 @@ class UserController extends Controller
 
         if ($request->hasFile('profile_img')) {
             $nombreImagen = $request->file('profile_img')->getClientOriginalName();
-            $request->file('profile_img')->move('img/users', $nombreImagen);
+            $request->file('profile_img')->move(public_path('img/users'), $nombreImagen);
         }
 
         $user = new User();

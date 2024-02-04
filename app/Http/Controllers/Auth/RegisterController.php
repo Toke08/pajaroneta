@@ -49,11 +49,20 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+
+        $rules = [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ];
+
+        /*
+        if ($data['profile_img'] !== null) {
+            $rules['profile_img'] = ['file', 'mimes:jpeg,png,jpg,gif', 'max:2048'];
+        }
+        */
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -64,13 +73,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
         $role=Role::where('name','user')->first();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' => $role->id,
-            'profile_img' => $data['profile_img'],
+            'profile_img' => $data['profile_img'] ?? 'user_default.jpg',
         ]);
     }
 }

@@ -30,9 +30,7 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-
-// Route::get('/evento', [App\Http\Controllers\EventController::class,'index']);
-// Route::post('/evento/agregar', [App\Http\Controllers\EventController::class,'store']);
+Route::post('/eventos/create', 'App\Http\Controllers\EventController::class','store');
 
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
@@ -41,7 +39,7 @@ Route::prefix('/admin')->group(function () {
     //rutas admin
     Route::resource('/roles', RoleController::class);
     Route::resource('/ubicaciones', LocationController::class);
-    Route::resource('/eventos', EventController::class);
+    // Route::resource('/eventos', EventController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/restaurants', RestaurantController::class);
     Route::resource('/categorias', CategoryController::class);

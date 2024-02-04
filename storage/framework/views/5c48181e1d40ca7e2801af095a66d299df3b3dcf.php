@@ -106,11 +106,11 @@
             console.log(datos);
             console.log(formulario.title.value);
 
-            // axios.post("http://localhost/pajaroneta/public/admin/eventos/create", datos).then{
-            //     (respuesta)=>{
-            //         $("#evento").modal("hide");
-            //     }
-            // }
+            axios.post("http://localhost/pajaroneta/public/admin/eventos/create", datos).then{
+                (respuesta)=>{
+                    $("#evento").modal("");
+                }
+            }
 
       })
 

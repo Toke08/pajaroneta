@@ -30,7 +30,8 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::post('/eventos/create', 'App\Http\Controllers\EventController::class','store');
+Route::get('/eventos', [App\Http\Controllers\EventController::class] ,'index');
+Route::post('/eventos/create', [App\Http\Controllers\EventController::class] ,'store');
 
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController

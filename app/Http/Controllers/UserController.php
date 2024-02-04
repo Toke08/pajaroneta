@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Validator;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
@@ -19,7 +20,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view("users.index", ['users'=> $users]);
+        $roles = Role::all();
+        return view("admin.users.index", ['users'=> $users, 'roles'=> $roles]);
     }
 
     /**
@@ -106,8 +108,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::findOrFail($id);
 
+        // Actualiza el nombre si se proporciona
+        if ($request->has('name')) {
+            $user->name = $request->input('name');
+        }
+
+        // Actualiza el role_id si se proporciona
+        if ($request->has('role')) {
+            $user->role_id = $request->input('role');
+        }
+
+        $user->save();
+
+        return response()->json(['message' => 'Usuario actualizado con éxito']);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -117,7 +134,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
+        $user = User::findOrFail($id);
+        // Elimina el user
+        $user->delete();
+        return redirect()->back()->with('success', 'Post eliminado exitosamente.');
     }
 
     public function changePassword(Request $request)

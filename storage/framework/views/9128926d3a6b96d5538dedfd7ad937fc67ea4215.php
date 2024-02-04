@@ -9,6 +9,8 @@
                     <form method="POST" action="<?php echo e(route('register')); ?>" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
 
+                        <input type="hidden" name="profile_img" value="user_default.jpg">
+
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end"><?php echo e(__('Name')); ?></label>
 
@@ -98,34 +100,6 @@ unset($__errorArgs, $__bag); ?>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="profile_img" class="col-md-4 col-form-label text-md-end"><?php echo e(__('Profile Image')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="profile_img" type="file" class="form-control <?php $__errorArgs = ['profile_img'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="profile_img" accept="image/*">
-
-                                <?php $__errorArgs = ['profile_img'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 

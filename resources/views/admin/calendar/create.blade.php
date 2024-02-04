@@ -31,6 +31,8 @@ Ubicación nueva
         </div>
         <div class="modal-body">
             <form action="">
+                {!! csrf_field() !!}
+
                 {{-- Agregar id --}}
                 <div class="form-group">
                     <label for="">ID</label>
@@ -105,6 +107,8 @@ Ubicación nueva
             const datos= new FormData(formulario);
             console.log(datos);
             console.log(formulario.title.value);
+
+            axios.post("http://localhost/pajaroneta/public/admin/calendario/create", datos)
 
       })
 

@@ -31,6 +31,8 @@ Route::get('/', function () {
 })->name('home');
 
 
+// Route::get('/evento', [App\Http\Controllers\EventController::class,'index']);
+// Route::post('/evento/agregar', [App\Http\Controllers\EventController::class,'store']);
 
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
@@ -46,11 +48,11 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/encuentranos', LocationController::class);
     Route::resource('/blog', PostController::class);
     Route::resource('/galeria-comidas', FoodController::class);
-    // Route::resource('/calendario', CalendarController::class);
+    Route::resource('/calendario', CalendarController::class);
     Route::resource('/user', UserController::class);
 });
 
-//ejemplo rutas cleinte y su controlador
+//ejemplo rutas cliente y su controlador
 Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
 Route::get('/galeria-comidas/{id}', [ClientController::class, 'galeria_comidas_show'])->name('galeria-comidas.show');
 

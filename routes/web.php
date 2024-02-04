@@ -30,6 +30,8 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
+
+
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
@@ -44,7 +46,7 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/encuentranos', LocationController::class);
     Route::resource('/blog', PostController::class);
     Route::resource('/galeria-comidas', FoodController::class);
-    Route::resource('/calendario', CalendarController::class);
+    // Route::resource('/calendario', CalendarController::class);
     Route::resource('/user', UserController::class);
 });
 

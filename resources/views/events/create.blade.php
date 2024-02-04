@@ -1,4 +1,4 @@
-@extends('layout.masterpage')
+{{-- @extends('layout.masterpage')
 @section('titulo')
 
 @endsection
@@ -13,12 +13,12 @@
 <div id="calendario"></div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evento">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event">
     Añadir evento
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="evento" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="event" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -29,10 +29,11 @@
         </div>
         <div class="modal-body">
             <form action="">
+
                 {!! csrf_field() !!}
 
                 {{-- Agregar id --}}
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">ID</label>
                     <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId">
                 </div>
@@ -53,7 +54,7 @@
                 </div>
                 <div class="form-group">
                     <label for="end">End</label>
-                    <input type="text" class="form-control" name="name" id="name" aria-describedby="">
+                    <input type="text" class="form-control" name="" id="" aria-describedby="">
                     <small id="helpId" class="form-text text-muted"> Fecha fin del evento</small>
                 </div>
             </form>
@@ -65,7 +66,6 @@
             <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
 
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-
         </div>
       </div>
     </div>
@@ -84,15 +84,15 @@
 
 
 
-      var calendarEl = document.getElementById('calendario');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
+        var calendarEl = document.getElementById('calendario');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
 
 
         locale:"es", //idioma español
 
         dateClick:function(info){   //la info recoge el día que haces click
-            $("#evento").modal("show"); //al hacer click en la fecha que salga el modal evento jjejjej
+            $("#event").modal("show"); //al hacer click en la fecha que salga el modal evento jjejjej
         }
 
 
@@ -106,22 +106,18 @@
             console.log(datos);
             console.log(formulario.title.value);
 
-            axios.post("http://localhost/pajaroneta/public/eventos/create", datos)
-            .then{
-                (respuesta)=>{
-                    $("#evento").modal("hide");
-                }
-            }
-
-      })
+            axios.post("http://localhost/pajaroneta/public/admin/eventos/create", datos).
+            then((respuesta)=>{
+                $("#event").modal("hide");
+            })
 
 
+      });
 
 
     });
 
   </script>
 
-@endsection
-
+@endsection --}}
 

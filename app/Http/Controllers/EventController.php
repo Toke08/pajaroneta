@@ -15,8 +15,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
-        return view("events.index", ['events'=> $events]);
+        // $events = Event::all();
+        // return view("events.index", ['events'=> $events]);
+        return view("events.index");
     }
 
     /**
@@ -26,8 +27,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        $events = Event::all();
-        return view("events.create", ['events'=> $events]);
+        // $events = Event::all();
+        return view("events.create");
     }
 
     /**
@@ -40,6 +41,7 @@ class EventController extends Controller
     {
         $request->validate(Event::$rules);
         $event=Event::create($request->all());
+        return response()->json(['message' => 'Evento creado correctamente'], 200);
 
         // $datos=$request->all();
         // recoger datos de events
@@ -59,9 +61,10 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-
+        $event=Event::all();
+        return response()->json($event);
     }
 
     /**
@@ -70,10 +73,10 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $event =Event::findOrFail($id);
-        return view('eventos.edit', compact('event'));
+        // $event =Event::findOrFail($id);
+        // return view('eventos.edit', compact('event'));
     }
 
     /**
@@ -85,13 +88,13 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $event = Event::findOrFail($id);
-        $datos = $request->only(['name', 'description', 'date', 'address']);
-        $event->update($datos);
-        return redirect()->route('eventos.index')->with('success', 'La ubicaión se ha actualizado exitosamente.');
+        // $event = Event::findOrFail($id);
+        // $datos = $request->only(['name', 'description', 'date', 'address']);
+        // $event->update($datos);
+        // return redirect()->route('eventos.index')->with('success', 'La ubicaión se ha actualizado exitosamente.');
     }
 
-    /**
+    /**->
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Event  $event

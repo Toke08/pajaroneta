@@ -27,6 +27,11 @@
                     </ul>
                 </div>
 
+                <form action="{{ route('user_edit', $user->id) }}" method="GET">
+                    @csrf
+                    <button type="submit">Editar</button>
+                </form>
+
                 <!-- Botón para abrir el modal -->
                 <button id="changePassword" type="button" class="btn btn-primary">
                     Cambiar Contraseña

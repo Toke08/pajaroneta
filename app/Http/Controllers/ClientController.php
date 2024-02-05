@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Restaurant;
+use App\Models\User;
 
 class ClientController extends Controller
 {
@@ -61,6 +62,66 @@ class ClientController extends Controller
         $tag = Tag::findOrFail($id);
         $posts = $tag->posts ?? collect();
         $restaurants = $tag->restaurants ?? collect();
+
+        return view('client.tags_show', compact('tag', 'posts', 'restaurants'));
+    }
+
+    public function user_store(Request $request){
+        $datos = $request->all();
+        $nombreImagen = $request->file('img')->getClientOriginalName();
+        // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
+
+        //mover imagen subido desde el form de letters.create al servidor
+        $request->file('img')->move('img/users', $nombreImagen);
+
+
+
+        //obtener texto y papa
+        $name=$datos['name'];
+        $price=$datos['email'];
+
+
+        //validar los datos
+        $rules= ['name' => 'required|string|unique:foods',
+                'price' => 'required|numeric',
+                'img' => 'file|mimes:jpeg,png,jpg,webp|max:2048',];
+
+        //se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
+
+        $validator = validator::make($datos,$rules);
+
+        if ($validator->fails()) {
+            \Session::flash('message','error en las instrucciones de datos');
+            return redirect()->back()->withErrors($validator);
+        }else{
+            $food = new Food();
+            $food->name=$name;
+            $food->price=$price;
+            $food->category_id=$categories;
+            $food->img=$nombreImagen;
+            $food->description=$description;
+            $food->save();
+
+            \Session::flash('message','gracias por tu carta');
+            return redirect()->back();
+        }
+    }
+    public function user_edit($id){
+        // Obtener el usuario de la base de datos
+        $user = User::findOrFail($id);
+
+        // Retornar la vista de edición del perfil con los datos del usuario
+        return view('client.user_edit', compact('user'));
+
+
+    }
+    public function user_update($id){
+
+
+        return view('client.tags_show', compact('tag', 'posts', 'restaurants'));
+    }
+    public function user_destroy($id){
+
 
         return view('client.tags_show', compact('tag', 'posts', 'restaurants'));
     }

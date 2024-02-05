@@ -27,7 +27,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
     </li>
-    <li class="nav-item">
+    <li id="login_btn">
         <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
     </li>
 <?php else: ?>

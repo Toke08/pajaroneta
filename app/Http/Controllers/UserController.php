@@ -43,6 +43,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        /*
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'profile_img' => 'file|mimes:jpeg,png,jpg,gif|max:2048', // Corregir el nombre del campo
@@ -74,6 +75,7 @@ class UserController extends Controller
 
         \Session::flash('message', 'Usuario creado exitosamente.');
         return redirect('/');
+        */
     }
 
     /**
@@ -145,8 +147,8 @@ class UserController extends Controller
         // Validar los campos del formulario
         $request->validate([
             'current_password' => 'required',
-            'new_password' => 'required|min:6',
-            'confirm_password' => 'required|same:new_password',
+            'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+
         ]);
 
         // Obtener el usuario autenticado
@@ -158,7 +160,7 @@ class UserController extends Controller
         }
 
         // Cambiar la contraseña
-        $user->password = bcrypt($request->new_password);
+        $user->password = Hash::make($request->new_password);
         $user->save();
 
         // Redirigir con un mensaje de éxito

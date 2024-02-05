@@ -12,6 +12,9 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
+
+    <a class="nav-link" href="<?php echo e(route('user.index')); ?>"><?php echo app('translator')->get('View Users'); ?></a>
+
     <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo app('translator')->get('View Posts'); ?></a>
 
     <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Create Post'); ?></a>

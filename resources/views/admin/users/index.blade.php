@@ -11,7 +11,7 @@
 
 @section('contenido')
 <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
-<h1>Lista de Usuarios</h1>
+<h1>Pajarusuarios</h1>
 
 <div class="table-responsive">
     <table class="table table-bordered">
@@ -35,7 +35,6 @@
                         <span class="editable" id="user-name-{{ $user->id }}">{{ $user->name }}</span>
                         <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar" data-user-id="{{ $user->id }}"></button>
                         <input type="text" class="form-control input-editar" id="input-name-{{ $user->id }}" style="display: none;">
-                        <!-- Botón rojo con ícono "X" -->
                         <button class="btn btn-danger btn-sm btn-cancelar" data-user-id="{{ $user->id }}" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                 </td>
@@ -61,7 +60,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
                     </form>
-                    <!-- Botón de actualizar solo en acciones -->
+
                     <button class="btn btn-success btn-sm btn-actualizar-individual" data-user-id="{{ $user->id }}" data-update-route="{{ route('user.update', ['user' => $user->id]) }}"style="margin-left: 5px; display: none;">Actualizar
                     </button>
                 </td>
@@ -78,13 +77,10 @@ $(document).ready(function () {
     $(".fa-pen-to-square").click(function () {
         var userId = $(this).data('user-id');
 
-        // Oculta el texto y muestra el input correspondiente al usuario que se está editando
         $("#user-name-" + userId).hide();
         $("#input-name-" + userId).val($("#user-name-" + userId).text()).show();
-        // Muestra el botón de actualizar y oculta el botón de editar
         $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
         $(".btn-editar[data-user-id='" + userId + "']").hide();
-        // Muestra el botón de cancelar
         $(".btn-cancelar[data-user-id='" + userId + "']").show();
     });
 

@@ -1,11 +1,9 @@
 @extends('layout.masterpage')
 
 @section('titulo')
-    <!-- Puedes agregar el título aquí si es necesario -->
 @endsection
 
 @section('estilos')
-    <!-- Puedes agregar estilos específicos aquí si es necesario -->
 @endsection
 
 @section('contenido')
@@ -29,7 +27,7 @@
                 </div>
 
                 <!-- Botón para abrir el modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePassword">
                     Cambiar Contraseña
                 </button>
 
@@ -48,6 +46,8 @@
                                 <!-- Formulario para cambiar la contraseña -->
                                 <form action="{{ route('cambiar_contrasena') }}" method="post">
                                     @csrf
+                                    @method('put')
+
                                     <!-- Agrega los campos necesarios (contraseña actual, nueva contraseña, confirmación) -->
                                     <div class="form-group">
                                         <label for="current_password">Contraseña Actual</label>
@@ -66,6 +66,7 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -74,6 +75,5 @@
         </div>
     </div>
 </div>
-
 
 @endsection

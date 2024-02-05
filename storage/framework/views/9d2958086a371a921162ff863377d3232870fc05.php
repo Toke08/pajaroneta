@@ -1,9 +1,7 @@
 <?php $__env->startSection('titulo'); ?>
-    <!-- Puedes agregar el título aquí si es necesario -->
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
-    <!-- Puedes agregar estilos específicos aquí si es necesario -->
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
@@ -46,6 +44,8 @@
                                 <!-- Formulario para cambiar la contraseña -->
                                 <form action="<?php echo e(route('cambiar_contrasena')); ?>" method="post">
                                     <?php echo csrf_field(); ?>
+                                    <?php echo method_field('put'); ?>
+
                                     <!-- Agrega los campos necesarios (contraseña actual, nueva contraseña, confirmación) -->
                                     <div class="form-group">
                                         <label for="current_password">Contraseña Actual</label>
@@ -64,6 +64,7 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -72,7 +73,6 @@
         </div>
     </div>
 </div>
-
 
 <?php $__env->stopSection(); ?>
 

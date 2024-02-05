@@ -62,7 +62,6 @@
             <button type="button" class="btn btn-success" id="btn_save">Guardar</button>
             <button type="button" class="btn btn-warning"  id="btn_modify">Editar</button>
             <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
-
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
@@ -79,9 +78,6 @@
         // recoge los datos del from jquery
         let formulario=document.querySelector("form");
 
-
-
-
         var calendarEl = document.getElementById('calendario');
         var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -94,7 +90,6 @@
         dateClick:function(info){   //la info recoge el día que haces click
             $("#event").modal("show"); //al hacer click en la fecha que salga el modal evento jjejjej
         }
-
 
     });
       calendar.render();

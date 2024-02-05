@@ -1,11 +1,9 @@
 @extends('layout.masterpage')
 
 @section('titulo')
-    <!-- Puedes agregar el título aquí si es necesario -->
 @endsection
 
 @section('estilos')
-    <!-- Puedes agregar estilos específicos aquí si es necesario -->
 @endsection
 
 @section('contenido')
@@ -19,7 +17,8 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <img src="{{ asset('img/users/' . $user->profile_img) }}" alt="Profile Image" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+                        <img src="{{ asset('img/users/' . $user->profile_img) }}" alt="Profile Image"
+                             class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item"><strong>Name:</strong> {{ $user->name }}</li>
@@ -29,12 +28,13 @@
                 </div>
 
                 <!-- Botón para abrir el modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
+                <button id="changePassword" type="button" class="btn btn-primary">
                     Cambiar Contraseña
                 </button>
 
                 <!-- Modal para cambiar la contraseña -->
-                <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog"
+                     aria-labelledby="changePasswordModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -46,24 +46,29 @@
 
                             <div class="modal-body">
                                 <!-- Formulario para cambiar la contraseña -->
-                                <form action="{{ route('cambiar_contrasena') }}" method="post">
+                                <form action="{{ route('cambiar_contrasena') }}" method="POST">
                                     @csrf
+                                    @method('PUT')
+
                                     <!-- Agrega los campos necesarios (contraseña actual, nueva contraseña, confirmación) -->
                                     <div class="form-group">
                                         <label for="current_password">Contraseña Actual</label>
-                                        <input type="password" name="current_password" id="current_password" class="form-control" required>
+                                        <input type="password" name="current_password" id="current_password"
+                                               class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="new_password">Nueva Contraseña</label>
                                         <input type="password" name="new_password" id="new_password" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="confirm_password">Confirmar Nueva Contraseña</label>
-                                        <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
+                                        <label for="new_password_confirmation">Confirmar Nueva Contraseña</label>
+                                        <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" required>
                                     </div>
+
                                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                                     <!-- Botón para cerrar el modal -->
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -74,6 +79,13 @@
         </div>
     </div>
 </div>
+@endsection
 
-
+@section('script')
+<script>
+    // JavaScript para abrir el modal cuando se hace clic en el botón
+    document.getElementById('changePassword').addEventListener('click', function () {
+        $('#changePasswordModal').modal('show');
+    });
+</script>
 @endsection

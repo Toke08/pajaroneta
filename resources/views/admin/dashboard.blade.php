@@ -12,6 +12,9 @@
 @endsection
 
 @section('contenido')
+
+    <a class="nav-link" href="{{ route('user.index') }}">@lang('View Users')</a>
+
     <a class="nav-link" href="{{ route('blog.index') }}">@lang('View Posts')</a>
 
     <a class="nav-link" href="{{ route('blog.create') }}">@lang('Create Post')</a>

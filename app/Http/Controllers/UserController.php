@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Validator;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -19,7 +19,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view("users.index", ['users'=> $users]);
+        $roles = Role::all();
+        return view("admin.users.index", ['users'=> $users, 'roles'=> $roles]);
     }
 
     /**
@@ -41,37 +42,45 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'profile_img' => 'file|mimes:jpeg,png,jpg,gif|max:2048', // Corregir el nombre del campo
-        ], [
-            'name.required' => 'El nombre del usuario es obligatorio',
-            'name.string' => 'El nombre del usuario debe ser un texto',
-            'profile_img.required' => 'La imagen es obligatoria',
-            'profile_img.image' => 'El archivo debe ser una imagen',
-            'profile_img.mimes' => 'Formatos de imagen permitidos: jpeg, png, jpg, gif',
-            'profile_img.max' => 'El tamaño máximo de la imagen es 2MB',
-        ]);
+        $datos = $request->all();
+        $nombreImagen = Str::random(10)."_".$request->file('img')->getClientOriginalName();
+        // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
+
+        //mover imagen subido desde el form de letters.create al servidor
+        $request->file('img')->move('img/letters', $nombreImagen);
+
+
+
+        //obtener texto y papa
+        $mensaje=$datos['mensaje'];
+        $papas=$datos['papas'];
+
+        //validar los datos
+        $rules= ['mensaje' => 'required|string',
+                'papas' => 'required|numeric'];
+
+//se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
+        $messages = array('papas' => 'las papas son requeridas, subnormal',
+                        'mensaje.string' => 'los mensajes deben ser textos, subnormal',
+                        'mensaje.required' => 'los mensajes deben ser requeridas, subnormal', );
+        $validator = validator::make($datos,$rules,$messages);
 
         if ($validator->fails()) {
-            \Session::flash('message', 'Error en las instrucciones de datos');
+            \Session::flash('message','error en las instrucciones de datos');
             return redirect()->back()->withErrors($validator);
-        }
+        }else{
+            $letter = new letter();
+            $letter->description=$datos['mensaje'];
+            $letter->user_id=auth()->user()->id;
+            $letter->papa_id=$datos['papas'];
+            $letter->img=$nombreImagen;
+            $letter->save();
 
-        if ($request->hasFile('profile_img')) {
-            $nombreImagen = $request->file('profile_img')->getClientOriginalName();
-            $request->file('profile_img')->move(public_path('img/users'), $nombreImagen);
-        }
+// $user=auth()->user();
+// $user=letter->save($letter);
 
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
-        $user->profile_img = $nombreImagen;
-        $user->save();
-
-        \Session::flash('message', 'Usuario creado exitosamente.');
-        return redirect('/');
+            \Session::flash('message','gracias por tu carta');
+            return redirect()->back();
     }
 
     /**
@@ -106,8 +115,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::findOrFail($id);
 
+        // Actualiza el nombre si se proporciona
+        if ($request->has('name')) {
+            $user->name = $request->input('name');
+        }
+
+        // Actualiza el role_id si se proporciona
+        if ($request->has('role')) {
+            $user->role_id = $request->input('role');
+        }
+
+        $user->save();
+
+        return response()->json(['message' => 'Usuario actualizado con éxito']);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -117,32 +141,34 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
+        $user = User::findOrFail($id);
+        // Elimina el user
+        $user->delete();
+        return redirect()->back()->with('success', 'Post eliminado exitosamente.');
     }
 
     public function changePassword(Request $request)
-    {
-        // Validar los campos del formulario
-        $request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|min:6',
-            'confirm_password' => 'required|same:new_password',
-        ]);
+{
+    // Validar los campos del formulario
+    $request->validate([
+        'current_password' => 'required',
+        'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+    ]);
 
-        // Obtener el usuario autenticado
-        $user = auth()->user();
+    // Obtener el usuario autenticado
+    $user = auth()->user();
 
-        // Verificar que la contraseña actual sea correcta
-        if (!Hash::check($request->current_password, $user->password)) {
-            return redirect()->back()->withErrors(['current_password' => 'La contraseña actual no es correcta.']);
-        }
-
-        // Cambiar la contraseña
-        $user->password = bcrypt($request->new_password);
-        $user->save();
-
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('user_show')->with('success', 'Contraseña cambiada con éxito.');
+    // Verificar que la contraseña actual sea correcta
+    if (!Hash::check($request->current_password, $user->password)) {
+        return redirect()->back()->withErrors(['current_password' => 'La contraseña actual no es correcta.']);
     }
+
+    // Cambiar la contraseña
+    $user->password = Hash::make($request->new_password);
+    $user->save();
+
+    // Redirigir con un mensaje de éxito
+    return redirect()->route('user_show')->with('success', 'Contraseña cambiada con éxito.');
+}
 
 }

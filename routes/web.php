@@ -30,6 +30,12 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
+Route::get('/eventos', [App\Http\Controllers\EventController::class, 'index']);
+Route::get('/eventos/mostrar', [App\Http\Controllers\EventController::class, 'show']);
+Route::post('/eventos/agregar', [App\Http\Controllers\EventController::class, 'store']);
+
+
+
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
@@ -37,7 +43,7 @@ Route::prefix('/admin')->group(function () {
     //rutas admin
     Route::resource('/roles', RoleController::class);
     Route::resource('/ubicaciones', LocationController::class);
-    Route::resource('/eventos', EventController::class);
+    // Route::resource('/eventos', EventController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/restaurants', RestaurantController::class);
     Route::resource('/categorias', CategoryController::class);
@@ -48,7 +54,7 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/user', UserController::class);
 });
 
-//ejemplo rutas cleinte y su controlador
+//ejemplo rutas cliente y su controlador
 Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
 Route::get('/galeria-comidas/{id}', [ClientController::class, 'galeria_comidas_show'])->name('galeria-comidas.show');
 
@@ -61,7 +67,7 @@ Route::get('/categoria/{id}', [ClientController::class, 'categoria_show'])->name
 Route::get('/tags/{id}', [ClientController::class, 'tags_show'])->name('tags_show');
 
 Route::get('user/{name}', 'App\Http\Controllers\UserController@show')->name('user_show');
-Route::post('/cambiar-contrasena', [UserController::class, 'changePassword'])->name('cambiar_contrasena');
+Route::put('/cambiar_contrasena', [UserController::class, 'changePassword'])->name('cambiar_contrasena');
 
 
 

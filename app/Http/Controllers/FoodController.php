@@ -54,20 +54,20 @@ class FoodController extends Controller
         $categories=$datos['categories'];
         $description=$datos['description'];
 
-//         //validar los datos
-//         $rules= ['mensaje' => 'required|string',
-//                 'papas' => 'required|numeric'];
+        //validar los datos
+        $rules= ['name' => 'required|string|unique:foods',
+                'price' => 'required|numeric',
+                'categories' => 'required|integer',
+                'description' => 'required|string',];
 
-// //se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
-//         $messages = array('papas' => 'las papas son requeridas, subnormal',
-//                         'mensaje.string' => 'los mensajes deben ser textos, subnormal',
-//                         'mensaje.required' => 'los mensajes deben ser requeridas, subnormal', );
-//         $validator = validator::make($datos,$rules,$messages);
+//se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
 
-//         if ($validator->fails()) {
-//             \Session::flash('message','error en las instrucciones de datos');
-//             return redirect()->back()->withErrors($validator);
-//         }else{
+        $validator = validator::make($datos,$rules);
+
+        if ($validator->fails()) {
+            \Session::flash('message','error en las instrucciones de datos');
+            return redirect()->back()->withErrors($validator);
+        }else{
             $food = new Food();
             $food->name=$name;
             $food->price=$price;
@@ -76,12 +76,9 @@ class FoodController extends Controller
             $food->description=$description;
             $food->save();
 
-// $user=auth()->user();
-// $user=letter->save($letter);
-
-            // \Session::flash('message','gracias por tu carta');
+            \Session::flash('message','gracias por tu carta');
             return redirect()->back();
-        // }
+        }
 
     }
 

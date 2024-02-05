@@ -59,7 +59,7 @@ class UserController extends Controller
         $rules= ['mensaje' => 'required|string',
                 'papas' => 'required|numeric'];
 
-//se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
+        //se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
         $messages = array('papas' => 'las papas son requeridas, subnormal',
                         'mensaje.string' => 'los mensajes deben ser textos, subnormal',
                         'mensaje.required' => 'los mensajes deben ser requeridas, subnormal', );
@@ -76,11 +76,12 @@ class UserController extends Controller
             $letter->img=$nombreImagen;
             $letter->save();
 
-// $user=auth()->user();
-// $user=letter->save($letter);
+            // $user=auth()->user();
+            // $user=letter->save($letter);
 
             \Session::flash('message','gracias por tu carta');
             return redirect()->back();
+        }
     }
 
     /**
@@ -172,3 +173,4 @@ class UserController extends Controller
 }
 
 }
+

@@ -113,7 +113,7 @@ class FoodController extends Controller
         $categories =Category::all();
 
         // Retorna la vista del formulario de edición con la categoría encontrada
-        return view('foods.edit', compact('food'),['categories' => $categories]);
+        return view('admin.foods.edit', compact('food'),['categories' => $categories]);
     }
 
     /**
@@ -124,20 +124,37 @@ class FoodController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $food = Food::findOrFail($id);
-        //si la imagen esta vacio, manda el select sin la img
-        $data = $request->only('name', 'description', 'price', 'category_id' );
-        if(trim($request->img)==''){
+{
+    $food = Food::findOrFail($id);
 
-            $data = $request->except('img');
+    // Obtener los datos del formulario
+    $data = $request->only('name', 'description', 'price', 'category_id');
 
-        }else{
-            $data=$request->all();
+    // Verificar si se proporciona una nueva imagen
+    if ($request->hasFile('img')) {
+        // Obtener la imagen actual
+        $currentImage = $food->img;
+
+        // Guardar la nueva imagen
+        $newImage = $request->file('img');
+        $imageName = time() . '_' . $newImage->getClientOriginalName();
+        $newImage->move(public_path('img/foods'), $imageName);
+
+        // Actualizar el nombre de la imagen en la base de datos
+        $data['img'] = $imageName;
+
+        // Eliminar la imagen anterior si existe
+        if ($currentImage && file_exists(public_path('img/foods/' . $currentImage))) {
+            unlink(public_path('img/foods/' . $currentImage));
         }
-        $food->update($data);
-        return redirect()->back();
     }
+
+    // Actualizar los datos del alimento en la base de datos
+    $food->update($data);
+
+    return redirect()->route('galeria-comidas.index')->with('success', 'La comida se ha actualizado exitosamente.');
+}
+
 
     /**
      * Remove the specified resource from storage.

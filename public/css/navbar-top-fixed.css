@@ -23,3 +23,12 @@ body {
 .custom-shape-divider-top-1707134803 .shape-fill {
     fill: #730000;
 }
+
+.navbar-nav .nav-link {
+    color: white !important; /* !important para sobrescribir estilos predeterminados */
+    text-decoration: none !important; /* Eliminar subrayado */
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+}

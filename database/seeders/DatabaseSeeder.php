@@ -254,13 +254,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Event::create([
-            'name'=>'Salida libre',
+            'title'=>'Salida libre',
             'description'=> 'Ven a comer lo bueno para ti!',
+
         ]);
 
-        \App\Models\Event::create([
-            'name'=>'Todayland',
-            'description'=> 'Muy chido',
-        ]);
+
     }
 }

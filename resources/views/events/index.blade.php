@@ -40,7 +40,7 @@ label, p{
 </style>
 @endsection
 
-@section('contenido')
+<!-- @section('contenido')
 <h1>Próximos eventos</h1>
 <div id="eventos">
     @foreach ($events as $event)
@@ -56,8 +56,8 @@ label, p{
         </div>
     @endforeach
 </div>
-@endsection
- --}}
+@endsection --}}
+
 
 
 @extends('layout.masterpage')
@@ -74,12 +74,12 @@ label, p{
 <h1>Calendario</h1>
 <div id="calendario"></div>
 
-    <!-- Button trigger modal -->
+
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event">
     Añadir evento
     </button>
 
-    <!-- Modal -->
+
     <div class="modal fade" id="event" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -93,11 +93,10 @@ label, p{
             <form action="" method="POST">
 
                 @csrf
-                {{-- Agregar id --}}
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="id">Id</label>
                     <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId">
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label for="title">Nombre del evento</label>
@@ -109,17 +108,16 @@ label, p{
                     <textarea  class="form-control" name="description" id="description" rows="3"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="start">Start</label>
+                    <label for="start">Fecha de inicio</label>
                     <input type="text" class="form-control" name="start" id="start" aria-describedby="helpId">
                     {{-- <small id="helpId" class="form-text text-muted"> Fecha incio del evento</small> --}}
                 </div>
                 <div class="form-group">
-                    <label for="end">End</label>
+                    <label for="end">Fecha de fin</label>
                     <input type="text" class="form-control" name="end" id="end" aria-describedby="helpId">
                     {{-- <small id="helpId" class="form-text text-muted"> Fecha fin del evento</small> --}}
                 </div>
             </form>
-
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-success" id="btn_save">Guardar</button>
@@ -131,6 +129,7 @@ label, p{
     </div>
   </div>
 @endsection
+
 @section('script')
 <script>
 
@@ -144,10 +143,15 @@ label, p{
 
 
         locale:"es", //idioma español
-
+        displayEventTime:false,
         events:"http://localhost/pajaroneta/public/eventos/mostrar",
 
-        dateClick:function(info){   //la info recoge el día que haces click
+        dateClick:function(info){  //la info recoge el día que haces click
+            formulario.reset();
+
+            formulario.start.value=info.dateStr;
+            // formulario.start.value=info.dateStr;
+
             $("#event").modal("show"); //al hacer click en la fecha que salga el modal evento jjejjej
         }
 
@@ -165,6 +169,8 @@ label, p{
             axios.post("http://localhost/pajaroneta/public/eventos/agregar", datos)
             .then(
                 (respuesta)=>{
+
+                calendar.refetchEvents();
                 $("#event").modal("hide");
             }
             )

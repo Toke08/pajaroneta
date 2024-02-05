@@ -42,39 +42,45 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'profile_img' => 'file|mimes:jpeg,png,jpg,gif|max:2048', // Corregir el nombre del campo
-        ], [
-            'name.required' => 'El nombre del usuario es obligatorio',
-            'name.string' => 'El nombre del usuario debe ser un texto',
-            'profile_img.required' => 'La imagen es obligatoria',
-            'profile_img.image' => 'El archivo debe ser una imagen',
-            'profile_img.mimes' => 'Formatos de imagen permitidos: jpeg, png, jpg, gif',
-            'profile_img.max' => 'El tamaño máximo de la imagen es 2MB',
-        ]);
+        $datos = $request->all();
+        $nombreImagen = Str::random(10)."_".$request->file('img')->getClientOriginalName();
+        // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
+
+        //mover imagen subido desde el form de letters.create al servidor
+        $request->file('img')->move('img/letters', $nombreImagen);
+
+
+
+        //obtener texto y papa
+        $mensaje=$datos['mensaje'];
+        $papas=$datos['papas'];
+
+        //validar los datos
+        $rules= ['mensaje' => 'required|string',
+                'papas' => 'required|numeric'];
+
+//se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
+        $messages = array('papas' => 'las papas son requeridas, subnormal',
+                        'mensaje.string' => 'los mensajes deben ser textos, subnormal',
+                        'mensaje.required' => 'los mensajes deben ser requeridas, subnormal', );
+        $validator = validator::make($datos,$rules,$messages);
 
         if ($validator->fails()) {
-            \Session::flash('message', 'Error en las instrucciones de datos');
+            \Session::flash('message','error en las instrucciones de datos');
             return redirect()->back()->withErrors($validator);
-        }
+        }else{
+            $letter = new letter();
+            $letter->description=$datos['mensaje'];
+            $letter->user_id=auth()->user()->id;
+            $letter->papa_id=$datos['papas'];
+            $letter->img=$nombreImagen;
+            $letter->save();
 
-        if ($request->hasFile('profile_img')) {
-            $nombreImagen = $request->file('profile_img')->getClientOriginalName();
-            $request->file('profile_img')->move(public_path('img/users'), $nombreImagen);
-        }
+// $user=auth()->user();
+// $user=letter->save($letter);
 
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
-        $user->profile_img = $nombreImagen;
-        $user->save();
-
-        \Session::flash('message', 'Usuario creado exitosamente.');
-        return redirect('/');
-        */
+            \Session::flash('message','gracias por tu carta');
+            return redirect()->back();
     }
 
     /**

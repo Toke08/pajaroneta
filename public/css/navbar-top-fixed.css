@@ -3,3 +3,23 @@ body {
   /*min-height: 75rem;*/
     padding-top: 5rem;
 }
+.custom-shape-divider-top-1707134803 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1707134803 svg {
+    position: relative;
+    display: block;
+    width: calc(114% + 1.3px);
+    height: 103px;
+}
+
+.custom-shape-divider-top-1707134803 .shape-fill {
+    fill: #730000;
+}

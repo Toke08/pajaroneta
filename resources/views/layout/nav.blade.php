@@ -27,8 +27,8 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
     </li>
-    <li id="login_btn">
-        <a class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
+    <li class="nav-item">
+        <a id="login-btn" class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
     </li>
 @else
     @if (auth()->user()->isAdmin())

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -42,7 +43,7 @@ class EventController extends Controller
         $request->validate(Event::$rules);
         $event=Event::create($request->all());
         return response()->json(['message' => 'Evento creado correctamente'], 200);
-
+        \Session::flash('message', 'Evento creado correctamente!'); //mensaje feedback
         // $datos=$request->all();
         // recoger datos de events
         // $name=$datos["name"];
@@ -73,10 +74,20 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
         // $event =Event::findOrFail($id);
         // return view('eventos.edit', compact('event'));
+
+        $event=Event::find($id);
+        //quito las horas etc
+        $event->start=Carbon::createFromFormat('Y-m-d H:i:s', $event->start)->format('Y-m-d');
+        $event->end=Carbon::createFromFormat('Y-m-d H:i:s', $event->end)->format('Y-m-d');
+
+        return response()->json($event);
+
+
+
     }
 
     /**
@@ -102,8 +113,7 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $event = Event::findOrFail($id);
-        $event->delete();
-        return redirect()->back();
+        $event = Event::findOrFail($id)->delete();
+        return response()->json($event);
     }
 }

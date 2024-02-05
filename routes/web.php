@@ -33,7 +33,8 @@ Route::get('/', function () {
 Route::get('/eventos', [App\Http\Controllers\EventController::class, 'index']);
 Route::get('/eventos/mostrar', [App\Http\Controllers\EventController::class, 'show']);
 Route::post('/eventos/agregar', [App\Http\Controllers\EventController::class, 'store']);
-
+Route::post('/eventos/editar/{id}', [App\Http\Controllers\EventController::class, 'edit']);
+Route::post('/eventos/borrar/{id}', [App\Http\Controllers\EventController::class, 'destroy']);
 
 
 Route::prefix('/admin')->group(function () {

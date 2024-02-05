@@ -32,3 +32,10 @@ body {
 .navbar-nav .nav-link.active {
     font-weight: bold;
 }
+.navbar-nav .nav-link#login-btn {
+    background-color: white;
+    color: #000000 !important; /* Puedes ajustar el color del texto según tus preferencias */
+    border-radius: 20px; /* Bordes redondos */
+    padding: 8px 16px; /* Ajusta el relleno según sea necesario */
+}
+

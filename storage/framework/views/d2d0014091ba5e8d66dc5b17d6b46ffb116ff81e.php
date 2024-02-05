@@ -1,8 +1,3 @@
-
-
-
-
-
 <?php $__env->startSection('titulo'); ?>
 
 <?php $__env->stopSection(); ?>
@@ -20,13 +15,11 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event">
     Añadir evento
     </button>
-
-
     <div class="modal fade" id="event" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Crea un nuevo evento</h5>
+          <h5 class="modal-title" >Datos del evento</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -48,12 +41,12 @@
                 </div>
                 <div class="form-group">
                     <label for="start">Fecha de inicio</label>
-                    <input type="text" class="form-control" name="start" id="start" aria-describedby="helpId">
+                    <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId">
                     
                 </div>
                 <div class="form-group">
                     <label for="end">Fecha de fin</label>
-                    <input type="text" class="form-control" name="end" id="end" aria-describedby="helpId">
+                    <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId">
                     
                 </div>
             </form>
@@ -92,25 +85,19 @@
             // formulario.start.value=info.dateStr;
 
             $("#event").modal("show"); //al hacer click en la fecha que salga el modal evento jjejjej
-        }
+        },
+        eventClick:function(info){
+            var event=info.event;
+            console.log(event);
 
-    });
-      calendar.render();
-
-      //capturo la accion del btn guadar
-      document.getElementById("btn_save").addEventListener('click', function(){
-            //recupero la info del form
-            const datos= new FormData(formulario);
-            console.log(datos);
-            console.log(formulario.title.value);
-            console.log(formulario.description.value);
-
-            axios.post("http://localhost/pajaroneta/public/eventos/agregar", datos)
+            axios.post("http://localhost/pajaroneta/public/eventos/editar/"+info.event.id)
             .then(
                 (respuesta)=>{
-
-                calendar.refetchEvents();
-                $("#event").modal("hide");
+                formulario.title.value=respuesta.data.title;
+                formulario.description.value=respuesta.data.description;
+                formulario.start.value=respuesta.data.start;
+                formulario.end.value=respuesta.data.end;
+                $("#event").modal("show");
             }
             )
             .catch((error) => {
@@ -124,12 +111,48 @@
         } else {
             console.error('Error durante la solicitud:', error.message);
         }
-    });
+        });
 
+    }
+
+    });
+      calendar.render();
+
+      //capturo la accion del btn guadar
+      document.getElementById("btn_save").addEventListener('click', function(){
+        enviarDatos("http://localhost/pajaroneta/public/eventos/agregar");
       });
-
-
+      //eliminar eventos
+      document.getElementById("btn_delete").addEventListener('click', function(){
+        enviarDatos("http://localhost/pajaroneta/public/eventos/borrar/"+formulario.id.value);
     });
+
+    function enviarDatos(url){
+        const datos= new FormData(formulario);
+            axios.post(url, datos)
+            .then(
+                (respuesta)=>{
+                //esto saca los eventos actualizando de forma automática
+                calendar.refetchEvents();
+                $("#event").modal("hide");
+            }
+            )
+            .catch((error) => {
+            console.error('Error en la solicitud:', error);
+
+            if (error.response) {
+            console.error('Respuesta del servidor:', error.response.data);
+            // Muestra mensajes de error al usuario si es necesario
+            } else if (error.request) {
+            console.error('No se recibió respuesta del servidor');
+            } else {
+            console.error('Error durante la solicitud:', error.message);
+            }
+            });
+    }
+
+
+});
 
   </script>
 

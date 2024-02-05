@@ -15,7 +15,8 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <img src="<?php echo e(asset('img/users/' . $user->profile_img)); ?>" alt="Profile Image" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+                        <img src="<?php echo e(asset('img/users/' . $user->profile_img)); ?>" alt="Profile Image"
+                             class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item"><strong>Name:</strong> <?php echo e($user->name); ?></li>
@@ -25,12 +26,13 @@
                 </div>
 
                 <!-- Botón para abrir el modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
+                <button id="changePassword" type="button" class="btn btn-primary">
                     Cambiar Contraseña
                 </button>
 
                 <!-- Modal para cambiar la contraseña -->
-                <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog"
+                     aria-labelledby="changePasswordModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -42,29 +44,32 @@
 
                             <div class="modal-body">
                                 <!-- Formulario para cambiar la contraseña -->
-                                <form action="<?php echo e(route('cambiar_contrasena')); ?>" method="post">
+                                <form action="<?php echo e(route('cambiar_contrasena')); ?>" method="POST">
                                     <?php echo csrf_field(); ?>
-                                    <?php echo method_field('put'); ?>
+                                    <?php echo method_field('PUT'); ?>
 
                                     <!-- Agrega los campos necesarios (contraseña actual, nueva contraseña, confirmación) -->
                                     <div class="form-group">
                                         <label for="current_password">Contraseña Actual</label>
-                                        <input type="password" name="current_password" id="current_password" class="form-control" required>
+                                        <input type="password" name="current_password" id="current_password"
+                                               class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="new_password">Nueva Contraseña</label>
-                                        <input type="password" name="new_password" id="new_password" class="form-control" required>
+                                        <input type="password" name="new_password" id="new_password"
+                                               class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm_password">Confirmar Nueva Contraseña</label>
-                                        <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
+                                        <input type="password" name="confirm_password" id="confirm_password"
+                                               class="form-control" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                                     <!-- Botón para cerrar el modal -->
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar
+                                    </button>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -73,7 +78,15 @@
         </div>
     </div>
 </div>
+<?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('script'); ?>
+<script>
+    // JavaScript para abrir el modal cuando se hace clic en el botón
+    document.getElementById('changePassword').addEventListener('click', function () {
+        $('#changePasswordModal').modal('show');
+    });
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\RodDAW2\UniServerZ\www\pajaroneta\resources\views/client/user_show.blade.php ENDPATH**/ ?>

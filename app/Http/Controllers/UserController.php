@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -143,28 +142,27 @@ class UserController extends Controller
     }
 
     public function changePassword(Request $request)
-    {
-        // Validar los campos del formulario
-        $request->validate([
-            'current_password' => 'required',
-            'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+{
+    // Validar los campos del formulario
+    $request->validate([
+        'current_password' => 'required',
+        'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+    ]);
 
-        ]);
+    // Obtener el usuario autenticado
+    $user = auth()->user();
 
-        // Obtener el usuario autenticado
-        $user = auth()->user();
-
-        // Verificar que la contraseña actual sea correcta
-        if (!Hash::check($request->current_password, $user->password)) {
-            return redirect()->back()->withErrors(['current_password' => 'La contraseña actual no es correcta.']);
-        }
-
-        // Cambiar la contraseña
-        $user->password = Hash::make($request->new_password);
-        $user->save();
-
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('user_show')->with('success', 'Contraseña cambiada con éxito.');
+    // Verificar que la contraseña actual sea correcta
+    if (!Hash::check($request->current_password, $user->password)) {
+        return redirect()->back()->withErrors(['current_password' => 'La contraseña actual no es correcta.']);
     }
+
+    // Cambiar la contraseña
+    $user->password = Hash::make($request->new_password);
+    $user->save();
+
+    // Redirigir con un mensaje de éxito
+    return redirect()->route('user_show')->with('success', 'Contraseña cambiada con éxito.');
+}
 
 }

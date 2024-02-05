@@ -1,75 +1,12 @@
-{{-- @extends('layout.masterpage')
+<?php $__env->startSection('titulo'); ?>
 
-@section('titulo')
-Eventos
-@endsection
-@section('estilos')
-<style>
-h1{
-    font-family: 'Quicksand', sans-serif;
+<?php $__env->stopSection(); ?>
 
-}
-#eventos{
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #000000;
-    border-radius: 10px;
-    font-family: 'Quicksand', sans-serif;
-
-}
-.event_title{
-    background-color:#A62224;
-    color: #ffffff;
-    display: flex;
-    flex-direction:row;
-    border-bottom: 2px solid #000000;
-}
-label, p{
-    width: 30%;
-    margin:2%
-}
-.event_info{
-    color: #000000;
-    display: flex;
-    flex-direction:row;
-}
-
-
-
-
-</style>
-@endsection
-
-<!-- @section('contenido')
-<h1>Próximos eventos</h1>
-<div id="eventos">
-    @foreach ($events as $event)
-        <div class="event_title">
-            <label>Fecha</label>
-            <label>Nombre</label>
-            <label>Descripción</label>
-        </div>
-        <div class="event_info">
-            <p>{{$event->date}}</p>
-            <p>{{$event->name}}</p>
-            <p>{{$event->description}}</p>
-        </div>
-    @endforeach
-</div>
-@endsection --}}
-
-
-
-@extends('layout.masterpage')
-@section('titulo')
-
-@endsection
-
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style></style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 <h1>Calendario</h1>
 <div id="calendario"></div>
@@ -92,16 +29,13 @@ label, p{
         <div class="modal-body">
             <form action="" method="POST">
 
-                @csrf
-                {{-- <div class="form-group">
-                    <label for="id">Id</label>
-                    <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId">
-                </div> --}}
+                <?php echo csrf_field(); ?>
+                
 
                 <div class="form-group">
                     <label for="title">Nombre del evento</label>
                     <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId">
-                    {{-- <small id="helpId" class="form-text text-muted"> Holasss esto no se que es</small> --}}
+                    
                 </div>
                 <div class="form-group">
                     <label for="description">Descripción</label>
@@ -110,12 +44,12 @@ label, p{
                 <div class="form-group">
                     <label for="start">Fecha de inicio</label>
                     <input type="text" class="form-control" name="start" id="start" aria-describedby="helpId">
-                    {{-- <small id="helpId" class="form-text text-muted"> Fecha incio del evento</small> --}}
+                    
                 </div>
                 <div class="form-group">
                     <label for="end">Fecha de fin</label>
                     <input type="text" class="form-control" name="end" id="end" aria-describedby="helpId">
-                    {{-- <small id="helpId" class="form-text text-muted"> Fecha fin del evento</small> --}}
+                    
                 </div>
             </form>
         </div>
@@ -128,9 +62,9 @@ label, p{
       </div>
     </div>
   </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -194,6 +128,8 @@ label, p{
 
   </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ1\www\pajaroneta\resources\views/events/index.blade.php ENDPATH**/ ?>

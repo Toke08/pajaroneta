@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pajaroneta <?php echo $__env->yieldContent('titulo'); ?></title>
 
-<!-- CSS de Bootstrap -->
+    <!-- CSS de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
 
@@ -25,8 +25,6 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
 
     <!-- csrf para actualizar info del usuario desde panel admin -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">

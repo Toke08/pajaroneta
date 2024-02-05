@@ -28,7 +28,7 @@
         <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
+        <a class="nav-link" id="login_btn" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
     </li>
 <?php else: ?>
     <?php if(auth()->user()->isAdmin()): ?>

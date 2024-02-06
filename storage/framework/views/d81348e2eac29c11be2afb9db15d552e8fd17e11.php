@@ -26,6 +26,7 @@
             <th scope="col">imagen</th>
             <th scope="col">descripcion</th>
             <th scope="col">categoria</th>
+            <th scope="col">Acciones</th>
         </tr>
   </thead>
   <tbody>
@@ -39,6 +40,18 @@
             <td><img src="<?php echo e(asset('img/foods/'.$food->img)); ?>"></td>
             <td><?php echo e($food->description); ?></td>
             <td><?php echo e($food->category->name); ?></td>
+            <td>
+                <form action="<?php echo e(route('galeria-comidas.edit', $food->id)); ?>" method="GET">
+                    <?php echo csrf_field(); ?>
+                    <button type="submit">Editar</button>
+                </form>
+
+                <form action="<?php echo e(route('galeria-comidas.destroy', $food->id)); ?>"   method="POST">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('DELETE'); ?>
+                    <button type="submit">Borrar</button>
+                </form>
+            </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>

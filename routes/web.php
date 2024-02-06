@@ -68,11 +68,12 @@ Route::get('/categoria/{id}', [ClientController::class, 'categoria_show'])->name
 Route::get('/tags/{id}', [ClientController::class, 'tags_show'])->name('tags_show');
 
 Route::get('/user/{name}', 'App\Http\Controllers\UserController@show')->name('user_show');
+Route::get('/user/{name}', [ClientController::class, 'user_show'])->name('user_show');
 Route::put('/user/cambiar_contrasena', [UserController::class, 'changePassword'])->name('cambiar_contrasena');
 Route::post('/user', [ClientController::class, 'user_store'])->name('user_store');
-Route::get('/user/{id}/edit', [ClientController::class, 'user_edit'])->name('user_edit');
-Route::put('/user/{id}', [ClientController::class, 'user_update'])->name('user_update');
-Route::delete('/user/{id}', [ClientController::class, 'user_destroy'])->name('user_destroy');
+Route::get('/user/{name}/edit', [ClientController::class, 'user_edit'])->name('user_edit');
+Route::put('/user/{name}', [ClientController::class, 'user_update'])->name('user_update');
+Route::delete('/user/{name}', [ClientController::class, 'user_destroy'])->name('user_destroy');
 
 
 // function galeria_comidas(){

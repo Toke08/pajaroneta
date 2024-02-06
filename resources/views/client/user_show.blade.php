@@ -27,7 +27,7 @@
                     </ul>
                 </div>
 
-                <form action="{{ route('user_edit', $user->id) }}" method="GET">
+                <form action="{{ route('user_edit', $user->name) }}" method="GET">
                     @csrf
                     <button type="submit">Editar</button>
                 </form>

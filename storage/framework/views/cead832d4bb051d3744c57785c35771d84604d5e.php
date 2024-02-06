@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
@@ -26,6 +24,11 @@
                         <!-- No mostrar la contraseña directamente -->
                     </ul>
                 </div>
+
+                <form action="<?php echo e(route('user_edit', $user->name)); ?>" method="GET">
+                    <?php echo csrf_field(); ?>
+                    <button type="submit">Editar</button>
+                </form>
 
                 <!-- Botón para abrir el modal -->
                 <button id="changePassword" type="button" class="btn btn-primary">
@@ -58,14 +61,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="new_password">Nueva Contraseña</label>
-                                        <input type="password" name="new_password" id="new_password"
-                                               class="form-control" required>
+                                        <input type="password" name="new_password" id="new_password" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="confirm_password">Confirmar Nueva Contraseña</label>
-                                        <input type="password" name="confirm_password" id="confirm_password"
-                                               class="form-control" required>
+                                        <label for="new_password_confirmation">Confirmar Nueva Contraseña</label>
+                                        <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" required>
                                     </div>
+
                                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                                     <!-- Botón para cerrar el modal -->
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar

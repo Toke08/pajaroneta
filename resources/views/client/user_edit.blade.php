@@ -15,7 +15,7 @@
                 <div class="card-header bg-primary text-white">
                     User Profile
                 </div>
-                <form action="{{route('user_update', $user->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('user_update', $user->name)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                         <div class="card-body">
@@ -23,20 +23,17 @@
                                 <img src="{{ asset('img/users/' . $user->profile_img) }}" alt="Profile Image"
                                     class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
                                     {{-- cambiar imagen --}}
-                                    <label for="image">Cambiar imagen:</label>
-                                    <input type="file" name="img">
                             </div>
+                            <label for="image">Cambiar imagen:</label>
+                                    <input type="file" name="img">
                             <ul class="list-group">
                                 <li class="list-group-item"><strong>Name:</strong> <input type="text" id="name" name="name" value="{{ $user->name }}" required></li>
-                                <li class="list-group-item"><strong>Email:</strong> <input type="text" id="email" name="email" value="{{ $user->email }}" required></li>
+                                <li class="list-group-item"><strong>Email:</strong> {{ $user->email }}</li>
                                 <!-- No mostrar la contraseña directamente -->
                             </ul>
                         </div>
 
-                        <form action="{{ route('user_edit', $user->id) }}" method="GET">
-                            @csrf
-                            <button type="submit">Editar</button>
-                        </form>
+                        <input type="submit" value="Actualizar">
 
                 </form>
             </div>

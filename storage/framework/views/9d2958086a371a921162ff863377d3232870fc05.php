@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
@@ -24,6 +26,11 @@
                         <!-- No mostrar la contraseña directamente -->
                     </ul>
                 </div>
+
+                <form action="<?php echo e(route('user_edit', $user->id)); ?>" method="GET">
+                    <?php echo csrf_field(); ?>
+                    <button type="submit">Editar</button>
+                </form>
 
                 <!-- Botón para abrir el modal -->
                 <button id="changePassword" type="button" class="btn btn-primary">

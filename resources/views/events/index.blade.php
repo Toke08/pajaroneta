@@ -1,64 +1,3 @@
-{{-- @extends('layout.masterpage')
-
-@section('titulo')
-Eventos
-@endsection
-@section('estilos')
-<style>
-h1{
-    font-family: 'Quicksand', sans-serif;
-
-}
-#eventos{
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #000000;
-    border-radius: 10px;
-    font-family: 'Quicksand', sans-serif;
-
-}
-.event_title{
-    background-color:#A62224;
-    color: #ffffff;
-    display: flex;
-    flex-direction:row;
-    border-bottom: 2px solid #000000;
-}
-label, p{
-    width: 30%;
-    margin:2%
-}
-.event_info{
-    color: #000000;
-    display: flex;
-    flex-direction:row;
-}
-
-
-
-
-</style>
-@endsection
-
-<!-- @section('contenido')
-<h1>Próximos eventos</h1>
-<div id="eventos">
-    @foreach ($events as $event)
-        <div class="event_title">
-            <label>Fecha</label>
-            <label>Nombre</label>
-            <label>Descripción</label>
-        </div>
-        <div class="event_info">
-            <p>{{$event->date}}</p>
-            <p>{{$event->name}}</p>
-            <p>{{$event->description}}</p>
-        </div>
-    @endforeach
-</div>
-@endsection --}}
-
-
 
 @extends('layout.masterpage')
 @section('titulo')
@@ -91,36 +30,39 @@ label, p{
             <form action="" method="POST">
 
                 @csrf
-                {{-- <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="id">Id</label>
                     <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId">
-                </div> --}}
+                </div> -->
 
                 <div class="form-group">
                     <label for="title">Nombre del evento</label>
                     <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId">
-                    {{-- <small id="helpId" class="form-text text-muted"> Holasss esto no se que es</small> --}}
+                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
                 </div>
                 <div class="form-group">
                     <label for="description">Descripción</label>
                     <textarea  class="form-control" name="description" id="description" rows="3"></textarea>
+                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
                 </div>
                 <div class="form-group">
                     <label for="start">Fecha de inicio</label>
                     <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId">
-                    {{-- <small id="helpId" class="form-text text-muted"> Fecha incio del evento</small> --}}
+                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
                 </div>
                 <div class="form-group">
                     <label for="end">Fecha de fin</label>
                     <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId">
-                    {{-- <small id="helpId" class="form-text text-muted"> Fecha fin del evento</small> --}}
+                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-success" id="btn_save">Guardar</button>
             <button type="button" class="btn btn-warning"  id="btn_modify">Editar</button>
+
             <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
+
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
@@ -132,8 +74,10 @@ label, p{
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
-        // recoge los datos del from jquery
+        // recoge los datos del form jquery
         let formulario=document.querySelector("form");
+
+
 
         var calendarEl = document.getElementById('calendario');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -154,7 +98,7 @@ label, p{
         },
         eventClick:function(info){
             var event=info.event;
-            console.log(event);
+            // console.log(event);
 
             axios.post("http://localhost/pajaroneta/public/eventos/editar/"+info.event.id)
             .then(
@@ -190,7 +134,42 @@ label, p{
       });
       //eliminar eventos
       document.getElementById("btn_delete").addEventListener('click', function(){
-        enviarDatos("http://localhost/pajaroneta/public/eventos/borrar/"+formulario.id.value);
+
+        url="http://localhost/pajaroneta/public/eventos/borrar/"+event.id;
+
+        const datos= new FormData(formulario);
+
+
+
+
+            axios.post(url, datos)
+            .then(
+                (respuesta)=>{
+                //esto saca los eventos actualizando de forma automática
+                calendar.refetchEvents();
+                $("#event").modal("hide");
+            }
+            )
+            .catch((error) => {
+            console.error('Error en la solicitud:', error);
+
+            if (error.response) {
+            console.error('Respuesta del servidor:', error.response.data);
+            // Muestra mensajes de error al usuario si es necesario
+            } else if (error.request) {
+            console.error('No se recibió respuesta del servidor');
+            } else {
+            console.error('Error durante la solicitud:', error.message);
+            }
+            });
+
+
+
+
+
+
+
+
     });
 
     function enviarDatos(url){
@@ -216,7 +195,6 @@ label, p{
             }
             });
     }
-
 
 });
 

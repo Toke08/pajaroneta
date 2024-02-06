@@ -30,6 +30,8 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
+
+
 Route::get('/eventos', [App\Http\Controllers\EventController::class, 'index']);
 Route::get('/eventos/mostrar', [App\Http\Controllers\EventController::class, 'show']);
 Route::post('/eventos/agregar', [App\Http\Controllers\EventController::class, 'store']);
@@ -73,6 +75,11 @@ Route::post('/user', [ClientController::class, 'user_store'])->name('user_store'
 Route::get('/user/{id}/edit', [ClientController::class, 'user_edit'])->name('user_edit');
 Route::put('/user/{id}', [ClientController::class, 'user_update'])->name('user_update');
 Route::delete('/user/{id}', [ClientController::class, 'user_destroy'])->name('user_destroy');
+
+
+
+
+
 
 
 // function galeria_comidas(){

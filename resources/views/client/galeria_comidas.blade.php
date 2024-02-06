@@ -1,7 +1,7 @@
 @extends('layout.masterpage')
 
 @section('titulo')
-    Galeria de comidas
+    ¿Con hambre?
 @endsection
 
 @section('estilos')

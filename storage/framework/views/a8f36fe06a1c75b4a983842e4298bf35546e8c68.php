@@ -1,14 +1,12 @@
+<?php $__env->startSection('titulo'); ?>
 
-@extends('layout.masterpage')
-@section('titulo')
+<?php $__env->stopSection(); ?>
 
-@endsection
-
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style></style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 <h1>Calendario</h1>
 <div id="calendario"></div>
@@ -29,7 +27,7 @@
         <div class="modal-body">
             <form action="" method="POST">
 
-                @csrf
+                <?php echo csrf_field(); ?>
                 <!-- <div class="form-group">
                     <label for="id">Id</label>
                     <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId">
@@ -68,9 +66,9 @@
       </div>
     </div>
   </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -200,6 +198,8 @@
 
   </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ1\www\pajaroneta\resources\views/events/index.blade.php ENDPATH**/ ?>

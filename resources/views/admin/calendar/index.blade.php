@@ -5,6 +5,9 @@
 
 @section('css')
 <style>
+#cont_cale{
+    background-image:url("../../../../public/img/styles/combis.png");
+}
 #mapa{
     margin-top: 5%;
     margin-bottom: 5%;
@@ -18,7 +21,10 @@ iframe{
 </style>
 @endsection
 
+
 @section('content')
+<div id="cont_cale">
+
 
 <h1>Hoy nos encontramos en...</h1>
 
@@ -89,6 +95,9 @@ iframe{
       </div>
     </div>
   </div>
+
+
+</div>
 @endsection
 
 
@@ -123,7 +132,7 @@ iframe{
             var event=info.event;
             // console.log(event);
 
-            axios.post("http://localhost/pajaroneta/public/eventos/editar/"+info.event.id)
+            axios.post("http://localhost/pajaroneta/public/admin/calendario"+info.event.id)
             .then(
                 (respuesta)=>{
                 formulario.title.value=respuesta.data.title;

@@ -1,4 +1,5 @@
 .custom-shape-divider-bottom-1707172603 {
+
     bottom: 0;
     left: 0;
     width: 100%;
@@ -7,7 +8,7 @@
 }
 
 .custom-shape-divider-bottom-1707172603 svg {
-    /* position: relative; */
+    position: relative;
     display: block;
     width: calc(153% + 1.3px);
     height: 124px;

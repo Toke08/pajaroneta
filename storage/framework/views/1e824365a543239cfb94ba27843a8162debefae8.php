@@ -156,4 +156,4 @@ $(document).ready(function () {
 </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\RodDAW2\UniServerZ\www\pajaroneta\resources\views/admin/users/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ1\www\pajaroneta\resources\views/admin/users/index.blade.php ENDPATH**/ ?>

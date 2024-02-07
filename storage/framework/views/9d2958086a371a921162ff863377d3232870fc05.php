@@ -27,7 +27,7 @@
                     </ul>
                 </div>
 
-                <form action="<?php echo e(route('user_edit', $user->id)); ?>" method="GET">
+                <form action="<?php echo e(route('user_edit', $user->name)); ?>" method="GET">
                     <?php echo csrf_field(); ?>
                     <button type="submit">Editar</button>
                 </form>

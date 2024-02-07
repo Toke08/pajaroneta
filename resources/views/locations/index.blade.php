@@ -79,23 +79,6 @@ button{
         @endforeach
     </div>
 </div>
-
-<!--
-<script>
-     const deleteButtons = document.querySelectorAll('.btn-delete');
-
-    deleteButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const locationId = this.getAttribute('data-location-id');
-        const mensaje = confirm("¿Deseas eliminar esta ubicación? Se borrarán los eventos relacionados con dicha información");
-
-        if (mensaje) {
-            //no se a donde redirigir
-
-        }
-    });
-});
-</script>-->
 @endsection
 
 

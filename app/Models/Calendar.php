@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Event;
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +12,8 @@ class Calendar extends Model
 
     protected $fillable = [
         'id',
-        'date',
+        'start',
+        'end',
         'location_id',
         'event_id'
     ];

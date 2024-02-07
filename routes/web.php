@@ -32,11 +32,11 @@ Route::get('/', function () {
 
 
 
-Route::get('/eventos', [App\Http\Controllers\EventController::class, 'index']);
-Route::get('/eventos/mostrar', [App\Http\Controllers\EventController::class, 'show']);
-Route::post('/eventos/agregar', [App\Http\Controllers\EventController::class, 'store']);
-Route::post('/eventos/editar/{id}', [App\Http\Controllers\EventController::class, 'edit']);
-Route::post('/eventos/borrar/{id}', [App\Http\Controllers\EventController::class, 'destroy']);
+// Route::get('/eventos', [App\Http\Controllers\EventController::class, 'index']);
+// Route::get('/eventos/mostrar', [App\Http\Controllers\EventController::class, 'show']);
+// Route::post('/eventos/agregar', [App\Http\Controllers\EventController::class, 'store']);
+// Route::post('/eventos/editar/{id}', [App\Http\Controllers\EventController::class, 'edit']);
+// Route::post('/eventos/borrar/{id}', [App\Http\Controllers\EventController::class, 'destroy']);
 
 
 Route::prefix('/admin')->group(function () {
@@ -46,7 +46,7 @@ Route::prefix('/admin')->group(function () {
     //rutas admin
     Route::resource('/roles', RoleController::class);
     Route::resource('/ubicaciones', LocationController::class);
-    // Route::resource('/eventos', EventController::class);
+    Route::resource('/eventos', EventController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/restaurants', RestaurantController::class);
     Route::resource('/categorias', CategoryController::class);

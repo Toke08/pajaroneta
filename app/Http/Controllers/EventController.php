@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+
 
 class EventController extends Controller
 {
@@ -16,9 +16,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        // $events = Event::all();
-        // return view("events.index", ['events'=> $events]);
-        return view("events.index");
+        $events = Event::all();
+        return view("events.index", ['events'=> $events]);
+
+        //return view("events.index"); esto es del video de laravel con fullcalendar.io
     }
 
     /**
@@ -28,8 +29,10 @@ class EventController extends Controller
      */
     public function create()
     {
-        // $events = Event::all();
-        return view("events.create");
+        $events = Event::all();
+        return view("events.create", ['events'=> $events]);
+
+        // return view("events.create");
     }
 
     /**
@@ -40,20 +43,21 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(Event::$rules);
-        $event=Event::create($request->all());
-        return response()->json(['message' => 'Evento creado correctamente'], 200);
-        \Session::flash('message', 'Evento creado correctamente!'); //mensaje feedback
-        // $datos=$request->all();
-        // recoger datos de events
-        // $name=$datos["name"];
-        // $description=$datos["description"];
-        // $event= new Event();
-        // $event->title=$title;
-        // $event->description=$description;
-        // $event->save(); //guardar
-        // \Session::flash('message', 'Evento creado correctamente!'); //mensaje feedback
-        // return redirect()->back(); //volver a las vista
+        // $request->validate(Event::$rules);
+        // $event=Event::create($request->all());
+        // return response()->json(['message' => 'Evento creado correctamente'], 200);
+
+        $datos=$request->all();
+
+        $title=$datos["title"];
+        $description=$datos["description"];
+
+        $event= new Event();
+        $event->title=$title;
+        $event->description=$description;
+        $event->save(); //guardar
+
+        return redirect()->back(); //volver a las vista
     }
 
     /**
@@ -64,8 +68,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $event=Event::all();
-        return response()->json($event);
+        // $event=Event::all();
+        // return response()->json($event);
     }
 
     /**
@@ -79,12 +83,12 @@ class EventController extends Controller
         // $event =Event::findOrFail($id);
         // return view('eventos.edit', compact('event'));
 
-        $event=Event::find($id);
-        //quito las horas etc
-        $event->start=Carbon::createFromFormat('Y-m-d H:i:s', $event->start)->format('Y-m-d');
-        $event->end=Carbon::createFromFormat('Y-m-d H:i:s', $event->end)->format('Y-m-d');
+        // $event=Event::find($id);
+        // //quito las horas etc
+        // $event->start=Carbon::createFromFormat('Y-m-d H:i:s', $event->start)->format('Y-m-d');
+        // $event->end=Carbon::createFromFormat('Y-m-d H:i:s', $event->end)->format('Y-m-d');
 
-        return response()->json($event);
+        // return response()->json($event);
 
 
 
@@ -113,8 +117,6 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-
-
 
         $event = Event::findOrFail($id)->delete();
         return response()->json($event);

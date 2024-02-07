@@ -7,6 +7,7 @@ use App\Models\Location;
 use App\Models\Calendar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CalendarController extends Controller
 {
@@ -17,9 +18,17 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        //
-        $calendars = Calendar::with('event', 'location')->get();
-        return view("admin.calendar.index", ['calendars'=> $calendars]);
+
+        // $events = Event::all();
+        // $locations = Location::all();
+
+        // $calendars = Calendar::with('event', 'location')->get();
+        // return view("admin.calendar.index", ['calendars'=> $calendars]);
+        // return view("admin.calendar.create", ['locations' => $locations, 'events' => $events]);
+
+            $events = Event::all();
+            $locations = Location::all();
+            return view('admin.calendar.index', compact('events', 'locations'));
     }
 
     /**
@@ -29,7 +38,7 @@ class CalendarController extends Controller
      */
     public function create()
     {
-        //
+
         $locations = Location::all();
         $events = Event::all();
 
@@ -44,9 +53,10 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         $request->validate([
-            'date' => 'required|date',
+            'start'=>'required|date',
+            'end' => 'required|date',
             'location_id' => 'required|exists:locations,id',
             'event_id' => 'required|exists:events,id',
         ]);
@@ -55,7 +65,8 @@ class CalendarController extends Controller
         $calendar = new Calendar();
 
         // Asignar los datos del formulario a la instancia
-        $calendar->date = $request->input('date');
+        $calendar->start = $request->input('start');
+        $calendar->end = $request->input('end');
         $calendar->location_id = $request->input('location_id');
         $calendar->event_id = $request->input('event_id');
 
@@ -74,7 +85,9 @@ class CalendarController extends Controller
      */
     public function show(Calendar $calendar)
     {
-        //
+        $locations = Location::all();
+        $events = Event::all();
+
     }
 
     /**

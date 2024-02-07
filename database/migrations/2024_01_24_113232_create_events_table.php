@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique;
             $table->text('description');
-            $table->dateTime('start');
-            $table->dateTime('end');
+            // $table->dateTime('start');
+            // $table->dateTime('end');
             $table->timestamps();
 
         });

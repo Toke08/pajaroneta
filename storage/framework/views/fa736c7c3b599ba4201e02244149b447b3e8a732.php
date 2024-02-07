@@ -4,7 +4,14 @@
 <?php $__env->startSection('estilos'); ?>
 <style>
 #mapa{
-    margin:10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#calendario{
+    z-index: 1;
+}
+iframe{
+    width: 100%;
 }
 </style>
 <?php $__env->stopSection(); ?>

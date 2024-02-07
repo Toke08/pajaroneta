@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
+            $table->date('start');
+            $table->date('end');
             $table->foreignId('location_id')->constrained()->onDelete('cascade');;
             $table->foreignId('event_id')->constrained()->onDelete('cascade');;
             $table->timestamps();

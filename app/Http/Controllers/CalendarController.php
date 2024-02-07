@@ -7,6 +7,7 @@ use App\Models\Location;
 use App\Models\Calendar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CalendarController extends Controller
 {
@@ -54,7 +55,8 @@ class CalendarController extends Controller
     {
 
         $request->validate([
-            'date' => 'required|date',
+            'start'=>'required|date',
+            'end' => 'required|date',
             'location_id' => 'required|exists:locations,id',
             'event_id' => 'required|exists:events,id',
         ]);
@@ -63,7 +65,8 @@ class CalendarController extends Controller
         $calendar = new Calendar();
 
         // Asignar los datos del formulario a la instancia
-        $calendar->date = $request->input('date');
+        $calendar->start = $request->input('start');
+        $calendar->end = $request->input('end');
         $calendar->location_id = $request->input('location_id');
         $calendar->event_id = $request->input('event_id');
 
@@ -82,7 +85,9 @@ class CalendarController extends Controller
      */
     public function show(Calendar $calendar)
     {
-        //
+        $locations = Location::all();
+        $events = Event::all();
+
     }
 
     /**

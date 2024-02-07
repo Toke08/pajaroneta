@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+
 
 class EventController extends Controller
 {
@@ -17,7 +17,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view("admin.events.index", ['events'=> $events]);
+        return view("events.index", ['events'=> $events]);
 
         //return view("events.index"); esto es del video de laravel con fullcalendar.io
     }
@@ -30,7 +30,7 @@ class EventController extends Controller
     public function create()
     {
         $events = Event::all();
-        return view("admin.events.create", ['events'=> $events]);
+        return view("events.create", ['events'=> $events]);
 
         // return view("events.create");
     }

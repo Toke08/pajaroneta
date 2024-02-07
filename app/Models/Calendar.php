@@ -12,9 +12,8 @@ class Calendar extends Model
 
     protected $fillable = [
         'id',
-        'date',
-        // 'start',
-        // 'end'.
+        'start',
+        'end',
         'location_id',
         'event_id'
     ];

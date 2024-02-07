@@ -15,7 +15,7 @@
 
 <?php $__env->startSection('contenido'); ?>
 
-    <h1>Galeria de comidas</h1>
+    <h1>¿Con hambre?</h1>
 
     <table class="table">
   <thead>

@@ -1,5 +1,5 @@
-@extends('layout.masterpage')
-@section('contenido')
+@extends('adminlte::page')
+@section('content')
 @section('titulo')
 Vista de burguer
 @endsection

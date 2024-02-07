@@ -1,15 +1,15 @@
-@extends('layout.masterpage')
+@extends('adminlte::page')
 @section('titulo')
 Crear comida nueva
 @endsection
 
-@section('estilos')
+@section('css')
 <style>
 
 </style>
 @endsection
 
-@section('contenido')
+@section('content')
 <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
 
 <h1>Crear comida nueva</h1>

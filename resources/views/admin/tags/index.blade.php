@@ -1,14 +1,14 @@
-@extends('layout.masterpage')
+@extends('adminlte::page')
 @section('titulo')
 @endsection
 
-@section('estilos')
+@section('css')
 <style>
 
 </style>
 @endsection
 
-@section('contenido')
+@section('content')
 <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
     <h1>Lista de categorías blog</h1>
 

@@ -1,8 +1,8 @@
-@extends('layout.masterpage')
+@extends('adminlte::page')
 @section('titulo')
 @endsection
 
-@section('estilos')
+@section('css')
 <style>
 body {
     display: flex;
@@ -37,7 +37,7 @@ img {
 </style>
 @endsection
 
-@section('contenido')
+@section('content')
     <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
 
     @if(Session::has('error'))

@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('titulo'); ?>
-    Galeria de comidas
+    ¿Con hambre?
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>

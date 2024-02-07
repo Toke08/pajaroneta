@@ -1,10 +1,10 @@
-@extends('layout.admin-layout')
+@extends('adminlte::page')
 
 @section('titulo')
     Galeria de comidas
 @endsection
 
-@section('estilos')
+@section('css')
 <style>
 
 
@@ -13,7 +13,7 @@
 </style>
 @endsection
 
-@section('contenido')
+@section('content')
 
     <h1>¿Con hambre?</h1>
 

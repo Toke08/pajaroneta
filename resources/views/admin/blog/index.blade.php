@@ -2,7 +2,7 @@
 @section('titulo')
 @endsection
 
-@section('estilos')
+@section('css')
 <style>
 .table img{
     width: 150px;
@@ -11,7 +11,7 @@
 </style>
 @endsection
 
-@section('contenido')
+@section('content')
 <body>
     <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
     <h1>PajaroBlog</h1>

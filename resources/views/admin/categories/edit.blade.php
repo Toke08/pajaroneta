@@ -1,15 +1,15 @@
-@extends('layout.masterpage')
+@extends('adminlte::page')
 @section('titulo')
 Editar categoria
 @endsection
 
-@section('estilos')
+@section('css')
     <style>
 
     </style>
 @endsection
 
-@section('contenido')
+@section('content')
     <h1>Editar categoria</h1>
 
     <form action="{{ route('categorias.update', $category->id) }}" method="post" enctype="multipart/form-data">

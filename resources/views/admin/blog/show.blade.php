@@ -1,6 +1,6 @@
-@extends('layout.masterpage')
+@extends('adminlte::page')
 
-@section('contenido')
+@section('content')
     <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}">
     <h1>{{ $post->title }}</h1>
     <a href="{{ route('tags.show', $post->tag) }}">{{ $post->tag->name }}</a><br>

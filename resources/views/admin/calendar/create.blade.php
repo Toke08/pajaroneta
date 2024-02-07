@@ -1,15 +1,15 @@
-@extends('layout.masterpage')
+@extends('adminlte::page')
 @section('titulo')
 Nueva fecha
 @endsection
 
-@section('estilos')
+@section('css')
 <style>
 
 </style>
 @endsection
 
-@section('contenido')
+@section('content')
 
 <h1>Nueva fecha</h1>
 

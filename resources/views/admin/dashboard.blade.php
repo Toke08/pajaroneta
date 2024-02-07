@@ -4,14 +4,14 @@
 
 @endsection
 
-@section('estilos')
+@section('css')
 <style>
 
 
 </style>
 @endsection
 
-@section('contenido')
+@section('content')
 
     <a class="nav-link" href="{{ route('user.index') }}">@lang('View Users')</a>
 

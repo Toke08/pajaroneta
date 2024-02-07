@@ -9,7 +9,7 @@
 </style>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('contenido'); ?>
+<?php $__env->startSection('content'); ?>
 
     <a class="nav-link" href="<?php echo e(route('user.index')); ?>"><?php echo app('translator')->get('View Users'); ?></a>
 

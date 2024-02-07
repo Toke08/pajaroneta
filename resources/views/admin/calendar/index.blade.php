@@ -1,9 +1,9 @@
-@extends('layout.masterpage')
+@extends('adminlte::page')
 
 @section('titulo')
 @endsection
 
-@section('estilos')
+@section('css')
 <style>
 #mapa{
     margin-top: 5%;
@@ -18,7 +18,7 @@ iframe{
 </style>
 @endsection
 
-@section('contenido')
+@section('content')
 
 <h1>Hoy nos encontramos en...</h1>
 
@@ -92,7 +92,7 @@ iframe{
 @endsection
 
 
-@section('script')
+@section('js')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // recoge los datos del form jquery

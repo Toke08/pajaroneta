@@ -13,7 +13,7 @@ class Event extends Model
         'title'=> 'required',
         'description'=> 'required',
         'start'=> 'required',
-        'end'=> 'required',
+        //'end'=> 'required',
     ];
 
     protected $fillable = [

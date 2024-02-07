@@ -9,19 +9,17 @@ class Event extends Model
 {
     use HasFactory;
 
-    static $rules = [
-        'title'=> 'required',
-        'description'=> 'required',
-        'start'=> 'required',
-        'end'=> 'required',
-    ];
+    // static $rules = [
+    //     'title'=> 'required',
+    //     'description'=> 'required',
+    //     'start'=> 'required',
+    //     'end'=> 'required',
+    // ];
 
     protected $fillable = [
         'id',
         'title',
-        'description',
-        'start',
-        'end'
+        'description'
     ];
 
     function calendars(){

@@ -17,9 +17,17 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        //
-        $calendars = Calendar::with('event', 'location')->get();
-        return view("admin.calendar.index", ['calendars'=> $calendars]);
+
+        // $events = Event::all();
+        // $locations = Location::all();
+
+        // $calendars = Calendar::with('event', 'location')->get();
+        // return view("admin.calendar.index", ['calendars'=> $calendars]);
+        // return view("admin.calendar.create", ['locations' => $locations, 'events' => $events]);
+
+            $events = Event::all();
+            $locations = Location::all();
+            return view('admin.calendar.index', compact('events', 'locations'));
     }
 
     /**
@@ -29,7 +37,7 @@ class CalendarController extends Controller
      */
     public function create()
     {
-        //
+
         $locations = Location::all();
         $events = Event::all();
 
@@ -44,7 +52,7 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         $request->validate([
             'date' => 'required|date',
             'location_id' => 'required|exists:locations,id',

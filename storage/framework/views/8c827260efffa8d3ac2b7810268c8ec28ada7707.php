@@ -66,10 +66,9 @@
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
                     </form>
 
-                    <form id="update-user-form-<?php echo e($user->id); ?>" action="<?php echo e(route('user.update', ['id' => $user->id])); ?>" method="POST">
+                    <form id="update-user-form-<?php echo e($user->id); ?>" action="<?php echo e(route('user.update', ['id' => $user->id])); ?>" method="put">
                         <?php echo csrf_field(); ?>
-                        <?php echo method_field('PUT'); ?>
-                        <!-- Aquí van los campos del formulario -->
+                        <?php echo method_field('put'); ?>
                         <button type="submit" class="btn btn-success btn-sm btn-actualizar-individual"
                                 data-user-id="<?php echo e($user->id); ?>"
                                 style="margin-left: 5px; display: none;">Actualizar</button>

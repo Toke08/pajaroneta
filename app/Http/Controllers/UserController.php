@@ -116,8 +116,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validar los datos recibidos del formulario si es necesario
-
         // Obtener el usuario que se va a actualizar
         $user = User::findOrFail($id);
 
@@ -127,7 +125,7 @@ class UserController extends Controller
         $user->role_id = $request->input('role_id');
 
         // Guardar los cambios en la base de datos
-        dd($request);
+        //dd($request);
         $user->save();
 
         // Obtener todos los usuarios y roles nuevamente

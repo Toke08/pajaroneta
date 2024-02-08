@@ -68,10 +68,9 @@
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
                     </form>
 
-                    <form id="update-user-form-{{ $user->id }}" action="{{ route('user.update', ['id' => $user->id]) }}" method="POST">
+                    <form id="update-user-form-{{ $user->id }}" action="{{ route('user.update', ['id' => $user->id]) }}" method="put">
                         @csrf
-                        @method('PUT')
-                        <!-- Aquí van los campos del formulario -->
+                        @method('put')
                         <button type="submit" class="btn btn-success btn-sm btn-actualizar-individual"
                                 data-user-id="{{ $user->id }}"
                                 style="margin-left: 5px; display: none;">Actualizar</button>

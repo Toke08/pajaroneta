@@ -32,7 +32,7 @@
                     <div class="user-info-container">
                         <span class="editable" id="user-name-<?php echo e($user->id); ?>"><?php echo e($user->name); ?></span>
                         <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar-name" data-user-id="<?php echo e($user->id); ?>"></button>
-                        <input type="text" class="form-control input-editar-name" id="input-name-<?php echo e($user->id); ?>" style="display: none;">
+                        <input type="text" class="form-control input-editar-name" id="input-name-<?php echo e($user->id); ?>" name="name" style="display: none;">
                         <button class="btn btn-danger btn-sm btn-cancelar-name" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                 </td>
@@ -40,7 +40,7 @@
                     <div class="user-info-container">
                         <span class="editable" id="user-email-<?php echo e($user->id); ?>"><?php echo e($user->email); ?></span>
                         <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar-email" data-user-id="<?php echo e($user->id); ?>"></button>
-                        <input type="email" class="form-control input-editar-email" id="input-email-<?php echo e($user->id); ?>" style="display: none;">
+                        <input type="email" class="form-control input-editar-email" id="input-email-<?php echo e($user->id); ?>" name="email" style="display: none;">
                         <button class="btn btn-danger btn-sm btn-cancelar-email" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                 </td>
@@ -52,7 +52,7 @@
                     <?php endif; ?>
                 </td>
                 <td class="editable">
-                    <select class="form-select user-role" data-original-role="<?php echo e($user->role_id); ?>">
+                    <select class="form-select user-role" data-original-role="<?php echo e($user->role_id); ?>" name="role_id">
                         <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($role->id); ?>" <?php echo e($user->role_id === $role->id ? 'selected' : ''); ?>><?php echo e($role->name); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -66,7 +66,15 @@
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
                     </form>
 
-                    <button class="btn btn-success btn-sm btn-actualizar-individual" data-user-id="<?php echo e($user->id); ?>" data-update-route="<?php echo e(route('user.update', ['user' => $user->id])); ?>" style="margin-left: 5px; display: none;">Actualizar</button>
+                    <form id="update-user-form-<?php echo e($user->id); ?>" action="<?php echo e(route('user.update', ['id' => $user->id])); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('PUT'); ?>
+                        <!-- Aquí van los campos del formulario -->
+                        <button type="submit" class="btn btn-success btn-sm btn-actualizar-individual"
+                                data-user-id="<?php echo e($user->id); ?>"
+                                style="margin-left: 5px; display: none;">Actualizar</button>
+                    </form>
+
                 </td>
             </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -77,6 +85,7 @@
 
 <?php $__env->startSection('script'); ?>
 <script>
+
 $(document).ready(function () {
     $(".btn-editar-name").click(function () {
         var userId = $(this).data('user-id');
@@ -150,6 +159,40 @@ $(document).ready(function () {
             $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
         }
     });
+
+    $(".btn-actualizar-individual").click(function () {
+    var userId = $(this).data('user-id');
+    var newName = $("#input-name-" + userId).val();
+    var newEmail = $("#input-email-" + userId).val();
+    var newRole = $("#user-role-" + userId).val();
+
+    $.ajax({
+        url: $(this).data('update-route'),
+        method: 'PUT',
+        data: {
+            name: newName,
+            email: newEmail,
+            role: newRole
+        },
+        success: function(response) {
+            // Actualizar la interfaz con los nuevos datos
+            $("#user-name-" + userId).text(newName);
+            $("#user-email-" + userId).text(newEmail);
+            // Actualizar el rol si es necesario
+            if ($("#user-role-" + userId).data('original-role') !== newRole) {
+                // Lógica para actualizar el rol
+            }
+            // Ocultar botón de actualizar
+            $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
+            // Mostrar botones de editar
+            $(".btn-editar-name[data-user-id='" + userId + "']").show();
+            $(".btn-editar-email[data-user-id='" + userId + "']").show();
+        },
+        error: function(xhr, status, error) {
+            // Manejar errores si es necesario
+        }
+    });
+});
 });
 </script>
 <?php $__env->stopSection(); ?>

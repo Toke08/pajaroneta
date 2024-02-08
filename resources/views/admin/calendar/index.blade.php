@@ -1,4 +1,4 @@
-@extends('layout.masterpage')
+@extends('layout.admin-layout')
 
 @section('titulo')
 @endsection

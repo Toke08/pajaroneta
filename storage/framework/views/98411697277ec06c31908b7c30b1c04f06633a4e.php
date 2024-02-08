@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
@@ -33,12 +31,19 @@
                 <td>
                     <div class="user-info-container">
                         <span class="editable" id="user-name-<?php echo e($user->id); ?>"><?php echo e($user->name); ?></span>
-                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar" data-user-id="<?php echo e($user->id); ?>"></button>
-                        <input type="text" class="form-control input-editar" id="input-name-<?php echo e($user->id); ?>" style="display: none;">
-                        <button class="btn btn-danger btn-sm btn-cancelar" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar-name" data-user-id="<?php echo e($user->id); ?>"></button>
+                        <input type="text" class="form-control input-editar-name" id="input-name-<?php echo e($user->id); ?>" style="display: none;">
+                        <button class="btn btn-danger btn-sm btn-cancelar-name" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                 </td>
-                <td class="editable"><?php echo e($user->email); ?></td>
+                <td>
+                    <div class="user-info-container">
+                        <span class="editable" id="user-email-<?php echo e($user->id); ?>"><?php echo e($user->email); ?></span>
+                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar-email" data-user-id="<?php echo e($user->id); ?>"></button>
+                        <input type="email" class="form-control input-editar-email" id="input-email-<?php echo e($user->id); ?>" style="display: none;">
+                        <button class="btn btn-danger btn-sm btn-cancelar-email" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                </td>
                 <td>
                     <?php if($user->profile_img): ?>
                     <img src="<?php echo e(asset('img/users/' . $user->profile_img)); ?>" alt="Profile Image" class="img-fluid rounded-circle" style="max-width: 50px;">
@@ -61,8 +66,7 @@
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
                     </form>
 
-                    <button class="btn btn-success btn-sm btn-actualizar-individual" data-user-id="<?php echo e($user->id); ?>" data-update-route="<?php echo e(route('user.update', ['user' => $user->id])); ?>"style="margin-left: 5px; display: none;">Actualizar
-                    </button>
+                    <button class="btn btn-success btn-sm btn-actualizar-individual" data-user-id="<?php echo e($user->id); ?>" data-update-route="<?php echo e(route('user.update', ['user' => $user->id])); ?>" style="margin-left: 5px; display: none;">Actualizar</button>
                 </td>
             </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -74,27 +78,64 @@
 <?php $__env->startSection('script'); ?>
 <script>
 $(document).ready(function () {
-    $(".fa-pen-to-square").click(function () {
+    $(".btn-editar-name").click(function () {
         var userId = $(this).data('user-id');
 
+        // Esconder el span y mostrar el input correspondiente al nombre
         $("#user-name-" + userId).hide();
         $("#input-name-" + userId).val($("#user-name-" + userId).text()).show();
+
+        // Mostrar botones de actualizar y esconder botones de editar
         $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
-        $(".btn-editar[data-user-id='" + userId + "']").hide();
-        $(".btn-cancelar[data-user-id='" + userId + "']").show();
+        $(".btn-editar-name[data-user-id='" + userId + "']").hide();
+
+        // Mostrar botón de cancelar correspondiente
+        $(".btn-cancelar-name[data-user-id='" + userId + "']").show();
     });
 
-    $(".btn-cancelar").click(function () {
+    $(".btn-editar-email").click(function () {
         var userId = $(this).data('user-id');
 
-        // Muestra el texto y oculta el input correspondiente al usuario que se está editando
-        $("#user-name-" + userId).show();
+        // Esconder el span y mostrar el input correspondiente al email
+        $("#user-email-" + userId).hide();
+        $("#input-email-" + userId).val($("#user-email-" + userId).text()).show();
+
+        // Mostrar botones de actualizar y esconder botones de editar
+        $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
+        $(".btn-editar-email[data-user-id='" + userId + "']").hide();
+
+        // Mostrar botón de cancelar correspondiente
+        $(".btn-cancelar-email[data-user-id='" + userId + "']").show();
+    });
+
+    $(".btn-cancelar-name").click(function () {
+        var userId = $(this).data('user-id');
+
+        // Esconder el input y mostrar el span correspondiente al nombre
         $("#input-name-" + userId).hide();
-        // Muestra el botón de editar y oculta el botón de actualizar
-        $(".btn-editar[data-user-id='" + userId + "']").show();
+        $("#user-name-" + userId).show();
+
+        // Mostrar botones de editar y esconder botones de actualizar
+        $(".btn-editar-name[data-user-id='" + userId + "']").show();
         $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
-        // Oculta el botón de cancelar
-        $(".btn-cancelar[data-user-id='" + userId + "']").hide();
+
+        // Esconder botón de cancelar
+        $(".btn-cancelar-name[data-user-id='" + userId + "']").hide();
+    });
+
+    $(".btn-cancelar-email").click(function () {
+        var userId = $(this).data('user-id');
+
+        // Esconder el input y mostrar el span correspondiente al email
+        $("#input-email-" + userId).hide();
+        $("#user-email-" + userId).show();
+
+        // Mostrar botones de editar y esconder botones de actualizar
+        $(".btn-editar-email[data-user-id='" + userId + "']").show();
+        $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
+
+        // Esconder botón de cancelar
+        $(".btn-cancelar-email[data-user-id='" + userId + "']").hide();
     });
 
     $(".user-role").change(function () {
@@ -109,52 +150,8 @@ $(document).ready(function () {
             $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
         }
     });
-
-    $(".btn-actualizar-individual").click(function () {
-        var userId = $(this).data('user-id');
-        var updateRoute = $(this).data('update-route');
-        var newName = $("#input-name-" + userId).val();
-        var selectedRole = $(this).closest('tr').find(".user-role").val();
-
-        // Obtén el token CSRF
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-        // Envía la solicitud Ajax al servidor para actualizar la información
-        $.ajax({
-            type: 'PUT',
-            url: updateRoute,
-            data: {
-                name: newName,
-                role: selectedRole
-            },
-            headers: {
-                'X-CSRF-TOKEN': csrfToken
-            },
-            success: function (response) {
-                // Manejar la respuesta del servidor si es necesario
-                console.log(response);
-
-                // Actualiza la interfaz con la nueva información
-                $("#user-name-" + userId).text(newName);
-
-                // Muestra el texto y oculta el input correspondiente al usuario que se está editando
-                $("#user-name-" + userId).show();
-                $("#input-name-" + userId).hide();
-
-                // Muestra el botón de editar y oculta el botón de actualizar
-                $(".btn-editar[data-user-id='" + userId + "']").show();
-                $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
-                // Oculta el botón de cancelar
-                $(".btn-cancelar[data-user-id='" + userId + "']").hide();
-            },
-            error: function (error) {
-                // Manejar errores si es necesario
-                console.log(error);
-            }
-        });
-    });
 });
 </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/admin/users/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/admin/users/index.blade.php ENDPATH**/ ?>

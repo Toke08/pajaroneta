@@ -13,9 +13,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('galeria_comidas') }}">@lang('Food Gallery')</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('ubicaciones.index') }}">@lang('Locations')</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('encuentranos.index') }}">@lang('Find Us')</a>
             </li>

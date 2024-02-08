@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pajaroneta <?php echo $__env->yieldContent('titulo'); ?></title>
 
+
+
+
     <!-- CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +33,9 @@
 
     <!-- csrf para actualizar info del usuario desde panel admin -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
+
+
 </head>
 
 <body>

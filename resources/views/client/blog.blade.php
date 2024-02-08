@@ -67,11 +67,10 @@ img {
     <p>¡Encuentra más opciones saludables cerca a ti!</p>
 
     @foreach ($restaurants as $restaurant)
-
     <div class="restaurant">
-        <a href="{{ $restaurant->url_sitio }}">{{ $restaurant->name }}</a>
+        <a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a>
         <p>{{ $restaurant->description }}</p>
-        <a href="{{ $restaurant->url_maps }}">Encuéntralos aquí</a>
+        <a href="{{ $restaurant->url_maps }}" target="blank">Encuéntralos aquí</a>
         <br>
         <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
     </div>

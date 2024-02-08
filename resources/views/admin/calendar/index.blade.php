@@ -1,4 +1,4 @@
-@extends('layout.admin-layout')
+@extends('layout.masterpage')
 
 @section('titulo')
 @endsection
@@ -6,7 +6,14 @@
 @section('estilos')
 <style>
 #mapa{
-    margin:10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#calendario{
+    z-index: 1;
+}
+iframe{
+    width: 100%;
 }
 </style>
 @endsection

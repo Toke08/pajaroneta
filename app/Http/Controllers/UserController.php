@@ -49,8 +49,6 @@ class UserController extends Controller
         //mover imagen subido desde el form de letters.create al servidor
         $request->file('img')->move('img/letters', $nombreImagen);
 
-
-
         //obtener texto y papa
         $mensaje=$datos['mensaje'];
         $papas=$datos['papas'];
@@ -116,24 +114,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Obtener el usuario que se va a actualizar
         $user = User::findOrFail($id);
 
-        // Actualizar los campos modificados
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->role_id = $request->input('role_id');
+        // Actualiza el nombre si se proporciona
+        if ($request->has('name')) {
+            $user->name = $request->input('name');
+        }
 
-        // Guardar los cambios en la base de datos
-        //dd($request);
+        // Actualiza el role_id si se proporciona
+        if ($request->has('role')) {
+            $user->role_id = $request->input('role');
+        }
+
         $user->save();
 
-        // Obtener todos los usuarios y roles nuevamente
-        $users = User::all();
-        $roles = Role::all();
-
-        // Devolver la vista del índice con los usuarios y roles actualizados
-        return view("admin.users.index", ['users'=> $users, 'roles'=> $roles])->with('success', 'Usuario actualizado correctamente');
+        return response()->json(['message' => 'Usuario actualizado con éxito']);
     }
 
 

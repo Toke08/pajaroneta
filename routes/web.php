@@ -55,8 +55,6 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/galeria-comidas', FoodController::class);
     Route::resource('/calendario', CalendarController::class);
     Route::resource('/user', UserController::class);
-    Route::put('admin/users/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
-
 });
 
 //ejemplo rutas cliente y su controlador
@@ -79,6 +77,13 @@ Route::get('/user/{name}/edit', [ClientController::class, 'user_edit'])->name('u
 Route::put('/user/{name}', [ClientController::class, 'user_update'])->name('user_update');
 Route::delete('/user/{name}', [ClientController::class, 'user_destroy'])->name('user_destroy');
 
+
+
+
+
+
+
+// function galeria_comidas(){
 
 //     return view('client.galeria_comidas'.['comidas'=>  Food:all());
 // }

@@ -116,21 +116,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Validar los datos recibidos del formulario si es necesario
+
+        // Obtener el usuario que se va a actualizar
         $user = User::findOrFail($id);
 
-        // Actualiza el nombre si se proporciona
-        if ($request->has('name')) {
-            $user->name = $request->input('name');
-        }
+        // Actualizar los campos modificados
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->role_id = $request->input('role_id');
 
-        // Actualiza el role_id si se proporciona
-        if ($request->has('role')) {
-            $user->role_id = $request->input('role');
-        }
-
+        // Guardar los cambios en la base de datos
+        dd($request);
         $user->save();
 
-        return response()->json(['message' => 'Usuario actualizado con éxito']);
+        // Obtener todos los usuarios y roles nuevamente
+        $users = User::all();
+        $roles = Role::all();
+
+        // Devolver la vista del índice con los usuarios y roles actualizados
+        return view("admin.users.index", ['users'=> $users, 'roles'=> $roles])->with('success', 'Usuario actualizado correctamente');
     }
 
 

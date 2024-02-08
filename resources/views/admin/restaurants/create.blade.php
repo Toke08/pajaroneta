@@ -1,4 +1,4 @@
-@extends('layout.masterpage')
+@extends('layout.adminlte-layout')
 @section('titulo')
     Crear restaurante sugerido
 @endsection

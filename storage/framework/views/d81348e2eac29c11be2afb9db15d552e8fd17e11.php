@@ -1,11 +1,14 @@
-
-
 <?php $__env->startSection('titulo'); ?>
     Galeria de comidas
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
 <style>
+    table img {
+            width: 100px;
+            height: auto;
+        }
+
 
 
 
@@ -15,7 +18,7 @@
 
 <?php $__env->startSection('contenido'); ?>
 
-    <h1>Galeria de comidas</h1>
+    <h1>¿Con hambre?</h1>
 
     <table class="table">
   <thead>
@@ -60,4 +63,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.admin-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/admin/foods/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/admin/foods/index.blade.php ENDPATH**/ ?>

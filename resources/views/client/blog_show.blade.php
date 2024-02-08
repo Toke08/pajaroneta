@@ -32,8 +32,7 @@
     <div class="post-comments">
         <h3>Comentarios:</h3>
         @foreach ($comments as $comment)
-            <img src="{{ asset('img/users') . '/' . $comment->user->profile_img }}" alt="" style="width: 50px; height: 50px; border-radius: 50%;">
-            <strong class="comment">{{ $comment->user->name }}<p> {{ $comment->comment }}</p></strong>
+            <strong class="comment">{{ $comment->user->name }}</strong> <p>dijo: {{ $comment->comment }}</p>
         @endforeach
     </div>
 </div>

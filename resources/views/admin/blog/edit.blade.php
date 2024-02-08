@@ -1,15 +1,15 @@
-@extends('adminlte::page')
+@extends('layout.masterpage')
 @section('titulo')
     Crear comida nueva
 @endsection
 
-@section('css')
+@section('estilos')
     <style>
 
     </style>
 @endsection
 
-@section('content')
+@section('contenido')
     <h1>Editar publicación</h1>
 
     <form action="{{ route('blog.update', $post->id) }}" method="post" enctype="multipart/form-data">

@@ -1,10 +1,10 @@
-@extends('adminlte::page')
+@extends('layout.masterpage')
 
 @section('titulo')
 
 @endsection
 
-@section('css')
+@section('estilos')
 <style>
 
 img{
@@ -14,7 +14,7 @@ img{
 </style>
 @endsection
 
-@section('content')
+@section('contenido')
 @foreach ($categories as $category)
 <tr>
     <th scope="row">{{$category->id}}</th>

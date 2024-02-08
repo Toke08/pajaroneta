@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -64,13 +63,12 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show($user_id, $post_id, Comment $id)
+    public function show($post_id, Comment $id)
     {
         //
-        $user = User::findOrFail($user_id);
         $post = Post::findOrFail($post_id);
         $comment = Comment::findOrFail($id);
-        return view('blog_show', compact('user', 'post', 'comment'));
+        return view('blog_show', compact('post', 'comment'));
     }
 
     /**

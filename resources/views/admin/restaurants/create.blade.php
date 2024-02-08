@@ -1,15 +1,15 @@
-@extends('adminlte::page')
+@extends('layout.masterpage')
 @section('titulo')
     Crear restaurante sugerido
 @endsection
 
-@section('css')
+@section('estilos')
 <style>
 
 </style>
 @endsection
 
-@section('content')
+@section('contenido')
 <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
 <h1>Crear nuevo restaurante sugerido</h1>
 

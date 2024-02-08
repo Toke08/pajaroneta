@@ -1,17 +1,17 @@
-@extends('adminlte::page')
+@extends('layout.masterpage')
 
 @section('titulo')
 
 @endsection
 
-@section('css')
+@section('estilos')
 <style>
 
 
 </style>
 @endsection
 
-@section('content')
+@section('contenido')
 
     <a class="nav-link" href="{{ route('user.index') }}">@lang('View Users')</a>
 

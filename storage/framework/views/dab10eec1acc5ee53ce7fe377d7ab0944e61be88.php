@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('estilos'); ?>
 <style>
 .post-image {
@@ -31,8 +32,7 @@
     <div class="post-comments">
         <h3>Comentarios:</h3>
         <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <img src="<?php echo e(asset('img/users') . '/' . $comment->user->profile_img); ?>" alt="" style="width: 50px; height: 50px; border-radius: 50%;">
-            <strong class="comment"><?php echo e($comment->user->name); ?><p> <?php echo e($comment->comment); ?></p></strong>
+            <strong class="comment"><?php echo e($comment->user->name); ?></strong> <p>dijo: <?php echo e($comment->comment); ?></p>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 </div>

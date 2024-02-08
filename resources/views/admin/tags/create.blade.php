@@ -1,15 +1,15 @@
-@extends('adminlte::page')
+@extends('layout.masterpage')
 @section('titulo')
     Crear publicación
 @endsection
 
-@section('css')
+@section('estilos')
 <style>
 
 </style>
 @endsection
 
-@section('content')
+@section('contenido')
 <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
 <h1>Formulario de Ingreso de Nueva Categoría</h1>
 

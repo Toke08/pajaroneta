@@ -1,11 +1,4 @@
 <?php return array (
-  'jeroennoten/laravel-adminlte' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider',
-    ),
-  ),
   'laravel-lang/attributes' => 
   array (
     'providers' => 

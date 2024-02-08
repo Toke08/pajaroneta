@@ -10,15 +10,6 @@
         'dev' => true,
     ),
     'versions' => array(
-        'almasaeed2010/adminlte' => array(
-            'pretty_version' => 'v3.2.0',
-            'version' => '3.2.0.0',
-            'reference' => 'bd4d9c72931f1dd28601b6bfb387554a381ad540',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../almasaeed2010/adminlte',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'archtechx/enums' => array(
             'pretty_version' => 'v0.3.2',
             'version' => '0.3.2.0',
@@ -420,15 +411,6 @@
             'replaced' => array(
                 0 => 'v9.52.16',
             ),
-        ),
-        'jeroennoten/laravel-adminlte' => array(
-            'pretty_version' => 'v3.9.4',
-            'version' => '3.9.4.0',
-            'reference' => '479197945506d691d9b73c56dc365d3f5e7a9a9b',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../jeroennoten/laravel-adminlte',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,

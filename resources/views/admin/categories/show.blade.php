@@ -1,5 +1,5 @@
-@extends('adminlte::page')
-@section('content')
+@extends('layout.masterpage')
+@section('contenido')
 @section('titulo')
 Editar categoria
 @endsection

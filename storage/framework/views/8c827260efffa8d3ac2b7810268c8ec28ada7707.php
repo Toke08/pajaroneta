@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 

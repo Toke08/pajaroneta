@@ -1,8 +1,8 @@
-@extends('adminlte::page')
+@extends('layout.admin-layout')
 @section('titulo')
 @endsection
 
-@section('css')
+@section('estilos')
 <style>
 .table img{
     width: 150px;
@@ -11,7 +11,7 @@
 </style>
 @endsection
 
-@section('content')
+@section('contenido')
 <body>
     <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
     <h1>PajaroBlog</h1>

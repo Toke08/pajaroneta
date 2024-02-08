@@ -53,9 +53,9 @@
                 </div>
             @endforeach
         @endif
-        @yield('css')
-        @yield('content')
-        @yield('js')
+        @yield('estilos')
+        @yield('contenido')
+        @yield('script')
     </main>
 
     <footer>

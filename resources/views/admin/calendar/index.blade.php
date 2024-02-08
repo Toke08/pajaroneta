@@ -1,30 +1,17 @@
-@extends('adminlte::page')
+@extends('layout.masterpage')
 
 @section('titulo')
 @endsection
 
-@section('css')
+@section('estilos')
 <style>
-#cont_cale{
-    background-image:url("../../../../public/img/styles/combis.png");
-}
 #mapa{
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-#calendario{
-    z-index: 1;
-}
-iframe{
-    width: 100%;
+    margin:10%;
 }
 </style>
 @endsection
 
-
-@section('content')
-<div id="cont_cale">
-
+@section('contenido')
 
 <h1>Hoy nos encontramos en...</h1>
 
@@ -95,13 +82,10 @@ iframe{
       </div>
     </div>
   </div>
-
-
-</div>
 @endsection
 
 
-@section('js')
+@section('script')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // recoge los datos del form jquery
@@ -132,7 +116,7 @@ iframe{
             var event=info.event;
             // console.log(event);
 
-            axios.post("http://localhost/pajaroneta/public/admin/calendario"+info.event.id)
+            axios.post("http://localhost/pajaroneta/public/eventos/editar/"+info.event.id)
             .then(
                 (respuesta)=>{
                 formulario.title.value=respuesta.data.title;

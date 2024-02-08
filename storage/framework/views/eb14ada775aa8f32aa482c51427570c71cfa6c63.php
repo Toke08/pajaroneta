@@ -4,7 +4,14 @@
 <?php $__env->startSection('estilos'); ?>
 <style>
 #mapa{
-    margin:10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#calendario{
+    z-index: 1;
+}
+iframe{
+    width: 100%;
 }
 </style>
 <?php $__env->stopSection(); ?>
@@ -106,10 +113,10 @@
             $("#calendar").modal("show"); //al hacer click en la fecha que salga el modal evento jjejjej
         },
 
+
         eventClick:function(info){
 
             var event=info.event;
-            // console.log(event);
 
             axios.post("http://localhost/pajaroneta/public/eventos/editar/"+info.event.id)
             .then(
@@ -118,7 +125,7 @@
                 formulario.description.value=respuesta.data.description;
                 formulario.start.value=respuesta.data.start;
                 formulario.end.value=respuesta.data.end;
-                $("#event").modal("show");
+                $("#calendar").modal("show");
             }
             )
             .catch((error) => {
@@ -139,66 +146,132 @@
     });
       calendar.render();
 
-      //capturo la accion del btn guadar
-      document.getElementById("btn_save").addEventListener('click', function(){
-        enviarDatos("http://localhost/pajaroneta/public/eventos/agregar");
-      });
-      //eliminar eventos
-      document.getElementById("btn_delete").addEventListener('click', function(){
+    function cargarEventosDesdeBD(dateStr) {
+    axios.get("http://localhost/pajaroneta/public/eventos?fecha=" + dateStr)
+        .then(function (response) {
+            console.log('Respuesta de la base de datos:', response.data);
 
-        url="http://localhost/pajaroneta/public/eventos/borrar/"+event.id;
+            // Resto del código...
+        })
+        .catch(function (error) {
+            console.error('Error al cargar eventos desde la base de datos:', error);
+        });
+}
 
-        const datos= new FormData(formulario);
-            axios.post(url, datos)
-            .then(
-                (respuesta)=>{
-                //esto saca los eventos actualizando de forma automática
-                calendar.refetchEvents();
-                $("#event").modal("hide");
-            }
-            )
-            .catch((error) => {
-            console.error('Error en la solicitud:', error);
 
-            if (error.response) {
-            console.error('Respuesta del servidor:', error.response.data);
-            // Muestra mensajes de error al usuario si es necesario
-            } else if (error.request) {
-            console.error('No se recibió respuesta del servidor');
-            } else {
-            console.error('Error durante la solicitud:', error.message);
-            }
-            });
+
+document.getElementById('btn_save').addEventListener('click', function (event) {
+    event.preventDefault();
+
+    axios.post("http://localhost/pajaroneta/public/eventos", {
+        title: formulario.title.value,
+        start: formulario.start.value,
+        end: formulario.end.value
+    })
+    .then(function (response) {
+        // Agrega el nuevo evento al calendario
+        calendar.addEvent({
+            title: formulario.title.value,
+            start: formulario.start.value,
+            end: formulario.end.value
+        });
+
+        // Actualiza el calendario
+        calendar.refetchEvents();
+
+        // Cerrar el modal
+        $("#calendar").modal("hide");
+    })
+    .catch(function (error) {
+        console.error('Error al guardar el evento en la base de datos:', error);
     });
-
-    function enviarDatos(url){
-        const datos= new FormData(formulario);
-            axios.post(url, datos)
-            .then(
-                (respuesta)=>{
-                //esto saca los eventos actualizando de forma automática
-                calendar.refetchEvents();
-                $("#event").modal("hide");
-            }
-            )
-            .catch((error) => {
-            console.error('Error en la solicitud:', error);
-
-            if (error.response) {
-            console.error('Respuesta del servidor:', error.response.data);
-            // Muestra mensajes de error al usuario si es necesario
-            } else if (error.request) {
-            console.error('No se recibió respuesta del servidor');
-            } else {
-            console.error('Error durante la solicitud:', error.message);
-            }
-            });
-    }
-
 });
 
-  </script>
-<?php $__env->stopSection(); ?>
+
+
+
+
+    //   document.getElementById("btn_save").addEventListener('click', function(){
+    //     const datos= new FormData(formulario);
+    //     let url="http://localhost/pajaroneta/public/admin/calendario";
+    //         axios.post(url, datos)
+    //         .then(
+
+    //             (respuesta)=>{
+
+    //             calendar.refetchEvents(); //esto saca los eventos actualizando de forma automática
+    //             $("#event").modal("hide");
+    //         }
+    //         )
+    //         .catch((error) => {
+    //         console.error('Error en la solicitud:', error);
+
+    //         if (error.response) {
+    //         console.error('Respuesta del servidor:', error.response.data);
+    //         // Muestra mensajes de error al usuario si es necesario
+    //         } else if (error.request) {
+    //         console.error('No se recibió respuesta del servidor');
+    //         } else {
+    //         console.error('Error durante la solicitud:', error.message);
+    //         }
+    //         });
+    //   });
+
+    //   document.getElementById("btn_delete").addEventListener('click', function(){
+
+    //     url="http://localhost/pajaroneta/public/admin/calendario"+event.id;
+
+    //     const datos= new FormData(formulario);
+    //         axios.post(url, datos)
+    //         .then(
+    //             (respuesta)=>{
+    //             //esto saca los eventos actualizando de forma automática
+    //             calendar.refetchEvents();
+    //             $("#event").modal("hide");
+    //         }
+    //         )
+    //         .catch((error) => {
+    //         console.error('Error en la solicitud:', error);
+
+    //         if (error.response) {
+    //         console.error('Respuesta del servidor:', error.response.data);
+    //         // Muestra mensajes de error al usuario si es necesario
+    //         } else if (error.request) {
+    //         console.error('No se recibió respuesta del servidor');
+    //         } else {
+    //         console.error('Error durante la solicitud:', error.message);
+    //         }
+    //         });
+    // });
+
+
+
+    // function enviarDatos(url){
+    //     const datos= new FormData(formulario);
+    //         axios.post(url, datos)
+    //         .then(
+    //             (respuesta)=>{
+    //             //esto saca los eventos actualizando de forma automática
+    //             calendar.refetchEvents();
+    //             $("#event").modal("hide");
+    //         }
+    //         )
+    //         .catch((error) => {
+    //         console.error('Error en la solicitud:', error);
+
+    //         if (error.response) {
+    //         console.error('Respuesta del servidor:', error.response.data);
+    //         // Muestra mensajes de error al usuario si es necesario
+    //         } else if (error.request) {
+    //         console.error('No se recibió respuesta del servidor');
+    //         } else {
+    //         console.error('Error durante la solicitud:', error.message);
+    //         }
+    //         });
+    // }
+
+});
+</script>
 
 
 

@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
 Nuevo evento
 <?php $__env->stopSection(); ?>

@@ -1,5 +1,6 @@
 *{
     margin: 0;
+
 }
 
 body {
@@ -9,7 +10,7 @@ main.container{
     margin-top: 5%;
 }
 /* HAY QUE HACRERLO EN TODAS LAS SECC QUE QUIERAS WIDTH 100% */
-    .container {
+    .container .who {
       max-width: 100% !important;
       padding-right: 0 !important;
     padding-left: 0 !important;

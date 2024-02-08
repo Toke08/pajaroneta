@@ -1,4 +1,5 @@
-@extends('layout.masterpage')
+
+@extends('layout.adminlte-layout')
 
 @section('titulo')
 @endsection

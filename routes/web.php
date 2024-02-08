@@ -55,8 +55,6 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/galeria-comidas', FoodController::class);
     Route::resource('/calendario', CalendarController::class);
     Route::resource('/user', UserController::class);
-    Route::put('users/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
-
 });
 
 //ejemplo rutas cliente y su controlador
@@ -78,6 +76,12 @@ Route::post('/user', [ClientController::class, 'user_store'])->name('user_store'
 Route::get('/user/{name}/edit', [ClientController::class, 'user_edit'])->name('user_edit');
 Route::put('/user/{name}', [ClientController::class, 'user_update'])->name('user_update');
 Route::delete('/user/{name}', [ClientController::class, 'user_destroy'])->name('user_destroy');
+
+
+
+
+
+
 
 // function galeria_comidas(){
 

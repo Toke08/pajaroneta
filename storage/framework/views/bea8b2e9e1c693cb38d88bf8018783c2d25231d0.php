@@ -1,10 +1,7 @@
+<?php $__env->startSection('titulo'); ?>
+<?php $__env->stopSection(); ?>
 
-@extends('layout.adminlte-layout')
-
-@section('titulo')
-@endsection
-
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
 #mapa{
     margin-top: 5%;
@@ -17,9 +14,9 @@ iframe{
     width: 100%;
 }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 <h1>Hoy nos encontramos en...</h1>
 
@@ -45,28 +42,25 @@ iframe{
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('calendario.store') }}" method="post">
-                @csrf
-                {{-- <div class="form-group">
-                    <label for="date">Fecha</label>
-                    <input type="date" name="date" id="date">
-                </div> --}}
+            <form action="<?php echo e(route('calendario.store')); ?>" method="post">
+                <?php echo csrf_field(); ?>
+                
                 <div class="form-group">
                 <label for="event">Nombre del evento:</label>
                     <select id= "event" name="event_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                        @foreach($events as $event)
+                        <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                            <option id="title" name="title" value="{{ $event->id }}">{{ $event->title }}</option>
-                        @endforeach
+                            <option id="title" name="title" value="<?php echo e($event->id); ?>"><?php echo e($event->title); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="location">¿Donde se ubicará?</label>
                         <select id="location" name="location_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                            @foreach($locations as $location)
-                                <option value="{{ $location->id }}">{{ $location->city }}, {{ $location->address }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($location->id); ?>"><?php echo e($location->city); ?>, <?php echo e($location->address); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                 </div>
                 <div class="form-group">
@@ -90,10 +84,10 @@ iframe{
       </div>
     </div>
   </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // recoge los datos del form jquery
@@ -211,31 +205,8 @@ iframe{
 });
 
   </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
-{{-- <table class="table table-bordered table-striped">
-    <thead class="thead-dark"> <!-- Añade un fondo oscuro al encabezado de la tabla -->
-        <tr>
-            <th>Fecha</th>
-            <th>Evento</th>
-            <th>Ubicación</th>
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($calendars as $calendar)
-            <tr>
-                <td>{{ $calendar->date }}</td>
-                <td>{{ $calendar->event->name }}</td>
-                <td>{{ $calendar->location->city }}, {{ $calendar->location->address }}</td>
-                <td>
-                    <form action="{{ route('calendario.destroy', $calendar->id) }}"   method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Borrar</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table> --}}
+
+
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\RodDAW2\UniServerZ\www\pajaroneta\resources\views/admin/calendar/index.blade.php ENDPATH**/ ?>

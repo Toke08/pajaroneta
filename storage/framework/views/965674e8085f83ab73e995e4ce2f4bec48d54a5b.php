@@ -1,17 +1,17 @@
+
+
 <?php $__env->startSection('estilos'); ?>
 
 <style>
 .landing_page {
-    /* display:grid;
-    align-items:center;
-    justify-content:center; */
+    display:flex;
+    flex-direction:row;
 
 }
 .part1 img{
     width:45em;
-    position:absolute;
-    top:30%;
-    left: 15%;
+    display: flex;
+    justify-content:left;
 }
 .papa1 {
     transform:translate(0px, -330px);
@@ -24,8 +24,13 @@
     width:45em;
 }
 .part3 img{
-    width: 45em;
+    width: 35em;
+    transform:translate(0px, 60px);
+    transform:rotate(-30deg);
+    display: flex;
+    justify-content:right
 }
+
 .who{
     display: flex;
     flex-direction:row;
@@ -61,7 +66,7 @@
             <p>Delicias para celiacos e intolerantes a través de toda España</p>
         </div>
         <div class="part3">
-            <img src="<?php echo e(asset('img/foods/perro_caliente.png')); ?>" alt="">
+            <img src="<?php echo e(asset('img/foods/hawtdawg.png')); ?>" alt="">
         </div>
     </div>
 
@@ -73,9 +78,11 @@
         </div>
         <img src="<?php echo e(asset('img/foods/burger_der.png')); ?>" alt="">
     </div>
-
+    <div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#730000" fill-opacity="1" d="M0,128L80,149.3C160,171,320,213,480,218.7C640,224,800,192,960,186.7C1120,181,1280,203,1360,213.3L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+    </div>
 
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ1\www\pajaroneta\resources\views/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\RodDAW2\UniServerZ\www\pajaroneta\resources\views/index.blade.php ENDPATH**/ ?>

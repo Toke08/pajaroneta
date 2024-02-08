@@ -1,4 +1,4 @@
-@extends('layout.admin-layout')
+@extends('layout.adminlte-layout')
 @section('titulo')
 @endsection
 

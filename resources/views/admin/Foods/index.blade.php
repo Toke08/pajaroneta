@@ -1,4 +1,4 @@
-@extends('layout.admin-layout')
+@extends('layout.adminlte-layout')
 
 @section('titulo')
     Galeria de comidas
@@ -6,6 +6,11 @@
 
 @section('estilos')
 <style>
+    table img {
+            width: 100px;
+            height: auto;
+        }
+
 
 
 

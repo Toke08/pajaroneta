@@ -1,4 +1,4 @@
-@extends('layout.masterpage')
+@extends('layout.adminlte-layout')
 
 @section('contenido')
     <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}">

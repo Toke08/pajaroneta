@@ -15,6 +15,23 @@ Calendario
 iframe{
     width: 100%;
 }
+
+/* para el modal */
+
+
+#btn_save{
+    background-color:#E5A200;
+    border: none;
+    border-radius: 1.5em;
+    padding: 2%;
+    width: 7em;
+
+}
+#btn_save:hover{
+    background-color:#CA8F00;
+}
+
+
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -25,9 +42,7 @@ iframe{
 <div id="calendario"></div>
 
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar">
-    Añadir fecha
-    </button>
+    
     <div class="modal fade" id="calendar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

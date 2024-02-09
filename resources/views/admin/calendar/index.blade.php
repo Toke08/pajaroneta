@@ -28,7 +28,7 @@ iframe{
     border-radius: 1.5em;
     padding: 2%;
     width: 7em;
-    
+
 }
 #btn_save:hover{
     background-color:#CA8F00;
@@ -45,9 +45,9 @@ iframe{
 <div id="calendario"></div>
 
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar">
+    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar">
     Añadir fecha
-    </button>
+    </button> --}}
     <div class="modal fade" id="calendar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

@@ -1,13 +1,9 @@
+
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
 <style>
-*{
-    font-family: 'Quicksand', sans-serif;
-}
-
-
 
 #posts{
     display: grid;

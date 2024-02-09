@@ -87,6 +87,8 @@ unset($__errorArgs, $__bag); ?>
 
                                 </button>
 
+                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
+
                                 <?php if(Route::has('password.request')): ?>
                                     <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">
                                         <?php echo e(__('Forgot Your Password?')); ?>

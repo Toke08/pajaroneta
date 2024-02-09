@@ -1,7 +1,7 @@
 @extends('layout.adminlte-layout')
 
 @section('titulo')
-
+Dashboard
 @endsection
 
 @section('estilos')

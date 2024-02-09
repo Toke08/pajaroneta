@@ -97,10 +97,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-0 d-flex">
         <div class="image">
-          <img src="<?php echo e(asset('adminlte/dist/img/user2-160x160.jpg')); ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo e(asset('img/users/' . auth()->user()->profile_img)); ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo e(auth()->user()->name); ?></a>
         </div>
 
       </ul>

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('contenido'); ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -86,6 +84,8 @@ unset($__errorArgs, $__bag); ?>
                                     <?php echo e(__('Login')); ?>
 
                                 </button>
+
+                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
 
                                 <?php if(Route::has('password.request')): ?>
                                     <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">

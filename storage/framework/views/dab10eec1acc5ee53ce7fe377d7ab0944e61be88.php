@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('estilos'); ?>
 <style>
 .post-image {
@@ -10,12 +9,14 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
+<div>
 <div class="post-container">
     <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>" class="post-image">
     <h1><?php echo e($post->title); ?></h1>
-    <a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a><br>
-    <p class="post-content"><?php echo e($post->content); ?></p>
+    <a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a>
     <a href="<?php echo e(route('blog')); ?>">Volver al blog</a>
+    <p class="post-content"><?php echo e($post->content); ?></p>
+
 
     <!-- Agregar formulario para comentarios -->
     <form action="<?php echo e(route('comments.store', ['post_id' => $post->id])); ?>" method="POST">
@@ -30,9 +31,9 @@
 
     <!-- Mostrar comentarios existentes -->
     <div class="post-comments">
-        <h3>Comentarios:</h3>
         <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <strong class="comment"><?php echo e($comment->user->name); ?></strong> <p>dijo: <?php echo e($comment->comment); ?></p>
+            <img src="<?php echo e(asset('img/users') . '/' . $comment->user->profile_img); ?>" width="50px" style="border-radius:50%;">
+            <strong class="comment"><?php echo e($comment->user->name); ?></strong> <p><?php echo e($comment->comment); ?></p>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 </div>

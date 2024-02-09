@@ -13,6 +13,7 @@ Calendario
 }
 #calendario{
     z-index: 1;
+    max-width: 100vh;
 }
 iframe{
     width: 100%;
@@ -108,7 +109,7 @@ iframe{
         // recoge los datos del form jquery
         let formulario=document.querySelector("form");
 
-  
+
 
         var calendarEl = document.getElementById('calendario');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -117,18 +118,18 @@ iframe{
 
         locale:"es", //idioma español
         displayEventTime:false,
-        
+
 
 
 
         dateClick:function(info){  //la info recoge el dia que haces click
 
-            
+
 
             formulario.reset(); //reseteo form
             formulario.start.value=info.dateStr; //pilla la fecha elegida del calendario
 
-          
+
 
             $("#calendar").modal("show"); //al hacer click en la fecha que salga el modal evento jeje
 

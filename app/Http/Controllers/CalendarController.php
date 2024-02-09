@@ -87,6 +87,9 @@ class CalendarController extends Controller
     {
         $locations = Location::all();
         $events = Event::all();
+        $calendario= Calendar::all();
+        return response()->json($events, $locations);
+
 
     }
 

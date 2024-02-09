@@ -54,9 +54,9 @@ class LocationController extends Controller
         $location->cp=$cp;
 
         $location->save();
-        \Session::flash('message', 'Ubicación creada correctamente!'); //mensaje feedback
 
-        return redirect()->back(); //vuelta a la vista
+
+        return redirect()->back(); 
 
     }
 
@@ -68,11 +68,10 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        // $location= Location::find($id);
-        // if ($location != null)
-        //     return view('locations.show', ['location' => $location]); //carpeta.archivo , array de objetos que queremos mandar [nombreElemento=>variable, nombreElemento2=>variable2]
-        // else
-        //     return "No existe esa ubicación";
+        
+
+        $location=Location::all();
+        return response()->json($location);
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php $__env->startSection('titulo'); ?>
-    Galeria de comidas
+    Comidas
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
@@ -18,7 +18,6 @@
 
 <?php $__env->startSection('contenido'); ?>
 
-    <h1>¿Con hambre?</h1>
 
     <table class="table">
   <thead>

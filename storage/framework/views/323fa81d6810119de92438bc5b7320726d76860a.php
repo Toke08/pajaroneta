@@ -1,4 +1,5 @@
 <?php $__env->startSection('titulo'); ?>
+PajaroBlog
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
@@ -12,8 +13,6 @@
 
 <?php $__env->startSection('contenido'); ?>
 <body>
-    <a href="<?php echo e(route('adminHome')); ?>">Volver al panel de administrador</a>
-    <h1>PajaroBlog</h1>
         <table class="table">
             <thead>
                 <tr>

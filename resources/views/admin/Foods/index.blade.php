@@ -1,7 +1,7 @@
 @extends('layout.adminlte-layout')
 
 @section('titulo')
-    Galeria de comidas
+    Comidas
 @endsection
 
 @section('estilos')
@@ -20,7 +20,6 @@
 
 @section('contenido')
 
-    <h1>¿Con hambre?</h1>
 
     <table class="table">
   <thead>

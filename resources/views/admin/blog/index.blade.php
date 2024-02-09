@@ -1,5 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
+PajaroBlog
 @endsection
 
 @section('estilos')
@@ -13,8 +14,6 @@
 
 @section('contenido')
 <body>
-    <a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
-    <h1>PajaroBlog</h1>
         <table class="table">
             <thead>
                 <tr>

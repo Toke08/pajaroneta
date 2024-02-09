@@ -6,35 +6,43 @@
 .landing_page {
     display:flex;
     flex-direction:row;
-    align-items:center;
+    place-items:center;
     justify-content:center;
 
 }
 .part1 img{
-    width:55em;
+    width:45em;
     position: relative;
     margin-left: 20%
 }
 .papa1 {
-    transform:translate(0px, -330px);
+    transform:translate(0px, -200px);
+}
+.papa2 {
+    transform:translate(0px, -10px);
 }
 .part2{
     display:grid;
     place-items:center;
+}
+.part2 p{
+    font-size: 1.5em;
+    align-items: center;
 }
 .part2 img{
     width:45em;
 }
 .part3 img{
     width: 45em;
+    position: relative;
+    margin: 0%;
+    padding: 0%;
 }
 .who{
     display: flex;
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    padding:0;
-    margin:0;
     background-color:#730000;
     color:#fff;
 }

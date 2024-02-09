@@ -84,7 +84,7 @@
     <div id="content">
         <a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a><br>
 
-        <button href="<?php echo e(route('blog')); ?>" class="btn btn-primary">Comentar</button>
+        <button id="volverAlBlog" class="btn btn-primary">Volver al blog</button>
         
         <h1><?php echo e($post->title); ?></h1>
         <p class="post-content"><?php echo e($post->content); ?></p>
@@ -120,6 +120,12 @@
 <?php $__env->startSection('script'); ?>
 
 <script>
+     document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("volverAlBlog").addEventListener("click", function() {
+            window.location.href = "<?php echo e(route('blog')); ?>";
+        });
+    });
+
     $(document).ready(function() {
         $('#comment').keypress(function(event) {
             // Verifica si la tecla presionada es la tecla "Enter" (código 13)

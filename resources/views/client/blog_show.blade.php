@@ -1,10 +1,6 @@
 @extends('layout.masterpage')
 @section('estilos')
 <style>
-*{
-    font-family: 'Quicksand', sans-serif;
-         background-position:0;
-}
 
 .post-container {
     display: flex;
@@ -85,7 +81,7 @@
     <div id="content">
         <a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a><br>
 
-        <button href="{{ route('blog') }}" class="btn btn-primary">Comentar</button>
+        <button id="volverAlBlog" class="btn btn-primary">Volver al blog</button>
         {{-- <a href="{{ route('blog') }}">Volver al blog</a> --}}
         <h1>{{ $post->title }}</h1>
         <p class="post-content">{{ $post->content }}</p>
@@ -121,6 +117,12 @@
 @section('script')
 
 <script>
+     document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("volverAlBlog").addEventListener("click", function() {
+            window.location.href = "{{ route('blog') }}";
+        });
+    });
+
     $(document).ready(function() {
         $('#comment').keypress(function(event) {
             // Verifica si la tecla presionada es la tecla "Enter" (código 13)

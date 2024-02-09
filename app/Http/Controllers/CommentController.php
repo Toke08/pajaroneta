@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -41,21 +42,36 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $post_id)
-    {
-        $request->validate(['comment' => 'required|string',]
-        ,['comment.required' => 'El campo comentario es obligatorio.',
-        'comment.string' => 'El comentario debe ser una cadena de texto',]);
-
-        $user = auth()->user();
-
-        $post = Post::findOrFail($post_id);
-        $comment = $post->comments()->create([
-            'comment' => $request->input('comment'),
-            'user_id' => $user->id,
-        ]);
-
-        return redirect()->route('blog_show', $post_id)->with('success', 'Comentario agregado exitosamente.');
+{
+    // Verifica si el usuario está autenticado
+    if (!Auth::check()) {
+        // Si el usuario no está autenticado, redirecciona a la página de inicio de sesión
+        return redirect()->route('login')->with('error', 'Debes iniciar sesión para comentar.');
     }
+
+    // Si el usuario está autenticado, procede con la validación del comentario
+    $request->validate([
+        'comment' => 'required|string',
+    ], [
+        'comment.required' => 'El campo comentario es obligatorio.',
+        'comment.string' => 'El comentario debe ser una cadena de texto.',
+    ]);
+
+    // Obtén el usuario autenticado
+    $user = auth()->user();
+
+    // Encuentra el post con el ID proporcionado
+    $post = Post::findOrFail($post_id);
+
+    // Crea el comentario asociado al post
+    $comment = $post->comments()->create([
+        'comment' => $request->input('comment'),
+        'user_id' => $user->id,
+    ]);
+
+    // Redirecciona de vuelta al post con un mensaje de éxito
+    return redirect()->route('blog_show', $post_id)->with('success', 'Comentario agregado exitosamente.');
+}
 
     /**
      * Display the specified resource.

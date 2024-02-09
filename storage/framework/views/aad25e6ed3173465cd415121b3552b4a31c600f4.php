@@ -8,6 +8,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $__env->yieldContent('title'); ?></title>
+  <style>
+:root{
+    --rojoOscuro:#730000;
+    --rojoClaro:#A62224;
+    --amarilloOscuro:#CA8F00;
+    --amarilloClaro:#E5A200;
+    --blanco:#FFFFFF;
+    --gris:#F4F4F4;
+    --negro:#000000;
+}
+
+body > div > aside{
+        background-color: var(--rojoOscuro) !important;
+}
+
+body > div > aside > div > nav > ul > li > a{
+    color: var(--blanco) !important;
+}
+
+  </style>
 
 
 
@@ -83,12 +103,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -142,7 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('user.index')); ?>" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fa-solid fa-user"></i>
               <p>
                 Usuarios
               </p>
@@ -152,7 +166,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('galeria-comidas.index')); ?>" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fa-solid fa-utensils"></i>
               <p>
                 Comidas
               </p>
@@ -162,7 +176,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('blog.index')); ?>" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fa-solid fa-newspaper"></i>
               <p>
                 Blog
               </p>
@@ -172,7 +186,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('calendario.index')); ?>" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fa-solid fa-calendar-days"></i>
               <p>
                 Calendario
               </p>

@@ -18,6 +18,23 @@ Calendario
 iframe{
     width: 100%;
 }
+
+/* para el modal */
+
+
+#btn_save{
+    background-color:#E5A200;
+    border: none;
+    border-radius: 1.5em;
+    padding: 2%;
+    width: 7em;
+    
+}
+#btn_save:hover{
+    background-color:#CA8F00;
+}
+
+
 </style>
 @endsection
 

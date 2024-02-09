@@ -4,11 +4,6 @@
 
 @section('estilos')
 <style>
-*{
-    font-family: 'Quicksand', sans-serif;
-}
-
-
 
 #posts{
     display: grid;

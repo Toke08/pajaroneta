@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Food::create([
             "name"=> "La maleducada pipi",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 1,
         ]);
@@ -106,77 +106,77 @@ class DatabaseSeeder extends Seeder
         \App\Models\Food::create([
             "name"=> "La maleducada pi",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La Cubana",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La Española",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "No Gluten",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "Cuasó",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "la funfuñosa",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "4kilos",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La maleducada XXL",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La perruna",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "pajaro loco",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "pajaro loco2",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
@@ -248,14 +248,14 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Post::create([
             "title"=> "Comida sana para el día a día",
-            "content"=> "Todos los días se come bien y sano. Un poco de verde para no terminar verde.",
+            "content"=> "Todos los días se come bien y sano. Un poco de verde para no terminar verde. Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.",
             "img"=> "post1.jpg",
             "status"=> "Published",
             "tag_id"=> 3,
         ]);
         \App\Models\Post::create([
             "title"=> "Somos lechosos",
-            "content"=> "La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.",
+            "content"=> "La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones. La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.",
             "img"=> "post2.jpg",
             "status"=> "Published",
             "tag_id"=> 5,

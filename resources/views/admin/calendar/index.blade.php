@@ -71,12 +71,12 @@ iframe{
                 <div class="form-group">
                     <label for="start">Fecha de inicio</label>
                     <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId">
-                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
+                    <small id="" class="form-text text-muted"> Este campo es requerido</small>
                 </div>
                 <div class="form-group">
                     <label for="end">Fecha de fin</label>
                     <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId">
-                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
+                    <small id="" class="form-text text-muted"> Este campo es requerido</small>
                 </div>
                 <button id="btn_save" type="submit">Guardar</button>
             </form>
@@ -91,11 +91,12 @@ iframe{
 
 @section('script')
 <script>
+
     document.addEventListener('DOMContentLoaded', function() {
         // recoge los datos del form jquery
         let formulario=document.querySelector("form");
 
-        console.log(formulario.event.id.value);
+  
 
         var calendarEl = document.getElementById('calendario');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -107,52 +108,23 @@ iframe{
         
 
 
+
         dateClick:function(info){  //la info recoge el dia que haces click
 
-            var event=info.event;
+            
 
             formulario.reset(); //reseteo form
             formulario.start.value=info.dateStr; //pilla la fecha elegida del calendario
-            $("#calendar").modal("show"); //al hacer click en la fecha que salga el modal evento jeje
 
           
 
-
-
-
-
+            $("#calendar").modal("show"); //al hacer click en la fecha que salga el modal evento jeje
 
         },
 
 
-        eventClick:function(info){
 
-            var event=info.event;
-
-            axios.post("http://localhost/pajaroneta/public/eventos/editar/"+info.event.id)
-            .then(
-                (respuesta)=>{
-                formulario.title.value=respuesta.data.title;
-                formulario.description.value=respuesta.data.description;
-                formulario.start.value=respuesta.data.start;
-                formulario.end.value=respuesta.data.end;
-                $("#calendar").modal("show");
-            }
-            )
-            .catch((error) => {
-            console.error('Error en la solicitud:', error);
-
-        if (error.response) {
-            console.error('Respuesta del servidor:', error.response.data);
-            // Muestra mensajes de error al usuario si es necesario
-        } else if (error.request) {
-            console.error('No se recibio respuesta del servidor');
-        } else {
-            console.error('Error durante la solicitud:', error.message);
-        }
-        });
-
-    }
+        eventClick:function(info){}
 
     });
       calendar.render();

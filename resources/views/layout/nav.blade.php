@@ -24,9 +24,9 @@
             </li>
 
             @guest
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
-    </li>
+    </li> --}}
     <li class="nav-item">
         <a id="login-btn" class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
     </li>

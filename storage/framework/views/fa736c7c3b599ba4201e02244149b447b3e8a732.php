@@ -1,12 +1,20 @@
 
 
+
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
 <style>
 #mapa{
-    margin:10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#calendario{
+    z-index: 1;
+}
+iframe{
+    width: 100%;
 }
 </style>
 <?php $__env->stopSection(); ?>
@@ -44,7 +52,6 @@
                 <label for="event">Nombre del evento:</label>
                     <select id= "event" name="event_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
                         <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
                             <option id="title" name="title" value="<?php echo e($event->id); ?>"><?php echo e($event->title); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
@@ -68,14 +75,11 @@
                     <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId">
                     <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
                 </div>
-                <button type="submit">Guardar</button>
+                <button id="btn_save" type="submit">Guardar</button>
             </form>
 
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success" id="btn_save">Guardar</button>
-            <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
-        </div>
+
       </div>
     </div>
   </div>
@@ -88,7 +92,7 @@
         // recoge los datos del form jquery
         let formulario=document.querySelector("form");
 
-        console.log(formulario.title.value);
+        console.log(formulario.event.id.value);
 
         var calendarEl = document.getElementById('calendario');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -97,21 +101,32 @@
 
         locale:"es", //idioma español
         displayEventTime:false,
+        
 
 
-        dateClick:function(info){  //la info recoge el día que haces click
+        dateClick:function(info){  //la info recoge el dia que haces click
 
-            formulario.reset();
+            var event=info.event;
+
+            formulario.reset(); //reseteo form
             formulario.start.value=info.dateStr; //pilla la fecha elegida del calendario
-            // formulario.start.value=info.dateStr;
+            $("#calendar").modal("show"); //al hacer click en la fecha que salga el modal evento jeje
 
-            $("#calendar").modal("show"); //al hacer click en la fecha que salga el modal evento jjejjej
+            //ahora quiero que se vean los eventos en calendario
+            
+
+
+
+
+
+
+
         },
+
 
         eventClick:function(info){
 
             var event=info.event;
-            // console.log(event);
 
             axios.post("http://localhost/pajaroneta/public/eventos/editar/"+info.event.id)
             .then(
@@ -120,7 +135,7 @@
                 formulario.description.value=respuesta.data.description;
                 formulario.start.value=respuesta.data.start;
                 formulario.end.value=respuesta.data.end;
-                $("#event").modal("show");
+                $("#calendar").modal("show");
             }
             )
             .catch((error) => {
@@ -130,7 +145,7 @@
             console.error('Respuesta del servidor:', error.response.data);
             // Muestra mensajes de error al usuario si es necesario
         } else if (error.request) {
-            console.error('No se recibió respuesta del servidor');
+            console.error('No se recibio respuesta del servidor');
         } else {
             console.error('Error durante la solicitud:', error.message);
         }
@@ -141,67 +156,6 @@
     });
       calendar.render();
 
-      //capturo la accion del btn guadar
-      document.getElementById("btn_save").addEventListener('click', function(){
-        enviarDatos("http://localhost/pajaroneta/public/eventos/agregar");
-      });
-      //eliminar eventos
-      document.getElementById("btn_delete").addEventListener('click', function(){
-
-        url="http://localhost/pajaroneta/public/eventos/borrar/"+event.id;
-
-        const datos= new FormData(formulario);
-            axios.post(url, datos)
-            .then(
-                (respuesta)=>{
-                //esto saca los eventos actualizando de forma automática
-                calendar.refetchEvents();
-                $("#event").modal("hide");
-            }
-            )
-            .catch((error) => {
-            console.error('Error en la solicitud:', error);
-
-            if (error.response) {
-            console.error('Respuesta del servidor:', error.response.data);
-            // Muestra mensajes de error al usuario si es necesario
-            } else if (error.request) {
-            console.error('No se recibió respuesta del servidor');
-            } else {
-            console.error('Error durante la solicitud:', error.message);
-            }
-            });
     });
-
-    function enviarDatos(url){
-        const datos= new FormData(formulario);
-            axios.post(url, datos)
-            .then(
-                (respuesta)=>{
-                //esto saca los eventos actualizando de forma automática
-                calendar.refetchEvents();
-                $("#event").modal("hide");
-            }
-            )
-            .catch((error) => {
-            console.error('Error en la solicitud:', error);
-
-            if (error.response) {
-            console.error('Respuesta del servidor:', error.response.data);
-            // Muestra mensajes de error al usuario si es necesario
-            } else if (error.request) {
-            console.error('No se recibió respuesta del servidor');
-            } else {
-            console.error('Error durante la solicitud:', error.message);
-            }
-            });
-    }
-
-});
-
-  </script>
-<?php $__env->stopSection(); ?>
-
-
-
-<?php echo $__env->make('layout.admin-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ1\www\pajaroneta\resources\views/admin/calendar/index.blade.php ENDPATH**/ ?>
+</script>
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ1\www\pajaroneta\resources\views/admin/calendar/index.blade.php ENDPATH**/ ?>

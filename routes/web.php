@@ -32,13 +32,6 @@ Route::get('/', function () {
 
 
 
-// Route::get('/eventos', [App\Http\Controllers\EventController::class, 'index']);
-// Route::get('/eventos/mostrar', [App\Http\Controllers\EventController::class, 'show']);
-// Route::post('/eventos/agregar', [App\Http\Controllers\EventController::class, 'store']);
-// Route::post('/eventos/editar/{id}', [App\Http\Controllers\EventController::class, 'edit']);
-// Route::post('/eventos/borrar/{id}', [App\Http\Controllers\EventController::class, 'destroy']);
-
-
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
@@ -55,6 +48,7 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/galeria-comidas', FoodController::class);
     Route::resource('/calendario', CalendarController::class);
     Route::resource('/user', UserController::class);
+
 });
 
 //ejemplo rutas cliente y su controlador

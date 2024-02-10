@@ -1,15 +1,10 @@
 footer{
-    background-color: #730000;
     color: #ffffff;
+    /* height: 12em; */
+    /* background-color: #730000; */
 }
-.footer_list ul{
-    display: flex;
-    flex-direction: row;
-}
-.footer_list ul li{
-    list-style: none;
-}
-.custom-shape-divider-bottom-1707172603 {
+.custom-shape-divider-bottom-1707587365 {
+    position:relative;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -17,13 +12,13 @@ footer{
     line-height: 0;
 }
 
-.custom-shape-divider-bottom-1707172603 svg {
-    /* position: relative; */
+.custom-shape-divider-bottom-1707587365 svg {
+    position: relative;
     display: block;
-    width: calc(153% + 1.3px);
-    height: 110px;
+    width: calc(160% + 1.3px);
+    height: 160px;
 }
 
-.custom-shape-divider-bottom-1707172603 .shape-fill {
+.custom-shape-divider-bottom-1707587365 .shape-fill {
     fill: #730000;
 }

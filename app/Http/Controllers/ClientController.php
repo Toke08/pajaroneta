@@ -33,10 +33,18 @@ class ClientController extends Controller
 
     public function galeria_comidas_show($id){
         $food = Food::find($id);
-        if ($food != null)
-            return view('client.galeria_comidas_show', ['food' => $food]);
-        else
+
+        if ($food != null) {
+            $category = Category::find($food->category_id);
+
+            if ($category != null) {
+                return view('client.galeria_comidas_show', ['food' => $food, 'category' => $category]);
+            } else {
+                return "No se encontró la categoría asociada a esta comida";
+            }
+        } else {
             return "No existe esa comida";
+        }
     }
 
     public function category(){

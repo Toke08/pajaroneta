@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -31,7 +31,8 @@ class UserController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('users.create',['users' => $users]);
+        $roles = Role::all();
+        return view('admin.users.create',['users' => $users,'roles' => $roles]);
     }
 
     /**
@@ -43,42 +44,44 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $datos = $request->all();
-        $nombreImagen = Str::random(10)."_".$request->file('img')->getClientOriginalName();
-        // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
+        // $nombreImagen = $request->file('img')->getClientOriginalName();
+        // // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
 
-        //mover imagen subido desde el form de letters.create al servidor
-        $request->file('img')->move('img/letters', $nombreImagen);
+        // //mover imagen subido desde el form de letters.create al servidor
+        // $request->file('img')->move('img/users', $nombreImagen);
 
         //obtener texto y papa
-        $mensaje=$datos['mensaje'];
-        $papas=$datos['papas'];
+        // $mensaje=$datos['mensaje'];
+        // $papas=$datos['papas'];
 
         //validar los datos
-        $rules= ['mensaje' => 'required|string',
-                'papas' => 'required|numeric'];
+        $rules= ['name' => 'required|string|max:255',
+                'email' => 'required|email|unique:users|max:255',
+                'password' => 'required|string|min:8|confirmed',
+                'role_id' => 'required|exists:roles,id',];
 
-        //se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
-        $messages = array('papas' => 'las papas son requeridas, subnormal',
-                        'mensaje.string' => 'los mensajes deben ser textos, subnormal',
-                        'mensaje.required' => 'los mensajes deben ser requeridas, subnormal', );
-        $validator = validator::make($datos,$rules,$messages);
+
+        $validator = Validator::make($datos,$rules);
 
         if ($validator->fails()) {
-            \Session::flash('message','error en las instrucciones de datos');
             return redirect()->back()->withErrors($validator);
         }else{
-            $letter = new letter();
-            $letter->description=$datos['mensaje'];
-            $letter->user_id=auth()->user()->id;
-            $letter->papa_id=$datos['papas'];
-            $letter->img=$nombreImagen;
-            $letter->save();
+            $user = new User();
+            $user->name=$datos['name'];
+            $user->email=$datos['email'];
+            $user->password=$datos['password'];
+            $user->role_id=$datos['role_id'];
+            // $user->img=$nombreImagen;
+            $user->save();
 
             // $user=auth()->user();
             // $user=letter->save($letter);
+            $users = User::all();
+            $roles = Role::all();
 
-            \Session::flash('message','gracias por tu carta');
-            return redirect()->back();
+
+            \Session::flash('message','Usuario creado con exito');
+            return view("admin.users.index", ['users'=> $users, 'roles'=> $roles]);
         }
     }
 

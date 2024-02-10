@@ -11,26 +11,27 @@ Usuarios
 @endsection
 
 @section('contenido')
-<a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
-<h1>Pajarusuarios</h1>
+
 
 <div class="row">
+
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
+                <nav class="navbar navbar-light bg-light ">
+                    <form class="form-inline form-group-sm float-left">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <div class="text-right">
+                        <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary">Crear nuevo usuario</button></a>
                     </div>
-                  </div>
-                </div>
+                </nav>
+
+
+
+
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">

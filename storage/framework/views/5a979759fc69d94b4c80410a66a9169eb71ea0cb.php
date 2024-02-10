@@ -24,9 +24,7 @@
             </li>
 
             <?php if(auth()->guard()->guest()): ?>
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
-    </li>
+    
     <li class="nav-item">
         <a id="login-btn" class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
     </li>

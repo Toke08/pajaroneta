@@ -1,5 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
+Tags
 @endsection
 
 @section('estilos')

@@ -19,7 +19,6 @@ class EventController extends Controller
         $events = Event::all();
         return view("events.index", ['events'=> $events]);
 
-        //return view("events.index"); esto es del video de laravel con fullcalendar.io
     }
 
     /**
@@ -32,7 +31,7 @@ class EventController extends Controller
         $events = Event::all();
         return view("events.create", ['events'=> $events]);
 
-        // return view("events.create");
+
     }
 
     /**
@@ -43,9 +42,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate(Event::$rules);
-        // $event=Event::create($request->all());
-        // return response()->json(['message' => 'Evento creado correctamente'], 200);
+
 
         $datos=$request->all();
 
@@ -68,8 +65,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        // $event=Event::all();
-        // return response()->json($event);
+        $event=Event::all();
+        return response()->json($event);
     }
 
     /**
@@ -80,16 +77,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        // $event =Event::findOrFail($id);
-        // return view('eventos.edit', compact('event'));
-
-        // $event=Event::find($id);
-        // //quito las horas etc
-        // $event->start=Carbon::createFromFormat('Y-m-d H:i:s', $event->start)->format('Y-m-d');
-        // $event->end=Carbon::createFromFormat('Y-m-d H:i:s', $event->end)->format('Y-m-d');
-
-        // return response()->json($event);
-
+      
 
 
     }
@@ -103,10 +91,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $event = Event::findOrFail($id);
-        // $datos = $request->only(['name', 'description', 'date', 'address']);
-        // $event->update($datos);
-        // return redirect()->route('eventos.index')->with('success', 'La ubicaión se ha actualizado exitosamente.');
+      
     }
 
     /**->

@@ -1,3 +1,13 @@
+:root{
+    --rojoOscuro:#730000;
+    --rojoClaro:#A62224;
+    --amarilloOscuro:#CA8F00;
+    --amarilloClaro:#E5A200;
+    --blanco:#FFFFFF;
+    --gris:#F4F4F4;
+    --negro:#000000;
+}
+
 *{
     margin: 0;
 

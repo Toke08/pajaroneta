@@ -1,5 +1,7 @@
+
+
 <?php $__env->startSection('titulo'); ?>
-    Galeria de comidas
+    Comidas
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
@@ -18,20 +20,39 @@
 
 <?php $__env->startSection('contenido'); ?>
 
-    <h1>¿Con hambre?</h1>
 
-    <table class="table">
-  <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">nombre</th>
-            <th scope="col">precio</th>
-            <th scope="col">imagen</th>
-            <th scope="col">descripcion</th>
-            <th scope="col">categoria</th>
-            <th scope="col">Acciones</th>
-        </tr>
-  </thead>
+<div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Responsive Hover Table</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>nombre</th>
+                      <th>precio</th>
+                      <th>imagen</th>
+                      <th>descripcion</th>
+                      <th>categoria</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
   <tbody>
 
 
@@ -57,9 +78,14 @@
             </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </tbody>
-    </table>
-
+        </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
 
 <?php $__env->stopSection(); ?>
 

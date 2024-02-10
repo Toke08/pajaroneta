@@ -4,32 +4,30 @@
 
 @section('estilos')
 <style>
-body {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Asegúrate de que el contenido se ajuste al ancho de la pantalla y se envuelva cuando sea necesario */
+
+#posts{
+    display: grid;
+    grid-gap:0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
 }
 
-.post {
-    flex: 1;
-    padding: 15px;
-    max-width: 300px;
+
+
+#posts > img{
+    width:100%;
+    height:100%;
+    border-radius: 1rem;
+    object-fit: cover;
 }
 
-/* Añade una nueva regla para los posts para mostrarlos en línea */
-.post {
-    flex-basis: calc(33.33% - 20px); /* Ajusta según el número de posts que desees en una fila y el espacio entre ellos */
-}
 
-strong {
-    color: #333;
-}
+.restaurants{
 
-p {
-    margin: 0;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 500px;
+    padding: 10px;
+    max-width: 500px;
 }
 
 img {
@@ -40,41 +38,58 @@ img {
     object-fit: cover;
     border-radius: 10px;
 }
-#restaurant{
-    font-size:1.5em;
+
+#div-restaurantes{
+    display: grid;
+    grid-gap:0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
 }
+
 </style>
+
+
+
+
+
 @endsection
 
 @section('contenido')
-<body>
-    <h1>Blog-oneta</h1>
-    <p>Publicaciones, opiniones y más...</p>
-    @foreach ($tags as $tag)
-    <a href="{{ route('tags_show', $tag) }}">{{$tag->name}}</a>
+    <div id="blog">
+        <h1>Blog-oneta</h1>
+        <p>Publicaciones, opiniones y más...</p>
+        @foreach ($tags as $tag)
+        <a href="{{ route('tags_show', $tag) }}">{{$tag->name}}</a>
 
-    @endforeach
+        @endforeach
+        <div id="posts">
+        @foreach ($posts as $post)
 
-    @foreach ($posts as $post)
-        <div class="post">
-            <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
-            <h3>{{ $post->title }}</h3>
-            <a href="blog/{{ $post->id }}">Leer más...</a>
+            <div class="post">
+                <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
+                <h3>{{ $post->title }}</h3>
+                <a href="blog/{{ $post->id }}">Leer más...</a>
+            </div>
+        @endforeach
         </div>
-    @endforeach
-
-    <h2>¿Estámos lejos?</h2>
-    <p>¡Encuentra más opciones saludables cerca a ti!</p>
-
-    @foreach ($restaurants as $restaurant)
-    <div class="restaurant">
-        <a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a>
-        <p>{{ $restaurant->description }}</p>
-        <a href="{{ $restaurant->url_maps }}" target="blank">Encuéntralos aquí</a>
-        <br>
-        <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
     </div>
-    @endforeach
 
-</body>
+    <div id="restaurant"></div>
+        <h2>¿Estámos lejos?</h2>
+        <p>¡Encuentra más opciones saludables cerca a ti!</p>
+        <div id="div-restaurantes">
+            @foreach ($restaurants as $restaurant)
+            <div class="restaurants">
+                <a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a>
+                <p>{{ $restaurant->description }}</p>
+
+                <br>
+                <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
+                <a href="{{ $restaurant->url_maps }}" target="blank">Encuéntralos aquí</a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
 @endsection

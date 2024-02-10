@@ -34,8 +34,14 @@
     <!-- csrf para actualizar info del usuario desde panel admin -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
 </head>
 
 <body>

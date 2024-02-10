@@ -1,4 +1,5 @@
 <?php $__env->startSection('titulo'); ?>
+Usuarios
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
@@ -11,19 +12,38 @@
 <a href="<?php echo e(route('adminHome')); ?>">Volver al panel de administrador</a>
 <h1>Pajarusuarios</h1>
 
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Imagen de Perfil</th>
-                <th>Rol</th>
-                <th>Fecha de Creación</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
+<div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Responsive Hover Table</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Email</th>
+                      <th>Imagen de Perfil</th>
+                      <th>Rol</th>
+                      <th>Fecha de Creación</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
         <tbody>
             <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
@@ -31,19 +51,12 @@
                 <td>
                     <div class="user-info-container">
                         <span class="editable" id="user-name-<?php echo e($user->id); ?>"><?php echo e($user->name); ?></span>
-                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar-name" data-user-id="<?php echo e($user->id); ?>"></button>
-                        <input type="text" class="form-control input-editar-name" id="input-name-<?php echo e($user->id); ?>" style="display: none;">
-                        <button class="btn btn-danger btn-sm btn-cancelar-name" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar" data-user-id="<?php echo e($user->id); ?>"></button>
+                        <input type="text" class="form-control input-editar" id="input-name-<?php echo e($user->id); ?>" style="display: none;">
+                        <button class="btn btn-danger btn-sm btn-cancelar" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                 </td>
-                <td>
-                    <div class="user-info-container">
-                        <span class="editable" id="user-email-<?php echo e($user->id); ?>"><?php echo e($user->email); ?></span>
-                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar-email" data-user-id="<?php echo e($user->id); ?>"></button>
-                        <input type="email" class="form-control input-editar-email" id="input-email-<?php echo e($user->id); ?>" style="display: none;">
-                        <button class="btn btn-danger btn-sm btn-cancelar-email" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
-                </td>
+                <td class="editable"><?php echo e($user->email); ?></td>
                 <td>
                     <?php if($user->profile_img): ?>
                     <img src="<?php echo e(asset('img/users/' . $user->profile_img)); ?>" alt="Profile Image" class="img-fluid rounded-circle" style="max-width: 50px;">
@@ -66,76 +79,46 @@
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
                     </form>
 
-                    <button class="btn btn-success btn-sm btn-actualizar-individual" data-user-id="<?php echo e($user->id); ?>" data-update-route="<?php echo e(route('user.update', ['user' => $user->id])); ?>" style="margin-left: 5px; display: none;">Actualizar</button>
+                    <button class="btn btn-success btn-sm btn-actualizar-individual" data-user-id="<?php echo e($user->id); ?>" data-update-route="<?php echo e(route('user.update', ['user' => $user->id])); ?>"style="margin-left: 5px; display: none;">Actualizar
+                    </button>
                 </td>
             </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </tbody>
-    </table>
-</div>
+            </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
 <script>
 $(document).ready(function () {
-    $(".btn-editar-name").click(function () {
+    $(".fa-pen-to-square").click(function () {
         var userId = $(this).data('user-id');
 
-        // Esconder el span y mostrar el input correspondiente al nombre
         $("#user-name-" + userId).hide();
         $("#input-name-" + userId).val($("#user-name-" + userId).text()).show();
-
-        // Mostrar botones de actualizar y esconder botones de editar
         $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
-        $(".btn-editar-name[data-user-id='" + userId + "']").hide();
-
-        // Mostrar botón de cancelar correspondiente
-        $(".btn-cancelar-name[data-user-id='" + userId + "']").show();
+        $(".btn-editar[data-user-id='" + userId + "']").hide();
+        $(".btn-cancelar[data-user-id='" + userId + "']").show();
     });
 
-    $(".btn-editar-email").click(function () {
+    $(".btn-cancelar").click(function () {
         var userId = $(this).data('user-id');
 
-        // Esconder el span y mostrar el input correspondiente al email
-        $("#user-email-" + userId).hide();
-        $("#input-email-" + userId).val($("#user-email-" + userId).text()).show();
-
-        // Mostrar botones de actualizar y esconder botones de editar
-        $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
-        $(".btn-editar-email[data-user-id='" + userId + "']").hide();
-
-        // Mostrar botón de cancelar correspondiente
-        $(".btn-cancelar-email[data-user-id='" + userId + "']").show();
-    });
-
-    $(".btn-cancelar-name").click(function () {
-        var userId = $(this).data('user-id');
-
-        // Esconder el input y mostrar el span correspondiente al nombre
-        $("#input-name-" + userId).hide();
+        // Muestra el texto y oculta el input correspondiente al usuario que se está editando
         $("#user-name-" + userId).show();
-
-        // Mostrar botones de editar y esconder botones de actualizar
-        $(".btn-editar-name[data-user-id='" + userId + "']").show();
+        $("#input-name-" + userId).hide();
+        // Muestra el botón de editar y oculta el botón de actualizar
+        $(".btn-editar[data-user-id='" + userId + "']").show();
         $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
-
-        // Esconder botón de cancelar
-        $(".btn-cancelar-name[data-user-id='" + userId + "']").hide();
-    });
-
-    $(".btn-cancelar-email").click(function () {
-        var userId = $(this).data('user-id');
-
-        // Esconder el input y mostrar el span correspondiente al email
-        $("#input-email-" + userId).hide();
-        $("#user-email-" + userId).show();
-
-        // Mostrar botones de editar y esconder botones de actualizar
-        $(".btn-editar-email[data-user-id='" + userId + "']").show();
-        $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
-
-        // Esconder botón de cancelar
-        $(".btn-cancelar-email[data-user-id='" + userId + "']").hide();
+        // Oculta el botón de cancelar
+        $(".btn-cancelar[data-user-id='" + userId + "']").hide();
     });
 
     $(".user-role").change(function () {
@@ -149,6 +132,50 @@ $(document).ready(function () {
         } else {
             $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
         }
+    });
+
+    $(".btn-actualizar-individual").click(function () {
+        var userId = $(this).data('user-id');
+        var updateRoute = $(this).data('update-route');
+        var newName = $("#input-name-" + userId).val();
+        var selectedRole = $(this).closest('tr').find(".user-role").val();
+
+        // Obtén el token CSRF
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        // Envía la solicitud Ajax al servidor para actualizar la información
+        $.ajax({
+            type: 'PUT',
+            url: updateRoute,
+            data: {
+                name: newName,
+                role: selectedRole
+            },
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            success: function (response) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(response);
+
+                // Actualiza la interfaz con la nueva información
+                $("#user-name-" + userId).text(newName);
+
+                // Muestra el texto y oculta el input correspondiente al usuario que se está editando
+                $("#user-name-" + userId).show();
+                $("#input-name-" + userId).hide();
+
+                // Muestra el botón de editar y oculta el botón de actualizar
+                $(".btn-editar[data-user-id='" + userId + "']").show();
+                $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
+                // Oculta el botón de cancelar
+                $(".btn-cancelar[data-user-id='" + userId + "']").hide();
+            },
+            error: function (error) {
+                // Manejar errores si es necesario
+                console.log(error);
+            }
+        });
     });
 });
 </script>

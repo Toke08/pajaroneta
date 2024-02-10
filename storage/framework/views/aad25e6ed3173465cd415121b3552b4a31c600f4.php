@@ -8,6 +8,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $__env->yieldContent('title'); ?></title>
+  <style>
+:root{
+    --rojoOscuro:#730000;
+    --rojoClaro:#A62224;
+    --amarilloOscuro:#CA8F00;
+    --amarilloClaro:#E5A200;
+    --blanco:#FFFFFF;
+    --gris:#F4F4F4;
+    --negro:#000000;
+}
+
+body > div > aside{
+        background-color: var(--rojoOscuro) !important;
+}
+
+body > div > aside > div > nav > ul > li > a{
+    color: var(--blanco) !important;
+}
+
+  </style>
 
 
 
@@ -25,7 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <!-- FullCalendar -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
@@ -33,6 +53,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- csrf para actualizar info del usuario desde panel admin -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
+
+
+
+        <!-- jQuery -->
+    <script src="<?php echo e(asset('adminlte/plugins/jquery/jquery.min.js')); ?>"></script>
+    <!-- Bootstrap 4 -->
+    <script src="<?php echo e(asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
+    <!-- AdminLTE App -->
+    <script src="<?php echo e(asset('adminlte/dist/js/adminlte.min.js')); ?>"></script>
+
+
+
+
+    <!-- JS de Bootstrap (popper.js y Bootstrap JS) -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
 
 
 
@@ -64,12 +103,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -78,10 +111,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-0 d-flex">
         <div class="image">
-          <img src="<?php echo e(asset('adminlte/dist/img/user2-160x160.jpg')); ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo e(asset('img/users/' . auth()->user()->profile_img)); ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo e(auth()->user()->name); ?></a>
         </div>
 
       </ul>
@@ -103,55 +136,64 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="sidebar">
 
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?php echo e(route('adminHome')); ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Dashboard
               </p>
             </a>
           </li>
+
+
+          <li class="nav-item">
+            <a href="<?php echo e(route('user.index')); ?>" class="nav-link">
+            <i class="fa-solid fa-user"></i>
+              <p>
+                Usuarios
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="<?php echo e(route('galeria-comidas.index')); ?>" class="nav-link">
+            <i class="fa-solid fa-utensils"></i>
+              <p>
+                Comidas
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="<?php echo e(route('blog.index')); ?>" class="nav-link">
+            <i class="fa-solid fa-newspaper"></i>
+              <p>
+                Blog
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="<?php echo e(route('calendario.index')); ?>" class="nav-link">
+            <i class="fa-solid fa-calendar-days"></i>
+              <p>
+                Calendario
+              </p>
+            </a>
+          </li>
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -166,7 +208,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <h1 class="m-0"><?php echo $__env->yieldContent('titulo'); ?></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -215,35 +257,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
   <!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="<?php echo e(asset('adminlte/plugins/jquery/jquery.min.js')); ?>"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo e(asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo e(asset('adminlte/dist/js/adminlte.min.js')); ?>"></script>
 
 
 
-
-    <!-- JS de Bootstrap (popper.js y Bootstrap JS) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- jQuery -->
 
 
 

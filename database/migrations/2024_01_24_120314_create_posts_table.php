@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
-            $table->string('content');
+            $table->text('content');
             $table->string('img');
             $table->string('status');
             $table->unsignedBigInteger('tag_id');

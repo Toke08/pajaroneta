@@ -24,12 +24,38 @@ class DatabaseSeeder extends Seeder
             "id"   => 2,
             "name" => "user",
         ]);
+
+        //Usuarios, duh
+
         \App\Models\User::create([
             "name" => "admin",
             "email" => "admin@gmail.com",
             "password" => Hash::make('12345678'),
             "role_id" => 1,
         ]);
+
+        \App\Models\User::create([
+            "name" => "Rod",
+            "email" => "r@gmail.com",
+            "password" => Hash::make('12345678'),
+            "role_id" => 2,
+        ]);
+
+        \App\Models\User::create([
+            "name" => "Pau",
+            "email" => "p@gmail.com",
+            "password" => Hash::make('12345678'),
+            "role_id" => 2,
+        ]);
+
+        \App\Models\User::create([
+            "name" => "Trini",
+            "email" => "t@gmail.com",
+            "password" => Hash::make('12345678'),
+            "role_id" => 2,
+        ]);
+
+        //Categorías comida
 
         \App\Models\Category::create([
             "id"   => 1,
@@ -67,10 +93,12 @@ class DatabaseSeeder extends Seeder
             "img" => "complementos.jpg",
         ]);
 
+        //Comidas
+
         \App\Models\Food::create([
             "name"=> "La maleducada pipi",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 1,
         ]);
@@ -78,77 +106,77 @@ class DatabaseSeeder extends Seeder
         \App\Models\Food::create([
             "name"=> "La maleducada pi",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La Cubana",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La Española",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "No Gluten",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "Cuasó",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "la funfuñosa",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "4kilos",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La maleducada XXL",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "La perruna",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "pajaro loco",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
         \App\Models\Food::create([
             "name"=> "pajaro loco2",
             "price"   => 6,
-            "img" => "default.jpg",
+            "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
         ]);
@@ -181,6 +209,9 @@ class DatabaseSeeder extends Seeder
             "category_id" => 4,
         ]);
 
+        //Categorías blog
+
+
         \App\Models\Tag::create([
             "name"=> "General",
         ]);
@@ -205,17 +236,26 @@ class DatabaseSeeder extends Seeder
             "name"=> "Sin gluten",
         ]);
 
+        \App\Models\Tag::create([
+            "name"=> "Mariscos",
+        ]);
+
+        \App\Models\Tag::create([
+            "name"=> "Comida chatarra",
+        ]);
+
+        //Posts
 
         \App\Models\Post::create([
             "title"=> "Comida sana para el día a día",
-            "content"=> "Todos los días se come bien y sano. Un poco de verde para no terminar verde.",
+            "content"=> "Todos los días se come bien y sano. Un poco de verde para no terminar verde. Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.Todos los días se come bien y sano. Un poco de verde para no terminar verde.",
             "img"=> "post1.jpg",
             "status"=> "Published",
             "tag_id"=> 3,
         ]);
         \App\Models\Post::create([
             "title"=> "Somos lechosos",
-            "content"=> "La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.",
+            "content"=> "La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones. La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.La leche tiene muchos beneficios, pero la lactosa puede no ser tan buena para ciertas personas. Aquí te contamos acerca de otras opciones.",
             "img"=> "post2.jpg",
             "status"=> "Published",
             "tag_id"=> 5,
@@ -227,6 +267,40 @@ class DatabaseSeeder extends Seeder
             "status"=> "Draft",
             "tag_id"=> 6,
         ]);
+
+        \App\Models\Post::create([
+            "title"=> "Cada día más sano",
+            "content"=> "La gente que consume verduras, menos grasas saturadas y cositas verdes, tiende a tener un estilo de vida más saludable y enérgico.",
+            "img"=> "post4.jpg",
+            "status"=> "Published",
+            "tag_id"=> 3,
+        ]);
+
+        \App\Models\Post::create([
+            "title"=> "Paellas pa' ellas",
+            "content"=> "Este 14 de Febrero, aprende como hacer una paella para tu amada.",
+            "img"=> "post5.jpg",
+            "status"=> "Published",
+            "tag_id"=> 7,
+        ]);
+
+        \App\Models\Post::create([
+            "title"=> "Delicias culinarias asiáticas",
+            "content"=> "En el continente asiático podemos encontrar una inmensa gamma de platillos, que van desde lo más tradicional hasta lo más sofisticado.",
+            "img"=> "post6.jpg",
+            "status"=> "Published",
+            "tag_id"=> 2,
+        ]);
+
+        \App\Models\Post::create([
+            "title"=> "La comida chatarra está fea",
+            "content"=> "Por más bien que pueda lucir una hamburguesa de doble queso, doble carne, bacon, etc, estudios revelan que el sistema digestivo puede sufrir un gran golpe al digerir tanto.",
+            "img"=> "post7.jpg",
+            "status"=> "Draft",
+            "tag_id"=> 8,
+        ]);
+
+        //Restaurantes
 
         \App\Models\Restaurant::create([
             "name"=>"Naked & Sated",

@@ -1,16 +1,14 @@
-@extends('layout.adminlte-layout')
-
-@section('titulo')
+<?php $__env->startSection('titulo'); ?>
 Usuarios
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
 
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 
 <div class="row">
@@ -25,7 +23,7 @@ Usuarios
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                     <div class="text-right">
-                        <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary">Crear nuevo usuario</button></a>
+                        <a href="<?php echo e(route('user.create')); ?>"><button type="button" class="btn btn-primary">Crear nuevo usuario</button></a>
                     </div>
                 </nav>
 
@@ -48,45 +46,45 @@ Usuarios
                     </tr>
                   </thead>
         <tbody>
-            @foreach ($users as $user)
+            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{ $user->id }}</td>
+                <td><?php echo e($user->id); ?></td>
                 <td>
                     <div class="user-info-container">
-                        <span class="editable" id="user-name-{{ $user->id }}">{{ $user->name }}</span>
-                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar" data-user-id="{{ $user->id }}"></button>
-                        <input type="text" class="form-control input-editar" id="input-name-{{ $user->id }}" style="display: none;">
-                        <button class="btn btn-danger btn-sm btn-cancelar" data-user-id="{{ $user->id }}" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                        <span class="editable" id="user-name-<?php echo e($user->id); ?>"><?php echo e($user->name); ?></span>
+                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar" data-user-id="<?php echo e($user->id); ?>"></button>
+                        <input type="text" class="form-control input-editar" id="input-name-<?php echo e($user->id); ?>" style="display: none;">
+                        <button class="btn btn-danger btn-sm btn-cancelar" data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                 </td>
-                <td class="editable">{{ $user->email }}</td>
+                <td class="editable"><?php echo e($user->email); ?></td>
                 <td>
-                    @if ($user->profile_img)
-                    <img src="{{ asset('img/users/' . $user->profile_img) }}" alt="Profile Image" class="img-fluid rounded-circle" style="max-width: 50px;">
-                    @else
+                    <?php if($user->profile_img): ?>
+                    <img src="<?php echo e(asset('img/users/' . $user->profile_img)); ?>" alt="Profile Image" class="img-fluid rounded-circle" style="max-width: 50px;">
+                    <?php else: ?>
                     Sin imagen
-                    @endif
+                    <?php endif; ?>
                 </td>
                 <td class="editable">
-                    <select class="form-select user-role" data-original-role="{{ $user->role_id }}">
-                        @foreach($roles as $role)
-                        <option value="{{ $role->id }}" {{ $user->role_id === $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
-                        @endforeach
+                    <select class="form-select user-role" data-original-role="<?php echo e($user->role_id); ?>">
+                        <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($role->id); ?>" <?php echo e($user->role_id === $role->id ? 'selected' : ''); ?>><?php echo e($role->name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                 </td>
-                <td>{{ $user->created_at->format('Y-m-d') }}</td>
+                <td><?php echo e($user->created_at->format('Y-m-d')); ?></td>
                 <td>
-                    <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="post" style="display: inline-block;">
-                        @csrf
-                        @method('DELETE')
+                    <form action="<?php echo e(route('user.destroy', ['user' => $user->id])); ?>" method="post" style="display: inline-block;">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
                     </form>
 
-                    <button class="btn btn-success btn-sm btn-actualizar-individual" data-user-id="{{ $user->id }}" data-update-route="{{ route('user.update', ['user' => $user->id]) }}"style="margin-left: 5px; display: none;">Actualizar
+                    <button class="btn btn-success btn-sm btn-actualizar-individual" data-user-id="<?php echo e($user->id); ?>" data-update-route="<?php echo e(route('user.update', ['user' => $user->id])); ?>"style="margin-left: 5px; display: none;">Actualizar
                     </button>
                 </td>
             </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
                 </table>
               </div>
@@ -96,9 +94,9 @@ Usuarios
           </div>
         </div>
         <!-- /.row -->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
 $(document).ready(function () {
     $(".fa-pen-to-square").click(function () {
@@ -182,4 +180,6 @@ $(document).ready(function () {
     });
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/admin/users/index.blade.php ENDPATH**/ ?>

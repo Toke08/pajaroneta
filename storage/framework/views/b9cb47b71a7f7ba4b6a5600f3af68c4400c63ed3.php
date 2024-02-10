@@ -1,9 +1,8 @@
-@extends('layout.adminlte-layout')
-@section('titulo')
+<?php $__env->startSection('titulo'); ?>
 Crear usuario
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
     :root {
         --rojoOscuro: #730000;
@@ -21,17 +20,17 @@ Crear usuario
     }
 
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">Quick Example</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
-        @csrf
+    <form action="<?php echo e(route('user.store')); ?>" method="POST" enctype="multipart/form-data">
+        <?php echo csrf_field(); ?>
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
@@ -47,7 +46,7 @@ Crear usuario
                     placeholder="Password">
             </div>
             <div class="form-group">
-                <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                <label for="password-confirm"><?php echo e(__('Confirm Password')); ?></label>
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
                     autocomplete="new-password">
             </div>
@@ -55,10 +54,10 @@ Crear usuario
                 <label>Select</label>
                 <select name="role_id" id="" class="form-control">
                     <option value="">Seleccione un rol</option>
-                    @foreach ($roles as $rol)
+                    <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                    <option value="{{$rol->id}}">{{$rol->name}}</option>
-                    @endforeach
+                    <option value="<?php echo e($rol->id); ?>"><?php echo e($rol->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
             <div class="form-group">
@@ -82,4 +81,6 @@ Crear usuario
 <!-- /.card -->
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/admin/users/create.blade.php ENDPATH**/ ?>

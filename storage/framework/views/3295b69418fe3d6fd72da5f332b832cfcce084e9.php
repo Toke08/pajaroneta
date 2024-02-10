@@ -29,13 +29,13 @@
     <div class="bg-custom pt-3 pb-3" style="background-color: #730000;">
         <ul class="list-unstyled padding row d-flex justify-content-center">
             <li class="footer-item mr-3">
-                <a class="footer-link" href="{{ route('galeria_comidas') }}" style="color: white;">@lang('Food Gallery')</a>
+                <a class="footer-link" href="<?php echo e(route('galeria_comidas')); ?>" style="color: white;"><?php echo app('translator')->get('Food Gallery'); ?></a>
             </li>
             <li class="footer-item mr-3">
-                <a class="footer-link" href="{{ route('encuentranos.index') }}" style="color: white;">@lang('Find Us')</a>
+                <a class="footer-link" href="<?php echo e(route('encuentranos.index')); ?>" style="color: white;"><?php echo app('translator')->get('Find Us'); ?></a>
             </li>
             <li class="footer-item mr-3">
-                <a class="footer-link" href="{{ route('blog') }}" style="color: white;">@lang('Blog')</a>
+                <a class="footer-link" href="<?php echo e(route('blog')); ?>" style="color: white;"><?php echo app('translator')->get('Blog'); ?></a>
             </li>
             <li class="footer-item mr-3">
                 <a class="footer-link" href="" style="color: white;">Política de privacidad</a>
@@ -48,3 +48,4 @@
 </footer>
 
 
+<?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/layout/footer.blade.php ENDPATH**/ ?>

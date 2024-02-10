@@ -174,4 +174,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/client/galeria_comidas.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/client/galeria_comidas.blade.php ENDPATH**/ ?>

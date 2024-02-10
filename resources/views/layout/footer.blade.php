@@ -5,8 +5,8 @@
 </div>
 <footer class=" text-center text-white text-align-center">
 
-    <div class="container p-4">
-      <section class="">
+    <div class="bg-custom" style="background-color: #730000;">
+      <section >
         <form action="">
           <div class="row d-flex justify-content-center align-items-center">
             <div class="col-auto">
@@ -26,8 +26,8 @@
       </section>
     </div>
 
-    <div class="">
-        <ul class="list-unstyled mx-4 my-3 row d-flex justify-content-center">
+    <div class="bg-custom pt-3 pb-3" style="background-color: #730000;">
+        <ul class="list-unstyled padding row d-flex justify-content-center">
             <li class="footer-item mr-3">
                 <a class="footer-link" href="{{ route('galeria_comidas') }}" style="color: white;">@lang('Food Gallery')</a>
             </li>

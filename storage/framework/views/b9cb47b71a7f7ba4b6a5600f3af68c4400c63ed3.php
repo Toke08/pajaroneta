@@ -4,20 +4,20 @@ Crear usuario
 
 <?php $__env->startSection('estilos'); ?>
 <style>
-    :root{
-    --rojoOscuro:#730000;
-    --rojoClaro:#A62224;
-    --amarilloOscuro:#CA8F00;
-    --amarilloClaro:#E5A200;
-    --blanco:#FFFFFF;
-    --gris:#F4F4F4;
-    --negro:#000000;
-}
+    :root {
+        --rojoOscuro: #730000;
+        --rojoClaro: #A62224;
+        --amarilloOscuro: #CA8F00;
+        --amarilloClaro: #E5A200;
+        --blanco: #FFFFFF;
+        --gris: #F4F4F4;
+        --negro: #000000;
+    }
 
     /* Cabecera de la tabla */
-    body > div > div.content-wrapper > main > div > div{
-    background-color: var(--rojoOscuro) !important;
-}
+    body>div>div.content-wrapper>main>div>div {
+        background-color: var(--rojoOscuro) !important;
+    }
 
 </style>
 <?php $__env->stopSection(); ?>
@@ -29,7 +29,7 @@ Crear usuario
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="<?php echo e(route('user.store')); ?>" method="POST">
+    <form action="<?php echo e(route('user.store')); ?>" method="POST" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
         <div class="card-body">
             <div class="form-group">
@@ -50,23 +50,26 @@ Crear usuario
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
                     autocomplete="new-password">
             </div>
+            <div class="form-group">
+                <label>Select</label>
+                <select name="role_id" id="" class="form-control">
+                    <option value="">Seleccione un rol</option>
+                    <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
+                    <option value="<?php echo e($rol->id); ?>"><?php echo e($rol->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <!-- <label for="customFile">Custom File</label> -->
 
-
-
-                    <div class="form-group">
-                        <label>Select</label>
-                        <select name="role_id" id="" class="form-control">
-                            <option value="">Seleccione un rol</option>
-                            <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                            <option value="<?php echo e($rol->id); ?>"><?php echo e($rol->name); ?></option>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </select>
-                    </div>
-
-            
-
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="img">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+            <div class="form-group">
+            </div>
         </div>
         <!-- /.card-body -->
 

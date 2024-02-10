@@ -5,20 +5,20 @@ Crear usuario
 
 @section('estilos')
 <style>
-    :root{
-    --rojoOscuro:#730000;
-    --rojoClaro:#A62224;
-    --amarilloOscuro:#CA8F00;
-    --amarilloClaro:#E5A200;
-    --blanco:#FFFFFF;
-    --gris:#F4F4F4;
-    --negro:#000000;
-}
+    :root {
+        --rojoOscuro: #730000;
+        --rojoClaro: #A62224;
+        --amarilloOscuro: #CA8F00;
+        --amarilloClaro: #E5A200;
+        --blanco: #FFFFFF;
+        --gris: #F4F4F4;
+        --negro: #000000;
+    }
 
     /* Cabecera de la tabla */
-    body > div > div.content-wrapper > main > div > div{
-    background-color: var(--rojoOscuro) !important;
-}
+    body>div>div.content-wrapper>main>div>div {
+        background-color: var(--rojoOscuro) !important;
+    }
 
 </style>
 @endsection
@@ -30,7 +30,7 @@ Crear usuario
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('user.store')}}" method="POST">
+    <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -51,34 +51,26 @@ Crear usuario
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
                     autocomplete="new-password">
             </div>
+            <div class="form-group">
+                <label>Select</label>
+                <select name="role_id" id="" class="form-control">
+                    <option value="">Seleccione un rol</option>
+                    @foreach ($roles as $rol)
 
+                    <option value="{{$rol->id}}">{{$rol->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <!-- <label for="customFile">Custom File</label> -->
 
-
-
-                    <div class="form-group">
-                        <label>Select</label>
-                        <select name="role_id" id="" class="form-control">
-                            <option value="">Seleccione un rol</option>
-                            @foreach ($roles as $rol)
-
-                            <option value="{{$rol->id}}">{{$rol->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-            {{-- <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                    </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="img">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
-            </div> --}}
-
+            </div>
+            <div class="form-group">
+            </div>
         </div>
         <!-- /.card-body -->
 

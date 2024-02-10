@@ -44,11 +44,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $datos = $request->all();
-        // $nombreImagen = $request->file('img')->getClientOriginalName();
-        // // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
 
-        // //mover imagen subido desde el form de letters.create al servidor
-        // $request->file('img')->move('img/users', $nombreImagen);
+        // Verificar si la imagen está presente en la solicitud
+        if (isset($datos['profile_img'])) {
+            $nombreImagen = $request->file('img')->getClientOriginalName();
+            // $nombreImagen = Str::random(10)."_".$datos['img']; esto se puede hacer gracias al request->all(), si no, se susa la otra manera con lo que trae el request(linea arriba)
+
+            //mover imagen subido desde el form de letters.create al servidor
+            $request->file('img')->move('img/users', $nombreImagen);
+
+            }
+
+
 
         //obtener texto y papa
         // $mensaje=$datos['mensaje'];
@@ -71,7 +78,14 @@ class UserController extends Controller
             $user->email=$datos['email'];
             $user->password=$datos['password'];
             $user->role_id=$datos['role_id'];
-            // $user->img=$nombreImagen;
+
+            // Verificar si la imagen está presente en la solicitud
+            if (isset($datos['profile_img'])) {
+            // Asegurarse de que el campo de imagen sea un archivo válido
+            if ($datos['profile_img']->isValid()) {
+            $user->profile_img = $nombreImagen;
+            }
+            }
             $user->save();
 
             // $user=auth()->user();

@@ -4,10 +4,16 @@
     </svg>
 </div>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-    <a class="navbar-brand" href="{{ route('home') }}">Pajaroneta</a>
+    <a class="navbar-brand" href="{{ route('home') }}">
+        <img id="logo" src="{{ asset('img/landing_page/pajaro-01.png') }}"alt="">
+    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span> <!-- Nueva barra -->
+        <span class="navbar-toggler-icon"></span> <!-- Nueva barra -->
     </button>
+
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -24,34 +30,34 @@
             </li>
 
             @guest
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
-    </li> --}}
-    <li class="nav-item">
-        <a id="login-btn" class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
-    </li>
-@else
-    @if (auth()->user()->isAdmin())
-        <!-- Si es un administrador, redirigir al dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('adminHome') }}">@lang('Hello,') {{ auth()->user()->name }}</a>
-        </li>
+            {{-- <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
+            </li> --}}
+            <li class="nav-item">
+                <a id="login-btn" class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
+            </li>
+        @else
+            @if (auth()->user()->isAdmin())
+                <!-- Si es un administrador, redirigir al dashboard -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('adminHome') }}">@lang('Hello,') {{ auth()->user()->name }}</a>
+                </li>
 
-    @else
-        <!-- Si no es un administrador, mostrar el nombre del usuario -->
-        <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('user_show', ['name' => auth()->user()->name]) }}">@lang('Hello,') {{ auth()->user()->name }}</a>
-        </li>
-    @endif
+            @else
+                <!-- Si no es un administrador, mostrar el nombre del usuario -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user_show', ['name' => auth()->user()->name]) }}">@lang('Hello,') {{ auth()->user()->name }}</a>
+                </li>
+            @endif
 
-    <!-- Común para usuarios y administradores -->
-    <li class="nav-item">
-        <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();">@lang('Logout')</a>
-        <form id="logout" action="{{ route('logout') }}" method="POST">
-            @csrf
-        </form>
-    </li>
-@endguest
+            <!-- Común para usuarios y administradores -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout').submit();">@lang('Logout')</a>
+                <form id="logout" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
+            </li>
+        @endguest
 
         </ul>
         <span class="text-white">
@@ -59,5 +65,6 @@
             <a href="{{ route('setLanguage','eu') }}">EU</a>
             <a href="{{ route('setLanguage', 'en') }}">EN</a>
         </span>
+
     </div>
 </nav>

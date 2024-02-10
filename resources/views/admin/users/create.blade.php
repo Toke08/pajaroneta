@@ -15,44 +15,37 @@ Crear usuario
         --negro: #000000;
     }
 
-    /* Cabecera de la tabla */
-    body>div>div.content-wrapper>main>div>div {
-        background-color: var(--rojoOscuro) !important;
-    }
 
 </style>
 @endsection
 
 @section('contenido')
 <div class="card card-primary">
-    <div class="card-header">
-        <h3 class="card-title">Quick Example</h3>
-    </div>
     <!-- /.card-header -->
     <!-- form start -->
     <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
+                <label for="exampleInputEmail1">Name *</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Enter name">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
+                <label for="exampleInputEmail1">Email *</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1">Password *</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name="password"
                     placeholder="Password">
             </div>
             <div class="form-group">
-                <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                <label for="password-confirm">{{ __('Confirm Password *') }}</label>
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
                     autocomplete="new-password">
             </div>
             <div class="form-group">
-                <label>Select</label>
+                <label>Select *</label>
                 <select name="role_id" id="" class="form-control">
                     <option value="">Seleccione un rol</option>
                     @foreach ($roles as $rol)
@@ -62,9 +55,10 @@ Crear usuario
                 </select>
             </div>
             <div class="form-group">
-                <!-- <label for="customFile">Custom File</label> -->
+                <label for="customFile">profile image</label>
 
                 <div class="custom-file">
+
                     <input type="file" class="custom-file-input" id="customFile" name="img">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>

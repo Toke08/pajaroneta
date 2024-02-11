@@ -16,9 +16,10 @@ footer{
     position: relative;
     display: block;
     width: calc(160% + 1.3px);
-    height: 160px;
+    height: 130px;
 }
 
 .custom-shape-divider-bottom-1707587365 .shape-fill {
     fill: #730000;
 }
+

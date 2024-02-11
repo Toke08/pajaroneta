@@ -244,6 +244,11 @@ Usuarios
                     </tr>
                   </thead>
         <tbody>
+            @if (count($users)<=0)
+                <tr>
+                    <td colspan="6">No hay registros disponibles.</td>
+                </tr>
+            @else
             @foreach ($users as $user)
             <tr>
                 <td>{{ $user->id }}</td>
@@ -283,6 +288,7 @@ Usuarios
                 </td>
             </tr>
             @endforeach
+            @endif
             </tbody>
                 </table>
               </div>

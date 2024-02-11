@@ -242,6 +242,11 @@ Usuarios
                     </tr>
                   </thead>
         <tbody>
+            <?php if(count($users)<=0): ?>
+                <tr>
+                    <td colspan="6">No hay registros disponibles.</td>
+                </tr>
+            <?php else: ?>
             <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <td><?php echo e($user->id); ?></td>
@@ -281,6 +286,7 @@ Usuarios
                 </td>
             </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
             </tbody>
                 </table>
               </div>

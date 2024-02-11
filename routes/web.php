@@ -52,7 +52,7 @@ Route::prefix('/admin')->group(function () {
 });
 
 //ejemplo rutas cliente y su controlador
-Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendario');
+Route::get('/encuentranos', [ClientController::class, 'calendar'])->name('encuentranos');
 
 Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
 Route::get('/galeria-comidas/{id}', [ClientController::class, 'galeria_comidas_show'])->name('galeria-comidas.show');

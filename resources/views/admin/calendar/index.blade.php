@@ -40,7 +40,6 @@ iframe{
 
 @section('contenido')
 
-<div id="caja_info"></div>
 
 <div id="calendario"></div>
 
@@ -105,42 +104,59 @@ iframe{
 @section('script')
 <script>
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // recoge los datos del form jquery
-        let formulario=document.querySelector("form");
-
-
-
-        var calendarEl = document.getElementById('calendario');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-
+document.addEventListener('DOMContentLoaded', function() {
+    // recoge los datos del form jquery
+    let formulario = document.querySelector("form");
+    var calendarEl = document.getElementById('calendario');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
+        locale: "es", //idioma español
+        displayEventTime: false,
 
-        locale:"es", //idioma español
-        displayEventTime:false,
-
-
-
-
-        dateClick:function(info){  //la info recoge el dia que haces click
-
-
-
+        dateClick: function(info) {
             formulario.reset(); //reseteo form
-            formulario.start.value=info.dateStr; //pilla la fecha elegida del calendario
-
-
-
-            $("#calendar").modal("show"); //al hacer click en la fecha que salga el modal evento jeje
-
+            formulario.start.value = info.dateStr; //pilla la fecha elegida del calendario
+            $("#calendar").modal("show"); //al hacer clic en la fecha que salga el modal evento jeje
         },
 
 
+        eventClick: function(info) {}
 
-        eventClick:function(info){}
+
+
+
+
+
 
     });
-      calendar.render();
 
+    // Agrega el evento click al botón después de inicializar el calendario
+    document.getElementById("btn_save").addEventListener("click", function() {
+        let formData = new FormData(formulario);
+
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('calendario.store') }}',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log(response);
+                // Actualiza el calendario con los nuevos datos
+                calendar.refetchEvents();
+                // Cierra el modal después de guardar
+                $("#calendar").modal("hide");
+            },
+            error: function(error) {
+                // Maneja los errores si es necesario
+                console.log(error);
+            }
+        });
     });
+
+
+    calendar.render();
+});
+
 </script>
+@endsection

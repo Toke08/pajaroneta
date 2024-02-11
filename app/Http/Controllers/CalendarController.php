@@ -19,13 +19,6 @@ class CalendarController extends Controller
     public function index()
     {
 
-        // $events = Event::all();
-        // $locations = Location::all();
-
-        // $calendars = Calendar::with('event', 'location')->get();
-        // return view("admin.calendar.index", ['calendars'=> $calendars]);
-        // return view("admin.calendar.create", ['locations' => $locations, 'events' => $events]);
-
             $events = Event::all();
             $locations = Location::all();
             return view('admin.calendar.index', compact('events', 'locations'));
@@ -56,7 +49,7 @@ class CalendarController extends Controller
 
         $request->validate([
             'start'=>'required|date',
-            'end' => 'required|date',
+            'end' => 'required|date|after_or_equal:start', //esto hace que no pueda eligir fechas anteriores
             'location_id' => 'required|exists:locations,id',
             'event_id' => 'required|exists:events,id',
         ]);

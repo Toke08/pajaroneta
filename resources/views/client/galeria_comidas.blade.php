@@ -1,7 +1,7 @@
 @extends('layout.masterpage')
 
 @section('titulo')
-    ¿Con hambre?
+    Galería comidas
 @endsection
 
 @section('estilos')
@@ -13,7 +13,7 @@
     }
 
     body{
-        background-color: rgb(230, 230, 230)
+        background-color: rgb(255, 255, 255)
         }
 
     .foods-container{
@@ -132,7 +132,7 @@
         @php
         $delay = 1;
         @endphp
-    <h1>Galeria de comidas</h1>
+    <h1>¿Con hambre?</h1>
         <div class="foods-container">
         @foreach ($foods as $food)
         @if($food->id %8==0)

@@ -5,7 +5,7 @@
 @section('estilos')
 <style>
 body {
-    display: flex;
+
     align-items: left;
     justify-content: center;
     height: 100vh;

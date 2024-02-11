@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
@@ -37,7 +36,9 @@ img {
     object-fit: cover;
     border-radius: 10px;
 }
-
+#restaurant{
+    margin-top: 10%;
+}
 #div-restaurantes{
     display: grid;
     grid-gap:0.5rem;
@@ -45,7 +46,14 @@ img {
     grid-auto-rows: auto;
     grid-auto-flow: dense;
 }
-
+.cates{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.cates a{
+    margin: 3%;
+}
 </style>
 
 
@@ -58,10 +66,14 @@ img {
     <div id="blog">
         <h1>Blog-oneta</h1>
         <p>Publicaciones, opiniones y más...</p>
-        <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <a href="<?php echo e(route('tags_show', $tag)); ?>"><?php echo e($tag->name); ?></a>
+        <div class="cates">
+            <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <a href="<?php echo e(route('tags_show', $tag)); ?>"><?php echo e($tag->name); ?></a>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
 
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
         <div id="posts">
         <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
@@ -76,7 +88,7 @@ img {
 
     <div id="restaurant"></div>
         <h2>¿Estámos lejos?</h2>
-        <p>¡Encuentra más opciones saludables cerca a ti!</p>
+        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
         <div id="div-restaurantes">
             <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="restaurants">

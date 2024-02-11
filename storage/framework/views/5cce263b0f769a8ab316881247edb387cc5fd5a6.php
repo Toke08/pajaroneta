@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo'); ?>
     ¿Con hambre?
 <?php $__env->stopSection(); ?>
@@ -113,13 +111,6 @@
     }
 
 }
-
-
-
-
-
-
-
 
 </style>
 <?php $__env->stopSection(); ?>

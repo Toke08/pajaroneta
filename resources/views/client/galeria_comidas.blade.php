@@ -114,13 +114,6 @@
 
 }
 
-
-
-
-
-
-
-
 </style>
 @endsection
 

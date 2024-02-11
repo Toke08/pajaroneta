@@ -8,29 +8,27 @@ Vista de {{$food->name}}
 
 @section('estilos')
 <style>
-/* Estilos para el contenedor principal */
 .container {
     display: flex;
     align-items: center;
 }
 
-/* Estilos para el texto de alimentos */
 .food-text {
-    width: 50%; /* Ocupa el 50% del ancho del contenedor */
-    float: left; /* Coloca el texto a la izquierda */
-    margin-right: 20px; /* Espacio entre el texto y la imagen */
+    width: 50%;
+    float: left;
+    margin-right: 20px;
 }
 
-/* Estilos para la imagen de alimentos */
 .food-image {
-    width: 50%; /* Ocupa el 50% del ancho del contenedor */
-    float: right; /* Coloca la imagen a la derecha */
+    width: 50%;
+    float: right;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para la imagen de categoría */
 .category-image {
-    width: 10%; /* Ocupa el 10% del ancho del contenedor */
-    margin-top: 20px; /* Espacio entre el texto y la imagen */
+    width: 10%;
+    margin-top: 20px;
 }
 .btn{
     color: #fff;
@@ -53,11 +51,31 @@ Vista de {{$food->name}}
 }
 
 .btn:active {
-    background-color: #CA8F00; /* Usa el mismo color que en :hover */
+    background-color: #CA8F00;
     border: none;
     border-radius: 1.5em;
-    box-shadow: none; /* Elimina la sombra cuando se hace clic */
+    box-shadow: none;
     padding: 5px;
+}
+@media only screen and (max-width: 767px) {
+    .container {
+        flex-direction: column; /* Cambia la dirección de flexión a vertical */
+    }
+
+    .food-text, .food-image {
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+        float: none; /* Elimina el flotado */
+        margin-right: 0; /* Elimina el margen derecho */
+    }
+
+    .food-text {
+        margin-bottom: 20px; /* Agrega espacio entre los elementos */
+    }
+
+    .category-image {
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+        margin-top: 20px; /* Espacio entre el texto y la imagen */
+    }
 }
 </style>
 @endsection
@@ -70,7 +88,6 @@ Vista de {{$food->name}}
         <h1>{{$food->name}}</h1>
         <p>{{$food->description}}</p>
         <h2>€{{$food->price}}</h2>
-
     </div>
 
     <img src="{{ asset('img/foods') . '/' . $food->img }}" alt="{{ $food->name }}" class="food-image">

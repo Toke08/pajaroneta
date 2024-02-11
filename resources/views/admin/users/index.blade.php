@@ -202,7 +202,7 @@ Usuarios
                         </symbol>
                       </svg>
 
-                      <form novalidate="novalidate" onsubmit="return false;" class="searchbox sbx-medium">
+                      <form action="{{ route('user.index')}}" method="GET" novalidate="novalidate" class="searchbox sbx-medium">
                         <div role="search" class="sbx-medium__wrapper">
                           <input type="search" name="search" placeholder="Search your website" autocomplete="off" required="required" class="sbx-medium__input">
                           <button type="submit" title="Submit your search query." class="sbx-medium__submit">

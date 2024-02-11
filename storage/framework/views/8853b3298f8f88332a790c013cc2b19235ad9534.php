@@ -42,7 +42,7 @@
             font-family: 'Quicksand', sans-serif;
         }
         body{
-            background-image: url('../img/landing_page/bg-'2.png');
+            background-image: url('../img/landing_page/bg-2.png');
             background-size: cover;
             background-position: center;
         }

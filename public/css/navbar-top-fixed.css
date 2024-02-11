@@ -1,8 +1,13 @@
 /* Show it is fixed to the top */
 body {
-  /*min-height: 75rem;*/
     padding-top: 5rem;
 }
+
+#logo {
+    width: 75px;
+    position: fixed;
+}
+
 .custom-shape-divider-top-1707134803 {
     position: fixed;
     top: 0;
@@ -26,17 +31,116 @@ body {
 }
 
 .navbar-nav .nav-link {
-    color: white !important; /* !important para sobrescribir estilos predeterminados */
-    text-decoration: none !important; /* Eliminar subrayado */
+    color: white !important; /* Sobrescribe los estilos predeterminados */
+    text-decoration: none !important; /* Elimina subrayado */
+    position: relative;
+    word-spacing: 0.25em;
+}
+
+.navbar-nav .nav-link:not(form) {
+    position: relative;
+    color: white !important; /* Sobrescribe los estilos predeterminados */
+    text-decoration: none !important; /* Elimina subrayado */
+    position: relative;
+    word-spacing: 0.25em;
+}
+
+#login-btn,
+#logout-btn {
+    background-color: white;
+    color: #000000 !important;
+    border-radius: 20px;
+    padding: 8px 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-nav .nav-link.active {
     font-weight: bold;
 }
-.navbar-nav .nav-link#login-btn {
-    background-color: white;
-    color: #000000 !important; /* Puedes ajustar el color del texto según tus preferencias */
-    border-radius: 20px; /* Bordes redondos */
-    padding: 8px 16px; /* Ajusta el relleno según sea necesario */
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Distancia del subrayado al texto */
+    left: 0;
+    width: 0%;
+    height: 2px; /* Grosor del subrayado */
+    background-color: #fff; /* Color del subrayado */
+    transition: width 0.3s ease;
 }
 
+.navbar-nav .nav-link:hover::after {
+    width: calc(100% - 0.5em); /* Ancho completo al pasar el cursor */
+}
+
+/* Media query para pantallas pequeñas */
+@media only screen and (max-width: 767px) {
+    .custom-shape-divider-top-1707134803 .shape-fill {
+        fill: #fff; /* Cambia el color del SVG para pantallas pequeñas */
+    }
+
+    .navbar-toggler {
+        border: none;
+        background-color: transparent;
+    }
+
+    .navbar-toggler-icon {
+        width: 24px;
+        height: 3px;
+        background-color: #000000;
+        display: block;
+        transition: all 0.3s ease;
+        margin-top: 5px;
+    }
+
+    /* Estado del botón toggle cuando está abierto */
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:first-child {
+        transform: rotate(45deg);
+        margin-top: 15px;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:last-child {
+        transform: rotate(-45deg);
+        margin-top: -10px;
+    }
+
+    .navbar-nav .nav-link {
+        position: relative;
+        color: #fff; /* Color del texto */
+        text-align: center; /* Centrar el texto */
+    }
+    .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; /* Distancia del subrayado al texto */
+        left: 100%; /* Comienza desde el centro del contenedor */
+        transform: translateX(-50%); /* Centra el subrayado horizontalmente */
+        width: 0%;
+        height: 2px; /* Grosor del subrayado */
+        background-color: #fff; /* Color del subrayado */
+        transition: width 0.3s ease, left 0.3s ease; /* Animación de la expansión del subrayado y la posición */
+    }
+    .navbar-nav .nav-link:hover::after {
+        width: calc(50% - 1em); /* Ancho completo al pasar el cursor, restando un espacio adicional */
+        left: 50%; /* Mueve el subrayado al inicio del contenedor */
+    }
+
+    .navbar-collapse {
+        text-align: center;
+        background-color: #730000; /* Color de fondo del menú desplegable */
+        margin-top: 15%; /* Margen superior */
+        padding: 25px; /* Relleno interno */
+        border-radius: 50px; /* Bordes redondos */
+    }
+    .navbar-nav .nav-link:not(form) {
+        position: relative;
+        color: white !important; /* Sobrescribe los estilos predeterminados */
+        text-decoration: none !important; /* Elimina subrayado */
+        position: relative;
+        word-spacing: 0.25em;
+    }
+}

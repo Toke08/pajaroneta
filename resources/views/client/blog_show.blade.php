@@ -26,18 +26,32 @@
     padding-top: 1em;
 }
 
-.btn-primary{
-    background-color:#E5A200;
+.btn{
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    position: fixed;
+    background-color: #E5A200;
     border: none;
     border-radius: 1.5em;
-    position: absolute;
-    right: 0;
+    position: relative;
+    transition: 0.3s ease-in-out;
 }
 
-.btn-primary:hover{
-    background-color:#CA8F00;
+.btn:hover {
+    background-color: #CA8F00;
     border: none;
     border-radius: 1.5em;
+    color: #fff;
+
+}
+
+.btn:active {
+    background-color: #CA8F00; /* Usa el mismo color que en :hover */
+    border: none;
+    border-radius: 1.5em;
+    box-shadow: none; /* Elimina la sombra cuando se hace clic */
+    padding: 5px;
 }
 
 .form-control{
@@ -72,6 +86,7 @@
 .comment-details p {
     margin: 0;
 }
+
 </style>
 @endsection
 
@@ -81,7 +96,7 @@
     <div id="content">
         <a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a><br>
 
-        <button id="volverAlBlog" class="btn btn-primary">Volver al blog</button>
+        <button id="volverAlBlog" class="btn">Volver al blog</button>
         {{-- <a href="{{ route('blog') }}">Volver al blog</a> --}}
         <h1>{{ $post->title }}</h1>
         <p class="post-content">{{ $post->content }}</p>

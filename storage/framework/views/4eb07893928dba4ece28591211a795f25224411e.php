@@ -24,7 +24,7 @@ Usuarios
   -webkit-transition: box-shadow .4s ease, background .4s ease;
   transition: box-shadow .4s ease, background .4s ease;
   border: 0;
-  border-radius: 19px;
+  border-radius: 7px;
   box-shadow: inset 0 0 0 1px #D9D9D9;
   background: #FFFFFF;
   padding: 0;
@@ -262,7 +262,7 @@ Usuarios
                     <?php endif; ?>
                 </td>
                 <td class="editable">
-                    <select class="form-select user-role" data-original-role="<?php echo e($user->role_id); ?>">
+                    <select class="form-select user-role form-control" data-original-role="<?php echo e($user->role_id); ?>">
                         <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($role->id); ?>" <?php echo e($user->role_id === $role->id ? 'selected' : ''); ?>><?php echo e($role->name); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

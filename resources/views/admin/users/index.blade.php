@@ -26,7 +26,7 @@ Usuarios
   -webkit-transition: box-shadow .4s ease, background .4s ease;
   transition: box-shadow .4s ease, background .4s ease;
   border: 0;
-  border-radius: 19px;
+  border-radius: 7px;
   box-shadow: inset 0 0 0 1px #D9D9D9;
   background: #FFFFFF;
   padding: 0;
@@ -264,7 +264,7 @@ Usuarios
                     @endif
                 </td>
                 <td class="editable">
-                    <select class="form-select user-role" data-original-role="{{ $user->role_id }}">
+                    <select class="form-select user-role form-control" data-original-role="{{ $user->role_id }}">
                         @foreach($roles as $role)
                         <option value="{{ $role->id }}" {{ $user->role_id === $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
                         @endforeach

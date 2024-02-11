@@ -23,7 +23,7 @@
                 <a class="nav-link" href="{{ route('ubicaciones.index') }}">@lang('Locations')</a>
             </li> -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('encuentranos.index') }}">@lang('Find Us')</a>
+                <a class="nav-link" href="{{ route('encuentranos') }}">@lang('Find Us')</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('blog') }}">@lang('Blog')</a>

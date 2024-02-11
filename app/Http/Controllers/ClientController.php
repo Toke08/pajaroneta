@@ -11,6 +11,9 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Restaurant;
 use App\Models\User;
+use App\Models\Calendar;
+use App\Models\Event;
+use App\Models\Location;
 
 class ClientController extends Controller
 {
@@ -163,5 +166,12 @@ class ClientController extends Controller
 
     }
 
+    public function calendar(){
+        $events = Event::all();
+        $locations = Location::all();
+        $calendario= Calendar::all();
+        return view('client.calendar', ['events'=> $events, 'locations'=>$locations]);
+
+    }
 
 }

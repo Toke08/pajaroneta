@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
 Nueva fecha
 <?php $__env->stopSection(); ?>

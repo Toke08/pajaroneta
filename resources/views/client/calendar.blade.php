@@ -1,7 +1,7 @@
 @extends('layout.masterpage')
 
 @section('titulo')
-Ubicaciones
+
 @endsection
 
 @section('estilos')
@@ -14,24 +14,29 @@ Ubicaciones
 @section('contenido')
 
 <h1>Calendario</h1>
+<div id="calendario"></div>
 
 
-<!--
+@endsection
+
+@section('script')
 <script>
-     const deleteButtons = document.querySelectorAll('.btn-delete');
 
-    deleteButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const locationId = this.getAttribute('data-location-id');
-        const mensaje = confirm("¿Deseas eliminar esta ubicación? Se borrarán los eventos relacionados con dicha información");
+document.addEventListener('DOMContentLoaded', function() {
 
-        if (mensaje) {
-            //no se a donde redirigir
+    let formulario=document.querySelector("form");
+    var calendarEl = document.getElementById('calendario');
 
-        }
-    });
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+
+    initialView: 'dayGridMonth',
+
+    locale:"es", //idioma español
+    displayEventTime:false,
+    })
 });
-</script>-->
+
+</script>
 @endsection
 
 

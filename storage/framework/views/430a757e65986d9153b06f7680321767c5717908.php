@@ -4,8 +4,12 @@
 
 <?php $__env->startSection('estilos'); ?>
 <style>
-
-
+#calendario {
+    position: relative;
+    z-index: 0; /* Ajusta el valor según sea necesario */
+    margin-top: 5%;
+    margin-bottom: 5%
+}
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initialView: 'dayGridMonth',
         locale: "es", // idioma español
     });
-    calendar.render(); // This line is crucial to render the calendar
+    calendar.render();
 });
 
 </script>

@@ -326,6 +326,12 @@ class DatabaseSeeder extends Seeder
             'address'=> 'Jardines 13',
             'cp' => '48004'
         ]);
+        \App\Models\Location::create([
+            'province'=>'Vizcaya',
+            'city'=> 'Bilbao',
+            'address'=> 'Alameda Urquijo 30',
+            'cp' => '48008'
+        ]);
 
         \App\Models\Event::create([
             'title'=>'Salida libre',
@@ -333,11 +339,23 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        // \App\Models\Event::create([
-        //     'title'=>'Todayland',
-        //     'description'=> 'Muy chido',
-        //     'start'=> '2024-02-05',
-        //     'end'=> '2024-02-06'
-        // ]);
+        \App\Models\Event::create([
+            'title'=>'BBK LIVE',
+            'description'=> 'Festival de música',
+        ]);
+
+        \App\Models\Calendar::create([
+            'start'=>'2024-02-17',
+            'end'=> '2024-02-17',
+            'location_id' => '2',
+            'event_id' => '2',
+        ]);
+        \App\Models\Calendar::create([
+            'start'=>'2024-02-24',
+            'end'=> '2024-02-28',
+            'location_id' => '1',
+            'event_id' => '1',
+        ]);
     }
 }
+

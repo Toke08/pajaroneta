@@ -18,10 +18,9 @@ class CalendarController extends Controller
      */
     public function index()
     {
-
-            $events = Event::all();
-            $locations = Location::all();
-            return view('admin.calendar.index', compact('events', 'locations'));
+        $events = Event::all();
+        $locations = Location::all();
+        return view('admin.calendar.index', compact('events', 'locations'));
     }
 
     /**
@@ -82,8 +81,6 @@ class CalendarController extends Controller
         $events = Event::all();
         $calendario= Calendar::all();
         return response()->json($events, $locations);
-
-
     }
 
     /**
@@ -94,7 +91,7 @@ class CalendarController extends Controller
      */
     public function edit(Calendar $calendar)
     {
-        //
+
     }
 
     /**
@@ -106,7 +103,7 @@ class CalendarController extends Controller
      */
     public function update(Request $request, Calendar $calendar)
     {
-        //
+
     }
 
     /**
@@ -117,7 +114,7 @@ class CalendarController extends Controller
      */
     public function destroy($id)
     {
-        //
+
         $calendar = Calendar::findOrFail($id);
         $calendar->delete();
         return redirect()->back();

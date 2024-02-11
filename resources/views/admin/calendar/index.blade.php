@@ -118,16 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
             formulario.start.value = info.dateStr; //pilla la fecha elegida del calendario
             $("#calendar").modal("show"); //al hacer clic en la fecha que salga el modal evento jeje
         },
-
-
-        eventClick: function(info) {}
-
-
-
-
-
-
-
     });
 
     // Agrega el evento click al botón después de inicializar el calendario
@@ -143,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             success: function(response) {
                 console.log(response);
                 // Actualiza el calendario con los nuevos datos
-                calendar.refetchEvents();
+                calendar.refetch();
                 // Cierra el modal después de guardar
                 $("#calendar").modal("hide");
             },

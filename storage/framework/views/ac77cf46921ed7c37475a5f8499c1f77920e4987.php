@@ -108,7 +108,8 @@ img {
         <div id="posts">
             <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="post">
-                    <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
+                    <a href="blog/<?php echo e($post->id); ?>"><img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img></a>
+                    <br>
                     <h3><?php echo e($post->title); ?></h3>
                     <button> <a href="blog/<?php echo e($post->id); ?>">Leer más</a></button>
                 </div>

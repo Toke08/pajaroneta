@@ -7,13 +7,17 @@
 
 #posts{
     display: grid;
-    grid-gap:0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-gap:1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Puedes ajustar el ancho según tus necesidades */
     grid-auto-rows: auto;
     grid-auto-flow: dense;
 }
 
-
+h3{
+    font-size: 1.3em;
+    margin-top:2%;
+    margin-bottom:2%;
+}
 #posts > img{
     width:100%;
     height:100%;
@@ -26,7 +30,7 @@
     color: #ffffff;
     border: none;
     border-radius: 1.5em;
-    width: 35%;
+    width: 30%;
     padding: 2%;
     transition: 0.3s ease-in-out;
 }
@@ -101,7 +105,6 @@ img {
 
         <div id="posts">
         @foreach ($posts as $post)
-
             <div class="post">
                 <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
                 <h3>{{ $post->title }}</h3>

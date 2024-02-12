@@ -5,10 +5,11 @@ PajaroBlog
 
 @section('estilos')
 <style>
-.table img{
-    width: 150px;
-    object-fit: cover;
-}
+    .table img {
+        width: 150px;
+        object-fit: cover;
+    }
+
     .sbx-medium {
         display: inline-block;
         position: relative;
@@ -195,116 +196,133 @@ PajaroBlog
 @section('contenido')
 
 <div class="row">
-          <div class="col-12">
-            <div class="card">
-                <div class="card-header">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
 
-                    <nav class="navbar navbar-light bg-light ">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-                            <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-13" viewBox="0 0 40 40">
-                                <path
-                                    d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
-                                    fill-rule="evenodd" />
-                            </symbol>
-                            <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-2" viewBox="0 0 20 20">
-                                <path
-                                    d="M8.96 10L.52 1.562 0 1.042 1.04 0l.522.52L10 8.96 18.438.52l.52-.52L20 1.04l-.52.522L11.04 10l8.44 8.438.52.52L18.96 20l-.522-.52L10 11.04l-8.438 8.44-.52.52L0 18.96l.52-.522L8.96 10z"
-                                    fill-rule="evenodd" />
-                            </symbol>
-                        </svg>
+                <nav class="navbar navbar-light bg-light ">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+                        <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-13" viewBox="0 0 40 40">
+                            <path
+                                d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
+                                fill-rule="evenodd" />
+                        </symbol>
+                        <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-2" viewBox="0 0 20 20">
+                            <path
+                                d="M8.96 10L.52 1.562 0 1.042 1.04 0l.522.52L10 8.96 18.438.52l.52-.52L20 1.04l-.52.522L11.04 10l8.44 8.438.52.52L18.96 20l-.522-.52L10 11.04l-8.438 8.44-.52.52L0 18.96l.52-.522L8.96 10z"
+                                fill-rule="evenodd" />
+                        </symbol>
+                    </svg>
 
-                        <form action="{{ route('user.index')}}" method="GET" novalidate="novalidate"
-                            class="searchbox sbx-medium">
-                            <div role="search" class="sbx-medium__wrapper">
-                                <input type="search" name="search" placeholder="Search your website" autocomplete="off"
-                                    required="required" class="sbx-medium__input">
-                                <button type="submit" title="Submit your search query." class="sbx-medium__submit">
-                                    <svg role="img" aria-label="Search">
-                                        <use xlink:href="#sbx-icon-search-13"></use>
-                                    </svg>
-                                </button>
-                                <button type="reset" title="Clear the search query." class="sbx-medium__reset">
-                                    <svg role="img" aria-label="Reset">
-                                        <use xlink:href="#sbx-icon-clear-2"></use>
-                                    </svg>
-                                </button>
-                            </div>
-                        </form>
-                        <script type="text/javascript">
-                            document.querySelector('.searchbox [type="reset"]').addEventListener('click', function () {
-                                this.parentNode.querySelector('input').focus();
-                            });
-
-                        </script>
-                        <div class="text-right">
-                            <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary">Crear nuevo
-                                    usuario</button></a>
+                    <form action="{{ route('user.index')}}" method="GET" novalidate="novalidate"
+                        class="searchbox sbx-medium">
+                        <div role="search" class="sbx-medium__wrapper">
+                            <input type="search" name="search" placeholder="Search your website" autocomplete="off"
+                                required="required" class="sbx-medium__input">
+                            <button type="submit" title="Submit your search query." class="sbx-medium__submit">
+                                <svg role="img" aria-label="Search">
+                                    <use xlink:href="#sbx-icon-search-13"></use>
+                                </svg>
+                            </button>
+                            <button type="reset" title="Clear the search query." class="sbx-medium__reset">
+                                <svg role="img" aria-label="Reset">
+                                    <use xlink:href="#sbx-icon-clear-2"></use>
+                                </svg>
+                            </button>
                         </div>
-                    </nav>
+                    </form>
+                    <script type="text/javascript">
+                        document.querySelector('.searchbox [type="reset"]').addEventListener('click', function () {
+                            this.parentNode.querySelector('input').focus();
+                        });
+
+                    </script>
+                    <div class="text-right">
+                        <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary">Crear nuevo
+                                usuario</button></a>
+                    </div>
+                </nav>
 
 
 
 
-                </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Título</th>
-                      <th>Estado</th>
-                      <th>Imagen</th>
-                      <th>Fecha publicacion</th>
-                      <th>ultima modificacion</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-            <tbody>
-                @foreach($posts as $post)
-                <tr>
-                    <td>{{ $post->id }}</td>
-                    <td><a href="blog/{{ $post->id }}">{{ $post->title }}</a></td>
-                    <td>{{ $post->status }}
-                        {{-- <form action="{{ route('blog.update', $post->id) }}" method="POST">
-                            @csrf
-                            @method('PATCH')
-                            <select name="status" onchange="this.form.submit()">
-                                <option value="draft" {{ $post->status == 'draft' ? 'selected' : '' }}>Borrador</option>
-                                <option value="published" {{ $post->status == 'published' ? 'selected' : '' }}>Publicado</option>
-                            </select>
-                        </form> --}}
-                    </td>
-                    <td>
-                        <img src="{{asset('img/posts')}}/{{ $post->img }}"><img>
-                    </td>
-                    <td>
-                        {{$post->created_at}}
-                    </td>
-                    <td>
-                        {{$post->updated_at}}
-                    </td>
-                    <td>
-                        <form action="{{ route('blog.edit', $post->id) }}" method="GET">
-                            @csrf
-                            <button type="submit">Editar</button>
-                        </form>
-
-                        <form action="{{ route('blog.destroy', $post->id) }}"   method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Borrar</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-                </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-          </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a class="enlaceNegro"
+                                    href="{{ route('blog.index', ['column' => 'id', 'direction' => $direction]) }}">
+                                    ID
+                                    @if ($column === 'id' && $direction === 'desc')
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                    @else
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                    @endif
+                                </a>
+                            </th>
+                            <th>Título</th>
+                            <th>Estado</th>
+                            <th>Imagen</th>
+                            <th>Fecha publicacion</th>
+                            <th>ultima modificacion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (count($users)<=0) <tr>
+                            <td colspan="6">No hay registros disponibles.</td>
+                            </tr>
+                            @else
+                            @foreach($posts as $post)
+                            <tr>
+                                <td>{{ $post->id }}</td>
+                                <td><a href="blog/{{ $post->id }}">{{ $post->title }}</a></td>
+                                <td>{{ $post->status }}
+                                    {{-- <form action="{{ route('blog.update', $post->id) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <select name="status" onchange="this.form.submit()">
+                                        <option value="draft" {{ $post->status == 'draft' ? 'selected' : '' }}>Borrador
+                                        </option>
+                                        <option value="published" {{ $post->status == 'published' ? 'selected' : '' }}>
+                                            Publicado</option>
+                                    </select>
+                                    </form> --}}
+                                </td>
+                                <td>
+                                    <img src="{{asset('img/posts')}}/{{ $post->img }}"><img>
+                                </td>
+                                <td>
+                                    {{$post->created_at}}
+                                </td>
+                                <td>
+                                    {{$post->updated_at}}
+                                </td>
+                                <td>
+                                    <form action="{{ route('blog.edit', $post->id) }}" method="GET">
+                                        @csrf
+                                        <button type="submit">Editar</button>
+                                    </form>
+
+                                    <form action="{{ route('blog.destroy', $post->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Borrar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                            @endif
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
         </div>
+        <!-- /.card -->
+    </div>
+</div>
 
 @endsection

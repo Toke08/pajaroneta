@@ -18,18 +18,34 @@ class UserController extends Controller
      */
 
      //el request es para coger los datos del buscador (form), si no no poner.
-    public function index(Request $request)
-    {
-        $search=trim($request->get('search'));
+     public function index(Request $request)
+     {
+         $column = $request->get('column', 'id');
+         $direction = $request->get('direction', 'asc');
 
+         // Cambiar la dirección de ordenación si es necesario
+         $direction = ($direction === 'asc') ? 'desc' : 'asc';
 
-        $users = User::where('name', 'LIKE', "%".$search."%")
-                ->orderBy('name', 'asc')
-                ->paginate(10);
+         $search = trim($request->get('search'));
 
-        $roles = Role::all();
-        return view("admin.users.index", ['users'=> $users, 'roles'=> $roles]);
-    }
+         $users = User::where(function ($query) use ($search) {
+                 $query->where('name', 'LIKE', "%{$search}%")
+                     ->orWhere('email', 'LIKE', "%{$search}%");
+             })
+             ->orderBy($column, $direction)
+             ->paginate(10);
+
+         $roles = Role::all();
+
+         return view("admin.users.index", [
+             'users' => $users,
+             'roles' => $roles,
+             'column' => $column,
+             'direction' => $direction,
+             'search' => $search,
+         ]);
+     }
+
 
     /**
      * Show the form for creating a new resource.

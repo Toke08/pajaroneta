@@ -74,7 +74,7 @@
             <img class="papa1" src="{{ asset('img/landing_page/papas_1.png') }}" alt="">
         </div>
         <div class="part2">
-            <img src="{{ asset('img/landing_page/logo_pajar.png') }}" alt="">
+            <img src="{{ asset('img/landing_page/pajaro-01.png') }}" alt="">
             <p>Delicias para celiacos e intolerantes a través de toda España</p>
         </div>
         <div class="part3">
@@ -104,10 +104,7 @@
     </div>
 
 
-    <div id="restaurant"></div>
-        <h2>Por si estamos lejos de ti...</h2>
-        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
-        <div id="div-restaurantes">
+
             @foreach ($restaurants as $restaurant)
             <div class="restaurants">
                 <h3><a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a></h3>
@@ -119,8 +116,7 @@
                 <a href="{{ $restaurant->url_maps }}" target="blank">Encuéntralos aquí</a>
             </div>
             @endforeach
-        </div>
-    </div>
+
 
 
 @endsection

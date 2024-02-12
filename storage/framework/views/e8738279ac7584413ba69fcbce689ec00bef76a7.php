@@ -102,10 +102,7 @@
     </div>
 
 
-    <div id="restaurant"></div>
-        <h2>Por si estamos lejos de ti...</h2>
-        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
-        <div id="div-restaurantes">
+
             <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="restaurants">
                 <h3><a href="<?php echo e($restaurant->url_sitio); ?>" target="blank"><?php echo e($restaurant->name); ?></a></h3>
@@ -117,8 +114,7 @@
                 <a href="<?php echo e($restaurant->url_maps); ?>" target="blank">Encuéntralos aquí</a>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
-    </div>
+
 
 
 <?php $__env->stopSection(); ?>

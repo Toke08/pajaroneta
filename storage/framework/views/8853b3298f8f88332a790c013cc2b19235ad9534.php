@@ -43,7 +43,7 @@
         body{
             display: flex !important;
             flex-direction: column !important;
-            background-image: url('../img/landing_page/bg-02.png');
+            /* background-image: url('../img/landing_page/bg-02.png'); */
             background-size: cover;
             background-position: center;
             min-height: 100vh !important;

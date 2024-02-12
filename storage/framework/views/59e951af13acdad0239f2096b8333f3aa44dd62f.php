@@ -322,7 +322,10 @@ Comidas
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
                     </tbody>
+
                 </table>
+                <?php echo e($foods->links()); ?>
+
             </div>
             <!-- /.card-body -->
         </div>

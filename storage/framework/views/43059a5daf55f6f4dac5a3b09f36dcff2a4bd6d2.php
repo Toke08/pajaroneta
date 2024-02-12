@@ -1,3 +1,6 @@
+
+
+
 <?php $__env->startSection('titulo'); ?>
 Calendario
 <?php $__env->stopSection(); ?>
@@ -15,10 +18,7 @@ Calendario
 iframe{
     width: 100%;
 }
-
 /* para el modal */
-
-
 #btn_save{
     background-color:#E5A200;
     border: none;
@@ -31,16 +31,57 @@ iframe{
     background-color:#CA8F00;
 }
 
+/* Personaliza el color de fondo del calendario */
+.fc-dayGridMonth-view {
+    background-color: rgb(255, 255, 255);
+}
+
+/* Personaliza el color del texto del evento */
+.fc-event {
+    color: white;
+}
+
+/* Personaliza los bordes de las celdas de fecha */
+.fc-daygrid-day {
+    border: none;
+}
 
 </style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
+<div id="calendario">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Evento</th>
+                <th>Ubicación</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de fin</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $__currentLoopData = $calendar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <tr>
+                <td><?php echo e($cal->event->title); ?></td>
+                <td><?php echo e($cal->location->address); ?></td>
+                <td><?php echo e($cal->start); ?></td>
+                <td><?php echo e($cal->end); ?></td>
+                <td>
+                    <form action="<?php echo e(route('calendario.destroy', $cal->id)); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </tbody>
+    </table>
+    <?php echo e($calendar->links()); ?>
 
-
-<div id="calendario"></div>
-
-
+</div>
     
     <div class="modal fade" id="calendar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -92,55 +133,57 @@ iframe{
   </div>
 <?php $__env->stopSection(); ?>
 
-
 <?php $__env->startSection('script'); ?>
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let formulario = document.querySelector("form");
+        var calendarEl = document.getElementById('calendario');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: "es",
+            displayEventTime: false,
+            events: [], // Inicializa sin eventos
 
-document.addEventListener('DOMContentLoaded', function() {
-    // recoge los datos del form jquery
-    let formulario = document.querySelector("form");
-    var calendarEl = document.getElementById('calendario');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: "es", //idioma español
-        displayEventTime: false,
-
-        dateClick: function(info) {
-            formulario.reset(); //reseteo form
-            formulario.start.value = info.dateStr; //pilla la fecha elegida del calendario
-            $("#calendar").modal("show"); //al hacer clic en la fecha que salga el modal evento jeje
-        },
-    });
-
-    // Agrega el evento click al botón después de inicializar el calendario
-    document.getElementById("btn_save").addEventListener("click", function() {
-        let formData = new FormData(formulario);
-
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo e(route('calendario.store')); ?>',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                console.log(response);
-                // Actualiza el calendario con los nuevos datos
-                calendar.refetch();
-                // Cierra el modal después de guardar
-                $("#calendar").modal("hide");
+            dateClick: function(info) {
+                formulario.reset();
+                formulario.start.value = info.dateStr;
+                $("#calendar").modal("show");
             },
-            error: function(error) {
-                // Maneja los errores si es necesario
-                console.log(error);
-            }
         });
+
+        document.getElementById("btn_save").addEventListener("click", function() {
+            let formData = new FormData(formulario);
+
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo e(route('calendario.store')); ?>',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Agrega el evento al calendario si se guardó exitosamente
+                    if (response.success) {
+                        calendar.addEvent({
+                            title: 'Ubicación ingresada',
+                            start: response.start,
+                            end: response.end
+                        });
+                        calendar.refetchEvents();
+                        $("#calendar").modal("hide");
+                    } else {
+                        // Maneja errores si es necesario
+                        console.log(response.message);
+                    }
+                },
+                error: function(error) {
+                    // Maneja los errores si es necesario
+                    console.log(error);
+                }
+            });
+        });
+        calendar.render();
     });
-
-
-    calendar.render();
-});
-
-</script>
+    </script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/admin/calendar/index.blade.php ENDPATH**/ ?>

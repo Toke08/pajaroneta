@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('titulo'); ?>
-    ¿Con hambre?
+    Galería comidas
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
@@ -11,9 +11,16 @@
         margin: 0 auto;
         padding: 0;
     }
-
+    .titl{
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    .titl p{
+        font-size: 1.2em;
+        padding-top: 2%;
+    }
     body{
-        background-color: rgb(230, 230, 230)
+        background-color: rgb(255, 255, 255)
         }
 
     .foods-container{
@@ -91,6 +98,10 @@
     margin-bottom: 10px;
     object-fit: cover;
 }
+.categoria a{
+    color: #000000;
+    text-decoration: none;
+}
 
 /* Estilos para el texto debajo de la imagen */
 .categoria p {
@@ -132,7 +143,12 @@
         <?php
         $delay = 1;
         ?>
-    <h1>Galeria de comidas</h1>
+
+        <div class="titl">
+            <h1>¿Con hambre?</h1>
+            <p>¡Échale un vistazo a nuestra galería de productos que puedes venir a comer en la Pajaroneta!</p>
+        </div>
+
         <div class="foods-container">
         <?php $__currentLoopData = $foods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $food): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php if($food->id %8==0): ?>

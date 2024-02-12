@@ -338,6 +338,8 @@ Usuarios
                             <?php endif; ?>
                     </tbody>
                 </table>
+                <?php echo e($users->links()); ?>
+
             </div>
             <!-- /.card-body -->
         </div>

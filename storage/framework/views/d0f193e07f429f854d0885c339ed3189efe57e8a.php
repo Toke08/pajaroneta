@@ -1,10 +1,8 @@
-@extends('layout.masterpage')
+<?php $__env->startSection('titulo'); ?>
 
-@section('titulo')
+<?php $__env->stopSection(); ?>
 
-@endsection
-
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
 #calendario {
     position: relative;
@@ -13,9 +11,9 @@
     margin-bottom: 5%
 }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 <h1>Hoy nos encontramos aquí...</h1>
 
@@ -42,9 +40,9 @@
     </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -68,7 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
+
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/client/calendar.blade.php ENDPATH**/ ?>

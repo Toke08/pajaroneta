@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
@@ -6,39 +7,31 @@
 
 #posts{
     display: grid;
-    grid-gap:1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Puedes ajustar el ancho según tus necesidades */
+    grid-gap:0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     grid-auto-rows: auto;
     grid-auto-flow: dense;
 }
 
-h3{
-    font-size: 1.3em;
-    margin-top:2%;
-    margin-bottom:2%;
-}
+
 #posts > img{
     width:100%;
     height:100%;
     border-radius: 1rem;
     object-fit: cover;
 }
-#posts img:hover{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s ease-in-out;
-}
+
 #posts button{
     background-color: #E5A200;
     color: #ffffff;
     border: none;
     border-radius: 1.5em;
-    width: 30%;
+    width: 35%;
     padding: 2%;
     transition: 0.3s ease-in-out;
 }
 #posts button:hover{
     background-color: #CA8F00;
-    transition: box-shadow 0.3s ease-in-out;
 }
 #posts button a{
     text-decoration: none;
@@ -51,6 +44,7 @@ h3{
     box-shadow: none;
 }
 .restaurants{
+
     width: 500px;
     padding: 10px;
     max-width: 500px;
@@ -105,15 +99,17 @@ img {
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
+
+
         <div id="posts">
-            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="post">
-                    <a href="blog/<?php echo e($post->id); ?>"><img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img></a>
-                    <br>
-                    <h3><?php echo e($post->title); ?></h3>
-                    <button> <a href="blog/<?php echo e($post->id); ?>">Leer más</a></button>
-                </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+            <div class="post">
+                <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
+                <h3><?php echo e($post->title); ?></h3>
+                <button> <a href="blog/<?php echo e($post->id); ?>">Leer más</a></button>
+            </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 
@@ -123,8 +119,7 @@ img {
         <div id="div-restaurantes">
             <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="restaurants">
-                <h3><a href="<?php echo e($restaurant->url_sitio); ?>" target="blank"><?php echo e($restaurant->name); ?></a></h3>
-
+                <a href="<?php echo e($restaurant->url_sitio); ?>" target="blank"><?php echo e($restaurant->name); ?></a>
                 <p><?php echo e($restaurant->description); ?></p>
 
                 <br>
@@ -137,4 +132,4 @@ img {
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/client/blog.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/client/blog.blade.php ENDPATH**/ ?>

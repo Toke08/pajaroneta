@@ -1,11 +1,8 @@
-
-@extends('layout.adminlte-layout')
-
-@section('titulo')
+<?php $__env->startSection('titulo'); ?>
 Calendario
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
 #mapa{
     margin-top: 5%;
@@ -31,9 +28,9 @@ iframe{
     background-color:#CA8F00;
 }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 <div id="calendario">
     <table class="table">
 
@@ -48,27 +45,26 @@ iframe{
         </thead>
 
         <tbody>
-            @foreach ($calendar as $cal)
+            <?php $__currentLoopData = $calendar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{ $cal->event->title }}</td>
-                <td>{{ $cal->location->address }}</td>
-                <td>{{ $cal->start }}</td>
-                <td>{{ $cal->end }}</td>
+                <td><?php echo e($cal->event->title); ?></td>
+                <td><?php echo e($cal->location->address); ?></td>
+                <td><?php echo e($cal->start); ?></td>
+                <td><?php echo e($cal->end); ?></td>
 
                 <td>
 
                 </td>
 
             </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
 
     </table>
-    {{ $calendar->links() }}
+    <?php echo e($calendar->links()); ?>
+
 </div>
-    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar">
-    Añadir fecha
-    </button> --}}
+    
 <div class="modal fade" id="calendar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -80,26 +76,23 @@ iframe{
             </div>
             <div class="modal-body">
                 <form action="" method="post">
-                    @csrf
-                    {{-- <div class="form-group">
-                        <label for="date">Fecha</label>
-                        <input type="date" name="date" id="date">
-                    </div> --}}
+                    <?php echo csrf_field(); ?>
+                    
                     <div class="form-group">
                     <label for="event">Nombre del evento:</label>
                         <select id= "event" name="event_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                            @foreach($events as $event)
-                                <option id="title" name="title" value="{{ $event->id }}">{{ $event->title }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option id="title" name="title" value="<?php echo e($event->id); ?>"><?php echo e($event->title); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="location">¿Donde se ubicará?</label>
                             <select id="location" name="location_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                                @foreach($locations as $location)
-                                    <option value="{{ $location->id }}">{{ $location->city }}, {{ $location->address }}</option>
-                                @endforeach
+                                <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($location->id); ?>"><?php echo e($location->city); ?>, <?php echo e($location->address); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                     </div>
                     <div class="form-group">
@@ -115,15 +108,15 @@ iframe{
                     <button id="btn_save" type="submit">Guardar</button>
                 </form>
 
-                @if ($errors->any())
+                <?php if($errors->any()): ?>
                 <div class="alert alert-danger mt-3">
                     <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><?php echo e($error); ?></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
-                @endif
+                <?php endif; ?>
                 <script>
                     // Función para mostrar el mensaje de error y luego ocultarlo después de 10 segundos
                     function showErrorMessage(message) {
@@ -139,17 +132,17 @@ iframe{
                     }
 
                     // Verificar si hay un mensaje de error en la sesión flash y mostrarlo si existe
-                    @if (session('error'))
-                        showErrorMessage('{{ session('error') }}');
-                    @endif
+                    <?php if(session('error')): ?>
+                        showErrorMessage('<?php echo e(session('error')); ?>');
+                    <?php endif; ?>
                 </script>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
 
     function confirmDelete(calendarId) {
@@ -181,7 +174,7 @@ iframe{
 
             $.ajax({
                 type: 'POST',
-                url: '{{ route('calendario.store') }}',
+                url: '<?php echo e(route('calendario.store')); ?>',
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -209,4 +202,6 @@ iframe{
         calendar.render();
     });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/admin/calendar/index.blade.php ENDPATH**/ ?>

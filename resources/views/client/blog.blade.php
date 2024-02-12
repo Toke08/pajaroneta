@@ -108,11 +108,14 @@ img {
 
         <div id="posts">
             @foreach ($posts as $post)
-            <div class="post">
-                <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
-                <h3>{{ $post->title }}</h3>
-                <button> <a href="blog/{{ $post->id }}">Leer más</a></button>
-            </div>
+
+                <div class="post">
+                    <a href="blog/{{ $post->id }}"><img src="{{asset('img/posts')}}/{{ $post->img }}"><img></a>
+                    <br>
+                    <h3>{{ $post->title }}</h3>
+                    <button> <a href="blog/{{ $post->id }}">Leer más</a></button>
+                </div>
+
             @endforeach
 
 

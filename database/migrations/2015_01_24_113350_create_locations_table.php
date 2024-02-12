@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('province');
             $table->string('city');
             $table->string('address');
+            $table->string('url');
             $table->string('cp'); //codigo postal
             $table->timestamps();
         });

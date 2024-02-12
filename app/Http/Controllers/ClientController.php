@@ -28,7 +28,7 @@ class ClientController extends Controller
             $foods = Category::findOrFail($selectedCategory)->foods;
         } else {
             // Si no se selecciona una categoría o es 1, muestra todos los productos de todas las categorías.
-            $foods = Food::inRandomOrder()->get();;
+            $foods = Food::inRandomOrder()->get();
         }
 
         return view("client.galeria_comidas", ['foods'=> $foods, 'categories'=> $categories, 'selected_category' => $selectedCategory]);
@@ -120,7 +120,7 @@ class ClientController extends Controller
             $user->profile_img=$nombreImagen;
             $user->save();
 
-            \Session::flash('message','gracias por tu carta');
+            \Session::flash('message','Nuevo usuario creado');
             return redirect()->back();
         }
     }
@@ -157,6 +157,7 @@ class ClientController extends Controller
 
     }
     $user->update($data);
+        \Session::flash('message','Los datos del usuario se han actualizado exitosamente.');
 
         return redirect()->route('user_show', ['name' => $user->name])->with('success', 'Los datos del usuario se han actualizado exitosamente.');
 
@@ -172,7 +173,7 @@ class ClientController extends Controller
         $events = Event::all();
         $locations = Location::all();
         $calendario= Calendar::all();
-        return view('client.calendar', ['events'=> $events, 'locations'=>$locations]);
+        return view('client.calendar', ['events'=> $events, 'locations'=>$locations, 'calendario'=> $calendario]);
 
     }
 

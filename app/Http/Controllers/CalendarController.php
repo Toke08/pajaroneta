@@ -45,44 +45,38 @@ class CalendarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'start' => 'required|date|unique:calendars,start',
-            'end' => 'required|date|after_or_equal:start',
-            'location_id' => 'required|exists:locations,id',
-            'event_id' => 'required|exists:events,id',
-        ],
-        [
-            'start.unique' => 'La fecha seleccionada ya tiene una ubicación registrada.'
-        ]);
+{
+    // Verificar si ya existe una entrada en la fecha seleccionada
+    $existingEntry = Calendar::where('start', $request->input('start'))->first();
 
-        // Crear una nueva instancia del modelo Calendar
-        $calendar = new Calendar();
-
-        // Asignar los datos del formulario a la instancia
-        $calendar->start = $request->input('start');
-        $calendar->end = $request->input('end');
-        $calendar->location_id = $request->input('location_id');
-        $calendar->event_id = $request->input('event_id');
-
-        $calendar->save();
-
-        // Obtener los eventos y ubicaciones
-        $events = Event::all();
-        $locations = Location::all();
-
-        // Devolver una respuesta JSON con los datos del evento guardado y la ruta de redirección
-        return response()->json([
-            'success' => true,
-            'message' => 'Evento guardado exitosamente.',
-            'start' => $calendar->start,
-            'end' => $calendar->end,
-            'location_id' => $calendar->location_id,
-            'event_id' => $calendar->event_id,
-            'events' => $events,
-            'locations' => $locations,
-        ]);
+    // Si ya existe una entrada para esa fecha, mostrar un mensaje de error
+    if ($existingEntry) {
+        return redirect()->back()->withInput()->with('error', 'La fecha seleccionada ya tiene una ubicación registrada.');
     }
+
+    // Si no existe una entrada para esa fecha, realizar la validación normal
+    $request->validate([
+        'start' => 'required|date',
+        'end' => 'required|date|after_or_equal:start',
+        'location_id' => 'required|exists:locations,id',
+        'event_id' => 'required|exists:events,id',
+    ]);
+
+    // Crear una nueva instancia del modelo Calendar
+    $calendar = new Calendar();
+
+    // Asignar los datos del formulario a la instancia
+    $calendar->start = $request->input('start');
+    $calendar->end = $request->input('end');
+    $calendar->location_id = $request->input('location_id');
+    $calendar->event_id = $request->input('event_id');
+
+    $calendar->save();
+
+    // Redirigir de vuelta con un mensaje de éxito
+    \Session::flash('message','Nueva entrada ingresada');
+    return redirect()->back();
+}
 
     /**
      * Display the specified resource.
@@ -91,12 +85,10 @@ class CalendarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Calendar $calendar)
-{
-    $events = Event::all();
-    $locations = Location::all();
-
-    // Retorna una vista con los datos del calendario, eventos y ubicaciones asociadas
-    return redirect()->back()->with('success', ' Ubicación asignada!');}
+    {
+        // Retorna una vista con los datos del calendario, eventos y ubicaciones asociadas
+        return redirect()->back()->with('success', ' Ubicación asignada!');
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -129,9 +121,8 @@ class CalendarController extends Controller
      */
     public function destroy($id)
     {
-
         $calendar = Calendar::findOrFail($id);
         $calendar->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'La entrada ha sido eliminada exitosamente.');
     }
 }

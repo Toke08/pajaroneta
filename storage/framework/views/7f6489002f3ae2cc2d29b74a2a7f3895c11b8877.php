@@ -43,8 +43,10 @@
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    background-color:#730000;
-    color:#fff;
+    color:#000000;
+    background-image: url('<?php echo e(asset('img/landing_page/fondo.png')); ?>');
+
+    background-position: center;
 }
 .who_info{
     display: flex;

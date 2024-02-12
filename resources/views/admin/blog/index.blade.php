@@ -270,18 +270,25 @@ PajaroBlog
                                 <a class="enlaceNegro"
                                     href="{{ route('blog.index', ['column' => 'id', 'direction' => $direction]) }}">
                                     ID
-                                    @if ($column === 'id' && $direction === 'desc')
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                    @else
-                                    <i class="fa-solid fa-arrow-down"></i>
-                                    @endif
+                                    <i class="fa-solid fa-arrows-up-down"></i>
                                 </a>
                             </th>
                             <th>Título</th>
+                            <th>Tag</th>
                             <th>Estado</th>
                             <th>Imagen</th>
-                            <th>Fecha publicacion</th>
-                            <th>ultima modificacion</th>
+                            <th>
+                                <a class="enlaceNegro" href="{{ route('blog.index', ['column' => 'created_at', 'direction' => $direction]) }}">
+                                    Fecha de creación
+                                    <i class="fa-solid fa-arrows-up-down"></i>
+                                </a>
+                            </th>
+                            <th>
+                                <a class="enlaceNegro" href="{{ route('blog.index', ['column' => 'updated_at', 'direction' => $direction]) }}">
+                                    Ultima modificacion
+                                    <i class="fa-solid fa-arrows-up-down"></i>
+                                </a>
+                            </th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -294,6 +301,7 @@ PajaroBlog
                             <tr>
                                 <td>{{ $post->id }}</td>
                                 <td><a href="blog/{{ $post->id }}">{{ $post->title }}</a></td>
+                                <td>{{ $post->tag->name }}</td>
                                 <td>{{ $post->status }}
                                     {{-- <form action="{{ route('blog.update', $post->id) }}" method="POST">
                                     @csrf

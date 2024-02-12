@@ -18,9 +18,17 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        // Obtener la columna y dirección almacenadas en la sesión
+        //obtiene la columna que mandas desde la vista, el segundo parametro (id) es solo por si no hay ningun valor, se utiliza id por defecto.
+        $column = $request->session()->get('column', 'id');
+        $direction = $request->session()->get('direction', 'asc');
 
-        $column = $request->get('column', 'id');
-        $direction = $request->get('direction', 'asc');
+        // Actualizar la columna y dirección si se proporcionan en la solicitud
+        if ($request->has('column')) {
+            $column = $request->get('column');
+            $direction = $request->get('direction', 'asc');
+        }
+
 
         // Cambiar la dirección de ordenación si es necesario
         $direction = ($direction === 'asc') ? 'desc' : 'asc';
@@ -29,20 +37,28 @@ class PostController extends Controller
 
         $posts = Post::where(function ($query) use ($search) {
                 $query->where('title', 'LIKE', "%{$search}%")
-                    ->orWhere('status', 'LIKE', "%{$search}%");
+                    ->orWhere('status', 'LIKE', "%{$search}%")
+                    ->orWhereHas('tag', function ($categoryQuery) use ($search) {
+                        $categoryQuery->where('name', 'LIKE', "%{$search}%");
+                    });
+
             })
             ->orderBy($column, $direction)
             ->paginate(10);
 
+        // Almacenar la columna y dirección en la sesión
+        $request->session()->put('column', $column);
+        $request->session()->put('direction', $direction);
 
-
-        // $posts = Post::orderBy('created_at', 'desc')->get();
-
-        return view('admin.blog.index', ['posts' => $posts,
+        return view('admin.blog.index', [
+            'posts' => $posts,
             'column' => $column,
             'direction' => $direction,
-            'search' => $search,]);
+            'search' => $search,
+        ]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.

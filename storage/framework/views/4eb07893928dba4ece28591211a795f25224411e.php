@@ -266,11 +266,7 @@ Usuarios
                                 <a class="enlaceNegro"
                                     href="<?php echo e(route('user.index', ['column' => 'id', 'direction' => $direction])); ?>">
                                     ID
-                                    <?php if($column === 'id' && $direction === 'desc'): ?>
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                    <?php else: ?>
-                                    <i class="fa-solid fa-arrow-down"></i>
-                                    <?php endif; ?>
+                                    <i class="fa-solid fa-arrows-up-down"></i>
                                 </a>
                             </th>
                             <th>Nombre</th>

@@ -268,11 +268,7 @@ Usuarios
                                 <a class="enlaceNegro"
                                     href="{{ route('user.index', ['column' => 'id', 'direction' => $direction]) }}">
                                     ID
-                                    @if ($column === 'id' && $direction === 'desc')
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                    @else
-                                    <i class="fa-solid fa-arrow-down"></i>
-                                    @endif
+                                    <i class="fa-solid fa-arrows-up-down"></i>
                                 </a>
                             </th>
                             <th>Nombre</th>

@@ -21,7 +21,20 @@
     object-fit: cover;
 }
 
-
+#posts button{
+    background-color: #E5A200;
+    color: #ffffff;
+    border: none;
+    border-radius: 1.5em;
+    padding: 3%;
+}
+#posts button:hover{
+    background-color: #CA8F00;
+}
+#posts button a{
+    text-decoration: none;
+    color: #ffffff;
+}
 .restaurants{
 
     width: 500px;
@@ -39,6 +52,9 @@ img {
 #restaurant{
     margin-top: 10%;
 }
+#restaurants a{
+    color: #000000;
+}
 #div-restaurantes{
     display: grid;
     grid-gap:0.5rem;
@@ -53,6 +69,7 @@ img {
 }
 .cates a{
     margin: 2.5%;
+    color: #000000;
 }
 </style>
 
@@ -80,7 +97,7 @@ img {
             <div class="post">
                 <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
                 <h3>{{ $post->title }}</h3>
-                <a href="blog/{{ $post->id }}">Leer más...</a>
+                <button> <a href="blog/{{ $post->id }}">Leer más</a></button>
             </div>
         @endforeach
         </div>

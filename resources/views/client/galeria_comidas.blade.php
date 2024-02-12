@@ -91,7 +91,10 @@
     margin-bottom: 10px;
     object-fit: cover;
 }
-
+.categoria a{
+    color: #000000;
+    text-decoration: none;
+}
 /* Estilos para el texto debajo de la imagen */
 .categoria p {
     margin: 0;
@@ -133,6 +136,7 @@
         $delay = 1;
         @endphp
     <h1>¿Con hambre?</h1>
+        <p>¡Héchale un vistazo a nuestra galería de los productos que puedes venir a comer en la Pajaroneta!</p>
         <div class="foods-container">
         @foreach ($foods as $food)
         @if($food->id %8==0)

@@ -13,7 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\LandingPageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,11 +26,7 @@ use App\Http\Controllers\UserController;
 */
 Route::group(['middleware' => ['language']], function() {
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
-
-
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController

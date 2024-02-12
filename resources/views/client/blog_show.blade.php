@@ -20,7 +20,10 @@
     margin-top: 20em;
     position: relative;
 }
-
+#content a{
+    color: #000000;
+    text-decoration: none;
+}
 #comentarios{
     border-top: 2px solid #000;
     padding-top: 1em;
@@ -94,7 +97,8 @@
 <div class="post-container">
     <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}" class="post-image">
     <div id="content">
-        <a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a><br>
+
+        <p>Categoría:<a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a></p><br>
 
         <button id="volverAlBlog" class="btn">Volver al blog</button>
         {{-- <a href="{{ route('blog') }}">Volver al blog</a> --}}

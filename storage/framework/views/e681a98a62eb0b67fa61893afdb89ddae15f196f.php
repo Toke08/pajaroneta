@@ -28,8 +28,8 @@ p {
 .item{
     width: 50%;
 }
-.item:hover{
-    backface-visibility: 2%;
+.item a{
+    color: #000000;
 }
 .item img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -50,6 +50,7 @@ p {
 }
 .btn_back a{
     color: #ffffff;
+    text-decoration: none;
 }
 .publis{
     width: 100%;
@@ -57,6 +58,18 @@ p {
     flex-direction: row;
     margin-bottom: 5%;
 
+}
+.publis a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.publis button{
+    background-color: #E5A200;
+    border: none;
+    border-radius: 1.5em;
+    width: 25%;
+    padding: 2%;
+    transition: 0.3s ease-in-out;
 }
 </style>
 <?php $__env->stopSection(); ?>
@@ -88,9 +101,10 @@ p {
                 <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="item">
                         <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>"><br>
-                        <strong><?php echo e($post->title); ?></strong>
+                        <h3><?php echo e($post->title); ?></h3>
                         <br>
-                        <a href="<?php echo e(route('blog_show', $post->id)); ?>">Leer más...</a>
+                        <button><a href="<?php echo e(route('blog_show', $post->id)); ?>">Leer más</a></button>
+
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
@@ -103,11 +117,12 @@ p {
                 <div class="publis">
                 <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="item">
-                        <a href="<?php echo e($restaurant->url_sitio); ?>"><?php echo e($restaurant->name); ?></strong>
+                        <h3> <a href="<?php echo e($restaurant->url_sitio); ?>"><?php echo e($restaurant->name); ?></strong></h3>
                         <p><?php echo e($restaurant->description); ?></p>
-                        <a href="<?php echo e($restaurant->url_maps); ?>">Encuéntralos aquí</a>
+
                         <br>
                         <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>"><br>
+                        <a href="<?php echo e($restaurant->url_maps); ?>">Encuéntralo aquí</a>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>

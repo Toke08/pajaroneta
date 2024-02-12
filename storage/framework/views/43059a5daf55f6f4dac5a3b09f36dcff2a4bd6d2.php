@@ -1,6 +1,3 @@
-
-
-
 <?php $__env->startSection('titulo'); ?>
 Calendario
 <?php $__env->stopSection(); ?>

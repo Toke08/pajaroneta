@@ -24,7 +24,10 @@ h3{
     border-radius: 1rem;
     object-fit: cover;
 }
-
+#posts img:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+}
 #posts button{
     background-color: #E5A200;
     color: #ffffff;
@@ -36,6 +39,7 @@ h3{
 }
 #posts button:hover{
     background-color: #CA8F00;
+    transition: box-shadow 0.3s ease-in-out;
 }
 #posts button a{
     text-decoration: none;
@@ -48,7 +52,6 @@ h3{
     box-shadow: none;
 }
 .restaurants{
-
     width: 500px;
     padding: 10px;
     max-width: 500px;
@@ -104,13 +107,13 @@ img {
         </div>
 
         <div id="posts">
-        @foreach ($posts as $post)
-            <div class="post">
-                <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
-                <h3>{{ $post->title }}</h3>
-                <button> <a href="blog/{{ $post->id }}">Leer más</a></button>
-            </div>
-        @endforeach
+            @foreach ($posts as $post)
+                <div class="post">
+                    <img src="{{asset('img/posts')}}/{{ $post->img }}"><img><br>
+                    <h3>{{ $post->title }}</h3>
+                    <button> <a href="blog/{{ $post->id }}">Leer más</a></button>
+                </div>
+            @endforeach
         </div>
     </div>
 

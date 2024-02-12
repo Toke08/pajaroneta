@@ -23,7 +23,10 @@ h3{
     border-radius: 1rem;
     object-fit: cover;
 }
-
+#posts img:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+}
 #posts button{
     background-color: #E5A200;
     color: #ffffff;
@@ -35,6 +38,7 @@ h3{
 }
 #posts button:hover{
     background-color: #CA8F00;
+    transition: box-shadow 0.3s ease-in-out;
 }
 #posts button a{
     text-decoration: none;
@@ -47,7 +51,6 @@ h3{
     box-shadow: none;
 }
 .restaurants{
-
     width: 500px;
     padding: 10px;
     max-width: 500px;
@@ -103,13 +106,13 @@ img {
         </div>
 
         <div id="posts">
-        <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="post">
-                <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
-                <h3><?php echo e($post->title); ?></h3>
-                <button> <a href="blog/<?php echo e($post->id); ?>">Leer más</a></button>
-            </div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="post">
+                    <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
+                    <h3><?php echo e($post->title); ?></h3>
+                    <button> <a href="blog/<?php echo e($post->id); ?>">Leer más</a></button>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 

@@ -4,11 +4,16 @@
 
 <style>
 .landing_page {
-    display:flex;
-    flex-direction:row;
+    /* display:flex;
+    flex-direction:row;*/
+    width: 2000px
     place-items:center;
     justify-content:center;
-
+    display: grid;
+    grid-gap:5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Puedes ajustar el ancho según tus necesidades */
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
 }
 .part1 img{
     width:45em;
@@ -43,10 +48,10 @@
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    color:#000000;
     background-color: #730000;
     color: #ffffff;
     background-position: center;
+
 }
 .who_info{
     display: flex;
@@ -64,17 +69,17 @@
 @section('contenido')
 
     <div class="landing_page">
-        {{-- <div class="part1">
+        <div class="part1">
             <img class="papa2" src="{{ asset('img/landing_page/papa_2.png') }}" alt="">
             <img class="papa1" src="{{ asset('img/landing_page/papas_1.png') }}" alt="">
-        </div> --}}
+        </div>
         <div class="part2">
             <img src="{{ asset('img/landing_page/logo_pajar.png') }}" alt="">
             <p>Delicias para celiacos e intolerantes a través de toda España</p>
         </div>
-        {{-- <div class="part3">
+        <div class="part3">
             <img src="{{ asset('img/landing_page/perro_caliente.png') }}" alt="">
-        </div> --}}
+        </div>
     </div>
 
     <div class="who">
@@ -85,5 +90,37 @@
         </div>
         <img src="{{ asset('img/landing_page/burger_der.png') }}" alt="">
     </div>
+    <div id="mapilla">
+
+    </div>
+
+    <div id="comidas">
+
+    </div>
+
+
+    <div id="blogges">
+
+    </div>
+
+
+    <div id="restaurant"></div>
+        <h2>Por si estamos lejos de ti...</h2>
+        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
+        <div id="div-restaurantes">
+            @foreach ($restaurants as $restaurant)
+            <div class="restaurants">
+                <h3><a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a></h3>
+
+                <p>{{ $restaurant->description }}</p>
+
+                <br>
+                <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
+                <a href="{{ $restaurant->url_maps }}" target="blank">Encuéntralos aquí</a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
 
 @endsection

@@ -283,7 +283,12 @@ Comidas
                                 </a>
                             </th>
                             <th>nombre</th>
-                            <th>precio</th>
+                            <th>
+                                <a class="enlaceNegro" href="<?php echo e(route('galeria-comidas.index', ['column' => 'price', 'direction' => $direction])); ?>">
+                                    precio
+                                    <i class="fa-solid fa-arrows-up-down"></i>
+                                </a>
+                            </th>
                             <th>imagen</th>
                             <th>descripcion</th>
                             <th>categoria</th>

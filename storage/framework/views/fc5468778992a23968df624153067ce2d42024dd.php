@@ -23,7 +23,7 @@
                 <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo app('translator')->get('Locations'); ?></a>
             </li> -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo e(route('encuentranos.index')); ?>"><?php echo app('translator')->get('Find Us'); ?></a>
+                <a class="nav-link" href="<?php echo e(route('encuentranos')); ?>"><?php echo app('translator')->get('Find Us'); ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo e(route('blog')); ?>"><?php echo app('translator')->get('Blog'); ?></a>

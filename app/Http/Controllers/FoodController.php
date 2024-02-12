@@ -14,10 +14,30 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $foods = Food::all();
-        return view("admin.foods.index", ['foods'=> $foods]);
+        $column = $request->get('column', 'id');
+        $direction = $request->get('direction', 'asc');
+
+        // Cambiar la dirección de ordenación si es necesario
+        $direction = ($direction === 'asc') ? 'desc' : 'asc';
+
+        $search = trim($request->get('search'));
+
+        $foods = Food::where(function ($query) use ($search) {
+                $query->where('name', 'LIKE', "%{$search}%")
+                // ->orWhereHas asume que ya hay una relacion con category
+                ->orWhereHas('category', function ($categoryQuery) use ($search) {
+                    $categoryQuery->where('name', 'LIKE', "%{$search}%");
+                });
+      })
+      ->orderBy($column, $direction)
+      ->paginate(10);
+
+        return view("admin.foods.index", ['foods'=> $foods,
+            'column' => $column,
+            'direction' => $direction,
+            'search' => $search,]);
     }
 
     /**

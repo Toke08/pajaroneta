@@ -1,7 +1,5 @@
-
-
 <?php $__env->startSection('titulo'); ?>
-    ¿Con hambre?
+    Galería comidas
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
@@ -13,7 +11,7 @@
     }
 
     body{
-        background-color: rgb(230, 230, 230)
+        background-color: rgb(255, 255, 255)
         }
 
     .foods-container{
@@ -132,7 +130,7 @@
         <?php
         $delay = 1;
         ?>
-    <h1>Galeria de comidas</h1>
+    <h1>¿Con hambre?</h1>
         <div class="foods-container">
         <?php $__currentLoopData = $foods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $food): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php if($food->id %8==0): ?>

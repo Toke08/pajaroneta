@@ -41,8 +41,7 @@ p {
 }
 .btn_back{
     background-color:#E5A200 ;
-    width: 15%;
-    height: 2em;
+    width: 13%;
     border:none;
     padding-top: 0.2%;
     border-radius:1.5em;
@@ -61,23 +60,35 @@ p {
 }
 .publis a{
     text-decoration: none;
-    color: #ffffff;
+
 }
 .publis button{
     background-color: #E5A200;
     border: none;
+
     border-radius: 1.5em;
-    width: 25%;
+    width: 20%;
     padding: 2%;
     transition: 0.3s ease-in-out;
+}
+.publis button a{
+    color: #ffffff;
+}
+.publis button:hover {
+    background-color: #CA8F00;
+
+}
+.publis button:active {
+    background-color: #CA8F00; /* Usa el mismo color que en :hover */
+    box-shadow: none; /* Elimina la sombra cuando se hace clic */
 }
 </style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-    <div class="btn_back">
-        <a href="<?php echo e(route('blog')); ?>">Volver al blog</a>
-    </div>
+
+    <button class="btn_back"><a href="<?php echo e(route('blog')); ?>">Volver al blog</a></button>
+
 
 
     <div class="blog_conte">

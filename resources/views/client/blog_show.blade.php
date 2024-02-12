@@ -98,9 +98,10 @@
     <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}" class="post-image">
     <div id="content">
 
+        <button id="volverAlBlog" class="btn">Volver al blog</button>
         <p>Categoría:<a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a></p><br>
 
-        <button id="volverAlBlog" class="btn">Volver al blog</button>
+
         {{-- <a href="{{ route('blog') }}">Volver al blog</a> --}}
         <h1>{{ $post->title }}</h1>
         <p class="post-content">{{ $post->content }}</p>

@@ -118,7 +118,8 @@ img {
         <div id="div-restaurantes">
             <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="restaurants">
-                <a href="<?php echo e($restaurant->url_sitio); ?>" target="blank"><?php echo e($restaurant->name); ?></a>
+                <h3><a href="<?php echo e($restaurant->url_sitio); ?>" target="blank"><?php echo e($restaurant->name); ?></a></h3>
+
                 <p><?php echo e($restaurant->description); ?></p>
 
                 <br>

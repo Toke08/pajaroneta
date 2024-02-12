@@ -97,9 +97,10 @@
     <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>" class="post-image">
     <div id="content">
 
+        <button id="volverAlBlog" class="btn">Volver al blog</button>
         <p>Categoría:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
 
-        <button id="volverAlBlog" class="btn">Volver al blog</button>
+
         
         <h1><?php echo e($post->title); ?></h1>
         <p class="post-content"><?php echo e($post->content); ?></p>

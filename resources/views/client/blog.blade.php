@@ -119,7 +119,8 @@ img {
         <div id="div-restaurantes">
             @foreach ($restaurants as $restaurant)
             <div class="restaurants">
-                <a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a>
+                <h3><a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a></h3>
+
                 <p>{{ $restaurant->description }}</p>
 
                 <br>

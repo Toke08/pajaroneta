@@ -22,16 +22,19 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $location = Location::all();
-        $foods = Food::all();
-        $posts = Post::all();
-        $restaurants = Restaurant::all();
-        return view('home',compact('location', 'foods', 'posts', 'restaurants'));
+        $variables = [
+            'restaurants' =>  Restaurant::all(),
+            'posts' => Post::all(),
+            'foods' => Food::all(),
+            'locations' => Location::all(),
+        ];
+        return view('home', $variables);
+
     }
 }

@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('estilos'); ?>
 <style>
 
@@ -19,7 +20,10 @@
     margin-top: 20em;
     position: relative;
 }
-
+#content a{
+    color: #000000;
+    text-decoration: none;
+}
 #comentarios{
     border-top: 2px solid #000;
     padding-top: 1em;
@@ -93,7 +97,8 @@
 <div class="post-container">
     <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>" class="post-image">
     <div id="content">
-        <a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a><br>
+
+        <p>Categoría:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
 
         <button id="volverAlBlog" class="btn">Volver al blog</button>
         

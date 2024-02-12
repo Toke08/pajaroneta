@@ -324,12 +324,14 @@ class DatabaseSeeder extends Seeder
             'province'=>'Vizcaya',
             'city'=> 'Bilbao',
             'address'=> 'Jardines 13',
+            'url'=> 'https://maps.app.goo.gl/V8Y61jAg3XPxXYED7',
             'cp' => '48004'
         ]);
         \App\Models\Location::create([
             'province'=>'Vizcaya',
             'city'=> 'Bilbao',
             'address'=> 'Alameda Urquijo 30',
+            'url'=> 'https://maps.app.goo.gl/V8Y61jAg3XPxXYED7',
             'cp' => '48008'
         ]);
 

@@ -44,8 +44,8 @@
     justify-content:center;
     align-items:center;
     color:#000000;
-    background-image: url('<?php echo e(asset('img/landing_page/fondo.png')); ?>');
-
+    background-color: #730000;
+    color: #ffffff;
     background-position: center;
 }
 .who_info{
@@ -64,17 +64,12 @@
 <?php $__env->startSection('contenido'); ?>
 
     <div class="landing_page">
-        <div class="part1">
-            <img class="papa2" src="<?php echo e(asset('img/landing_page/papa_2.png')); ?>" alt="">
-            <img class="papa1" src="<?php echo e(asset('img/landing_page/papas_1.png')); ?>" alt="">
-        </div>
+        
         <div class="part2">
             <img src="<?php echo e(asset('img/landing_page/logo_pajar.png')); ?>" alt="">
             <p>Delicias para celiacos e intolerantes a través de toda España</p>
         </div>
-        <div class="part3">
-            <img src="<?php echo e(asset('img/landing_page/perro_caliente.png')); ?>" alt="">
-        </div>
+        
     </div>
 
     <div class="who">

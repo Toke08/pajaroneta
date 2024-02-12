@@ -14,7 +14,6 @@
 }
 
 
-
 #posts > img{
     width:100%;
     height:100%;
@@ -53,7 +52,7 @@ img {
     justify-content: center;
 }
 .cates a{
-    margin: 3%;
+    margin: 2.5%;
 }
 </style>
 

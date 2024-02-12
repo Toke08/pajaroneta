@@ -94,6 +94,11 @@
     resize: none;
 }
 
+
+.bck p{
+    margin-top:2%;
+}
+
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -101,12 +106,11 @@
 <div class="post-container">
     <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>" class="post-image">
     <div id="content">
+        <div class="bck">
+            <button id="volverAlBlog" class="btn">Volver al blog</button>
+            <p>Categoría:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
+        </div>
 
-        <button id="volverAlBlog" class="btn">Volver al blog</button>
-        <p>Categoría:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
-
-
-        
         <h1><?php echo e($post->title); ?></h1>
         <p class="post-content"><?php echo e($post->content); ?></p>
 

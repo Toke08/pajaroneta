@@ -380,19 +380,21 @@ Usuarios
             var originalRole = $(this).data('original-role');
             var selectedRole = $(this).val();
 
-            // Muestra el botón de actualizar si la opción seleccionada es diferente a la original
-            if (originalRole != selectedRole) {
-                $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
-            } else {
-                $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
-            }
+            $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
         });
 
         $(".btn-actualizar-individual").click(function () {
             var userId = $(this).data('user-id');
             var updateRoute = $(this).data('update-route');
-            var newName = $("#input-name-" + userId).val();
+
+            let newName = $("#input-name-" + userId).val();
+            if(newName == ""){
+                newName = $("#user-name-" + userId).text();
+            }
             var selectedRole = $(this).closest('tr').find(".user-role").val();
+
+            console.log(selectedRole);
+            console.log(newName);
 
             // Obtén el token CSRF
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -427,6 +429,7 @@ Usuarios
                 },
                 error: function (error) {
                     // Manejar errores si es necesario
+
                     console.log(error);
                 }
             });

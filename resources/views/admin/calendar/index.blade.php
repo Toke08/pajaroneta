@@ -18,10 +18,7 @@ Calendario
 iframe{
     width: 100%;
 }
-
 /* para el modal */
-
-
 #btn_save{
     background-color:#E5A200;
     border: none;
@@ -33,17 +30,18 @@ iframe{
 #btn_save:hover{
     background-color:#CA8F00;
 }
-
-
 </style>
 @endsection
 
 @section('contenido')
-
-
-<div id="calendario"></div>
-
-
+{{--<div id="calendario">
+    @foreach ($calendar as $cal)
+        <p>{{$cal->start}}</p>
+        <p>{{$cal->end}}</p>
+        <p>{{$cal->event->title}}</p>
+        <p>{{$cal->location->address}}</p>
+    @endforeach
+</div>--}}
     {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar">
     Añadir fecha
     </button> --}}
@@ -100,53 +98,55 @@ iframe{
   </div>
 @endsection
 
-
 @section('script')
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let formulario = document.querySelector("form");
+        var calendarEl = document.getElementById('calendario');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: "es",
+            displayEventTime: false,
+            events: [], // Inicializa sin eventos
 
-document.addEventListener('DOMContentLoaded', function() {
-    // recoge los datos del form jquery
-    let formulario = document.querySelector("form");
-    var calendarEl = document.getElementById('calendario');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: "es", //idioma español
-        displayEventTime: false,
-
-        dateClick: function(info) {
-            formulario.reset(); //reseteo form
-            formulario.start.value = info.dateStr; //pilla la fecha elegida del calendario
-            $("#calendar").modal("show"); //al hacer clic en la fecha que salga el modal evento jeje
-        },
-    });
-
-    // Agrega el evento click al botón después de inicializar el calendario
-    document.getElementById("btn_save").addEventListener("click", function() {
-        let formData = new FormData(formulario);
-
-        $.ajax({
-            type: 'POST',
-            url: '{{ route('calendario.store') }}',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                console.log(response);
-                // Actualiza el calendario con los nuevos datos
-                calendar.refetch();
-                // Cierra el modal después de guardar
-                $("#calendar").modal("hide");
+            dateClick: function(info) {
+                formulario.reset();
+                formulario.start.value = info.dateStr;
+                $("#calendar").modal("show");
             },
-            error: function(error) {
-                // Maneja los errores si es necesario
-                console.log(error);
-            }
         });
+
+        document.getElementById("btn_save").addEventListener("click", function() {
+            let formData = new FormData(formulario);
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('calendario.store') }}',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Agrega el evento al calendario si se guardó exitosamente
+                    if (response.success) {
+                        calendar.addEvent({
+                            title: 'Ubicación ingresada',
+                            start: response.start,
+                            end: response.end
+                        });
+                        calendar.refetchEvents();
+                        $("#calendar").modal("hide");
+                    } else {
+                        // Maneja errores si es necesario
+                        console.log(response.message);
+                    }
+                },
+                error: function(error) {
+                    // Maneja los errores si es necesario
+                    console.log(error);
+                }
+            });
+        });
+        calendar.render();
     });
-
-
-    calendar.render();
-});
-
-</script>
+    </script>
 @endsection

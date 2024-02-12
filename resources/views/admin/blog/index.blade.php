@@ -19,9 +19,9 @@ PajaroBlog
         /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
     }
 
-    .table img {
-        width: 150px;
-        object-fit: cover;
+    table img {
+        width: 100px;
+        height: auto;
     }
 
     .sbx-medium {
@@ -307,7 +307,7 @@ PajaroBlog
                                     </form> --}}
                                 </td>
                                 <td>
-                                    <img src="{{asset('img/posts')}}/{{ $post->img }}"><img>
+                                    <img src="{{ asset('img/posts/'.$post->img) }}">
                                 </td>
                                 <td>
                                     {{ $post->created_at->format('Y-m-d') }}

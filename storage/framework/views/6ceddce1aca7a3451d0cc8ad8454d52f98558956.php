@@ -18,9 +18,9 @@ PajaroBlog
         /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
     }
 
-    .table img {
-        width: 150px;
-        object-fit: cover;
+    table img {
+        width: 100px;
+        height: auto;
     }
 
     .sbx-medium {
@@ -298,7 +298,7 @@ PajaroBlog
                                     
                                 </td>
                                 <td>
-                                    <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img>
+                                    <img src="<?php echo e(asset('img/posts/'.$post->img)); ?>">
                                 </td>
                                 <td>
                                     <?php echo e($post->created_at->format('Y-m-d')); ?>

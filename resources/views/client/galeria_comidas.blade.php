@@ -11,7 +11,14 @@
         margin: 0 auto;
         padding: 0;
     }
-
+    .titl{
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    .titl p{
+        font-size: 1.2em;
+        padding-top: 2%;
+    }
     body{
         background-color: rgb(255, 255, 255)
         }
@@ -95,6 +102,7 @@
     color: #000000;
     text-decoration: none;
 }
+
 /* Estilos para el texto debajo de la imagen */
 .categoria p {
     margin: 0;
@@ -135,8 +143,12 @@
         @php
         $delay = 1;
         @endphp
-    <h1>¿Con hambre?</h1>
-        <p>¡Héchale un vistazo a nuestra galería de los productos que puedes venir a comer en la Pajaroneta!</p>
+
+        <div class="titl">
+            <h1>¿Con hambre?</h1>
+            <p>¡Échale un vistazo a nuestra galería de productos que puedes venir a comer en la Pajaroneta!</p>
+        </div>
+
         <div class="foods-container">
         @foreach ($foods as $food)
         @if($food->id %8==0)

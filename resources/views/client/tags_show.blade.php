@@ -29,8 +29,8 @@ p {
 .item{
     width: 50%;
 }
-.item:hover{
-    backface-visibility: 2%;
+.item a{
+    color: #000000;
 }
 .item img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -51,6 +51,7 @@ p {
 }
 .btn_back a{
     color: #ffffff;
+    text-decoration: none;
 }
 .publis{
     width: 100%;
@@ -58,6 +59,18 @@ p {
     flex-direction: row;
     margin-bottom: 5%;
 
+}
+.publis a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.publis button{
+    background-color: #E5A200;
+    border: none;
+    border-radius: 1.5em;
+    width: 20%;
+    padding: 2%;
+    transition: 0.3s ease-in-out;
 }
 </style>
 @endsection
@@ -89,9 +102,10 @@ p {
                 @foreach($posts as $post)
                     <div class="item">
                         <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}"><br>
-                        <strong>{{ $post->title }}</strong>
+                        <h3>{{ $post->title }}</h3>
                         <br>
-                        <a href="{{ route('blog_show', $post->id) }}">Leer más...</a>
+                        <button><a href="{{ route('blog_show', $post->id) }}">Leer más</a></button>
+
                     </div>
                 @endforeach
             </div>
@@ -104,11 +118,12 @@ p {
                 <div class="publis">
                 @foreach($restaurants as $restaurant)
                     <div class="item">
-                        <a href="{{ $restaurant->url_sitio }}">{{ $restaurant->name }}</strong>
+                        <h3> <a href="{{ $restaurant->url_sitio }}">{{ $restaurant->name }}</strong></h3>
                         <p>{{ $restaurant->description }}</p>
-                        <a href="{{ $restaurant->url_maps }}">Encuéntralos aquí</a>
+
                         <br>
                         <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
+                        <a href="{{ $restaurant->url_maps }}">Encuéntralo aquí</a>
                     </div>
                 @endforeach
                 </div>

@@ -26,7 +26,9 @@
     color: #ffffff;
     border: none;
     border-radius: 1.5em;
-    padding: 3%;
+    width: 35%;
+    padding: 2%;
+    transition: 0.3s ease-in-out;
 }
 #posts button:hover{
     background-color: #CA8F00;
@@ -34,6 +36,12 @@
 #posts button a{
     text-decoration: none;
     color: #ffffff;
+}
+#posts button:active{
+    background-color: #CA8F00; /* Usa el mismo color que en :hover */
+    border: none;
+    border-radius: 1.5em;
+    box-shadow: none;
 }
 .restaurants{
 
@@ -52,8 +60,9 @@ img {
 #restaurant{
     margin-top: 10%;
 }
-#restaurants a{
+.restaurants a{
     color: #000000;
+    text-decoration: none;
 }
 #div-restaurantes{
     display: grid;
@@ -70,6 +79,7 @@ img {
 .cates a{
     margin: 2.5%;
     color: #000000;
+    text-decoration: none;
 }
 </style>
 
@@ -104,7 +114,7 @@ img {
     </div>
 
     <div id="restaurant"></div>
-        <h2>¿Estámos lejos?</h2>
+        <h2>Por si estamos lejos de ti...</h2>
         <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
         <div id="div-restaurantes">
             @foreach ($restaurants as $restaurant)

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('description');
             $table->timestamps();
             $table->unsignedBigInteger('category_id');
+            $table->integer('views')->default(0);
             //
             $table->foreign('category_id')->references('id')->on('category');
         });

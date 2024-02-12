@@ -1,5 +1,4 @@
-@extends('layout.masterpage')
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
 
 .post-container {
@@ -95,60 +94,56 @@
     resize: none;
 }
 
-
-.bck p{
-    margin-top:2%;
-}
-
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 <div class="post-container">
-    <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}" class="post-image">
+    <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>" class="post-image">
     <div id="content">
-        <div class="bck">
-            <button id="volverAlBlog" class="btn">Volver al blog</button>
-            <p>Categoría:<a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a></p><br>
-        </div>
 
-        <h1>{{ $post->title }}</h1>
-        <p class="post-content">{{ $post->content }}</p>
+        <button id="volverAlBlog" class="btn">Volver al blog</button>
+        <p>Categoría:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
+
+
+        
+        <h1><?php echo e($post->title); ?></h1>
+        <p class="post-content"><?php echo e($post->content); ?></p>
 
         <!-- Agregar formulario para comentarios -->
-        <form id="comentarios" action="{{ route('comments.store', ['post_id' => $post->id]) }}" method="POST">
-            @csrf
+        <form id="comentarios" action="<?php echo e(route('comments.store', ['post_id' => $post->id])); ?>" method="POST">
+            <?php echo csrf_field(); ?>
             <div class="mb-3">
                 <h3 for="comment" class="form-label">Deja un comentario:</h3>
                 <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
             </div>
-            <input type="hidden" name="post_id" value="{{ $post->id }}">
+            <input type="hidden" name="post_id" value="<?php echo e($post->id); ?>">
             <button type="submit" class="btn btn-primary">Comentar</button>
         </form>
 
         <div class="post-comments">
-            @foreach ($comments->reverse() as $comment)
+            <?php $__currentLoopData = $comments->reverse(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="comment-container">
-                    <img src="{{ asset('img/users') . '/' . $comment->user->profile_img }}" width="50px" style="border-radius:50%;">
+                    <img src="<?php echo e(asset('img/users') . '/' . $comment->user->profile_img); ?>" width="50px" style="border-radius:50%;">
                     <div class="comment-details">
-                        <strong class="comment">{{ $comment->user->name }}</strong>
-                        <p>{{ $comment->comment }}</p>
-                        <p>{{ $comment->created_at->format('Y-m-d') }}</p>
+                        <strong class="comment"><?php echo e($comment->user->name); ?></strong>
+                        <p><?php echo e($comment->comment); ?></p>
+                        <p><?php echo e($comment->created_at->format('Y-m-d')); ?></p>
                     </div>
                 </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
 <script>
      document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("volverAlBlog").addEventListener("click", function() {
-            window.location.href = "{{ route('blog') }}";
+            window.location.href = "<?php echo e(route('blog')); ?>";
         });
     });
 
@@ -163,4 +158,6 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/client/blog_show.blade.php ENDPATH**/ ?>

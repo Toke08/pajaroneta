@@ -26,6 +26,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     body > div > aside > div > nav > ul > li > a{
         color: vWar(--blanco) !important;
     }
+
+    /* Cambiar el color del enlace */
+    a.enlaceNegro {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+        text-decoration: none;
+        /* Quitar el subrayado */
+    }
+
+    /* Cambiar el color cuando el enlace está en estado de foco (haciendo clic) */
+    a.enlaceNegro:focus {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+    }
   </style>
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -93,9 +107,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <div class="info">
             @if(auth()->user())
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
+          {{auth()->user()->name}}
             @endif
         </div>
+        <div class="info">
+            @if(auth()->user())
+            <a class="enlaceNegro" href="{{ route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i></a>
+            @endif
+        </div>
+
 
       </ul>
 

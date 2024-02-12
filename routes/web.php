@@ -73,6 +73,10 @@ Route::get('/user/{name}/edit', [ClientController::class, 'user_edit'])->name('u
 Route::put('/user/{name}', [ClientController::class, 'user_update'])->name('user_update');
 Route::delete('/user/{name}', [ClientController::class, 'user_destroy'])->name('user_destroy');
 
+//logout
+Route::get('/logout', [userController::class, 'logout'])->name('logout');
+
+
 
 
 

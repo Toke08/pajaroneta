@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -208,6 +209,11 @@ class UserController extends Controller
     // Redirigir con un mensaje de éxito
     return redirect()->route('user_show')->with('success', 'Contraseña cambiada con éxito.');
 }
+
+    public function logout(){
+        Auth::logout();
+        return redirect() -> route("home");
+    }
 
 }
 

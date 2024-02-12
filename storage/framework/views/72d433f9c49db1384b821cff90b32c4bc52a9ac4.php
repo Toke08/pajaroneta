@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo'); ?>
     Galería comidas
 <?php $__env->stopSection(); ?>
@@ -135,7 +133,12 @@
         
         <a href="<?php echo e(route('galeria_comidas', ['id' => $category->id])); ?>">
             <img src="<?php echo e(asset('img/categories')); ?>/<?php echo e($category->img); ?>">
-            <p><?php echo e($category->name); ?></p>
+            <p <?php if(filter_var($selected_category) == $category->id){ echo("class='outlined'");} ?>><?php echo e($category->name); ?></p>
+            <style>
+                .outlined{
+                    border-bottom: 1px solid black;
+                }
+            </style>
         </a>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -90,6 +90,11 @@
     margin: 0;
 }
 
+#comment{
+    box-shadow: #000000 0px 0px 3px;
+    resize: none;
+}
+
 </style>
 @endsection
 

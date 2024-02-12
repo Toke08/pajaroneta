@@ -119,12 +119,14 @@ img {
         <div id="div-restaurantes">
             @foreach ($restaurants as $restaurant)
             <div class="restaurants">
-                <h3><a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a></h3>
+                <a href="{{ $restaurant->url_sitio }}" target="blank">
+                    <h3>{{ $restaurant->name }}</h3>
 
-                <p>{{ $restaurant->description }}</p>
+                    <p>{{ $restaurant->description }}</p>
 
-                <br>
-                <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
+                    <br>
+                    <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
+                </a>
                 <a href="{{ $restaurant->url_maps }}" target="blank">Encuéntralos aquí</a>
             </div>
             @endforeach

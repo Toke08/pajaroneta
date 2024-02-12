@@ -31,7 +31,6 @@
 }
 
 img {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;

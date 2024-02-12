@@ -16,9 +16,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     //el request es para coger los datos del buscador (form), si no no poner.
+    public function index(Request $request)
     {
-        $users = User::all();
+        $search=trim($request->get('search'));
+
+
+        $users = User::where('name', 'LIKE', "%".$search."%")
+                ->orderBy('name', 'asc')
+                ->paginate(10);
+
         $roles = Role::all();
         return view("admin.users.index", ['users'=> $users, 'roles'=> $roles]);
     }

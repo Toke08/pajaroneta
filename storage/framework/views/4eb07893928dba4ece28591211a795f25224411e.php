@@ -200,7 +200,7 @@ Usuarios
                         </symbol>
                       </svg>
 
-                      <form novalidate="novalidate" onsubmit="return false;" class="searchbox sbx-medium">
+                      <form action="<?php echo e(route('user.index')); ?>" method="GET" novalidate="novalidate" class="searchbox sbx-medium">
                         <div role="search" class="sbx-medium__wrapper">
                           <input type="search" name="search" placeholder="Search your website" autocomplete="off" required="required" class="sbx-medium__input">
                           <button type="submit" title="Submit your search query." class="sbx-medium__submit">
@@ -242,6 +242,11 @@ Usuarios
                     </tr>
                   </thead>
         <tbody>
+            <?php if(count($users)<=0): ?>
+                <tr>
+                    <td colspan="6">No hay registros disponibles.</td>
+                </tr>
+            <?php else: ?>
             <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <td><?php echo e($user->id); ?></td>
@@ -281,6 +286,7 @@ Usuarios
                 </td>
             </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
             </tbody>
                 </table>
               </div>

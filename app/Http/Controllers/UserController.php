@@ -19,32 +19,35 @@ class UserController extends Controller
 
      //el request es para coger los datos del buscador (form), si no no poner.
      public function index(Request $request)
-     {
-         $column = $request->get('column', 'id');
-         $direction = $request->get('direction', 'asc');
+{
+    $column = $request->get('column', 'id');
+    $direction = $request->get('direction', 'asc');
 
-         // Cambiar la dirección de ordenación si es necesario
-         $direction = ($direction === 'asc') ? 'desc' : 'asc';
+    // Cambiar la dirección de ordenación si es necesario
+    $direction = ($direction === 'asc') ? 'desc' : 'asc';
 
-         $search = trim($request->get('search'));
+    $search = trim($request->get('search'));
 
-         $users = User::where(function ($query) use ($search) {
-                 $query->where('name', 'LIKE', "%{$search}%")
-                     ->orWhere('email', 'LIKE', "%{$search}%");
-             })
-             ->orderBy($column, $direction)
-             ->paginate(10);
+    $users = User::where(function ($query) use ($search) {
+            $query->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orWhereHas('role', function ($categoryQuery) use ($search) {
+                    $categoryQuery->where('name', 'LIKE', "%{$search}%");
+                });
+        })
+        ->orderBy($column, $direction)
+        ->paginate(10);
 
-         $roles = Role::all();
+    $roles = Role::all();
+    return view("admin.users.index", [
+        'users' => $users,
+        'roles' => $roles,
+        'column' => $column,
+        'direction' => $direction,
+        'search' => $search,
+    ]);
+}
 
-         return view("admin.users.index", [
-             'users' => $users,
-             'roles' => $roles,
-             'column' => $column,
-             'direction' => $direction,
-             'search' => $search,
-         ]);
-     }
 
 
     /**
@@ -112,14 +115,9 @@ class UserController extends Controller
             }
             $user->save();
 
-            // $user=auth()->user();
-            // $user=letter->save($letter);
-            $users = User::all();
-            $roles = Role::all();
-
 
             \Session::flash('message','Usuario creado con exito');
-            return view("admin.users.index", ['users'=> $users, 'roles'=> $roles]);
+            return redirect()->back();
         }
     }
 

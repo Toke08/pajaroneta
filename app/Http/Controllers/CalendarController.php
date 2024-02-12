@@ -20,8 +20,10 @@ class CalendarController extends Controller
     {
         $events = Event::all();
         $locations = Location::all();
-        return view('admin.calendar.index', compact('events', 'locations'));
+        $calendar = Calendar::all(); // Obtener todos los datos del calendario
+        return view('admin.calendar.index', compact('events', 'locations', 'calendar'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +35,6 @@ class CalendarController extends Controller
 
         $locations = Location::all();
         $events = Event::all();
-
         return view("admin.calendar.create", ['locations' => $locations, 'events' => $events]);
     }
 
@@ -45,12 +46,14 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'start'=>'required|date',
-            'end' => 'required|date|after_or_equal:start', //esto hace que no pueda eligir fechas anteriores
+            'start' => 'required|date|unique:calendars,start',
+            'end' => 'required|date|after_or_equal:start',
             'location_id' => 'required|exists:locations,id',
             'event_id' => 'required|exists:events,id',
+        ],
+        [
+            'start.unique' => 'La fecha seleccionada ya tiene una ubicación registrada.'
         ]);
 
         // Crear una nueva instancia del modelo Calendar
@@ -62,11 +65,23 @@ class CalendarController extends Controller
         $calendar->location_id = $request->input('location_id');
         $calendar->event_id = $request->input('event_id');
 
-        // Guardar la instancia en la base de datos
         $calendar->save();
 
-        // Redirigir a la vista que desees después de guardar
-        return redirect()->route('calendario.index')->with('success', 'Calendario actualizado.');
+        // Obtener los eventos y ubicaciones
+        $events = Event::all();
+        $locations = Location::all();
+
+        // Devolver una respuesta JSON con los datos del evento guardado y la ruta de redirección
+        return response()->json([
+            'success' => true,
+            'message' => 'Evento guardado exitosamente.',
+            'start' => $calendar->start,
+            'end' => $calendar->end,
+            'location_id' => $calendar->location_id,
+            'event_id' => $calendar->event_id,
+            'events' => $events,
+            'locations' => $locations,
+        ]);
     }
 
     /**
@@ -76,12 +91,13 @@ class CalendarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Calendar $calendar)
-    {
-        $locations = Location::all();
-        $events = Event::all();
-        $calendario= Calendar::all();
-        return response()->json($events, $locations);
-    }
+{
+    $events = Event::all();
+    $locations = Location::all();
+
+    // Retorna una vista con los datos del calendario, eventos y ubicaciones asociadas
+    return view('admin.calendar.index', compact('calendar', 'events', 'locations'));
+}
 
     /**
      * Show the form for editing the specified resource.

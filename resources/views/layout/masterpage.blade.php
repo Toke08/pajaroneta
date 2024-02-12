@@ -30,7 +30,6 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-
     <!-- csrf para actualizar info del usuario desde panel admin -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -42,10 +41,18 @@
             font-family: 'Quicksand', sans-serif;
         }
         body{
-            background-image: url('../img/landing_page/bg-2.png');
+            display: flex !important;
+            flex-direction: column !important;
+            background-image: url('../img/landing_page/bg-02.png');
             background-size: cover;
             background-position: center;
+            min-height: 100vh !important;
         }
+        body > main{
+
+        flex: 1 !important;
+        }
+
     </style>
 </head>
 

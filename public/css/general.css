@@ -18,6 +18,7 @@ body {
 main.container{
     margin-top: 5%;
 }
+
 /* HAY QUE HACRERLO EN TODAS LAS SECC QUE QUIERAS WIDTH 100% */
     .container .who {
       max-width: 100% !important;

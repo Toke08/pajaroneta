@@ -27,6 +27,22 @@ iframe{
 #btn_save:hover{
     background-color:#CA8F00;
 }
+
+/* Personaliza el color de fondo del calendario */
+.fc-dayGridMonth-view {
+    background-color: rgb(255, 255, 255);
+}
+
+/* Personaliza el color del texto del evento */
+.fc-event {
+    color: white;
+}
+
+/* Personaliza los bordes de las celdas de fecha */
+.fc-daygrid-day {
+    border: none;
+}
+
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -35,23 +51,33 @@ iframe{
     <table class="table">
         <thead>
             <tr>
+                <th>Evento</th>
+                <th>Ubicación</th>
                 <th>Fecha de inicio</th>
                 <th>Fecha de fin</th>
-                <th>Evento</th>
-                <th>Dirección de la ubicación</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
             <?php $__currentLoopData = $calendar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td><?php echo e($cal->start); ?></td>
-                <td><?php echo e($cal->end); ?></td>
                 <td><?php echo e($cal->event->title); ?></td>
                 <td><?php echo e($cal->location->address); ?></td>
+                <td><?php echo e($cal->start); ?></td>
+                <td><?php echo e($cal->end); ?></td>
+                <td>
+                    <form action="<?php echo e(route('calendario.destroy', $cal->id)); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
             </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
+    <?php echo e($calendar->links()); ?>
+
 </div>
     
     <div class="modal fade" id="calendar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -107,21 +133,20 @@ iframe{
 <?php $__env->startSection('script'); ?>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        let formulario = document.querySelector("form");
-        var calendarEl = document.getElementById('calendario');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: "es",
-            displayEventTime: false,
-            events: [], // Inicializa sin eventos
+    var calendarEl = document.getElementById('calendario');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: "es",
+        displayEventTime: false,
+        events: [], // Inicializa sin eventos
 
-            dateClick: function(info) {
-                formulario.reset();
-                formulario.start.value = info.dateStr;
-                $("#calendar").modal("show");
-            },
-        });
-
+        dateClick: function(info) {
+            var formulario = document.querySelector("form"); // Selección del formulario
+            formulario.reset();
+            formulario.elements.start.value = info.dateStr; // Asignación del valor de la fecha al campo 'start' del formulario
+            $("#calendar").modal("show");
+        },
+    });
         document.getElementById("btn_save").addEventListener("click", function() {
             let formData = new FormData(formulario);
 

@@ -20,7 +20,7 @@ class CalendarController extends Controller
     {
         $events = Event::all();
         $locations = Location::all();
-        $calendar = Calendar::all(); // Obtener todos los datos del calendario
+        $calendar = Calendar::paginate(7); // Obtener todos los datos del calendario
         return view('admin.calendar.index', compact('events', 'locations', 'calendar'));
     }
 
@@ -96,8 +96,7 @@ class CalendarController extends Controller
     $locations = Location::all();
 
     // Retorna una vista con los datos del calendario, eventos y ubicaciones asociadas
-    return view('admin.calendar.index', compact('calendar', 'events', 'locations'));
-}
+    return redirect()->back()->with('success', ' Ubicación asignada!');}
 
     /**
      * Show the form for editing the specified resource.

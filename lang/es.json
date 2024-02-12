@@ -94,7 +94,7 @@
     "You are logged in!": "¡Usted está conectado!",
 
 
-    "/*COMENTARIO*/": "NAV",
+    "/*COMENTARIO1*/": "NAV",
         "Food Gallery": "Galería de comidas",
         "Locations": "Ubicaciones",
         "Find Us": "Encuéntranos",
@@ -111,8 +111,10 @@
         "Register": "Registrarse",
         "Login": "Iniciar sesión",
         "Admin Panel": "Panel de administración",
-        "Logout": "Cerrar sesión"
+        "Logout": "Cerrar sesión",
 
+    "/*COMENTARIO2*/": "LANDINGPAGE",
+        "Delicacies for celiac and intolerant people throughout Spain" :"Delicias para celiacos e intolerantes a través de toda España"
 
 
 }

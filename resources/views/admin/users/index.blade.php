@@ -7,15 +7,18 @@ Usuarios
 @section('estilos')
 <style>
     /* Cambiar el color del enlace */
-a.enlaceNegro {
-    color: #000; /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
-    text-decoration: none; /* Quitar el subrayado */
-}
+    a.enlaceNegro {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+        text-decoration: none;
+        /* Quitar el subrayado */
+    }
 
-/* Cambiar el color cuando el enlace está en estado de foco (haciendo clic) */
-a.enlaceNegro:focus {
-    color: #000; /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
-}
+    /* Cambiar el color cuando el enlace está en estado de foco (haciendo clic) */
+    a.enlaceNegro:focus {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+    }
 
     .sbx-medium {
         display: inline-block;
@@ -262,12 +265,13 @@ a.enlaceNegro:focus {
                     <thead>
                         <tr>
                             <th>
-                                <a class="enlaceNegro" href="{{ route('user.index', ['column' => 'id', 'direction' => $direction]) }}">
+                                <a class="enlaceNegro"
+                                    href="{{ route('user.index', ['column' => 'id', 'direction' => $direction]) }}">
                                     ID
                                     @if ($column === 'id' && $direction === 'desc')
-                                        <i class="fa-solid fa-arrow-up"></i>
+                                    <i class="fa-solid fa-arrow-up"></i>
                                     @else
-                                        <i class="fa-solid fa-arrow-down"></i>
+                                    <i class="fa-solid fa-arrow-down"></i>
                                     @endif
                                 </a>
                             </th>

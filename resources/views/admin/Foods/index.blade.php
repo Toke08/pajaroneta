@@ -324,7 +324,9 @@ Comidas
                             @endforeach
                             @endif
                     </tbody>
+
                 </table>
+                {{ $foods->links() }}
             </div>
             <!-- /.card-body -->
         </div>

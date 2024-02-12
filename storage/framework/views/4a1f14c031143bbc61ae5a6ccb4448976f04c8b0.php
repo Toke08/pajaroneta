@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title')</title>
+  <title><?php echo $__env->yieldContent('title'); ?></title>
   <style>
     :root{
         --rojoOscuro:#730000;
@@ -28,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
   </style>
 
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
 
     <!-- Estilos personalizados -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,14 +44,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- csrf para actualizar info del usuario desde panel admin -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <!-- jQuery -->
-    <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="<?php echo e(asset('adminlte/plugins/jquery/jquery.min.js')); ?>"></script>
     <!-- Bootstrap 4 -->
-    <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="<?php echo e(asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+    <script src="<?php echo e(asset('adminlte/dist/js/adminlte.min.js')); ?>"></script>
 
     <!-- JS de Bootstrap (popper.js y Bootstrap JS) -->
 
@@ -62,9 +62,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="<?php echo e(asset('adminlte/plugins/fontawesome-free/css/all.min.css')); ?>">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="<?php echo e(asset('adminlte/dist/css/adminlte.min.css')); ?>">
 
 </head>
 
@@ -87,14 +87,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-0 d-flex">
         <div class="image">
-            @if(auth()->user())
-            <img src="{{ asset('img/users/' . auth()->user()->profile_img) }}" class="img-circle elevation-2" alt="User Image">
-            @endif
+            <?php if(auth()->user()): ?>
+            <img src="<?php echo e(asset('img/users/' . auth()->user()->profile_img)); ?>" class="img-circle elevation-2" alt="User Image">
+            <?php endif; ?>
         </div>
         <div class="info">
-            @if(auth()->user())
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
-            @endif
+            <?php if(auth()->user()): ?>
+          <a href="#" class="d-block"><?php echo e(auth()->user()->name); ?></a>
+            <?php endif; ?>
         </div>
 
       </ul>
@@ -106,8 +106,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
 
-    <a href="{{ route('home') }}" class="brand-link">
-      <img src="{{ asset('img/logo/pajaro-01.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="<?php echo e(route('home')); ?>" class="brand-link">
+      <img src="<?php echo e(asset('img/logo/pajaro-01.png')); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Pajaroneta</span>
 
     </a>
@@ -122,7 +122,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="{{ route('adminHome') }}" class="nav-link">
+            <a href="<?php echo e(route('adminHome')); ?>" class="nav-link">
                 <i class="fa-solid fa-square-poll-vertical"></i>
               <p>
                 Dashboard
@@ -131,7 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('user.index') }}" class="nav-link">
+            <a href="<?php echo e(route('user.index')); ?>" class="nav-link">
             <i class="fa-solid fa-user"></i>
               <p>
                 Usuarios
@@ -141,7 +141,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <li class="nav-item">
-            <a href="{{ route('galeria-comidas.index') }}" class="nav-link">
+            <a href="<?php echo e(route('galeria-comidas.index')); ?>" class="nav-link">
             <i class="fa-solid fa-utensils"></i>
               <p>
                 Comidas
@@ -150,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('blog.index') }}" class="nav-link">
+            <a href="<?php echo e(route('blog.index')); ?>" class="nav-link">
             <i class="fa-solid fa-newspaper"></i>
               <p>
                 Blog
@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('calendario.index') }}" class="nav-link">
+            <a href="<?php echo e(route('calendario.index')); ?>" class="nav-link">
             <i class="fa-solid fa-calendar-days"></i>
               <p>
                 Calendario
@@ -181,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">@yield('titulo')</h1>
+            <h1 class="m-0"><?php echo $__env->yieldContent('titulo'); ?></h1>
           </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -192,23 +192,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <main role="main" class="container">
         <!-- mensajes flash -->
-        @if(Session::has('message'))
+        <?php if(Session::has('message')): ?>
             <div class="alert alert-info" role="alert">
-                {{ Session::get('message') }}
+                <?php echo e(Session::get('message')); ?>
+
             </div>
-        @endif
+        <?php endif; ?>
 
         <!-- errores de validador -->
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
+        <?php if($errors->any()): ?>
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="alert alert-danger" role="alert">
-                    {{ $error }}
+                    <?php echo e($error); ?>
+
                 </div>
-            @endforeach
-        @endif
-        @yield('estilos')
-        @yield('contenido')
-        @yield('script')
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php endif; ?>
+        <?php echo $__env->yieldContent('estilos'); ?>
+        <?php echo $__env->yieldContent('contenido'); ?>
+        <?php echo $__env->yieldContent('script'); ?>
     </main>
 
   <!-- /.content-wrapper -->
@@ -230,3 +232,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </body>
 </html>
+<?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/layout/adminlte-layout.blade.php ENDPATH**/ ?>

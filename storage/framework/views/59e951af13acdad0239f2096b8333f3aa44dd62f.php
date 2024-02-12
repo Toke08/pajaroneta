@@ -1,11 +1,10 @@
-@extends('layout.adminlte-layout')
+<?php $__env->startSection('titulo'); ?>
+Comidas
+<?php $__env->stopSection(); ?>
 
-@section('titulo')
-Usuarios
-@endsection
-
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
+
     /* Cambiar el color del enlace */
     a.enlaceNegro {
         color: #000;
@@ -19,6 +18,12 @@ Usuarios
         color: #000;
         /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
     }
+
+    table img {
+        width: 100px;
+        height: auto;
+    }
+
 
     .sbx-medium {
         display: inline-block;
@@ -201,13 +206,20 @@ Usuarios
     }
 
 </style>
-@endsection
 
-@section('contenido')
+
+
+
+
+
+
+</style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('contenido'); ?>
 
 
 <div class="row">
-
     <div class="col-12">
         <div class="card">
             <div class="card-header">
@@ -226,7 +238,7 @@ Usuarios
                         </symbol>
                     </svg>
 
-                    <form action="{{ route('user.index')}}" method="GET" novalidate="novalidate"
+                    <form action="<?php echo e(route('galeria-comidas.index')); ?>" method="GET" novalidate="novalidate"
                         class="searchbox sbx-medium">
                         <div role="search" class="sbx-medium__wrapper">
                             <input type="search" name="search" placeholder="Search your website" autocomplete="off"
@@ -250,8 +262,8 @@ Usuarios
 
                     </script>
                     <div class="text-right">
-                        <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary">Crear nuevo
-                                usuario</button></a>
+                        <a href="<?php echo e(route('galeria-comidas.create')); ?>"><button type="button" class="btn btn-primary">Crear nueva
+                                comida</button></a>
                     </div>
                 </nav>
 
@@ -265,173 +277,62 @@ Usuarios
                     <thead>
                         <tr>
                             <th>
-                                <a class="enlaceNegro"
-                                    href="{{ route('user.index', ['column' => 'id', 'direction' => $direction]) }}">
+                                <a class="enlaceNegro" href="<?php echo e(route('galeria-comidas.index', ['column' => 'id', 'direction' => $direction])); ?>">
                                     ID
                                     <i class="fa-solid fa-arrows-up-down"></i>
                                 </a>
                             </th>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Imagen de Perfil</th>
-                            <th>Rol</th>
-                            <th>Fecha de Creación</th>
+                            <th>nombre</th>
+                            <th>precio</th>
+                            <th>imagen</th>
+                            <th>descripcion</th>
+                            <th>categoria</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($users)<=0) <tr>
-                            <td colspan="6">No hay registros disponibles.</td>
+
+                        <?php if(count($foods)<=0): ?> <tr>
+                            <td colspan="7">No hay registros disponibles.</td>
                             </tr>
-                            @else
-                            @foreach ($users as $user)
+                            <?php else: ?>
+                            <?php $__currentLoopData = $foods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $food): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>
-                                    <div class="user-info-container">
-                                        <span class="editable" id="user-name-{{ $user->id }}">{{ $user->name }}</span>
-                                        <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar"
-                                            data-user-id="{{ $user->id }}"></button>
-                                        <input type="text" class="form-control input-editar"
-                                            id="input-name-{{ $user->id }}" style="display: none;">
-                                        <button class="btn btn-danger btn-sm btn-cancelar"
-                                            data-user-id="{{ $user->id }}" style="display: none;"><i
-                                                class="fa-solid fa-xmark"></i></button>
-                                    </div>
+                                <th scope="row"><?php echo e($food->id); ?></th>
+                                <td><a
+                                        href="<?php echo e(route('galeria-comidas.show', ['id' => $food->id])); ?>"><?php echo e($food->name); ?></a>
                                 </td>
-                                <td class="editable">{{ $user->email }}</td>
-                                <td>
-                                    @if ($user->profile_img)
-                                    <img src="{{ asset('img/users/' . $user->profile_img) }}" alt="Profile Image"
-                                        class="img-fluid rounded-circle" style="max-width: 50px;">
-                                    @else
-                                    Sin imagen
-                                    @endif
-                                </td>
-                                <td class="editable">
-                                    <select class="form-select user-role form-control"
-                                        data-original-role="{{ $user->role_id }}">
-                                        @foreach($roles as $role)
-                                        <option value="{{ $role->id }}"
-                                            {{ $user->role_id === $role->id ? 'selected' : '' }}>{{ $role->name }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>{{ $user->created_at->format('Y-m-d') }}</td>
-                                <td>
-                                    <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="post"
-                                        style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"
-                                            onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
+                                <td><?php echo e($food->price); ?></td>
+                                <td><img src="<?php echo e(asset('img/foods/'.$food->img)); ?>"></td>
+                                <td><?php echo e($food->description); ?></td>
+                                <td><?php echo e($food->category->name); ?></td>
+                                <td style="display: flex; flex-direction:row; justify-content:center; gap: 0.5rem;">
+                                    <form action="<?php echo e(route('galeria-comidas.edit', $food->id)); ?>" method="GET">
+                                        <?php echo csrf_field(); ?>
+                                        <button type="submit" class="btn btn-primary btn-sm">Editar</button>
                                     </form>
 
-                                    <button class="btn btn-success btn-sm btn-actualizar-individual"
-                                        data-user-id="{{ $user->id }}"
-                                        data-update-route="{{ route('user.update', ['user' => $user->id]) }}"
-                                        style="margin-left: 5px; display: none;">Actualizar
-                                    </button>
+                                    <form action="<?php echo e(route('galeria-comidas.destroy', $food->id)); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
-                            @endforeach
-                            @endif
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
                     </tbody>
+
                 </table>
-                {{ $users->links() }}
+                <?php echo e($foods->links()); ?>
+
             </div>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
     </div>
 </div>
-<!-- /.row -->
-@endsection
 
-@section('script')
-<script>
-    $(document).ready(function () {
-        $(".fa-pen-to-square").click(function () {
-            var userId = $(this).data('user-id');
+<?php $__env->stopSection(); ?>
 
-            $("#user-name-" + userId).hide();
-            $("#input-name-" + userId).val($("#user-name-" + userId).text()).show();
-            $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
-            $(".btn-editar[data-user-id='" + userId + "']").hide();
-            $(".btn-cancelar[data-user-id='" + userId + "']").show();
-        });
-
-        $(".btn-cancelar").click(function () {
-            var userId = $(this).data('user-id');
-
-            // Muestra el texto y oculta el input correspondiente al usuario que se está editando
-            $("#user-name-" + userId).show();
-            $("#input-name-" + userId).hide();
-            // Muestra el botón de editar y oculta el botón de actualizar
-            $(".btn-editar[data-user-id='" + userId + "']").show();
-            $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
-            // Oculta el botón de cancelar
-            $(".btn-cancelar[data-user-id='" + userId + "']").hide();
-        });
-
-        $(".user-role").change(function () {
-            var userId = $(this).closest('tr').find(".fa-pen-to-square").data('user-id');
-            var originalRole = $(this).data('original-role');
-            var selectedRole = $(this).val();
-
-            // Muestra el botón de actualizar si la opción seleccionada es diferente a la original
-            if (originalRole != selectedRole) {
-                $(".btn-actualizar-individual[data-user-id='" + userId + "']").show();
-            } else {
-                $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
-            }
-        });
-
-        $(".btn-actualizar-individual").click(function () {
-            var userId = $(this).data('user-id');
-            var updateRoute = $(this).data('update-route');
-            var newName = $("#input-name-" + userId).val();
-            var selectedRole = $(this).closest('tr').find(".user-role").val();
-
-            // Obtén el token CSRF
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-            // Envía la solicitud Ajax al servidor para actualizar la información
-            $.ajax({
-                type: 'PUT',
-                url: updateRoute,
-                data: {
-                    name: newName,
-                    role: selectedRole
-                },
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                success: function (response) {
-                    // Manejar la respuesta del servidor si es necesario
-                    console.log(response);
-
-                    // Actualiza la interfaz con la nueva información
-                    $("#user-name-" + userId).text(newName);
-
-                    // Muestra el texto y oculta el input correspondiente al usuario que se está editando
-                    $("#user-name-" + userId).show();
-                    $("#input-name-" + userId).hide();
-
-                    // Muestra el botón de editar y oculta el botón de actualizar
-                    $(".btn-editar[data-user-id='" + userId + "']").show();
-                    $(".btn-actualizar-individual[data-user-id='" + userId + "']").hide();
-                    // Oculta el botón de cancelar
-                    $(".btn-cancelar[data-user-id='" + userId + "']").hide();
-                },
-                error: function (error) {
-                    // Manejar errores si es necesario
-                    console.log(error);
-                }
-            });
-        });
-    });
-
-</script>
-@endsection
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/admin/foods/index.blade.php ENDPATH**/ ?>

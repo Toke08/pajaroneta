@@ -1,10 +1,8 @@
-@extends('layout.adminlte-layout')
-
-@section('titulo')
+<?php $__env->startSection('titulo'); ?>
 Usuarios
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
     /* Cambiar el color del enlace */
     a.enlaceNegro {
@@ -201,9 +199,9 @@ Usuarios
     }
 
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 
 <div class="row">
@@ -226,7 +224,7 @@ Usuarios
                         </symbol>
                     </svg>
 
-                    <form action="{{ route('user.index')}}" method="GET" novalidate="novalidate"
+                    <form action="<?php echo e(route('user.index')); ?>" method="GET" novalidate="novalidate"
                         class="searchbox sbx-medium">
                         <div role="search" class="sbx-medium__wrapper">
                             <input type="search" name="search" placeholder="Search your website" autocomplete="off"
@@ -250,7 +248,7 @@ Usuarios
 
                     </script>
                     <div class="text-right">
-                        <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary">Crear nuevo
+                        <a href="<?php echo e(route('user.create')); ?>"><button type="button" class="btn btn-primary">Crear nuevo
                                 usuario</button></a>
                     </div>
                 </nav>
@@ -266,7 +264,7 @@ Usuarios
                         <tr>
                             <th>
                                 <a class="enlaceNegro"
-                                    href="{{ route('user.index', ['column' => 'id', 'direction' => $direction]) }}">
+                                    href="<?php echo e(route('user.index', ['column' => 'id', 'direction' => $direction])); ?>">
                                     ID
                                     <i class="fa-solid fa-arrows-up-down"></i>
                                 </a>
@@ -280,66 +278,68 @@ Usuarios
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($users)<=0) <tr>
+                        <?php if(count($users)<=0): ?> <tr>
                             <td colspan="6">No hay registros disponibles.</td>
                             </tr>
-                            @else
-                            @foreach ($users as $user)
+                            <?php else: ?>
+                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{ $user->id }}</td>
+                                <td><?php echo e($user->id); ?></td>
                                 <td>
                                     <div class="user-info-container">
-                                        <span class="editable" id="user-name-{{ $user->id }}">{{ $user->name }}</span>
+                                        <span class="editable" id="user-name-<?php echo e($user->id); ?>"><?php echo e($user->name); ?></span>
                                         <button class="fa-solid fa-pen-to-square btn btn-primary btn-sm btn-editar"
-                                            data-user-id="{{ $user->id }}"></button>
+                                            data-user-id="<?php echo e($user->id); ?>"></button>
                                         <input type="text" class="form-control input-editar"
-                                            id="input-name-{{ $user->id }}" style="display: none;">
+                                            id="input-name-<?php echo e($user->id); ?>" style="display: none;">
                                         <button class="btn btn-danger btn-sm btn-cancelar"
-                                            data-user-id="{{ $user->id }}" style="display: none;"><i
+                                            data-user-id="<?php echo e($user->id); ?>" style="display: none;"><i
                                                 class="fa-solid fa-xmark"></i></button>
                                     </div>
                                 </td>
-                                <td class="editable">{{ $user->email }}</td>
+                                <td class="editable"><?php echo e($user->email); ?></td>
                                 <td>
-                                    @if ($user->profile_img)
-                                    <img src="{{ asset('img/users/' . $user->profile_img) }}" alt="Profile Image"
+                                    <?php if($user->profile_img): ?>
+                                    <img src="<?php echo e(asset('img/users/' . $user->profile_img)); ?>" alt="Profile Image"
                                         class="img-fluid rounded-circle" style="max-width: 50px;">
-                                    @else
+                                    <?php else: ?>
                                     Sin imagen
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                                 <td class="editable">
                                     <select class="form-select user-role form-control"
-                                        data-original-role="{{ $user->role_id }}">
-                                        @foreach($roles as $role)
-                                        <option value="{{ $role->id }}"
-                                            {{ $user->role_id === $role->id ? 'selected' : '' }}>{{ $role->name }}
+                                        data-original-role="<?php echo e($user->role_id); ?>">
+                                        <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($role->id); ?>"
+                                            <?php echo e($user->role_id === $role->id ? 'selected' : ''); ?>><?php echo e($role->name); ?>
+
                                         </option>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </td>
-                                <td>{{ $user->created_at->format('Y-m-d') }}</td>
+                                <td><?php echo e($user->created_at->format('Y-m-d')); ?></td>
                                 <td>
-                                    <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="post"
+                                    <form action="<?php echo e(route('user.destroy', ['user' => $user->id])); ?>" method="post"
                                         style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
                                         <button type="submit" class="btn btn-danger btn-sm"
                                             onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">Eliminar</button>
                                     </form>
 
                                     <button class="btn btn-success btn-sm btn-actualizar-individual"
-                                        data-user-id="{{ $user->id }}"
-                                        data-update-route="{{ route('user.update', ['user' => $user->id]) }}"
+                                        data-user-id="<?php echo e($user->id); ?>"
+                                        data-update-route="<?php echo e(route('user.update', ['user' => $user->id])); ?>"
                                         style="margin-left: 5px; display: none;">Actualizar
                                     </button>
                                 </td>
                             </tr>
-                            @endforeach
-                            @endif
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
                     </tbody>
                 </table>
-                {{ $users->links() }}
+                <?php echo e($users->links()); ?>
+
             </div>
             <!-- /.card-body -->
         </div>
@@ -347,9 +347,9 @@ Usuarios
     </div>
 </div>
 <!-- /.row -->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
     $(document).ready(function () {
         $(".fa-pen-to-square").click(function () {
@@ -434,4 +434,6 @@ Usuarios
     });
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/admin/users/index.blade.php ENDPATH**/ ?>

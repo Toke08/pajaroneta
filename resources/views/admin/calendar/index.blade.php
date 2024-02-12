@@ -30,18 +30,57 @@ iframe{
 #btn_save:hover{
     background-color:#CA8F00;
 }
+
+/* Personaliza el color de fondo del calendario */
+.fc-dayGridMonth-view {
+    background-color: rgb(255, 255, 255);
+}
+
+/* Personaliza el color del texto del evento */
+.fc-event {
+    color: white;
+}
+
+/* Personaliza los bordes de las celdas de fecha */
+.fc-daygrid-day {
+    border: none;
+}
+
 </style>
 @endsection
 
 @section('contenido')
-{{--<div id="calendario">
-    @foreach ($calendar as $cal)
-        <p>{{$cal->start}}</p>
-        <p>{{$cal->end}}</p>
-        <p>{{$cal->event->title}}</p>
-        <p>{{$cal->location->address}}</p>
-    @endforeach
-</div>--}}
+<div id="calendario">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Evento</th>
+                <th>Ubicación</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de fin</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($calendar as $cal)
+            <tr>
+                <td>{{ $cal->event->title }}</td>
+                <td>{{ $cal->location->address }}</td>
+                <td>{{ $cal->start }}</td>
+                <td>{{ $cal->end }}</td>
+                <td>
+                    <form action="{{ route('calendario.destroy', $cal->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    {{ $calendar->links() }}
+</div>
     {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar">
     Añadir fecha
     </button> --}}

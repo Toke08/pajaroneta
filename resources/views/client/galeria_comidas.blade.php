@@ -135,7 +135,12 @@
         {{-- envia la id para luego poder cogerlo en el request del controllador (?id=1) --}}
         <a href="{{ route('galeria_comidas', ['id' => $category->id]) }}">
             <img src="{{asset('img/categories')}}/{{$category->img}}">
-            <p>{{$category->name}}</p>
+            <p @php if(filter_var($selected_category) == $category->id){ echo("class='outlined'");} @endphp>{{$category->name}}</p>
+            <style>
+                .outlined{
+                    border-bottom: 1px solid black;
+                }
+            </style>
         </a>
     </div>
     @endforeach

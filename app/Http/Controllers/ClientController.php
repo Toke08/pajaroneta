@@ -31,7 +31,7 @@ class ClientController extends Controller
             $foods = Food::inRandomOrder()->get();;
         }
 
-        return view("client.galeria_comidas", ['foods'=> $foods, 'categories'=> $categories]);
+        return view("client.galeria_comidas", ['foods'=> $foods, 'categories'=> $categories, 'selected_category' => $selectedCategory]);
     }
 
     public function galeria_comidas_show($id){
@@ -65,6 +65,8 @@ class ClientController extends Controller
 
     public function blog_show($id){
         $post = Post::with('tag')->findOrFail($id);
+        $post->views++;
+        $post->save();
         $comments = Comment::where('post_id', $post->id)->get();
         return view('client.blog_show', compact('post', 'comments'));
     }

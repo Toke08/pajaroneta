@@ -333,6 +333,8 @@ PajaroBlog
                             <?php endif; ?>
                     </tbody>
                 </table>
+                <?php echo e($posts->links()); ?>
+
             </div>
             <!-- /.card-body -->
         </div>

@@ -90,6 +90,16 @@
     margin: 0;
 }
 
+#comment{
+    box-shadow: #000000 0px 0px 3px;
+    resize: none;
+}
+
+
+.bck p{
+    margin-top:2%;
+}
+
 </style>
 @endsection
 
@@ -97,12 +107,11 @@
 <div class="post-container">
     <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}" class="post-image">
     <div id="content">
+        <div class="bck">
+            <button id="volverAlBlog" class="btn">Volver al blog</button>
+            <p>Categoría:<a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a></p><br>
+        </div>
 
-        <button id="volverAlBlog" class="btn">Volver al blog</button>
-        <p>Categoría:<a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a></p><br>
-
-
-        {{-- <a href="{{ route('blog') }}">Volver al blog</a> --}}
         <h1>{{ $post->title }}</h1>
         <p class="post-content">{{ $post->content }}</p>
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status');
             $table->unsignedBigInteger('tag_id');
             $table->timestamps();
+            $table->integer('views')->default(0);
             //
             $table->foreign('tag_id')->references('id')->on('tags');
         });

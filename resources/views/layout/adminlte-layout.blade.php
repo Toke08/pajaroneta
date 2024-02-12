@@ -26,6 +26,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     body > div > aside > div > nav > ul > li > a{
         color: vWar(--blanco) !important;
     }
+
+    /* Cambiar el color del enlace */
+    a.enlaceNegro {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+        text-decoration: none;
+        /* Quitar el subrayado */
+    }
+
+    /* Cambiar el color cuando el enlace está en estado de foco (haciendo clic) */
+    a.enlaceNegro:focus {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+    }
   </style>
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -87,11 +101,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-0 d-flex">
         <div class="image">
-          <img src="{{ asset('img/users/' . auth()->user()->profile_img) }}" class="img-circle elevation-2" alt="User Image">
+            @if(auth()->user())
+            <img src="{{ asset('img/users/' . auth()->user()->profile_img) }}" class="img-circle elevation-2" alt="User Image">
+            @endif
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
+            @if(auth()->user())
+          {{auth()->user()->name}}
+            @endif
         </div>
+        <div class="info">
+            @if(auth()->user())
+            <a class="enlaceNegro" href="{{ route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i></a>
+            @endif
+        </div>
+
 
       </ul>
 
@@ -103,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
 
     <a href="{{ route('home') }}" class="brand-link">
-      <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('img/logo/pajaro-01.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Pajaroneta</span>
 
     </a>
@@ -179,12 +203,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-sm-6">
             <h1 class="m-0">@yield('titulo')</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
-          </div><!-- /.col -->
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>

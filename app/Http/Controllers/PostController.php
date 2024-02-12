@@ -110,6 +110,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
+
         $post = Post::with('tag')->findOrFail($id);
         $comments = Comment::where('post_id', $post->id)->get();
         return view('admin.blog.show', compact('post', 'comments'));
@@ -123,7 +124,6 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
         $post = Post::findOrFail($id);
         $tags = Tag::all();
         return view('admin.blog.edit', compact('post','tags'));

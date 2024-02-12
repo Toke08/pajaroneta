@@ -32,6 +32,7 @@ img{
 
 </tr>
 @endforeach
+{{ $categories->links() }}
 
 
 @endsection

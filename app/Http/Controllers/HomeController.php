@@ -28,10 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $location = Location::all();
+        $locations = Location::all();
         $foods = Food::all();
         $posts = Post::all();
         $restaurants = Restaurant::all();
-        return view('home',compact('location', 'foods', 'posts', 'restaurants'));
+        return view('home', compact('locations', 'foods', 'posts', 'restaurants'));
+
     }
 }

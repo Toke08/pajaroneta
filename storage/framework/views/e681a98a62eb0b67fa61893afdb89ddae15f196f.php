@@ -43,13 +43,18 @@ p {
     background-color:#E5A200 ;
     width: 13%;
     border:none;
+    height: 2.5em;
     padding-top: 0.2%;
     border-radius:1.5em;
-    text-align: center
+    text-align: center;
+    transition: 0.3s ease-in-out;
 }
 .btn_back a{
     color: #ffffff;
     text-decoration: none;
+}
+.btn_back:hover{
+    background-color: #CA8F00;
 }
 .publis{
     width: 100%;
@@ -60,15 +65,17 @@ p {
 }
 .publis a{
     text-decoration: none;
-
+}
+.publis a:hover{
+    color:#9d0000;
 }
 .publis button{
     background-color: #E5A200;
     border: none;
-
     border-radius: 1.5em;
     width: 20%;
-    padding: 2%;
+    height: 2.5em;;
+    padding-top: 0.2%;
     transition: 0.3s ease-in-out;
 }
 .publis button a{

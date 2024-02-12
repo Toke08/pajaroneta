@@ -86,6 +86,4 @@
         <img src="{{ asset('img/landing_page/burger_der.png') }}" alt="">
     </div>
 
-
-
 @endsection

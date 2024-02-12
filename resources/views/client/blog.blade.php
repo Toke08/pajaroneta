@@ -99,8 +99,6 @@ img {
             @endforeach
         </div>
 
-
-
         <div id="posts">
         @foreach ($posts as $post)
 

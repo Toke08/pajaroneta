@@ -6,6 +6,21 @@ Comidas
 
 @section('estilos')
 <style>
+
+    /* Cambiar el color del enlace */
+    a.enlaceNegro {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+        text-decoration: none;
+        /* Quitar el subrayado */
+    }
+
+    /* Cambiar el color cuando el enlace está en estado de foco (haciendo clic) */
+    a.enlaceNegro:focus {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+    }
+
     table img {
         width: 100px;
         height: auto;
@@ -225,7 +240,7 @@ Comidas
                         </symbol>
                     </svg>
 
-                    <form action="{{ route('user.index')}}" method="GET" novalidate="novalidate"
+                    <form action="{{ route('galeria-comidas.index')}}" method="GET" novalidate="novalidate"
                         class="searchbox sbx-medium">
                         <div role="search" class="sbx-medium__wrapper">
                             <input type="search" name="search" placeholder="Search your website" autocomplete="off"
@@ -249,8 +264,8 @@ Comidas
 
                     </script>
                     <div class="text-right">
-                        <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary">Crear nuevo
-                                usuario</button></a>
+                        <a href="{{ route('galeria-comidas.create') }}"><button type="button" class="btn btn-primary">Crear nueva
+                                comida</button></a>
                     </div>
                 </nav>
 
@@ -264,8 +279,7 @@ Comidas
                     <thead>
                         <tr>
                             <th>
-                                <a class="enlaceNegro"
-                                    href="{{ route('galeria-comidas.index', ['column' => 'id', 'direction' => $direction]) }}">
+                                <a class="enlaceNegro" href="{{ route('galeria-comidas.index', ['column' => 'id', 'direction' => $direction]) }}">
                                     ID
                                     @if ($column === 'id' && $direction === 'desc')
                                     <i class="fa-solid fa-arrow-up"></i>
@@ -284,8 +298,8 @@ Comidas
                     </thead>
                     <tbody>
 
-                        @if (count($users)<=0) <tr>
-                            <td colspan="6">No hay registros disponibles.</td>
+                        @if (count($foods)<=0) <tr>
+                            <td colspan="7">No hay registros disponibles.</td>
                             </tr>
                             @else
                             @foreach ($foods as $food)
@@ -298,16 +312,16 @@ Comidas
                                 <td><img src="{{ asset('img/foods/'.$food->img) }}"></td>
                                 <td>{{$food->description}}</td>
                                 <td>{{$food->category->name}}</td>
-                                <td>
+                                <td style="display: flex; flex-direction:row; justify-content:center; gap: 0.5rem;">
                                     <form action="{{ route('galeria-comidas.edit', $food->id) }}" method="GET">
                                         @csrf
-                                        <button type="submit">Editar</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Editar</button>
                                     </form>
 
                                     <form action="{{ route('galeria-comidas.destroy', $food->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit">Borrar</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>

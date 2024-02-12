@@ -5,6 +5,20 @@ PajaroBlog
 
 @section('estilos')
 <style>
+    /* Cambiar el color del enlace */
+    a.enlaceNegro {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+        text-decoration: none;
+        /* Quitar el subrayado */
+    }
+
+    /* Cambiar el color cuando el enlace está en estado de foco (haciendo clic) */
+    a.enlaceNegro:focus {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+    }
+
     .table img {
         width: 150px;
         object-fit: cover;
@@ -214,7 +228,7 @@ PajaroBlog
                         </symbol>
                     </svg>
 
-                    <form action="{{ route('user.index')}}" method="GET" novalidate="novalidate"
+                    <form action="{{ route('blog.index')}}" method="GET" novalidate="novalidate"
                         class="searchbox sbx-medium">
                         <div role="search" class="sbx-medium__wrapper">
                             <input type="search" name="search" placeholder="Search your website" autocomplete="off"
@@ -238,8 +252,8 @@ PajaroBlog
 
                     </script>
                     <div class="text-right">
-                        <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary">Crear nuevo
-                                usuario</button></a>
+                        <a href="{{ route('blog.create') }}"><button type="button" class="btn btn-primary">Crear nuevo
+                                post</button></a>
                     </div>
                 </nav>
 
@@ -272,8 +286,8 @@ PajaroBlog
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($users)<=0) <tr>
-                            <td colspan="6">No hay registros disponibles.</td>
+                        @if (count($posts)<=0) <tr>
+                            <td colspan="7">No hay registros disponibles.</td>
                             </tr>
                             @else
                             @foreach($posts as $post)
@@ -296,21 +310,21 @@ PajaroBlog
                                     <img src="{{asset('img/posts')}}/{{ $post->img }}"><img>
                                 </td>
                                 <td>
-                                    {{$post->created_at}}
+                                    {{ $post->created_at->format('Y-m-d') }}
                                 </td>
                                 <td>
-                                    {{$post->updated_at}}
+                                    {{$post->updated_at->format('Y-m-d')}}
                                 </td>
-                                <td>
+                                <td style="display: flex; flex-direction:row; justify-content:center; gap: 0.5rem;">
                                     <form action="{{ route('blog.edit', $post->id) }}" method="GET">
                                         @csrf
-                                        <button type="submit">Editar</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Editar</button>
                                     </form>
 
                                     <form action="{{ route('blog.destroy', $post->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit">Borrar</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>

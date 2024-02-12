@@ -16,11 +16,32 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
 
-        return view('admin.blog.index', ['posts' => $posts]);
+        $column = $request->get('column', 'id');
+        $direction = $request->get('direction', 'asc');
+
+        // Cambiar la dirección de ordenación si es necesario
+        $direction = ($direction === 'asc') ? 'desc' : 'asc';
+
+        $search = trim($request->get('search'));
+
+        $posts = Post::where(function ($query) use ($search) {
+                $query->where('title', 'LIKE', "%{$search}%")
+                    ->orWhere('status', 'LIKE', "%{$search}%");
+            })
+            ->orderBy($column, $direction)
+            ->paginate(10);
+
+
+
+        // $posts = Post::orderBy('created_at', 'desc')->get();
+
+        return view('admin.blog.index', ['posts' => $posts,
+            'column' => $column,
+            'direction' => $direction,
+            'search' => $search,]);
     }
 
     /**

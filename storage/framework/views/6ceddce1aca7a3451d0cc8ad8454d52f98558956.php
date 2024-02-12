@@ -4,10 +4,25 @@ PajaroBlog
 
 <?php $__env->startSection('estilos'); ?>
 <style>
-.table img{
-    width: 150px;
-    object-fit: cover;
-}
+    /* Cambiar el color del enlace */
+    a.enlaceNegro {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+        text-decoration: none;
+        /* Quitar el subrayado */
+    }
+
+    /* Cambiar el color cuando el enlace está en estado de foco (haciendo clic) */
+    a.enlaceNegro:focus {
+        color: #000;
+        /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
+    }
+
+    .table img {
+        width: 150px;
+        object-fit: cover;
+    }
+
     .sbx-medium {
         display: inline-block;
         position: relative;
@@ -194,113 +209,128 @@ PajaroBlog
 <?php $__env->startSection('contenido'); ?>
 
 <div class="row">
-          <div class="col-12">
-            <div class="card">
-                <div class="card-header">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
 
-                    <nav class="navbar navbar-light bg-light ">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-                            <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-13" viewBox="0 0 40 40">
-                                <path
-                                    d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
-                                    fill-rule="evenodd" />
-                            </symbol>
-                            <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-2" viewBox="0 0 20 20">
-                                <path
-                                    d="M8.96 10L.52 1.562 0 1.042 1.04 0l.522.52L10 8.96 18.438.52l.52-.52L20 1.04l-.52.522L11.04 10l8.44 8.438.52.52L18.96 20l-.522-.52L10 11.04l-8.438 8.44-.52.52L0 18.96l.52-.522L8.96 10z"
-                                    fill-rule="evenodd" />
-                            </symbol>
-                        </svg>
+                <nav class="navbar navbar-light bg-light ">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+                        <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-13" viewBox="0 0 40 40">
+                            <path
+                                d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
+                                fill-rule="evenodd" />
+                        </symbol>
+                        <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-2" viewBox="0 0 20 20">
+                            <path
+                                d="M8.96 10L.52 1.562 0 1.042 1.04 0l.522.52L10 8.96 18.438.52l.52-.52L20 1.04l-.52.522L11.04 10l8.44 8.438.52.52L18.96 20l-.522-.52L10 11.04l-8.438 8.44-.52.52L0 18.96l.52-.522L8.96 10z"
+                                fill-rule="evenodd" />
+                        </symbol>
+                    </svg>
 
-                        <form action="<?php echo e(route('user.index')); ?>" method="GET" novalidate="novalidate"
-                            class="searchbox sbx-medium">
-                            <div role="search" class="sbx-medium__wrapper">
-                                <input type="search" name="search" placeholder="Search your website" autocomplete="off"
-                                    required="required" class="sbx-medium__input">
-                                <button type="submit" title="Submit your search query." class="sbx-medium__submit">
-                                    <svg role="img" aria-label="Search">
-                                        <use xlink:href="#sbx-icon-search-13"></use>
-                                    </svg>
-                                </button>
-                                <button type="reset" title="Clear the search query." class="sbx-medium__reset">
-                                    <svg role="img" aria-label="Reset">
-                                        <use xlink:href="#sbx-icon-clear-2"></use>
-                                    </svg>
-                                </button>
-                            </div>
-                        </form>
-                        <script type="text/javascript">
-                            document.querySelector('.searchbox [type="reset"]').addEventListener('click', function () {
-                                this.parentNode.querySelector('input').focus();
-                            });
-
-                        </script>
-                        <div class="text-right">
-                            <a href="<?php echo e(route('user.create')); ?>"><button type="button" class="btn btn-primary">Crear nuevo
-                                    usuario</button></a>
+                    <form action="<?php echo e(route('blog.index')); ?>" method="GET" novalidate="novalidate"
+                        class="searchbox sbx-medium">
+                        <div role="search" class="sbx-medium__wrapper">
+                            <input type="search" name="search" placeholder="Search your website" autocomplete="off"
+                                required="required" class="sbx-medium__input">
+                            <button type="submit" title="Submit your search query." class="sbx-medium__submit">
+                                <svg role="img" aria-label="Search">
+                                    <use xlink:href="#sbx-icon-search-13"></use>
+                                </svg>
+                            </button>
+                            <button type="reset" title="Clear the search query." class="sbx-medium__reset">
+                                <svg role="img" aria-label="Reset">
+                                    <use xlink:href="#sbx-icon-clear-2"></use>
+                                </svg>
+                            </button>
                         </div>
-                    </nav>
+                    </form>
+                    <script type="text/javascript">
+                        document.querySelector('.searchbox [type="reset"]').addEventListener('click', function () {
+                            this.parentNode.querySelector('input').focus();
+                        });
+
+                    </script>
+                    <div class="text-right">
+                        <a href="<?php echo e(route('blog.create')); ?>"><button type="button" class="btn btn-primary">Crear nuevo
+                                post</button></a>
+                    </div>
+                </nav>
 
 
 
 
-                </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Título</th>
-                      <th>Estado</th>
-                      <th>Imagen</th>
-                      <th>Fecha publicacion</th>
-                      <th>ultima modificacion</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-            <tbody>
-                <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                    <td><?php echo e($post->id); ?></td>
-                    <td><a href="blog/<?php echo e($post->id); ?>"><?php echo e($post->title); ?></a></td>
-                    <td><?php echo e($post->status); ?>
-
-                        
-                    </td>
-                    <td>
-                        <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img>
-                    </td>
-                    <td>
-                        <?php echo e($post->created_at); ?>
-
-                    </td>
-                    <td>
-                        <?php echo e($post->updated_at); ?>
-
-                    </td>
-                    <td>
-                        <form action="<?php echo e(route('blog.edit', $post->id)); ?>" method="GET">
-                            <?php echo csrf_field(); ?>
-                            <button type="submit">Editar</button>
-                        </form>
-
-                        <form action="<?php echo e(route('blog.destroy', $post->id)); ?>"   method="POST">
-                            <?php echo csrf_field(); ?>
-                            <?php echo method_field('DELETE'); ?>
-                            <button type="submit">Borrar</button>
-                        </form>
-                    </td>
-                </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-          </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a class="enlaceNegro"
+                                    href="<?php echo e(route('blog.index', ['column' => 'id', 'direction' => $direction])); ?>">
+                                    ID
+                                    <?php if($column === 'id' && $direction === 'desc'): ?>
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                    <?php else: ?>
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                    <?php endif; ?>
+                                </a>
+                            </th>
+                            <th>Título</th>
+                            <th>Estado</th>
+                            <th>Imagen</th>
+                            <th>Fecha publicacion</th>
+                            <th>ultima modificacion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if(count($posts)<=0): ?> <tr>
+                            <td colspan="7">No hay registros disponibles.</td>
+                            </tr>
+                            <?php else: ?>
+                            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td><?php echo e($post->id); ?></td>
+                                <td><a href="blog/<?php echo e($post->id); ?>"><?php echo e($post->title); ?></a></td>
+                                <td><?php echo e($post->status); ?>
+
+                                    
+                                </td>
+                                <td>
+                                    <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img>
+                                </td>
+                                <td>
+                                    <?php echo e($post->created_at->format('Y-m-d')); ?>
+
+                                </td>
+                                <td>
+                                    <?php echo e($post->updated_at->format('Y-m-d')); ?>
+
+                                </td>
+                                <td style="display: flex; flex-direction:row; justify-content:center; gap: 0.5rem;">
+                                    <form action="<?php echo e(route('blog.edit', $post->id)); ?>" method="GET">
+                                        <?php echo csrf_field(); ?>
+                                        <button type="submit" class="btn btn-primary btn-sm">Editar</button>
+                                    </form>
+
+                                    <form action="<?php echo e(route('blog.destroy', $post->id)); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
         </div>
+        <!-- /.card -->
+    </div>
+</div>
 
 <?php $__env->stopSection(); ?>
 

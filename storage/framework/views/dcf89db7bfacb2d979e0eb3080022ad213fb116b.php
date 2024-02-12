@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('estilos'); ?>
 <style>
 
@@ -90,6 +89,16 @@
     margin: 0;
 }
 
+#comment{
+    box-shadow: #000000 0px 0px 3px;
+    resize: none;
+}
+
+
+.bck p{
+    margin-top:2%;
+}
+
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -97,11 +106,11 @@
 <div class="post-container">
     <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>" class="post-image">
     <div id="content">
+        <div class="bck">
+            <button id="volverAlBlog" class="btn">Volver al blog</button>
+            <p>Categoría:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
+        </div>
 
-        <p>Categoría:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
-
-        <button id="volverAlBlog" class="btn">Volver al blog</button>
-        
         <h1><?php echo e($post->title); ?></h1>
         <p class="post-content"><?php echo e($post->content); ?></p>
 
@@ -155,4 +164,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Rod\Desktop\Desk\DAW\UniServerZ\www\pajaroneta\resources\views/client/blog_show.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.masterpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/client/blog_show.blade.php ENDPATH**/ ?>

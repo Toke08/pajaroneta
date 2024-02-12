@@ -74,7 +74,7 @@
             <img class="papa1" src="{{ asset('img/landing_page/papas_1.png') }}" alt="">
         </div>
         <div class="part2">
-            <img src="{{ asset('img/landing_page/logo_pajar.png') }}" alt="">
+            <img src="{{ asset('img/landing_page/pajaro-01.png') }}" alt="">
             <p>Delicias para celiacos e intolerantes a través de toda España</p>
         </div>
         <div class="part3">

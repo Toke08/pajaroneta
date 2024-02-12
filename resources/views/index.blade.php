@@ -104,10 +104,7 @@
     </div>
 
 
-    <div id="restaurant"></div>
-        <h2>Por si estamos lejos de ti...</h2>
-        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
-        <div id="div-restaurantes">
+
             @foreach ($restaurants as $restaurant)
             <div class="restaurants">
                 <h3><a href="{{ $restaurant->url_sitio }}" target="blank">{{ $restaurant->name }}</a></h3>
@@ -119,8 +116,7 @@
                 <a href="{{ $restaurant->url_maps }}" target="blank">Encuéntralos aquí</a>
             </div>
             @endforeach
-        </div>
-    </div>
+
 
 
 @endsection

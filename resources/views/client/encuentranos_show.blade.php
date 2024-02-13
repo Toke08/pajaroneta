@@ -23,7 +23,7 @@
 @endif
 
 <div id="tablaEventos">
-    <h2>@lang('Upcoming events')</h2>
+    <h2>@lang('Upcoming')</h2>
     <table class="table">
         <thead>
             <tr>

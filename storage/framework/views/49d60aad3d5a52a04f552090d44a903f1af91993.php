@@ -21,7 +21,7 @@
 <?php endif; ?>
 
 <div id="tablaEventos">
-    <h2><?php echo app('translator')->get('Upcoming events'); ?></h2>
+    <h2><?php echo app('translator')->get('Upcoming'); ?></h2>
     <table class="table">
         <thead>
             <tr>

@@ -40,6 +40,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         color: #000;
         /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
     }
+
+    [class*=sidebar-dark] .brand-link{
+        border-bottom: 1px solid #ffffff !important;
+    }
   </style>
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -126,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <a href="{{ route('home') }}" class="brand-link">
       <img src="{{ asset('img/logo/pajaro-01.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Pajaroneta</span>
+      <span class="brand-text font-weight-light" style=" font-weight: 500 !important; color: white !important;">Pajaroneta</span>
 
     </a>
 

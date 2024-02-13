@@ -10,29 +10,26 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-
-
 <?php if(!is_null($url)): ?>
-<h1>Hoy nos encontramos en el evento <?php echo e($title); ?></h1>
-<h3>Encuentrálos es: <?php echo e($address); ?></h3>
-<div>
-    <iframe src="<?php echo e($url); ?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-
+<h1><?php echo app('translator')->get('Today we are at the event <?php echo e($title); ?>'); ?></h1>
+<h3><?php echo app('translator')->get('Find us at <?php echo e($address); ?>'); ?></h3>
+    <div>
+        <iframe src="<?php echo e($url); ?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
 <?php else: ?>
-<p>No hay eventos programados para hoy.</p>
+<p><?php echo app('translator')->get('There are no scheduled events for today.'); ?></p>
 <?php endif; ?>
 
 <div id="tablaEventos">
-    <h2>Próximos eventos</h2>
+    <h2><?php echo app('translator')->get('Upcoming events'); ?></h2>
     <table class="table">
         <thead>
             <tr>
-                <th>Titulo</th>
-                <th>Descripción</th>
-                <th>Inicio</th>
-                <th>Fin</th>
-                <th>Ubicación</th>
+                <th><?php echo app('translator')->get('Title'); ?></th>
+                <th><?php echo app('translator')->get('Description'); ?></th>
+                <th><?php echo app('translator')->get('Start'); ?></th>
+                <th><?php echo app('translator')->get('End'); ?></th>
+                <th><?php echo app('translator')->get('Location'); ?></th>
             </tr>
         </thead>
         <tbody>

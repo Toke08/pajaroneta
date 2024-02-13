@@ -13,25 +13,25 @@
 
 @section('contenido')
 @if (!is_null($url))
-<h1>Hoy nos encontramos en el evento {{ $title }}</h1>
-<h3>Encuentrálos es: {{ $address }}</h3>
+<h1>@lang('Today we are at the event {{ $title }}')</h1>
+<h3>@lang('Find us at {{ $address }}')</h3>
     <div>
         <iframe src="{{ $url }}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 @else
-<p>No hay eventos programados para hoy.</p>
+<p>@lang('There are no scheduled events for today.')</p>
 @endif
 
 <div id="tablaEventos">
-    <h2>Próximos eventos</h2>
+    <h2>@lang('Upcoming events')</h2>
     <table class="table">
         <thead>
             <tr>
-                <th>Titulo</th>
-                <th>Descripción</th>
-                <th>Inicio</th>
-                <th>Fin</th>
-                <th>Ubicación</th>
+                <th>@lang('Title')</th>
+                <th>@lang('Description')</th>
+                <th>@lang('Start')</th>
+                <th>@lang('End')</th>
+                <th>@lang('Location')</th>
             </tr>
         </thead>
         <tbody>

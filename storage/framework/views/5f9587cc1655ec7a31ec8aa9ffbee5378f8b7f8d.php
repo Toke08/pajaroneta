@@ -13,23 +13,103 @@ Dashboard
 
 <?php $__env->startSection('contenido'); ?>
 
-    <a class="nav-link" href="<?php echo e(route('user.index')); ?>"><?php echo app('translator')->get('View Users'); ?></a>
+<section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3><?php echo e(count($users)); ?></h3>
 
-    <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo app('translator')->get('View Posts'); ?></a>
+              <p>Usuarios registrados</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <a href="<?php echo e(route('user.index')); ?>" class="small-box-footer">Ver mas <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+                
+              <h3><?php echo e(count($posts)); ?></h3>
 
-    <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Create Post'); ?></a>
+              <p>Posts publicados</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <a href="<?php echo e(route('blog.index')); ?>" class="small-box-footer">Ver mas <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3><?php echo e(count($foods)); ?></h3>
 
-    <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo app('translator')->get('View Blog Categories'); ?></a>
+              <p>Comidas en venta</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-utensils"></i>
+            </div>
+            <a href="<?php echo e(route('galeria-comidas.index')); ?>" class="small-box-footer">Ver mas <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+            <!-- small box -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>Post más buscado</h3>
 
-    <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo app('translator')->get('Create Blog Category'); ?></a>
+                    <?php if($postMasBuscado): ?>
+                        <img src="<?php echo e(asset('img/posts/'.$postMasBuscado->img)); ?>" class="img-fluid mb-3" alt="Imagen del post">
+                        <h4 class="card-text">Título: <?php echo e(\Illuminate\Support\Str::limit($postMasBuscado->title, 50)); ?></h4>
+                        <p class="card-text">Contenido: <?php echo e(\Illuminate\Support\Str::limit($postMasBuscado->content, 200)); ?></p>
+                        <p class="card-text">Número de vistas: <?php echo e($postMasBuscado->views); ?></p>
+                    <?php else: ?>
+                        <p class="card-text">No hay posts disponibles.</p>
+                    <?php endif; ?>
+                </div>
 
-    <a class="nav-link" href="<?php echo e(route('restaurants.create')); ?>"><?php echo app('translator')->get('New Restaurant'); ?></a>
+                <div class="card-footer">
+                    <a href="<?php echo e(route('blog_show', ['id' => $comidaMasBuscada->id])); ?>" class="btn btn-primary">Ver más <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+            <!-- small box -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>Comida más buscada</h3>
 
-    <a class="nav-link" href="<?php echo e(route('restaurants.index')); ?>"><?php echo app('translator')->get('View Restaurants'); ?></a>
+                    <?php if($comidaMasBuscada): ?>
+                        <img src="<?php echo e(asset('img/foods/'.$comidaMasBuscada->img)); ?>" class="img-fluid mb-3" alt="Imagen del post">
+                        <h4 class="card-text">Título: <?php echo e(\Illuminate\Support\Str::limit($comidaMasBuscada->name, 50)); ?></h4>
+                        <p class="card-text">Contenido: <?php echo e(\Illuminate\Support\Str::limit($comidaMasBuscada->description, 200)); ?></p>
+                        <p class="card-text">Número de vistas: <?php echo e($comidaMasBuscada->views); ?></p>
+                    <?php else: ?>
+                        <p class="card-text">No hay posts disponibles.</p>
+                    <?php endif; ?>
+                </div>
 
-    <a class="nav-link" href="<?php echo e(route('galeria-comidas.create')); ?>"><?php echo app('translator')->get('Create comida'); ?></a>
+                <div class="card-footer">
+                    <a href="<?php echo e(route('galeria-comidas.show', ['id' => $comidaMasBuscada->id])); ?>" class="btn btn-primary">Ver más <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</Section>
 
-    <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo app('translator')->get('View Food Categories'); ?></a>
 
 <?php $__env->stopSection(); ?>
 

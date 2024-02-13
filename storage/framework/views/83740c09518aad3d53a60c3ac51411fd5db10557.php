@@ -37,7 +37,7 @@
             <?php if(auth()->user()->isAdmin()): ?>
                 <!-- Si es un administrador, redirigir al dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('adminHome')); ?>"><?php echo app('translator')->get('Hello,'); ?> <?php echo e(auth()->user()->name); ?></a>
+                    <a class="nav-link" href="<?php echo e(route('adminHome')); ?>"><?php echo app('translator')->get('Dashboard'); ?></a>
                 </li>
 
             <?php else: ?>

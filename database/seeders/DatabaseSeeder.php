@@ -322,7 +322,6 @@ class DatabaseSeeder extends Seeder
             "tag_id"=>3
         ]);
 
-        //
         /**/
         \App\Models\Location::create([
 
@@ -337,16 +336,98 @@ class DatabaseSeeder extends Seeder
             'city'=> 'Barakaldo',
             'address'=> 'Alameda Urquijo 30',
             'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.5446428279547!2d-2.9382496500273887!3d43.260964374529124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4f3e75700b5f%3A0xcf1f1c74d3f48d32!2sNalu%20Poke!5e0!3m2!1ses!2ses!4v1707852197622!5m2!1ses!2ses',
-            'cp' => '48008'
+            'cp' => '39008'
         ]);
 
         \App\Models\Location::create([
-            'province'=>'Lima',
-            'city'=> 'Chacracerro',
+            'province'=>'Alicante',
+            'city'=> 'Characerro',
             'address'=> 'Jirón Simón Bolivar 23',
             'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7806.3820762164005!2d-77.03080969999999!3d-11.961271499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cfe7cad9fbad%3A0x976d374e79307847!2sBOCA%20DEL%20DIABLO!5e0!3m2!1ses!2ses!4v1707850657101!5m2!1ses!2ses',
-            'cp' => '48008'
+            'cp' => '15348'
         ]);
+
+        \App\Models\Location::create([
+            'province'=>'Burgos',
+            'city'=> 'Miranda de Ebro',
+            'address'=> 'Jirón ',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23463.071229637015!2d-2.960210922686989!3d42.685001501615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4f9aa20a5503a7%3A0xc523fad9e79edfff!2sMiranda%20de%20Ebro%2C%20Burgos%2C%20Espa%C3%B1a!5e0!3m2!1ses!2spe!4v1707856276621!5m2!1ses!2spe',
+            'cp' => '22264'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Gipuzkoa',
+            'city'=> 'Mondragón',
+            'address'=> 'Avenida Trapiche 223',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23463.071229637015!2d-2.960210922686989!3d42.685001501615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4f9aa20a5503a7%3A0xc523fad9e79edfff!2sMiranda%20de%20Ebro%2C%20Burgos%2C%20Espa%C3%B1a!5e0!3m2!1ses!2spe!4v1707856276621!5m2!1ses!2spe',
+            'cp' => '45676'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Vizcaya',
+            'city'=> 'Munguía',
+            'address'=> 'Kalea Urkijo 572',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11604.436545593142!2d-2.8568594963621194!3d43.35382769045542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e46bd3d40d485%3A0xef7f4686ea6bb116!2zNDgxMDAgTXVuZ3XDrWEsIFZpemNheWEsIEVzcGHDsWE!5e0!3m2!1ses!2spe!4v1707856617066!5m2!1ses!2spe',
+            'cp' => '31876'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Vizcaya',
+            'city'=> 'Aranguren',
+            'address'=> 'Calle De La Creu, 2, 46701, Gandia Valencia',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5815.9165242154595!2d-3.1226603072819556!3d43.21036475418622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4ef8b55743b523%3A0xa1453c85912af482!2s48860%20Aranguren%2C%20Vizcaya%2C%20Espa%C3%B1a!5e0!3m2!1ses!2spe!4v1707856731574!5m2!1ses!2spe',
+            'cp' => '43866'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Álava',
+            'city'=> 'Alegria',
+            'address'=> 'Avenida Escaleritas, 52, 35011, Palmas',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5850.934982513975!2d-2.5195255073698184!3d42.84186110137256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4fde240fa76623%3A0xc450bf2b524ba0bf!2zMDEyNDAgQWxlZ3LDrWEsIMOBbGF2YSwgRXNwYcOxYQ!5e0!3m2!1ses!2spe!4v1707856847508!5m2!1ses!2spe',
+            'cp' => '47028'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Burgos',
+            'city'=> 'Miranda de Ebro',
+            'address'=> 'Pza. de España 13-3',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23463.071229637015!2d-2.960210922686989!3d42.685001501615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4f9aa20a5503a7%3A0xc523fad9e79edfff!2sMiranda%20de%20Ebro%2C%20Burgos%2C%20Espa%C3%B1a!5e0!3m2!1ses!2spe!4v1707856276621!5m2!1ses!2spe',
+            'cp' => '22264'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Gipuzkoa',
+            'city'=> 'Mondragón',
+            'address'=> 'Rafael Calvo, 18, 2ºA',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23463.071229637015!2d-2.960210922686989!3d42.685001501615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4f9aa20a5503a7%3A0xc523fad9e79edfff!2sMiranda%20de%20Ebro%2C%20Burgos%2C%20Espa%C3%B1a!5e0!3m2!1ses!2spe!4v1707856276621!5m2!1ses!2spe',
+            'cp' => '45676'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Vizcaya',
+            'city'=> 'Munguía',
+            'address'=> 'Paseo de la Castellana, 278',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11604.436545593142!2d-2.8568594963621194!3d43.35382769045542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e46bd3d40d485%3A0xef7f4686ea6bb116!2zNDgxMDAgTXVuZ3XDrWEsIFZpemNheWEsIEVzcGHDsWE!5e0!3m2!1ses!2spe!4v1707856617066!5m2!1ses!2spe',
+            'cp' => '31876'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Vizcaya',
+            'city'=> 'Aranguren',
+            'address'=> 'Avenida Los Caballeros',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5815.9165242154595!2d-3.1226603072819556!3d43.21036475418622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4ef8b55743b523%3A0xa1453c85912af482!2s48860%20Aranguren%2C%20Vizcaya%2C%20Espa%C3%B1a!5e0!3m2!1ses!2spe!4v1707856731574!5m2!1ses!2spe',
+            'cp' => '43866'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Álava',
+            'city'=> 'Alegria',
+            'address'=> 'Jirón Revoluciones 34',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5850.934982513975!2d-2.5195255073698184!3d42.84186110137256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4fde240fa76623%3A0xc450bf2b524ba0bf!2zMDEyNDAgQWxlZ3LDrWEsIMOBbGF2YSwgRXNwYcOxYQ!5e0!3m2!1ses!2spe!4v1707856847508!5m2!1ses!2spe',
+            'cp' => '47028'
+        ]);
+
+        //
 
         \App\Models\Event::create([
             'title'=>'Salida libre',

@@ -171,8 +171,11 @@ class ClientController extends Controller
 
     public function encuentranos_show(){
         $locations = Location::all();
-        $events = Event::with('location')->get();
+        $events = Event::with('location')->paginate(7); // Paginar los eventos
+
         $url = null;
+        $title = null;
+        $address = null;
 
         // Obtener la fecha de hoy
         $today = Carbon::today();
@@ -182,10 +185,13 @@ class ClientController extends Controller
             $start = Carbon::parse($event->start); // Convertir la cadena de fecha a Carbon
             if ($start->isSameDay($today)) {
                 $url = $event->location->url;
+                $title = $event->title;
+                $address = $event->location->address;
                 break; // Terminar el bucle una vez que se encuentra una coincidencia
             }
         }
 
-        return view('client.encuentranos_show', compact('locations', 'url'));
+        return view('client.encuentranos_show', compact('locations', 'events', 'url', 'title', 'address'));
     }
+
 }

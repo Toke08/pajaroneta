@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('estilos'); ?>
 
 <style>
@@ -69,10 +67,9 @@
     top: -2rem;
     right: -5rem;
     width: 50em;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8));
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8));
     z-index:  -1;
     scale: 0.75;
-    filter: saturate(70%);
 }
 .hot2{
     top: 15rem;
@@ -325,7 +322,7 @@
             <h2><?php echo app('translator')->get('Find us...'); ?></h2>
             <img src="<?php echo e(asset('img/landing_page/pajatruck.png')); ?>" alt="">
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.5165004228597!2d-2.9419887246831182!3d43.26155407767463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e502842c84087%3A0x539b319a98f8cfbe!2sC.%20del%20Lic.%20Poza%2C%2031%2C%20Abando%2C%2048011%20Bilbao%2C%20Vizcaya!5e0!3m2!1ses!2ses!4v1707666740981!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="<?php echo e($url); ?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <div id="comidas">

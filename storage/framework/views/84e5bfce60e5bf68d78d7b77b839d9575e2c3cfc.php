@@ -29,7 +29,7 @@
             </li>
 
             <?php if(auth()->guard()->guest()): ?>
-            
+
             <li class="nav-item">
                 <a id="login-btn" class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
             </li>
@@ -57,10 +57,10 @@
         <?php endif; ?>
 
         </ul>
-        <span class="text-white">
-            <a href="<?php echo e(route('setLanguage','es')); ?>">ES</a>
-            <a href="<?php echo e(route('setLanguage','eu')); ?>">EU</a>
-            <a href="<?php echo e(route('setLanguage', 'en')); ?>">EN</a>
+        <span class="text-white" style="padding-left: 2%;">
+            <a href="<?php echo e(route('setLanguage','es')); ?>" style="color: white; text-decoration: none;">ES</a>
+            <a href="<?php echo e(route('setLanguage','eu')); ?>" style="color: white; text-decoration: none;">EU</a>
+            <a href="<?php echo e(route('setLanguage', 'en')); ?>" style="color: white; text-decoration: none;">EN</a>
         </span>
 
     </div>

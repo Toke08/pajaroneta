@@ -82,9 +82,6 @@ class UserController extends Controller
             $request->file('img')->move('img/users', $nombreImagen);
             }
 
-        //obtener texto y papa
-        // $mensaje=$datos['mensaje'];
-        // $papas=$datos['papas'];
 
         //validar los datos
         $rules= ['name' => 'required|string|max:255',

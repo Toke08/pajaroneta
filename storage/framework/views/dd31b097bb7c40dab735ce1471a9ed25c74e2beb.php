@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
@@ -94,7 +95,7 @@ p {
 
 <?php $__env->startSection('contenido'); ?>
 
-    <button class="btn_back"><a href="<?php echo e(route('blog')); ?>">Volver al blog</a></button>
+    <button class="btn_back"><a href="<?php echo e(route('blog')); ?>"><?php echo app('translator')->get("Go back"); ?></a></button>
 
 
 
@@ -106,14 +107,14 @@ p {
         <div class="">
             <?php if($posts->isEmpty() && $restaurants->isEmpty()): ?>
             <div class="titulo">
-                <strong>No hay publicaciones ni restaurantes relacionados con <?php echo e($tag->name); ?>.</strong>
+                <strong><?php echo app('translator')->get("There is no content related to"); ?> <?php echo e($tag->name); ?>.</strong>
             </div>
             <?php else: ?>
         </div>
 
             <?php if(!$posts->isEmpty()): ?>
                 <div class="titulo">
-                    <strong>Publicaciones relacionadas con <?php echo e($tag->name); ?></strong><br>
+                    <strong><?php echo app('translator')->get("Posts related with"); ?> <?php echo e($tag->name); ?></strong><br>
                 </div>
             <div class="publis">
                 <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -121,7 +122,7 @@ p {
                         <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>"><br>
                         <h3><?php echo e($post->title); ?></h3>
                         <br>
-                        <button><a href="<?php echo e(route('blog_show', $post->id)); ?>">Leer más</a></button>
+                        <button><a href="<?php echo e(route('blog_show', $post->id)); ?>"><?php echo app('translator')->get("Read more"); ?></a></button>
 
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -130,7 +131,7 @@ p {
 
             <?php if(!$restaurants->isEmpty()): ?>
                 <div class="titulo">
-                    <strong>Restaurantes relacionados con <?php echo e($tag->name); ?></strong>
+                    <strong><?php echo app('translator')->get("Restaurants related with"); ?> <?php echo e($tag->name); ?></strong>
                 </div>
                 <div class="publis">
                 <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -140,7 +141,7 @@ p {
 
                         <br>
                         <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>"><br>
-                        <a href="<?php echo e($restaurant->url_maps); ?>">Encuéntralo aquí</a>
+                        <a href="<?php echo e($restaurant->url_maps); ?>"><?php echo app('translator')->get("Find them here"); ?></a>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>

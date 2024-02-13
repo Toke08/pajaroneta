@@ -1,5 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
+Ver categoria de post
 @endsection
 
 @section('estilos')

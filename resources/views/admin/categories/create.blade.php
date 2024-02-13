@@ -1,6 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
-Crear categoria nueva
+Crear categoria de comidas
 @endsection
 
 @section('estilos')

@@ -1,6 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
-Crear comida nueva
+Crear plato nuevo
 @endsection
 
 @section('estilos')

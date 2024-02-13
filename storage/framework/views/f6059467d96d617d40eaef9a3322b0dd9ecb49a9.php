@@ -1,6 +1,6 @@
 
 <?php $__env->startSection('titulo'); ?>
-Crear comida nueva
+Crear plato nuevo
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>

@@ -1,6 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
-    Crear publicación
+    Crear categoria de post
 @endsection
 
 @section('estilos')

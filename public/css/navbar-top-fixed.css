@@ -11,6 +11,7 @@ body {
     color: white;
     text-decoration: none;
 }
+
 .custom-shape-divider-top-1707134803 {
     position: fixed;
     top: 0;
@@ -52,7 +53,7 @@ body {
 #logout-btn {
     background-color: white;
     color: #000000 !important;
-    border-radius: 20px;
+    border-radius: 1.5em;
     padding: 8px 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -64,7 +65,7 @@ body {
 .navbar-nav .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -2px; /* Distancia del subrayado al texto */
+    bottom: -1.9px; /* Distancia del subrayado al texto */
     left: 0;
     width: 0%;
     height: 2px; /* Grosor del subrayado */

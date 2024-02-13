@@ -44,7 +44,7 @@ class LocationController extends Controller
             'province' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'url' => 'required|string|max:255',
+            'url' => 'required|string|max:500',
             'cp' => 'required|string|max:255',
         ]);
 

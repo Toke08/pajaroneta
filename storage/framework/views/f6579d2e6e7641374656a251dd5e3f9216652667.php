@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('titulo'); ?>
 Tags
 <?php $__env->stopSection(); ?>
@@ -37,8 +36,6 @@ Tags
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
-        <?php echo e($foods->links()); ?>
-
     <?php else: ?>
         <strong>No hay categorías disponibles.</strong>
     <?php endif; ?>

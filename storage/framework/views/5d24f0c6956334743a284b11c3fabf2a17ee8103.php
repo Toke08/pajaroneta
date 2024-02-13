@@ -161,11 +161,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('galeria-comidas.index')); ?>" class="nav-link">
-            <i class="fa-solid fa-utensils"></i>
-              <p>
+            <i class="fa-solid fa-utensils" style="color: var(--blanco) !important;"></i>
+              <p style="color: var(--blanco) !important;">
                 Comidas
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo e(route('galeria-comidas.index')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p style="color: var(--blanco) !important;">Platos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo e(route('categorias.index')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p style="color: var(--blanco) !important;">Categorias</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li class="nav-item">

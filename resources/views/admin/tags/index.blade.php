@@ -37,7 +37,6 @@ Tags
                 @endforeach
             </tbody>
         </table>
-        {{ $foods->links() }}
     @else
         <strong>No hay categorías disponibles.</strong>
     @endif

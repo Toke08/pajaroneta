@@ -15,13 +15,10 @@
 <?php $__env->startSection('contenido'); ?>
 <h1>Hoy nos encontramos aquí...</h1>
 
-    <?php if(!is_null($url)): ?>
+
     <div>
-        <iframe src="<?php echo e($url); ?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://maps.app.goo.gl/V8Y61jAg3XPxXYED7" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-        <?php else: ?>
-        <p>No hay eventos programados para hoy.</p>
-    <?php endif; ?>
 
 
 <?php $__env->stopSection(); ?>

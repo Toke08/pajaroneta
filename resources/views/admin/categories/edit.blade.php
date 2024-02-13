@@ -1,6 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
-Editar categoria
+Editar categorias de comidas
 @endsection
 
 @section('estilos')

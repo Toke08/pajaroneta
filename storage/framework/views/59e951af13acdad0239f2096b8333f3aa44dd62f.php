@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('titulo'); ?>
-Comidas
+Platos
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>

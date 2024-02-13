@@ -1,7 +1,7 @@
 @extends('layout.adminlte-layout')
 
 @section('titulo')
-Comidas
+Platos
 @endsection
 
 @section('estilos')
@@ -323,6 +323,7 @@ Comidas
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        
                                     </form>
                                 </td>
                             </tr>

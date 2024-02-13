@@ -1,12 +1,12 @@
 
 <?php $__env->startSection('titulo'); ?>
-Tags
+Categorias de post
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
 <style>
-/* Cambiar el color del enlace */
-a.enlaceNegro {
+    /* Cambiar el color del enlace */
+    a.enlaceNegro {
         color: #000;
         /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
         text-decoration: none;
@@ -23,6 +23,7 @@ a.enlaceNegro {
         width: 100px;
         height: auto;
     }
+
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -32,16 +33,11 @@ a.enlaceNegro {
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-
-                
-
-                
-                    <div class="text-right">
-                        <a href="<?php echo e(route('blog.create')); ?>"><button type="button" class="btn btn-primary">Crear nueva categoría
-                                </button></a>
-                    </div>
-                
-
+                <div class="text-right">
+                    <a href="<?php echo e(route('blog.create')); ?>"><button type="button" class="btn btn-primary">Crear nueva
+                            categoría
+                        </button></a>
+                </div>
             </div>
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -53,23 +49,24 @@ a.enlaceNegro {
                         </tr>
                     </thead>
                     <tbody>
-                                    <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <tr>
-                                            <th><?php echo e($tag->id); ?></th>
-                                            <td><?php echo e($tag->name); ?></td>
+                        <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <th><?php echo e($tag->id); ?></th>
+                            <td><?php echo e($tag->name); ?></td>
 
-                                            <td>
-                                                <form action="<?php echo e(route('tags.destroy', $tag->id)); ?>" method="POST">
-                                                    <?php echo csrf_field(); ?>
-                                                    <?php echo method_field('DELETE'); ?>
-                                                    <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')">Borrar</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </tbody>
-                            </table>
+                            <td>
+                                <form action="<?php echo e(route('tags.destroy', $tag->id)); ?>" method="POST">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo method_field('DELETE'); ?>
+                                    <button type="submit"  class="btn btn-danger btn-sm"
+                                        onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')">Borrar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
+                </table>
+                </tbody>
                 </table>
             </div>
         </div>

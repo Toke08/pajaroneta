@@ -1,12 +1,12 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
-Tags
+Categorias de post
 @endsection
 
 @section('estilos')
 <style>
-/* Cambiar el color del enlace */
-a.enlaceNegro {
+    /* Cambiar el color del enlace */
+    a.enlaceNegro {
         color: #000;
         /* Cambiar a tu color deseado, por ejemplo, negro (#000) */
         text-decoration: none;
@@ -23,6 +23,7 @@ a.enlaceNegro {
         width: 100px;
         height: auto;
     }
+
 </style>
 @endsection
 
@@ -32,16 +33,11 @@ a.enlaceNegro {
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-
-                
-
-                
-                    <div class="text-right">
-                        <a href="{{ route('blog.create') }}"><button type="button" class="btn btn-primary">Crear nueva categoría
-                                </button></a>
-                    </div>
-                
-
+                <div class="text-right">
+                    <a href="{{ route('blog.create') }}"><button type="button" class="btn btn-primary">Crear nueva
+                            categoría
+                        </button></a>
+                </div>
             </div>
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -53,23 +49,24 @@ a.enlaceNegro {
                         </tr>
                     </thead>
                     <tbody>
-                                    @foreach ($tags as $tag)
-                                        <tr>
-                                            <th>{{ $tag->id }}</th>
-                                            <td>{{ $tag->name }}</td>
+                        @foreach ($tags as $tag)
+                        <tr>
+                            <th>{{ $tag->id }}</th>
+                            <td>{{ $tag->name }}</td>
 
-                                            <td>
-                                                <form action="{{ route('tags.destroy', $tag->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')">Borrar</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <td>
+                                <form action="{{ route('tags.destroy', $tag->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"  class="btn btn-danger btn-sm"
+                                        onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')">Borrar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
+                </table>
+                </tbody>
                 </table>
             </div>
         </div>

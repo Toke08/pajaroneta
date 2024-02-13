@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('titulo'); ?>
 PajaroBlog
 <?php $__env->stopSection(); ?>

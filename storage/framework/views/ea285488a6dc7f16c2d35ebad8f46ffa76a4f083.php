@@ -163,6 +163,7 @@
     background-position: center;
     margin-top: 20%;
     border-radius: 7px;
+    padding: 25px;
 
 }
 .who_info{
@@ -284,6 +285,23 @@
     transition: box-shadow 0.3s ease-in-out;
 }
 
+@media only screen and (max-width: 767px) {
+    .landing_page {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Establece la altura del div al 100% del viewport */
+}
+
+.landing_page img {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    height: auto; /* Ajusta la altura automáticamente */
+}
+    .who img {
+        display: none;
+        padding: 50px;
+    }
+}
 
 </style>
 
@@ -309,13 +327,14 @@
     </div>
 
     <div class="who">
-        <img src="<?php echo e(asset('img/landing_page/burger_izq.png')); ?>" alt="">
+        <img src="<?php echo e(asset('img/landing_page/burger.png')); ?>" alt="" style="width: 300px; height: auto;">
         <div class="who_info">
             <h2><?php echo app('translator')->get('Who are we?'); ?></h2>
             <p><?php echo app('translator')->get('Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!'); ?></p>
         </div>
-        <img src="<?php echo e(asset('img/landing_page/burger_der.png')); ?>" alt="">
+        <img src="<?php echo e(asset('img/landing_page/burger.png')); ?>" alt="" style="width: 300px; height: auto;">
     </div>
+
     <div id="mapilla">
         <div class="tit">
             <h2><?php echo app('translator')->get('Find us...'); ?></h2>
@@ -330,7 +349,7 @@
         <div id="comidita">
             <?php $__currentLoopData = $foods->take(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $food): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="com">
-                    <a href="galeria-comidas/<?php echo e($food->name); ?>"><img src="<?php echo e(asset('img/foods')); ?>/<?php echo e($food->img); ?>"><img></a>
+                    <a href="<?php echo e(route('galeria-comidas.show', ['id' => $food->id])); ?>"><img src="<?php echo e(asset('img/foods')); ?>/<?php echo e($food->img); ?>"><img></a>
                     <br>
                     <h3><?php echo e($food->name); ?></h3>
                     <p><?php echo e($food->description); ?></p>

@@ -47,6 +47,8 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
+    <?php echo e($locations->links()); ?>
+
 </div>
 <?php $__env->stopSection(); ?>
 

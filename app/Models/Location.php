@@ -17,10 +17,6 @@ class Location extends Model
         'cp'
     ];
 
-    function event(){
-        return $this->belongsTo(Event::class);
-    }
-
     protected static function boot()
     {
         parent::boot();

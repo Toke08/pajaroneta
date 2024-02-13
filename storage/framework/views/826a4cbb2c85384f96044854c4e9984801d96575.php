@@ -11,7 +11,7 @@
           <div class="row d-flex justify-content-center align-items-center">
             <div class="col-auto">
               <h4 class="pt-2 mx-4 my-3">
-                <strong>¿Alguna sugerencia? ¡Escríbenos! </strong>
+                <strong><?php echo app('translator')->get("Do you have any suggestion? Email us!"); ?></strong>
               </h4>
             </div>
             <div class="col-md-5 col-12">

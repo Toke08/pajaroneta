@@ -135,7 +135,12 @@
         
         <a href="<?php echo e(route('galeria_comidas', ['id' => $category->id])); ?>">
             <img src="<?php echo e(asset('img/categories')); ?>/<?php echo e($category->img); ?>">
-            <p><?php echo e($category->name); ?></p>
+            <p <?php if(filter_var($selected_category) == $category->id){ echo("class='outlined'");} ?>><?php echo e($category->name); ?></p>
+            <style>
+                .outlined{
+                    border-bottom: 1px solid black;
+                }
+            </style>
         </a>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -145,8 +150,8 @@
         ?>
 
         <div class="titl">
-            <h1>¿Con hambre?</h1>
-            <p>¡Échale un vistazo a nuestra galería de productos que puedes venir a comer en la Pajaroneta!</p>
+            <h1><?php echo app('translator')->get("Are you hungry?"); ?></h1>
+            <p><?php echo app('translator')->get("Have a look at our products and come visit La Pajaroneta to try them!"); ?></p>
         </div>
 
         <div class="foods-container">

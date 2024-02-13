@@ -142,7 +142,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
-        $categoryCount = Food::where('category_id', $category->id)->count();
+        $foodCount = Food::where('category_id', $category->id)->count();
         // $category->delete();
         // return redirect()->back()->with('success', 'La categoria y las comidas relacionados han sido pasadas a la categoria ver todo.');
 
@@ -150,7 +150,7 @@ class CategoryController extends Controller
             // Inicia la transacción
             DB::beginTransaction();
 
-            if ($categoryCount > 0) {
+            if ($foodCount > 0) {
                 // Hay publicaciones o restaurantes asociados
                 $message = 'Hay Comidas relacionados con esta categoria. Al eliminar La categoria, se cambiará la categoria a "ver todos"';
                 \Session::now('message', $message);

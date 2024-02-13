@@ -1,9 +1,9 @@
-@extends('layout.adminlte-layout')
-@section('titulo')
-Editar comida nueva
-@endsection
 
-@section('estilos')
+<?php $__env->startSection('titulo'); ?>
+Editar comida nueva
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('estilos'); ?>
 <style>
     /* Cambiar el color del enlace */
     a.enlaceNegro {
@@ -206,41 +206,41 @@ Editar comida nueva
     }
 
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 <div class="card card-primary">
-    <form action="{{route('galeria-comidas.update', $food->id)}}" method="post" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+    <form action="<?php echo e(route('galeria-comidas.update', $food->id)); ?>" method="post" enctype="multipart/form-data">
+        <?php echo csrf_field(); ?>
+        <?php echo method_field('PUT'); ?>
         <div class="card-body">
             <div class="form-group">
                 <label for="name">Nombre *</label>
-                <input class="form-control" type="text" id="name" name="name" value="{{ $food->name }}" required>
+                <input class="form-control" type="text" id="name" name="name" value="<?php echo e($food->name); ?>" required>
             </div>
             <div class="form-group">
                 <label for="description">Descripcion *</label>
                 <textarea class="form-control" id="description" name="description" rows="4" cols="50"
-                    required>{{ $food->description }}</textarea>
+                    required><?php echo e($food->description); ?></textarea>
             </div>
             <div class="form-group">
                 <label for="price">Precio *</label>
-                <input class="form-control" type="text" id="price" name="price" value="{{ $food->price }}" required>
+                <input class="form-control" type="text" id="price" name="price" value="<?php echo e($food->price); ?>" required>
             </div>
             <div class="form-group">
                 <label for="categories">categoria *</label>
                 <select class="form-control" name="category_id" id="">
-                    @foreach($categories as $category)
-                    <option @php if($category->id == $food->category->id) { echo("selected"); } @endphp
-                        value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
+                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option <?php if($category->id == $food->category->id) { echo("selected"); } ?>
+                        value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
             <div class="form-group">
                
                 <label for="image">Imagen actual:</label><br>
-                <img src="{{asset('img/foods')}}/{{$food->img}}" style="max-width: 200px;"><br>
+                <img src="<?php echo e(asset('img/foods')); ?>/<?php echo e($food->img); ?>" style="max-width: 200px;"><br>
             </div>
             <div class="form-group">
                 <label for="image">imagen *</label>
@@ -259,4 +259,6 @@ Editar comida nueva
         </div>
     </form>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/admin/foods/edit.blade.php ENDPATH**/ ?>

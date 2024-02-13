@@ -288,7 +288,7 @@ Categorias
                             <?php echo method_field('DELETE'); ?>
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
-                        
+
                     </td>
 
                 </tr>

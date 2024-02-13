@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Food;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -16,7 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10); // Cambia 10 al número deseado de elementos por página
+
         return view("admin.categories.index", ['categories'=> $categories]);
     }
 
@@ -139,8 +142,39 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
-        $category->delete();
+        $foodCount = Food::where('category_id', $category->id)->count();
+        // $category->delete();
+        // return redirect()->back()->with('success', 'La categoria y las comidas relacionados han sido pasadas a la categoria ver todo.');
+
+        try {
+            // Inicia la transacción
+            DB::beginTransaction();
+
+            if ($foodCount > 0) {
+                // Hay publicaciones o restaurantes asociados
+                $message = 'Hay Comidas relacionados con esta categoria. Al eliminar La categoria, se cambiará la categoria a "ver todos"';
+                \Session::now('message', $message);
+
+                // Actualiza el tag_id a 1 en las publicaciones y restaurantes asociados
+                Food::where('category_id', $category->id)->update(['category_id' => 1]);
+
+            } else {
+                // No hay publicaciones ni restaurantes asociados
+                $category->delete();
+                \Session::now('message', 'Categoría de comida eliminida!');
+            }
+
+            // Confirma la transacción
+            DB::commit();
+        } catch (\Exception $e) {
+            // Si hay algún error, deshace la transacción y muestra el mensaje
+            DB::rollBack();
+            \Session::now('error', 'Error al eliminar el categoria: ' . $e->getMessage());
+        }
+
         return redirect()->back();
+
     }
 }
+
 

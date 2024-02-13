@@ -3,7 +3,8 @@
 
 <?php $__env->startSection('estilos'); ?>
 <style>
-.act input{
+
+button input{
     border-radius: 1.5em;
     background-color: #E5A200;
     border: none;
@@ -22,6 +23,10 @@
         background-position: :right; /* Centra la imagen en el contenedor */
         background-repeat: no-repeat; /* Evita que la imagen se repita en el contenedor */
 
+}
+.card{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius:1em;
 }
 .card-header{
     border:none;
@@ -58,8 +63,10 @@
                                 <!-- No mostrar la contraseña directamente -->
                             </ul>
                         </div>
+                        <button>
+                            <input type="submit" value=<?php echo app('translator')->get("Update"); ?>>
+                        </button>
 
-                        <input class="act" type="submit" value=<?php echo app('translator')->get("Update"); ?>>
 
                 </form>
             </div>

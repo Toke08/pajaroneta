@@ -160,7 +160,8 @@
         "Confirm new password":"Confirmar nueva contraseña",
         "Close":"Cerrar",
         "Change profile pic":"Cambiar imagen",
-        "Update":"Actualizar"
-
+        "Update":"Actualizar",
+        "No account?":"¿No tienes cuenta?",
+        "The fields* are required":"Los campos* son obligatorios"
 
 }

@@ -3,24 +3,32 @@
 @section('estilos')
 
 <style>
-    .btn-primary {
+.btn-primary {
     border-radius: 1.5em;
     background-color: #E5A200;
     border: none;
     color: white;
+    width: 100%;
 }
 .btn-primary:hover{
     background-color: #CA8F00;
 }
 .form-control {
-    border-radius: 1.5em;
-    border:0.4px solid #000000;
+    border-radius:1.5em;
 }
 .card-body{
         background-image: url('{{asset('img/landing_page/Trucks.png')}}'); /* Reemplaza 'ruta-de-tu-imagen.jpg' con la ruta de tu imagen de fondo */
         background-size: 300px 400px; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
         background-position: :right; /* Centra la imagen en el contenedor */
         background-repeat: no-repeat; /* Evita que la imagen se repita en el contenedor */
+        display:flex;
+        flex-direction:column;
+        /* justify-content:center; */
+        place-items:center;
+}
+.card{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius:1em;
 
 }
 .question{
@@ -40,8 +48,8 @@
 
 @section('contenido')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 justify-content-center align-items-center">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -51,10 +59,10 @@
 
                         <input type="hidden" name="profile_img" value="user_default.jpg">
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                        <div class="col mb-3">
+                            <label for="name" class="col-md-12 col-form-label text-md-end">{{ __('Name') }}*</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
@@ -65,10 +73,10 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                        <div class="col mb-3">
+                            <label for="email" class="col-md-10 col-form-label text-md-end">{{ __('Email Address') }}*</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -79,10 +87,10 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                        <div class="col mb-3">
+                            <label for="password" class="col-md-12 col-form-label text-md-end">{{ __('Password') }}*</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -93,12 +101,15 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                        <div class="col mb-3">
+                            <label for="password-confirm" class="col-md-12 col-form-label text-md-end">{{ __('Confirm Password') }}*</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+                        </div>
+                        <div>
+                            <label  class="col-md-12 col-form-label text-md-end">@lang("The fields* are required")</label>
                         </div>
 
                         <div class="row mb-0">

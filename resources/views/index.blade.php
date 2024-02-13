@@ -15,6 +15,7 @@
     grid-auto-rows: auto;
     grid-auto-flow: dense;
 
+
 }
 .part1 img{
     position: absolute;
@@ -81,6 +82,78 @@
     rotate: 25deg;
     z-index:  0;
 }
+
+@media screen and (max-width: 1660px) {
+    .papa1 {
+    top: -10rem;
+    left: -30rem;
+    width:50em;
+    filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
+    scale: 0.50;
+    z-index:  -2;
+    rotate: -25deg;
+}
+
+.papa3 {
+    top: 7rem;
+    left: -32rem;
+    width:45em;
+    filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
+    scale: 0.62;
+    z-index:  -1;
+}
+
+.papa2 {
+    top: 15rem;
+    left: -20rem;
+    width:45em;
+    filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
+    scale: 0.70;
+
+    z-index:  0;
+    rotate: 10deg;
+}
+
+.hot1{
+    top: -2rem;
+    right: -10rem;
+    width: 50em;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8));
+    z-index:  -1;
+    scale: 0.55;
+}
+.hot2{
+    top: 15rem;
+    right: -10rem;
+    width: 50em;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8));
+    scale: 0.7;
+    rotate: 25deg;
+    z-index:  0;
+}
+}
+
+@media screen and (max-width: 1366px) {
+    .papa1 {
+    display: none;
+}
+
+.papa3 {
+    display: none;
+}
+
+.papa2 {
+    display: none;
+}
+
+.hot1{
+    display: none;
+}
+.hot2{
+    display: none;
+}
+
+}
 /* quienes somos */
 .who{
     display: flex;
@@ -91,6 +164,7 @@
     color: #ffffff;
     background-position: center;
     margin-top: 20%;
+    border-radius: 7px;
 
 }
 .who_info{

@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Nuevo contenido:</label>
-                <input class="form-control" type="text" id="content" name="content" value="<?php echo e($post->content); ?>">
+                <textarea class="form-control" type="text" id="content" name="content" ><?php echo e($post->content); ?></textarea>
             </div>
             <div class="form-group">
                 <!-- Vista previa de la imagen actual -->
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="tag_id">Seleccionar etiqueta:</label>
-                <select name="tag_id">
+                <select class="form-control"  name="tag_id">
                     <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($tag->id); ?>" <?php echo e($tag->id == $post->tag_id ? 'selected' : ''); ?>>
                             <?php echo e($tag->name); ?>
@@ -41,14 +41,18 @@
             </div>
 
             <div class="form-group">
-                <label for="image">Cambiar imagen:</label>
-                <input type="file" name="img">
+                <label for="image">imagen *</label>
+                <div class="custom-file">
+
+                    <input type="file" class="custom-file-input" id="customFile" name="img">
+                    <label class="custom-file-label" for="customFile">Elegir imagen</label>
+                </div>
             </div>
 
             <div class="form-group">
                 <!-- Sección de estado -->
                 <label for="status">Estado:</label>
-                <select name="status" id="status">
+                <select class="form-control" name="status" id="status">
                     <option value="Draft" <?php echo e($post->status == 'Draft' ? 'selected' : ''); ?>>Borrador</option>
                     <option value="Published" <?php echo e($post->status == 'Published' ? 'selected' : ''); ?>>Publicado</option>
                 </select>

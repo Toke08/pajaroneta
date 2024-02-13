@@ -187,7 +187,7 @@
         </div>
         <div class="part2">
             <img src="<?php echo e(asset('img/landing_page/pajaro-02.png')); ?>" alt="">
-            <p><?php echo app('translator')->get('Delicacies for celiac and intolerant people throughout Spain'); ?></p>
+            <p><?php echo app('translator')->get('Yummy food for celiac and lactose intolerant people throughout Spain'); ?></p>
         </div>
         <div class="part3">
             <img class="hot" src="<?php echo e(asset('img/landing_page/perro_caliente.png')); ?>" alt="">
@@ -197,22 +197,22 @@
     <div class="who">
         <img src="<?php echo e(asset('img/landing_page/burger_izq.png')); ?>" alt="">
         <div class="who_info">
-            <h2>¿Quiénes somos?</h2>
+            <h2><?php echo app('translator')->get('Who are we?'); ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         </div>
         <img src="<?php echo e(asset('img/landing_page/burger_der.png')); ?>" alt="">
     </div>
     <div id="mapilla">
         <div class="tit">
-            <h2>Encuentrános...</h2>
+            <h2><?php echo app('translator')->get('Find us...'); ?></h2>
             <img src="<?php echo e(asset('img/landing_page/pajatruck.png')); ?>" alt="">
         </div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.5165004228597!2d-2.9419887246831182!3d43.26155407767463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e502842c84087%3A0x539b319a98f8cfbe!2sC.%20del%20Lic.%20Poza%2C%2031%2C%20Abando%2C%2048011%20Bilbao%2C%20Vizcaya!5e0!3m2!1ses!2ses!4v1707666740981!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <div id="comidas">
-        <h2>¡Nuestra menú!</h2>
-        <p>Ven a comer con nosotros</p>
+        <h2><?php echo app('translator')->get("Our menu!"); ?></h2>
+        <p><?php echo app('translator')->get("Come and enjoy our products with us!"); ?></p>
         <div id="comidita">
             <?php $__currentLoopData = $foods->take(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $food): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="com">
@@ -227,15 +227,15 @@
     </div>
 
     <div class="publis">
-        <h2>Opiniones y más</h2>
-        <p>Te invitamos a leer nuestro blog :)</p>
+        <h2><?php echo app('translator')->get("Our Blog and more"); ?></h2>
+        <p><?php echo app('translator')->get("We invite you to read our recent blog's posts :)"); ?></p>
         <div id="posts">
             <?php $__currentLoopData = $posts->take(2); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="post">
                     <a href="blog/<?php echo e($post->id); ?>"><img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img></a>
                     <br>
                     <h3><?php echo e($post->title); ?></h3>
-                    <button> <a href="blog/<?php echo e($post->id); ?>">Leer más</a></button>
+                    <button> <a href="blog/<?php echo e($post->id); ?>"><?php echo app('translator')->get("Read more"); ?></a></button>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
@@ -244,8 +244,8 @@
 
 
     <div id="restaurant"></div>
-        <h2>Por si estamos lejos de ti...</h2>
-        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
+        <h2><?php echo app('translator')->get("If we are not around..."); ?></h2>
+        <p><?php echo app('translator')->get("Here you have restaurants with healthy options!"); ?></p>
         <div id="div-restaurantes">
             <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="restaurantes">

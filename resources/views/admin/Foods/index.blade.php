@@ -309,7 +309,7 @@ Comidas
                                 <td><a
                                         href="{{ route('galeria-comidas.show', ['id' => $food->id]) }}">{{$food->name}}</a>
                                 </td>
-                                <td>{{$food->price}}</td>
+                                <td>{{$food->price. "€"}}</td>
                                 <td><img src="{{ asset('img/foods/'.$food->img) }}"></td>
                                 <td>{{$food->description}}</td>
                                 <td>{{$food->category->name}}</td>

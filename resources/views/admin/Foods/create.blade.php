@@ -41,12 +41,12 @@ Crear comida nueva
                 <div class="custom-file">
 
                     <input type="file" class="custom-file-input" id="customFile" name="img">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
+                    <label class="custom-file-label" for="customFile">Elegir imagen</label>
                 </div>
             </div>
-            <div class="card-footer">
+            
                 <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
+            
         </div>
 
 

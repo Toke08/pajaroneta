@@ -57,10 +57,10 @@
         @endguest
 
         </ul>
-        <span class="text-white">
-            <a href="{{ route('setLanguage','es') }}">ES</a>
-            <a href="{{ route('setLanguage','eu') }}">EU</a>
-            <a href="{{ route('setLanguage', 'en') }}">EN</a>
+        <span class="text-white" style="padding-left: 2%;">
+            <a href="{{ route('setLanguage','es') }}" style="color: white; text-decoration: none;">ES</a>
+            <a href="{{ route('setLanguage','eu') }}" style="color: white; text-decoration: none;">EU</a>
+            <a href="{{ route('setLanguage', 'en') }}" style="color: white; text-decoration: none;">EN</a>
         </span>
 
     </div>

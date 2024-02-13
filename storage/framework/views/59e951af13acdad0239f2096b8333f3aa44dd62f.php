@@ -307,7 +307,7 @@ Comidas
                                 <td><a
                                         href="<?php echo e(route('galeria-comidas.show', ['id' => $food->id])); ?>"><?php echo e($food->name); ?></a>
                                 </td>
-                                <td><?php echo e($food->price); ?></td>
+                                <td><?php echo e($food->price. "€"); ?></td>
                                 <td><img src="<?php echo e(asset('img/foods/'.$food->img)); ?>"></td>
                                 <td><?php echo e($food->description); ?></td>
                                 <td><?php echo e($food->category->name); ?></td>

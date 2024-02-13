@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique;
             $table->text('description');
-            // $table->dateTime('start');
-            // $table->dateTime('end');
+            $table->dateTime('start');
+            $table->dateTime('end');
+            $table->unsignedBigInteger('id_location');
             $table->timestamps();
 
+            $table->foreign('id_location')->references('id')->on('locations');
         });
     }
 

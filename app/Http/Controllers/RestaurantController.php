@@ -65,7 +65,7 @@ class RestaurantController extends Controller
 
         // Additional logic or redirection after successful data storage
         \Session::flash('message', '¡Nueva sugerencia agregada!');
-        return redirect()->back()->with('success', 'New restaurant added succesfully!');
+        return redirect()->back()->with('success', 'Restaurante creado con exito!');
     }
 
     /**

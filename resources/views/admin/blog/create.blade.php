@@ -1,6 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
-    Crear publicación
+Crear publicación
 @endsection
 
 @section('estilos')
@@ -10,38 +10,47 @@
 @endsection
 
 @section('contenido')
-<a href="{{ route('adminHome') }}">Volver al panel de administrador</a>
-    <h1>Crear publicación</h1>
+<div class="card card-primary">
     <form action="{{route('blog.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
+        <div class="card-body">
+            <div class="form-group">
+                <label for="title">Título *</label>
+                <input class="form-control" type="text" id="title" name="title" placeholder="Ingrese el título de la publicación" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Contenido *</label>
+                <textarea class="form-control" id="content" name="content" rows="4" placeholder="Ingrese el contenido de la publicación..." required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="customFile">Imagen *</label>
 
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required>
-        <br>
+                <div class="custom-file">
 
-        <label for="content">Contenido:</label>
-        <textarea id="content" name="content" rows="4" required></textarea>
-        <br>
+                    <input type="file" class="custom-file-input" id="customFile" name="image">
+                    <label class="custom-file-label" for="customFile">Elige una imagen</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tag">Categoría *</label>
+                <select class="form-control" name="tag_id" id="tag_id">
+                    @foreach ($tags as $tag)
+                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Estado *</label>
+                <select class="form-control" id="status" name="status" required>
+                    <option value="Draft">Borrador</option>
+                    <option value="Published">Publicado</option>
+                </select>
+            </div>
 
-        <label for="img">Imagen:</label>
-        <input type="file" id="img" name="img" required>
-        <br>
 
-        <label for="tag">Categoría:</label>
-        <select name="tag_id" id="tag_id">
-            @foreach ($tags as $tag)
-                <option value="{{$tag->id}}">{{$tag->name}}</option>
-            @endforeach
-        </select>
+            <button class="btn btn-primary" type="submit">Guardar</button>
 
-        <label for="status">Estado:</label>
-        <select id="status" name="status" required>
-            <option value="Draft">Borrador</option>
-            <option value="Published">Publicado</option>
-        </select>
-        <br>
-
-        <button type="submit">Publicar</button>
+        </div>
     </form>
-
+</div>
 @endsection

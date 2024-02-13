@@ -8,12 +8,12 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\LocationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\FullCalendarController;
+use App\Http\Controllers\LocationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,21 +35,19 @@ Route::prefix('/admin')->group(function () {
 
     //rutas admin
     Route::resource('/roles', RoleController::class);
-    Route::resource('/ubicaciones', LocationController::class);
-    Route::resource('/eventos', EventController::class);
+    Route::resource('/evento', EventController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/restaurants', RestaurantController::class);
     Route::resource('/categorias', CategoryController::class);
-    Route::resource('/encuentranos', LocationController::class);
     Route::resource('/blog', PostController::class);
     Route::resource('/galeria-comidas', FoodController::class);
-    Route::resource('/calendario', CalendarController::class);
     Route::resource('/user', UserController::class);
-
+    Route::resource('/fullcalendar', FullCalendarController::class);
+    Route::resource('/ubicaciones', LocationController::class);
 });
 });
 //ejemplo rutas cliente y su controlador
-Route::get('/encuentranos', [ClientController::class, 'calendar'])->name('encuentranos');
+Route::get('/encuentranos', [ClientController::class, 'encuentranos_show'])->name('encuentranos_show');
 
 Route::get('/galeria-comidas', [ClientController::class, 'galeria_comidas'])->name('galeria_comidas');
 Route::get('/galeria-comidas/{id}', [ClientController::class, 'galeria_comidas_show'])->name('galeria-comidas.show');

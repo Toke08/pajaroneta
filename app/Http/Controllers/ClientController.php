@@ -11,7 +11,6 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Restaurant;
 use App\Models\User;
-use App\Models\Calendar;
 use App\Models\Event;
 use App\Models\Location;
 
@@ -167,16 +166,11 @@ class ClientController extends Controller
 
     public function user_destroy($id){
 
-
-
     }
 
-    public function calendar(){
-        $events = Event::all();
+    public function encuentranos_show(){
         $locations = Location::all();
-        $calendario= Calendar::all();
-        return view('client.calendar', ['events'=> $events, 'locations'=>$locations, 'calendario'=> $calendario]);
-
+        $events = Event::all();
+        return view('client.encuentranos_show', compact('locations', 'events'));
     }
-
 }

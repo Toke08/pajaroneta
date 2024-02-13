@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('titulo'); ?>
 Dashboard
 <?php $__env->stopSection(); ?>

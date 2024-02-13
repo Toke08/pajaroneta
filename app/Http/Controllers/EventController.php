@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Location;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,6 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
-        return view("events.index", ['events'=> $events]);
 
     }
 
@@ -26,13 +25,17 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $events = Event::all();
-        return view("events.create", ['events'=> $events]);
+        $locations = Location::all();
+        $selectedDate = $request->query('selected_date');
+        if (!$selectedDate) {
+            $selectedDate = now()->toDateTimeLocalString();
+        }
 
-
+        return view("admin.evento.create", ['selectedDate' => $selectedDate, 'locations' => $locations]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -42,19 +45,26 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'start' => 'required|date',
+            'end' => 'required|date|after:start',
+            'id_location' => 'required|exists:locations,id',
+        ]);
 
+        $event = new Event();
+        $event->title = $request->input('title');
+        $event->description = $request->input('description');
+        $event->start = $request->input('start');
+        $event->end = $request->input('end');
+        $event->id_location = $request->input('id_location');
 
-        $datos=$request->all();
+        $event->save();
+        \Session::flash('message','Nuevo evento asignado.');
 
-        $title=$datos["title"];
-        $description=$datos["description"];
-
-        $event= new Event();
-        $event->title=$title;
-        $event->description=$description;
-        $event->save(); //guardar
-
-        return redirect()->back(); //volver a las vista
+        // Redirigir de vuelta al índice del calendario después de guardar el evento
+        return redirect()->route('fullcalendar.index');
     }
 
     /**
@@ -77,8 +87,6 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-      
-
 
     }
 
@@ -91,7 +99,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
+
     }
 
     /**->
@@ -102,10 +110,10 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-
-        $event = Event::findOrFail($id)->delete();
-        return response()->json($event);
-
-
+        $event = Event::findOrFail($id);
+        $event->delete();
+        \Session::flash('message','Evento eliminado exitosamente.');
+        return redirect()->back()->with('success', 'Evento eliminado exitosamente.');
     }
+
 }

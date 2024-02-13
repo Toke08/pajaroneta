@@ -189,7 +189,7 @@
         </div>
         <div class="part2">
             <img src="{{ asset('img/landing_page/pajaro-02.png') }}" alt="">
-            <p>@lang('Delicacies for celiac and intolerant people throughout Spain')</p>
+            <p>@lang('Yummy food for celiac and lactose intolerant people throughout Spain')</p>
         </div>
         <div class="part3">
             <img class="hot" src="{{ asset('img/landing_page/perro_caliente.png') }}" alt="">
@@ -199,22 +199,22 @@
     <div class="who">
         <img src="{{ asset('img/landing_page/burger_izq.png') }}" alt="">
         <div class="who_info">
-            <h2>¿Quiénes somos?</h2>
+            <h2>@lang('Who are we?')</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         </div>
         <img src="{{ asset('img/landing_page/burger_der.png') }}" alt="">
     </div>
     <div id="mapilla">
         <div class="tit">
-            <h2>Encuentrános...</h2>
+            <h2>@lang('Find us...')</h2>
             <img src="{{ asset('img/landing_page/pajatruck.png') }}" alt="">
         </div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.5165004228597!2d-2.9419887246831182!3d43.26155407767463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e502842c84087%3A0x539b319a98f8cfbe!2sC.%20del%20Lic.%20Poza%2C%2031%2C%20Abando%2C%2048011%20Bilbao%2C%20Vizcaya!5e0!3m2!1ses!2ses!4v1707666740981!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <div id="comidas">
-        <h2>¡Nuestra menú!</h2>
-        <p>Ven a comer con nosotros</p>
+        <h2>@lang("Our menu!")</h2>
+        <p>@lang("Come and enjoy our products with us!")</p>
         <div id="comidita">
             @foreach ($foods->take(3) as $food)
                 <div class="com">
@@ -229,15 +229,15 @@
     </div>
 
     <div class="publis">
-        <h2>Opiniones y más</h2>
-        <p>Te invitamos a leer nuestro blog :)</p>
+        <h2>@lang("Our Blog and more")</h2>
+        <p>@lang("We invite you to read our recent blog's posts :)")</p>
         <div id="posts">
             @foreach ($posts->take(2) as $post)
                 <div class="post">
                     <a href="blog/{{ $post->id }}"><img src="{{asset('img/posts')}}/{{ $post->img }}"><img></a>
                     <br>
                     <h3>{{ $post->title }}</h3>
-                    <button> <a href="blog/{{ $post->id }}">Leer más</a></button>
+                    <button> <a href="blog/{{ $post->id }}">@lang("Read more")</a></button>
                 </div>
             @endforeach
         </div>
@@ -246,8 +246,8 @@
 
 
     <div id="restaurant"></div>
-        <h2>Por si estamos lejos de ti...</h2>
-        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
+        <h2>@lang("If we are not around...")</h2>
+        <p>@lang("Here you have restaurants with healthy options!")</p>
         <div id="div-restaurantes">
             @foreach ($restaurants as $restaurant)
             <div class="restaurantes">

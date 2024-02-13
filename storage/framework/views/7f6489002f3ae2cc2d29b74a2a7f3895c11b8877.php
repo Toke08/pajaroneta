@@ -70,6 +70,7 @@
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8));
     z-index:  -1;
     scale: 0.75;
+    filter: saturate(70%);
 }
 .hot2{
     top: 15rem;
@@ -79,6 +80,7 @@
     scale: 0.9;
     rotate: 25deg;
     z-index:  0;
+    filter: saturate(70%);
 }
 
 @media screen and (max-width: 1660px) {

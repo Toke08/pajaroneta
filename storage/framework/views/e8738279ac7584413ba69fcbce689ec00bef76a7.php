@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('estilos'); ?>
 
 <style>
@@ -19,12 +21,33 @@
     margin-left: 20%
 }
 .papa1 {
-    transform:translate(-850px, -430px);
+    top: -10rem;
+    left: -30rem;
     width:50em;
+    filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
+    scale: 0.70;
+    z-index:  -2;
+    rotate: -25deg;
 }
-.papa2 {
-    transform:translate(-800px, -100px);
+
+.papa3 {
+    top: 7rem;
+    left: -32rem;
     width:45em;
+    filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
+    scale: 0.82;
+    z-index:  -1;
+}
+
+.papa2 {
+    top: 15rem;
+    left: -20rem;
+    width:45em;
+    filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
+    scale: 0.90;
+
+    z-index:  0;
+    rotate: 10deg;
 }
 .part2{
     display:grid;
@@ -41,9 +64,22 @@
 .part3 img{
     position: absolute;
 }
-.hot{
-    transform:translate(-200px, -250px);
+.hot1{
+    top: -2rem;
+    right: -5rem;
     width: 50em;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8));
+    z-index:  -1;
+    scale: 0.75;
+}
+.hot2{
+    top: 15rem;
+    right: -5rem;
+    width: 50em;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8));
+    scale: 0.9;
+    rotate: 25deg;
+    z-index:  0;
 }
 /* quienes somos */
 .who{
@@ -188,13 +224,15 @@
         <div class="part1">
             <img class="papa2" src="<?php echo e(asset('img/landing_page/papa_2.png')); ?>" alt="">
             <img class="papa1" src="<?php echo e(asset('img/landing_page/papas_1.png')); ?>" alt="">
+            <img class="papa3" src="<?php echo e(asset('img/landing_page/papas_1.png')); ?>" alt="">
         </div>
         <div class="part2">
             <img src="<?php echo e(asset('img/landing_page/pajaro-02.png')); ?>" alt="">
             <p><?php echo app('translator')->get('Yummy food for celiac and lactose intolerant people throughout Spain'); ?></p>
         </div>
         <div class="part3">
-            <img class="hot" src="<?php echo e(asset('img/landing_page/perro_caliente.png')); ?>" alt="">
+            <img class="hot1" src="<?php echo e(asset('img/landing_page/perro_caliente.png')); ?>" alt="">
+            <img class="hot2" src="<?php echo e(asset('img/landing_page/perro_caliente.png')); ?>" alt="">
         </div>
     </div>
 

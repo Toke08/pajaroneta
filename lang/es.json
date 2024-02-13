@@ -140,13 +140,27 @@
         "Restaurants related with": "Restaurantes relacionados con",
         "There is no content related to":"No hay contenido relacionado con",
 
-    "/*COMENTARIO5.1/": "BLOG:SHOW",
+    "/*COMENTARIO5.1/": "BLOG.SHOW",
         "Go back":"Volver al blog",
         "Category":"Categoría",
         "Leave a comment":"Deja un comentario",
         "Comment":"Comentar",
 
     "/*COMENTARIO6/": "Footer",
-        "Do you have any suggestion? Email us!": "¿Alguna sugerencia? ¡Escríbenos!"
+        "Do you have any suggestion? Email us!": "¿Alguna sugerencia? ¡Escríbenos!",
+
+
+    "/*USER.SHOW/": "USER.SHOW",
+        "User profile":"Perfil usuario",
+        "Edit":"Editar",
+        "Change password":"Cambiar contraseña",
+        "Save changes":"Guardar cambios",
+        "Current password":"Contraseña actual",
+        "New password":"Nueva Contraseña",
+        "Confirm new password":"Confirmar nueva contraseña",
+        "Close":"Cerrar",
+        "Change profile pic":"Cambiar imagen",
+        "Update":"Actualizar"
+
 
 }

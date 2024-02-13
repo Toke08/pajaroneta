@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
 Crear usuario
 <?php $__env->stopSection(); ?>
@@ -36,7 +37,7 @@ Crear usuario
             <div class="form-group">
                 <label for="exampleInputPassword1">Contraseña *</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name="password"
-                     placeholder="Introducir contraseña">
+                placeholder="Introducir contraseña">
             </div>
             <div class="form-group">
                 <label for="password-confirm">Confirmar Contraseña *</label>

@@ -141,8 +141,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="{{ route('adminHome') }}" class="nav-link">
-                <i class="fa-solid fa-square-poll-vertical"></i>
-              <p>
+                <i style="color: var(--blanco) !important;" class="fa-solid fa-square-poll-vertical"></i>
+              <p style="color: var(--blanco) !important;">
                 Dashboard
               </p>
             </a>
@@ -150,8 +150,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="{{ route('user.index') }}" class="nav-link">
-            <i class="fa-solid fa-user"></i>
-              <p>
+            <i style="color: var(--blanco) !important;" class="fa-solid fa-user"></i>
+              <p style="color: var(--blanco) !important;">
                 Usuarios
               </p>
             </a>
@@ -163,38 +163,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <i class="fa-solid fa-utensils" style="color: var(--blanco) !important;"></i>
               <p style="color: var(--blanco) !important;">
                 Comidas
-                <i class="fas fa-angle-left right"></i>
+                <i style="color: var(--blanco) !important;" class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('galeria-comidas.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i style="color: var(--blanco) !important;" class="far fa-circle nav-icon"></i>
                   <p style="color: var(--blanco) !important;">Platos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('categorias.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i  style="color: var(--blanco) !important;" class="far fa-circle nav-icon"></i>
                   <p style="color: var(--blanco) !important;">Categorias</p>
                 </a>
               </li>
             </ul>
           </li>
 
+
+
+
           <li class="nav-item">
             <a href="{{ route('blog.index') }}" class="nav-link">
-            <i class="fa-solid fa-newspaper"></i>
-              <p>
-                Blog
-              </p>
-            </a>
+                <i style="color: var(--blanco) !important;" class="fa-solid fa-newspaper"></i>
+                  <p style="color: var(--blanco) !important;">
+                    Blog
+                    <i style="color: var(--blanco) !important;" class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('blog.index') }}" class="nav-link">
+                    <i style="color: var(--blanco) !important;" class="far fa-circle nav-icon"></i>
+                      <p style="color: var(--blanco) !important;">
+                        Posts
+                      </p>
+                    </a>
+                  </li>
+              <li class="nav-item">
+                <a href="{{ route('tags.index') }}" class="nav-link">
+                  <i style="color: var(--blanco) !important;" class="far fa-circle nav-icon"></i>
+                  <p style="color: var(--blanco) !important;">Categorias</p>
+                </a>
+              </li>
+            </ul>
           </li>
+
 
           <li class="nav-item">
             <a href="{{ route('fullcalendar.index') }}" class="nav-link">
             <i class="fa-solid fa-calendar-days"></i>
-              <p>
+              <p style="color: var(--blanco) !important;">
                 Calendario y eventos
               </p>
             </a>
@@ -203,7 +224,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="nav-item">
             <a href="{{ route('ubicaciones.index') }}" class="nav-link">
                 <i class="fa-solid fa-location-dot"></i>
-              <p>
+              <p style="color: var(--blanco) !important;">
                 Ubicaciones
               </p>
             </a>

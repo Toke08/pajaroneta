@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
             "price"   => 6,
             "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
-            "category_id" => 1,
+            "category_id" => 2,
         ]);
 
         \App\Models\Food::create([

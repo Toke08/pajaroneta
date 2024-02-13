@@ -12,23 +12,60 @@ Dashboard
 @endsection
 
 @section('contenido')
+<section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>{{ count($users) }}</h3>
 
-    <a class="nav-link" href="{{ route('user.index') }}">@lang('View Users')</a>
+              <p>Usuarios registrados</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <a href="{{ route('user.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+                {{-- $totalVentas = DB::table('ventas')->count();
+                  echo '$ ' . number_format($totalVentas,2); --}}
+              <h3>{{ count($posts) }}</h3>
 
-    <a class="nav-link" href="{{ route('blog.index') }}">@lang('View Posts')</a>
+              <p>Posts publicados</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <a href="{{ route('blog.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>{{ count($foods) }}</h3>
 
-    <a class="nav-link" href="{{ route('blog.create') }}">@lang('Create Post')</a>
+              <p>Comidas en venta</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-utensils"></i>
+            </div>
+            <a href="{{ route('galeria-comidas.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+    </div>
+</Section>
 
-    <a class="nav-link" href="{{ route('tags.index') }}">@lang('View Blog Categories')</a>
-
-    <a class="nav-link" href="{{ route('tags.create') }}">@lang('Create Blog Category')</a>
-
-    <a class="nav-link" href="{{ route('restaurants.create') }}">@lang('New Restaurant')</a>
-
-    <a class="nav-link" href="{{ route('restaurants.index') }}">@lang('View Restaurants')</a>
-
-    <a class="nav-link" href="{{ route('galeria-comidas.create') }}">@lang('Create comida')</a>
-
-    <a class="nav-link" href="{{ route('categorias.index') }}">@lang('View Food Categories')</a>
 
 @endsection

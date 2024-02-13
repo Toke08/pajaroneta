@@ -10,24 +10,60 @@ Dashboard
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
+<section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3><?php echo e(count($users)); ?></h3>
 
-    <a class="nav-link" href="<?php echo e(route('user.index')); ?>"><?php echo app('translator')->get('View Users'); ?></a>
+              <p>Usuarios registrados</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <a href="<?php echo e(route('user.index')); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+                
+              <h3><?php echo e(count($posts)); ?></h3>
 
-    <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"><?php echo app('translator')->get('View Posts'); ?></a>
+              <p>Posts publicados</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <a href="<?php echo e(route('blog.index')); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3><?php echo e(count($foods)); ?></h3>
 
-    <a class="nav-link" href="<?php echo e(route('blog.create')); ?>"><?php echo app('translator')->get('Create Post'); ?></a>
+              <p>Comidas en venta</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-utensils"></i>
+            </div>
+            <a href="<?php echo e(route('galeria-comidas.index')); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+    </div>
+</Section>
 
-    <a class="nav-link" href="<?php echo e(route('tags.index')); ?>"><?php echo app('translator')->get('View Blog Categories'); ?></a>
-
-    <a class="nav-link" href="<?php echo e(route('tags.create')); ?>"><?php echo app('translator')->get('Create Blog Category'); ?></a>
-
-    <a class="nav-link" href="<?php echo e(route('restaurants.create')); ?>"><?php echo app('translator')->get('New Restaurant'); ?></a>
-
-    <a class="nav-link" href="<?php echo e(route('restaurants.index')); ?>"><?php echo app('translator')->get('View Restaurants'); ?></a>
-
-    <a class="nav-link" href="<?php echo e(route('galeria-comidas.create')); ?>"><?php echo app('translator')->get('Create comida'); ?></a>
-
-    <a class="nav-link" href="<?php echo e(route('categorias.index')); ?>"><?php echo app('translator')->get('View Food Categories'); ?></a>
 
 <?php $__env->stopSection(); ?>
 

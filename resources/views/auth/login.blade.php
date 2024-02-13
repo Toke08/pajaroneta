@@ -9,31 +9,44 @@
     background-color: #E5A200;
     border: none;
     color: white;
+    width: 100%;
 }
 .btn-primary:hover{
     background-color: #CA8F00;
 }
 .form-control {
-    border-radius: 1.5em;
-    border:0.4px solid #000000;
+    border-radius:1.5em;
+}
+.card{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius:1em;
+
 }
 .card-body{
         background-image: url('{{asset('img/landing_page/Trucks.png')}}'); /* Reemplaza 'ruta-de-tu-imagen.jpg' con la ruta de tu imagen de fondo */
-        background-size: 300px 400px; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
+        background-size: 250px 350px; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
         background-position: :right; /* Centra la imagen en el contenedor */
         background-repeat: no-repeat; /* Evita que la imagen se repita en el contenedor */
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        place-items:center;
 
 }
-.question{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+
 .card-header{
     border:none;
     text-align: center;
     font-size: 1.2em;
     background-color: #ffff;
+}
+.input{
+    border: none;
+    border-bottom:1px solid black;
+}
+input:focus {
+    outline: none;
+    border: none;
 }
 </style>
 
@@ -41,19 +54,19 @@
 
 @section('contenido')
 <div class="container">
-    <div class="row justify-content-center ">
-        <div class="col-md-8">
-            <div class="card text-align-center">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 justify-content-center text-align-center ">
+            <div class="card ">
                 <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
+                <div class="card-body justify-content-center text-align-center ">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3 ">
-                            <label for="email" class="col-md-4 col-form-label ">{{ __('Email Address') }}</label>
+                        <div class="mb-3 col">
+                            <label for="email" class="col-md-10 col-form-label">{{ __('Email Address') }}:</label>
 
-                            <div class="col-md-6 justify-content-center text-center">
+                            <div class="col-md-15">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -64,10 +77,10 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                        <div class="mb-3 col">
+                            <label for="password" class="col-md-10 col-form-label text-md-end">{{ __('Password') }}:</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-15">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -78,8 +91,8 @@
                             </div>
                         </div>
 
-                        <div class="col mb-3">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="mb-3 row">
+                            <div class="col-md-10">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -90,8 +103,8 @@
                             </div>
                         </div>
 
-                        <div class="col mb-0">
-                            <div class="col-md-8 offset-md-4">
+                        <div class="mb-0 col">
+                            <div class="col-md-10">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
@@ -101,8 +114,8 @@
                                     </a>
                                 @endif
 
-                                <div class="question">
-                                    <p>¿No tienes una cuenta?</p>
+                                <div class="row m0">
+                                    <p>@lang("No account?")</p>
                                     <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
                                 </div>
                             </div>
@@ -113,4 +126,5 @@
         </div>
     </div>
 </div>
+
 @endsection

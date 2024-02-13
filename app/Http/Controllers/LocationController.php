@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Event;
 
 class LocationController extends Controller
 {
@@ -15,9 +15,9 @@ class LocationController extends Controller
      */
     public function index()
     {
+        //
         $locations = Location::all();
-        $events = Event::all();
-        return view("locations.index", ['locations'=> $locations, 'events'=>$events]);
+        return view('admin.locations.index', compact('locations'));
     }
 
     /**
@@ -27,8 +27,8 @@ class LocationController extends Controller
      */
     public function create()
     {
-        $locations = Location::all();
-        return view("locations.create", ['locations'=> $locations]);
+        //
+        return view('admin.locations.create');
     }
 
     /**
@@ -39,26 +39,29 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
+        // Validar los datos del formulario
+        $request->validate([
+            'province' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'url' => 'required|string|max:255',
+            'cp' => 'required|string|max:255',
+        ]);
 
-        $datos=$request->all();
-        //recoger los datos
-        $province=$datos["province"];
-        $city=$datos["city"];
-        $address=$datos["address"];
-        $cp=$datos["cp"];
-
-        $location= new Location();
-        $location->province=$province;
-        $location->city=$city;
-        $location->address=$address;
-        $location->cp=$cp;
-
+        // Crear una nueva ubicación en la base de datos
+        $location = new Location();
+        $location->province = $request->input('province');
+        $location->city = $request->input('city');
+        $location->address = $request->input('address');
+        $location->url = $request->input('url');
+        $location->cp = $request->input('cp');
         $location->save();
 
-
-        return redirect()->back(); 
-
+        // Redirigir al usuario al índice de ubicaciones
+        \Session::flash('message','Nueva ubicación creada.');
+        return redirect()->route('ubicaciones.index')->with('success', 'Nueva ubicación creada.');
     }
+
 
     /**
      * Display the specified resource.
@@ -66,12 +69,9 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Location $location)
     {
-        
-
-        $location=Location::all();
-        return response()->json($location);
+        //
     }
 
     /**
@@ -80,10 +80,9 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Location $location)
     {
-        $location =Location::findOrFail($id);
-        return view('locations.edit', compact('location'));
+        //
     }
 
     /**
@@ -93,17 +92,9 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Location $location)
     {
-        $location = Location::findOrFail($id);
-        $datos = $request->validate([
-            'address'   => 'required',
-            'cp'        => 'required',
-            'province'  => 'required',
-            'city'      => 'required',
-        ]);
-        $location->update();
-        return redirect()->route('ubicaciones.index')->with('success', 'La ubicaión se ha actualizado exitosamente.');
+        //
     }
 
     /**
@@ -112,9 +103,11 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy($id)
+    {
         $location = Location::findOrFail($id);
         $location->delete();
-        return redirect()->back();
+        \Session::flash('message','La ubicación y los eventos relacionados han sido eliminados.');
+        return redirect()->back()->with('success', 'La ubicación y los eventos relacionados han sido eliminados.');
     }
 }

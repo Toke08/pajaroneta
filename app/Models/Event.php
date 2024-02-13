@@ -9,16 +9,16 @@ class Event extends Model
 {
     use HasFactory;
 
- 
-
     protected $fillable = [
-        'id',
         'title',
-        'description'
+        'description',
+        'start',
+        'end',
+        'id_location'
     ];
 
-    function calendars(){
-      return $this->HasMany(Calendar::class);
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'id_location');
     }
-
 }

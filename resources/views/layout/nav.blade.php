@@ -19,12 +19,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('galeria_comidas') }}">@lang('Food Gallery')</a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('ubicaciones.index') }}">@lang('Locations')</a>
-            </li> -->
+
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('encuentranos') }}">@lang('Find Us')</a>
+                <a class="nav-link" href="{{ route('encuentranos_show') }}">@lang('Find Us')</a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('blog') }}">@lang('Blog')</a>
             </li>

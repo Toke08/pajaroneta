@@ -32,7 +32,7 @@
                 <a class="footer-link" href="{{ route('galeria_comidas') }}" style="color: white;">@lang('Food Gallery')</a>
             </li>
             <li class="footer-item mr-3">
-                <a class="footer-link" href="{{ route('encuentranos.index') }}" style="color: white;">@lang('Find Us')</a>
+                <a class="footer-link" href="" style="color: white;">@lang('Find Us')</a>
             </li>
             <li class="footer-item mr-3">
                 <a class="footer-link" href="{{ route('blog') }}" style="color: white;">@lang('Blog')</a>

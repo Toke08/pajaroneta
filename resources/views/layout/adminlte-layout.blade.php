@@ -53,10 +53,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <!-- FullCalendar -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
     <!-- csrf para actualizar info del usuario desde panel admin -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -179,10 +177,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('calendario.index') }}" class="nav-link">
+            <a href="{{ route('fullcalendar.index') }}" class="nav-link">
             <i class="fa-solid fa-calendar-days"></i>
               <p>
-                Calendario
+                Calendario y eventos
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('ubicaciones.index') }}" class="nav-link">
+                <i class="fa-solid fa-location-dot"></i>
+              <p>
+                Ubicaciones
               </p>
             </a>
           </li>
@@ -247,6 +254,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    @stack('scripts')
 </body>
 </html>

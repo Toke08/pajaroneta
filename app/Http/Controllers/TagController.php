@@ -135,7 +135,7 @@ class TagController extends Controller
             \Session::now('error', 'Error al eliminar el tag: ' . $e->getMessage());
         }
 
-        return redirect()->back();
+        return redirect()->route('tags.index')->with('message', 'Categoría de comida eliminada!');
 
     }
 

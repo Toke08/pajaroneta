@@ -172,7 +172,8 @@ class CategoryController extends Controller
             \Session::now('error', 'Error al eliminar el categoria: ' . $e->getMessage());
         }
 
-        return redirect()->back();
+        return redirect()->route('categorias.index')->with('message', 'Categoría de comida eliminada!');
+
 
     }
 }

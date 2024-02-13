@@ -56,13 +56,9 @@ class CategoryController extends Controller
         $rules= ['name' => 'required|string',];
 
         //se puede omitir los mensajes personalizados($messages) si los quitas, que no se te olvide quitarlos del ($validator) tambien
-        $messages = array(
-            'name' => 'El nombre es incorrecto',
-            'name.string' => 'El nombre de la categoria debe ser un texto',
-            'name.required' => 'El nombre de la categoria es obligatorio',
-            );
 
-        $validator = validator::make($datos,$rules,$messages);
+
+        $validator = validator::make($datos,$rules);
 
         if ($validator->fails()) {
             \Session::flash('message','error en las instrucciones de datos');

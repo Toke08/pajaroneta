@@ -97,7 +97,7 @@ class FoodController extends Controller
             $food->description=$description;
             $food->save();
 
-            \Session::flash('message','gracias por tu carta');
+            \Session::flash('message','Comida creada con exito');
             return redirect()->back();
         }
 

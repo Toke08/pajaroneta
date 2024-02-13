@@ -285,7 +285,12 @@ Comidas
                                 </a>
                             </th>
                             <th>nombre</th>
-                            <th>precio</th>
+                            <th>
+                                <a class="enlaceNegro" href="<?php echo e(route('galeria-comidas.index', ['column' => 'price', 'direction' => $direction])); ?>">
+                                    precio
+                                    <i class="fa-solid fa-arrows-up-down"></i>
+                                </a>
+                            </th>
                             <th>imagen</th>
                             <th>descripcion</th>
                             <th>categoria</th>
@@ -304,7 +309,7 @@ Comidas
                                 <td><a
                                         href="<?php echo e(route('galeria-comidas.show', ['id' => $food->id])); ?>"><?php echo e($food->name); ?></a>
                                 </td>
-                                <td><?php echo e($food->price); ?></td>
+                                <td><?php echo e($food->price. "€"); ?></td>
                                 <td><img src="<?php echo e(asset('img/foods/'.$food->img)); ?>"></td>
                                 <td><?php echo e($food->description); ?></td>
                                 <td><?php echo e($food->category->name); ?></td>

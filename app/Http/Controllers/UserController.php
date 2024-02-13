@@ -80,10 +80,7 @@ class UserController extends Controller
 
             //mover imagen subido desde el form de letters.create al servidor
             $request->file('img')->move('img/users', $nombreImagen);
-
             }
-
-
 
         //obtener texto y papa
         // $mensaje=$datos['mensaje'];
@@ -94,7 +91,6 @@ class UserController extends Controller
                 'email' => 'required|email|unique:users|max:255',
                 'password' => 'required|string|min:8|confirmed',
                 'role_id' => 'required|exists:roles,id',];
-
 
         $validator = Validator::make($datos,$rules);
 

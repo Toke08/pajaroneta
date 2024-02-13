@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('province');
             $table->string('city');
             $table->string('address');
-            $table->string('url');
+            $table->string('url', 500)->nullable();
             $table->string('cp');
             $table->timestamps();
         });

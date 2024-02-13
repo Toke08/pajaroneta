@@ -1,3 +1,7 @@
+
+
+
+
 <?php $__env->startSection('titulo'); ?>
 Vista de <?php echo e($food->name); ?>
 
@@ -14,6 +18,9 @@ Vista de <?php echo e($food->name); ?>
     width: 50%;
     float: left;
     margin-right: 20px;
+}
+.food-text a {
+    color: #000000;
 }
 
 .food-image {
@@ -80,7 +87,7 @@ Vista de <?php echo e($food->name); ?>
 <?php $__env->startSection('contenido'); ?>
 <div class="container">
     <div class="food-text">
-        <button id="volverAGaleria" class="btn">Volver a la galería</button><br>
+        <button id="volverAGaleria" class="btn"><?php echo app('translator')->get("Go back"); ?></button><br>
         <a href="<?php echo e(route('galeria_comidas', ['id' => $category->id])); ?>"><?php echo e($category->name); ?> ></a>
         <h1><?php echo e($food->name); ?></h1>
         <p><?php echo e($food->description); ?></p>

@@ -32,7 +32,7 @@
                 <a class="footer-link" href="<?php echo e(route('galeria_comidas')); ?>" style="color: white;"><?php echo app('translator')->get('Food Gallery'); ?></a>
             </li>
             <li class="footer-item mr-3">
-                <a class="footer-link" href="<?php echo e(route('encuentranos.index')); ?>" style="color: white;"><?php echo app('translator')->get('Find Us'); ?></a>
+                <a class="footer-link" href="" style="color: white;"><?php echo app('translator')->get('Find Us'); ?></a>
             </li>
             <li class="footer-item mr-3">
                 <a class="footer-link" href="<?php echo e(route('blog')); ?>" style="color: white;"><?php echo app('translator')->get('Blog'); ?></a>

@@ -13,6 +13,7 @@ use App\Models\Restaurant;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Location;
+use Carbon\Carbon;
 
 class ClientController extends Controller
 {
@@ -170,7 +171,21 @@ class ClientController extends Controller
 
     public function encuentranos_show(){
         $locations = Location::all();
-        $events = Event::all();
-        return view('client.encuentranos_show', compact('locations', 'events'));
+        $events = Event::with('location')->get();
+        $url = null;
+
+        // Obtener la fecha de hoy
+        $today = Carbon::today();
+
+        // Iterar sobre los eventos para encontrar una coincidencia con la fecha de hoy
+        foreach ($events as $event) {
+            $start = Carbon::parse($event->start); // Convertir la cadena de fecha a Carbon
+            if ($start->isSameDay($today)) {
+                $url = $event->location->url;
+                break; // Terminar el bucle una vez que se encuentra una coincidencia
+            }
+        }
+
+        return view('client.encuentranos_show', compact('locations', 'url'));
     }
 }

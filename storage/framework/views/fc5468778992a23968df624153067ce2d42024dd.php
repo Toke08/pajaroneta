@@ -19,18 +19,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo e(route('galeria_comidas')); ?>"><?php echo app('translator')->get('Food Gallery'); ?></a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="<?php echo e(route('ubicaciones.index')); ?>"><?php echo app('translator')->get('Locations'); ?></a>
-            </li> -->
+
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo e(route('encuentranos')); ?>"><?php echo app('translator')->get('Find Us'); ?></a>
+                <a class="nav-link" href="<?php echo e(route('encuentranos_show')); ?>"><?php echo app('translator')->get('Find Us'); ?></a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo e(route('blog')); ?>"><?php echo app('translator')->get('Blog'); ?></a>
             </li>
 
             <?php if(auth()->guard()->guest()): ?>
-            
+
             <li class="nav-item">
                 <a id="login-btn" class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo app('translator')->get('Login'); ?></a>
             </li>

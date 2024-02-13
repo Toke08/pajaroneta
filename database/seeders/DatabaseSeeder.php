@@ -316,14 +316,22 @@ class DatabaseSeeder extends Seeder
             'province'=>'Vizcaya',
             'city'=> 'Bilbao',
             'address'=> 'Jardines 13',
-            'url'=> 'https://maps.app.goo.gl/V8Y61jAg3XPxXYED7',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.3305713946456!2d-2.942097657827875!3d43.26544991998715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e5027b754fd25%3A0x5a57d93890f89154!2sGran%20V%C3%ADa%20de%20Don%20Diego%20L%C3%B3pez%20de%20Haro%2C%2058%2C%20Abando%2C%2048009%20Bilbo%2C%20Bizkaia!5e0!3m2!1ses!2ses!4v1707852252590!5m2!1ses!2ses',
             'cp' => '48004'
         ]);
         \App\Models\Location::create([
             'province'=>'Vizcaya',
             'city'=> 'Barakaldo',
             'address'=> 'Alameda Urquijo 30',
-            'url'=> 'https://maps.app.goo.gl/V8Y61jAg3XPxXYED7',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.5446428279547!2d-2.9382496500273887!3d43.260964374529124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4f3e75700b5f%3A0xcf1f1c74d3f48d32!2sNalu%20Poke!5e0!3m2!1ses!2ses!4v1707852197622!5m2!1ses!2ses',
+            'cp' => '48008'
+        ]);
+
+        \App\Models\Location::create([
+            'province'=>'Lima',
+            'city'=> 'Chacracerro',
+            'address'=> 'Jirón Simón Bolivar 23',
+            'url'=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7806.3820762164005!2d-77.03080969999999!3d-11.961271499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cfe7cad9fbad%3A0x976d374e79307847!2sBOCA%20DEL%20DIABLO!5e0!3m2!1ses!2ses!4v1707850657101!5m2!1ses!2ses',
             'cp' => '48008'
         ]);
 

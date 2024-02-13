@@ -111,6 +111,57 @@
         "Register": "Erregistratu",
         "Login": "Hasi saioa",
         "Admin Panel": "Admin Panela",
-        "Logout": "Amaitu saioa"
+        "Logout": "Amaitu saioa",
+
+
+        "/*COMENTARIO2*/": "LANDINGPAGE",
+        "Yummy food for celiac and lactose intolerant people throughout Spain" :"Zeliako eta intoleranteekin gozoak Espainiako zati guztietan",
+        "Who are we?": "¿Zer gara gu?",
+        "Find us...": "Bilatu gaitzazu...",
+        "Our menu!": "Gure menua!",
+        "Come and enjoy our products with us!":"Etorri eta gozatu gure produktuekin!",
+        "Our Blog and more":"Gure bloga eta gehiago",
+        "We invite you to read our recent blog's posts :)":"Gonbidatzen zaitugu gure blog-eko azken publikazioak irakurtzen :)",
+        "Read more":"Irakurri",
+        "Find them here":"Hemen aurkitu",
+        "If we are not around...":"Gure inguruan ez badira...",
+        "Here you have restaurants with healthy options!":"Hemen dagoeneko osasungarriak diren jatetxeak aurkitu!",
+
+    "/*COMENTARIO3*/": "FOOD GALLERY",
+        "Are you hungry?":"Gosetsi zara?",
+        "Have a look at our products and come visit La Pajaroneta to try them!": "Egin begirada gure produktuetara eta etorri La Pajaronetara haiek probatzera!",
+
+    "/*COMENTARIO4/": "FIND US",
+        "Today we are here...":"Gaur hemen gaude...",
+        "Check our calendar and find where we´ll be!":"Egiaztatu gure egutegia eta aurkitu non egongo garena!",
+
+    "/*COMENTARIO5/": "BLOG",
+        "Welcome to our space of our ideas, projects and posts :) ": "Ongi etorri gure ideien, projektuen eta artikuluen esparrura :)",
+        "Posts related with": "Artikuluak honi buruz",
+        "Restaurants related with": "Jatetxeak honi buruz",
+        "There is no content related to":"Ez dago honi buruzko edukiik",
+
+    "/*COMENTARIO5.1/": "BLOG.SHOW",
+        "Go back":"Itzuli",
+        "Category":"Kategoria",
+        "Leave a comment":"Utzi iruzkina",
+        "Comment":"Iruzkinatu",
+
+    "/*COMENTARIO6/": "Footer",
+        "Do you have any suggestion? Email us!": "Zerbait proposatu nahi duzu? Idatzi gure posta elektronikoan!",
+
+
+    "/*USER.SHOW/": "USER.SHOW",
+        "User profile":"Erabiltzailearen profila",
+        "Edit":"Editatu",
+        "Change password":"Aldatu pasahitza",
+        "Save changes":"Gorde aldaketak",
+        "Current password":"Uneko pasahitza",
+        "New password":"Pasahitz berria",
+        "Confirm new password":"Berria baieztatu pasahitza",
+        "Close":"Itxi",
+        "Change profile pic":"Aldatu irudia",
+        "Update":"Eguneratu"
+
 }
 

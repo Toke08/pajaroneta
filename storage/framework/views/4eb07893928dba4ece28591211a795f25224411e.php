@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('titulo'); ?>
 Usuarios
 <?php $__env->stopSection(); ?>
@@ -273,7 +275,13 @@ Usuarios
                             <th>Email</th>
                             <th>Imagen de Perfil</th>
                             <th>Rol</th>
-                            <th>Fecha de Creación</th>
+                            <th>
+                                <a class="enlaceNegro"
+                                    href="<?php echo e(route('user.index', ['column' => 'created_at', 'direction' => $direction])); ?>">
+                                    Fecha de Creación
+                                    <i class="fa-solid fa-arrows-up-down"></i>
+                                </a>
+                            </th>
                             <th>Acciones</th>
                         </tr>
                     </thead>

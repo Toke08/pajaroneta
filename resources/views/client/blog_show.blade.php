@@ -108,8 +108,8 @@
     <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}" class="post-image">
     <div id="content">
         <div class="bck">
-            <button id="volverAlBlog" class="btn">Volver al blog</button>
-            <p>Categoría:<a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a></p><br>
+            <button id="volverAlBlog" class="btn">@lang("Go back")</button>
+            <p>@lang("Category"):<a href="{{ route('tags_show', $post->tag) }}">{{ $post->tag->name }}</a></p><br>
         </div>
 
         <h1>{{ $post->title }}</h1>
@@ -119,11 +119,11 @@
         <form id="comentarios" action="{{ route('comments.store', ['post_id' => $post->id]) }}" method="POST">
             @csrf
             <div class="mb-3">
-                <h3 for="comment" class="form-label">Deja un comentario:</h3>
+                <h3 for="comment" class="form-label">@lang("Leave a comment")</h3>
                 <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
             </div>
             <input type="hidden" name="post_id" value="{{ $post->id }}">
-            <button type="submit" class="btn btn-primary">Comentar</button>
+            <button type="submit" class="btn btn-primary">@lang("Comment")</button>
         </form>
 
         <div class="post-comments">

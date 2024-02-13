@@ -285,7 +285,12 @@ Comidas
                                 </a>
                             </th>
                             <th>nombre</th>
-                            <th>precio</th>
+                            <th>
+                                <a class="enlaceNegro" href="{{ route('galeria-comidas.index', ['column' => 'price', 'direction' => $direction]) }}">
+                                    precio
+                                    <i class="fa-solid fa-arrows-up-down"></i>
+                                </a>
+                            </th>
                             <th>imagen</th>
                             <th>descripcion</th>
                             <th>categoria</th>
@@ -304,7 +309,7 @@ Comidas
                                 <td><a
                                         href="{{ route('galeria-comidas.show', ['id' => $food->id]) }}">{{$food->name}}</a>
                                 </td>
-                                <td>{{$food->price}}</td>
+                                <td>{{$food->price. "€"}}</td>
                                 <td><img src="{{ asset('img/foods/'.$food->img) }}"></td>
                                 <td>{{$food->description}}</td>
                                 <td>{{$food->category->name}}</td>

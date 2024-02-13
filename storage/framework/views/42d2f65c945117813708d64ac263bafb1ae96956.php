@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('titulo'); ?>
 <?php $__env->stopSection(); ?>
 
@@ -98,7 +99,7 @@ img {
 <?php $__env->startSection('contenido'); ?>
     <div id="blog">
         <h1>Blog-oneta</h1>
-        <p>Publicaciones, opiniones y más...</p>
+        <p><?php echo app('translator')->get("Welcome to our space of our ideas, projects and posts :) "); ?></p>
         <div class="cates">
             <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <a href="<?php echo e(route('tags_show', $tag)); ?>"><?php echo e($tag->name); ?></a>
@@ -107,11 +108,14 @@ img {
 
         <div id="posts">
             <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="post">
-                <img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img><br>
-                <h3><?php echo e($post->title); ?></h3>
-                <button> <a href="blog/<?php echo e($post->id); ?>">Leer más</a></button>
-            </div>
+
+                <div class="post">
+                    <a href="blog/<?php echo e($post->id); ?>"><img src="<?php echo e(asset('img/posts')); ?>/<?php echo e($post->img); ?>"><img></a>
+                    <br>
+                    <h3><?php echo e($post->title); ?></h3>
+                    <button> <a href="blog/<?php echo e($post->id); ?>"><?php echo app('translator')->get("Read more"); ?></a></button>
+                </div>
+
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
@@ -119,8 +123,8 @@ img {
     </div>
 
     <div id="restaurant"></div>
-        <h2>Por si estamos lejos de ti...</h2>
-        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
+        <h2><?php echo app('translator')->get("If we are not around..."); ?></h2>
+        <p><?php echo app('translator')->get( "Here you have restaurants with healthy options!"); ?></p>
         <div id="div-restaurantes">
             <?php $__currentLoopData = $restaurants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $restaurant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="restaurants">
@@ -132,7 +136,7 @@ img {
                     <br>
                     <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>"><br>
                 </a>
-                <a href="<?php echo e($restaurant->url_maps); ?>" target="blank">Encuéntralos aquí</a>
+                <a href="<?php echo e($restaurant->url_maps); ?>" target="blank"><?php echo app('translator')->get("Find them here"); ?></a>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>

@@ -150,8 +150,8 @@
         @endphp
 
         <div class="titl">
-            <h1>¿Con hambre?</h1>
-            <p>¡Échale un vistazo a nuestra galería de productos que puedes venir a comer en la Pajaroneta!</p>
+            <h1>@lang("Are you hungry?")</h1>
+            <p>@lang("Have a look at our products and come visit La Pajaroneta to try them!")</p>
         </div>
 
         <div class="foods-container">

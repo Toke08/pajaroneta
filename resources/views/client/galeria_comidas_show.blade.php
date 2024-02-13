@@ -18,6 +18,9 @@ Vista de {{$food->name}}
     float: left;
     margin-right: 20px;
 }
+.food-text a {
+    color: #000000;
+}
 
 .food-image {
     width: 50%;
@@ -83,7 +86,7 @@ Vista de {{$food->name}}
 @section('contenido')
 <div class="container">
     <div class="food-text">
-        <button id="volverAGaleria" class="btn">Volver a la galería</button><br>
+        <button id="volverAGaleria" class="btn">@lang("Go back")</button><br>
         <a href="{{ route('galeria_comidas', ['id' => $category->id]) }}">{{$category->name}} ></a>
         <h1>{{$food->name}}</h1>
         <p>{{$food->description}}</p>

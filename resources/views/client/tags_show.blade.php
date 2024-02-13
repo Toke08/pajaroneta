@@ -95,7 +95,7 @@ p {
 
 @section('contenido')
 
-    <button class="btn_back"><a href="{{ route('blog') }}">Volver al blog</a></button>
+    <button class="btn_back"><a href="{{ route('blog') }}">@lang("Go back")</a></button>
 
 
 
@@ -107,14 +107,14 @@ p {
         <div class="">
             @if($posts->isEmpty() && $restaurants->isEmpty())
             <div class="titulo">
-                <strong>No hay publicaciones ni restaurantes relacionados con {{$tag->name}}.</strong>
+                <strong>@lang("There is no content related to") {{$tag->name}}.</strong>
             </div>
             @else
         </div>
 
             @if(!$posts->isEmpty())
                 <div class="titulo">
-                    <strong>Publicaciones relacionadas con {{$tag->name}}</strong><br>
+                    <strong>@lang("Posts related with") {{$tag->name}}</strong><br>
                 </div>
             <div class="publis">
                 @foreach($posts as $post)
@@ -122,7 +122,7 @@ p {
                         <img src="{{ asset('img/posts') . '/' . $post->img }}" alt="{{ $post->title }}"><br>
                         <h3>{{ $post->title }}</h3>
                         <br>
-                        <button><a href="{{ route('blog_show', $post->id) }}">Leer más</a></button>
+                        <button><a href="{{ route('blog_show', $post->id) }}">@lang("Read more")</a></button>
 
                     </div>
                 @endforeach
@@ -131,7 +131,7 @@ p {
 
             @if(!$restaurants->isEmpty())
                 <div class="titulo">
-                    <strong>Restaurantes relacionados con {{$tag->name}}</strong>
+                    <strong>@lang("Restaurants related with") {{$tag->name}}</strong>
                 </div>
                 <div class="publis">
                 @foreach($restaurants as $restaurant)
@@ -141,7 +141,7 @@ p {
 
                         <br>
                         <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
-                        <a href="{{ $restaurant->url_maps }}">Encuéntralo aquí</a>
+                        <a href="{{ $restaurant->url_maps }}">@lang("Find them here")</a>
                     </div>
                 @endforeach
                 </div>

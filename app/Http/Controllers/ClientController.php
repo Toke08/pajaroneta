@@ -35,6 +35,8 @@ class ClientController extends Controller
 
     public function galeria_comidas_show($id){
         $food = Food::find($id);
+        $food->views++;
+        $food->save();
 
         if ($food != null) {
             $category = Category::find($food->category_id);

@@ -39,7 +39,7 @@
             @if (auth()->user()->isAdmin())
                 <!-- Si es un administrador, redirigir al dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('adminHome') }}">@lang('Hello,') {{ auth()->user()->name }}</a>
+                    <a class="nav-link" href="{{ route('adminHome') }}">@lang('Dashboard')</a>
                 </li>
 
             @else

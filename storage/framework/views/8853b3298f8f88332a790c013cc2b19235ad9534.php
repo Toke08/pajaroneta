@@ -39,6 +39,7 @@
     <style>
         *{
             font-family: 'Quicksand', sans-serif;
+
         }
         body{
             display: flex !important;
@@ -47,6 +48,7 @@
             background-size: cover;
             background-position: center;
             min-height: 100vh !important;
+            overflow-x: hidden;
         }
         body > main{
 

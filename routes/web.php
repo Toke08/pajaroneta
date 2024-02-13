@@ -28,9 +28,10 @@ Route::group(['middleware' => ['language']], function() {
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
+Route::group(['middleware' => ['admin']], function() {
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
-    Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('adminHome');
 
     //rutas admin
     Route::resource('/roles', RoleController::class);
@@ -44,7 +45,7 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/fullcalendar', FullCalendarController::class);
     Route::resource('/ubicaciones', LocationController::class);
 });
-
+});
 //ejemplo rutas cliente y su controlador
 Route::get('/encuentranos', [ClientController::class, 'encuentranos_show'])->name('encuentranos_show');
 

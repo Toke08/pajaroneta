@@ -12,7 +12,6 @@ use App\Models\Post;
 class LandingPageController extends Controller
 {
 
-
     public function index()
     {
         //$locations = Location::all();

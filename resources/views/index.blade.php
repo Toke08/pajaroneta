@@ -332,7 +332,7 @@
         <div id="comidita">
             @foreach ($foods->take(3) as $food)
                 <div class="com">
-                    <a href="galeria-comidas/{{ $food->name }}"><img src="{{asset('img/foods')}}/{{ $food->img }}"><img></a>
+                    <a href="{{ route('galeria-comidas.show', ['id' => $food->id]) }}"><img src="{{asset('img/foods')}}/{{ $food->img }}"><img></a>
                     <br>
                     <h3>{{ $food->name }}</h3>
                     <p>{{$food->description}}</p>

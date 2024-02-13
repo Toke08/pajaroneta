@@ -111,7 +111,56 @@
         "Register": "Register",
         "Login": "Login",
         "Admin Panel": "Admin Panel",
-        "Logout": "Logout"
+        "Logout": "Logout",
+
+        "/*COMENTARIO2*/": "LANDINGPAGE",
+        "Yummy food for celiac and lactose intolerant people throughout Spain" :"Yummy food for celiac and lactose intolerant people throughout Spain",
+        "Who are we?": "Who are we?",
+        "Find us...": "Find us...",
+        "Our menu!": "Our menu!",
+        "Come and enjoy our products with us!":"Come and enjoy our products with us!",
+        "Our Blog and more":"Our Blog and more",
+        "We invite you to read our recents blog's posts :)":"We invite you to read our recents blog's posts :)",
+        "Read more":"Read more",
+        "Find them here":"Find them here",
+        "If we are not around...":"If we are not around...",
+        "Here you have restaurants with healthy options!":"Here you have restaurants with healthy options!",
+
+    "/*COMENTARIO3*/": "FOOD GALLERY",
+        "Are you hungry?":"Are you hungry?",
+        "Have a look at our products and come visit La Pajaroneta to try them!": "Have a look at our products and come visit La Pajaroneta to try them!",
+
+    "/*COMENTARIO4/": "FIND US",
+        "Today we are here...":"Today we are here...",
+        "Check our calendar and find where we´ll be!":"Check our calendar and find where we´ll be!",
+
+    "/*COMENTARIO5/": "BLOG",
+        "Welcome to our space of our ideas, projects and posts :) ": "Welcome to our space of our ideas, projects and posts :)",
+        "Posts related with": "Posts related with",
+        "Restaurants related with": "Restaurants related with",
+        "There is no content related to":"There is no content related to",
+
+    "/*COMENTARIO5.1/": "BLOG.SHOW",
+        "Go back":"Go back",
+        "Category":"Category",
+        "Leave a comment":"Leave a comment",
+        "Comment":"Comment",
+
+    "/*COMENTARIO6/": "Footer",
+        "Do you have any suggestion? Email us!": "Do you have any suggestion? Email us!",
+
+
+    "/*USER.SHOW/": "USER.SHOW",
+        "User profile":"User profile",
+        "Edit":"Edit",
+        "Change password":"Change password",
+        "Save changes":"Save changes",
+        "Current password":"Current password",
+        "New password":"New password",
+        "Confirm new password":"Confirm new password",
+        "Close":"Close",
+        "Change profile pic":"Change profile pic",
+        "Update":"Update"
 
 
 }

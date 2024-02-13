@@ -161,7 +161,10 @@
         "Confirm new password":"Berria baieztatu pasahitza",
         "Close":"Itxi",
         "Change profile pic":"Aldatu irudia",
-        "Update":"Eguneratu"
+        "Update":"Eguneratu",
+        "No account?":"Konturik gabe?",
+        "The fields* are required":"Eremuak* beharrezkoak dira"
+
 
 }
 

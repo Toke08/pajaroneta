@@ -10,26 +10,29 @@ class Location extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'province',
-        'city',
+        'ciudad',
         'address',
         'url',
         'cp'
     ];
+
+    function event(){
+        return $this->belongsTo(Event::class);
+    }
 
     protected static function boot()
     {
         parent::boot();
 
         static::deleting(function ($location) {
-            // Eliminación en cascada de eventos
+            // Eliminar los eventos relacionados a esta ubicación
             $location->events()->delete();
         });
     }
 
-
-    function calendars(){
-        return $this->HasMany(Calendar::class);
-      }
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'id_location');
+    }
 }

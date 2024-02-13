@@ -160,7 +160,9 @@
         "Confirm new password":"Confirm new password",
         "Close":"Close",
         "Change profile pic":"Change profile pic",
-        "Update":"Update"
+        "Update":"Update",
+        "No account?":"No account?",
+        "The fields* are required":"The fields* are required"
 
 
 }

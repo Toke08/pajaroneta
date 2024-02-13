@@ -11,6 +11,13 @@ button{
     background-color: #E5A200;
     border: none;
     color: white;
+    width: 25%;
+}
+.card button{
+    background-color: #E5A200;
+    border-radius: 1.5em;
+    height: 2em;
+    margin-bottom: 3%;
 }
 #changePassword{
     border-radius: 1.5em;
@@ -18,7 +25,7 @@ button{
     border: none;
     color: white;
 }
-#changePassword:hover{
+#changePassword:hover, .card button:hover{
     background-color: #CA8F00;
 }
 .form-control {
@@ -32,7 +39,11 @@ button{
         background-repeat: no-repeat; /* Evita que la imagen se repita en el contenedor */
 
 }
+.card{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius:1em;
 
+}
 .card-header{
     border:none;
     text-align: center;

@@ -48,7 +48,7 @@
                 <li><a href="#">Usuarios</a></li>
                 <li><a href="{{ route('galeria-comidas.index') }}">@lang('Comidas')</a></li>
                 <li><a href="{{ route('blog.index') }}">@lang('Posts')</a></li>
-                <li><a href="#">Calendiario</a></li>
+                <li><a href="#">Calendario</a></li>
             </ul>
         </div>
         <div class="admin-content">

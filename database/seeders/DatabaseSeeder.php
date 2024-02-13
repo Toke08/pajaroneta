@@ -322,7 +322,10 @@ class DatabaseSeeder extends Seeder
             "tag_id"=>3
         ]);
 
+        //
+        /**/
         \App\Models\Location::create([
+
             'province'=>'Vizcaya',
             'city'=> 'Bilbao',
             'address'=> 'Jardines 13',
@@ -331,7 +334,7 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\Location::create([
             'province'=>'Vizcaya',
-            'city'=> 'Bilbao',
+            'city'=> 'Barakaldo',
             'address'=> 'Alameda Urquijo 30',
             'url'=> 'https://maps.app.goo.gl/V8Y61jAg3XPxXYED7',
             'cp' => '48008'
@@ -339,15 +342,41 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Event::create([
             'title'=>'Salida libre',
-            'description'=> 'Ven a comer lo bueno para ti!',
-
+            'description'=>'A comer bien',
+            'start'=>'2022-02-15',
+            'end'=>'2022-02-15',
+            'id_location'=>'1',
         ]);
 
         \App\Models\Event::create([
             'title'=>'BBK LIVE',
-            'description'=> 'Festival de música',
+            'description'=>'A comer con musica',
+            'start'=>'2022-02-16',
+            'end'=>'2022-02-16',
+            'id_location'=>'2',
         ]);
-
+        \App\Models\Event::create([
+            'title'=>'Tomorrowland',
+            'description'=>'A comer con musica en ingles',
+            'start'=>'2022-02-05',
+            'end'=>'2022-02-05',
+            'id_location'=>'2',
+        ]);
+        \App\Models\Event::create([
+            'title'=>'Festival Electro',
+            'description'=>'A comer con musica en ingles electrónica',
+            'start'=>'2022-02-22',
+            'end'=>'2022-02-22',
+            'id_location'=>'2',
+        ]);
+        \App\Models\Event::create([
+            'title'=>'Rap Fest',
+            'description'=>'A comer rapeando',
+            'start'=>'2022-02-26',
+            'end'=>'2022-02-26',
+            'id_location'=>'2',
+        ]);
+        /*
         \App\Models\Calendar::create([
             'start'=>'2024-02-17',
             'end'=> '2024-02-17',
@@ -360,6 +389,7 @@ class DatabaseSeeder extends Seeder
             'location_id' => '1',
             'event_id' => '1',
         ]);
+        */
     }
 }
 

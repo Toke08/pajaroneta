@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index()
     {
         $foods=Food::all();
-        $posts=Post::where();
+        $posts = Post::where('status', 'published')->get();
         $users=User::all();
         return view('admin.dashboard', compact('foods', 'posts', 'users'));
     }

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo'); ?>
     Galería comidas
 <?php $__env->stopSection(); ?>
@@ -150,8 +148,8 @@
         ?>
 
         <div class="titl">
-            <h1>¿Con hambre?</h1>
-            <p>¡Échale un vistazo a nuestra galería de productos que puedes venir a comer en la Pajaroneta!</p>
+            <h1><?php echo app('translator')->get("Are you hungry?"); ?></h1>
+            <p><?php echo app('translator')->get("Have a look at our products and come visit La Pajaroneta to try them!"); ?></p>
         </div>
 
         <div class="foods-container">

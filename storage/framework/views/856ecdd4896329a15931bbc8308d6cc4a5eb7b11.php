@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('estilos'); ?>
 <style>
 
@@ -108,8 +107,8 @@
     <img src="<?php echo e(asset('img/posts') . '/' . $post->img); ?>" alt="<?php echo e($post->title); ?>" class="post-image">
     <div id="content">
         <div class="bck">
-            <button id="volverAlBlog" class="btn">Volver al blog</button>
-            <p>Categoría:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
+            <button id="volverAlBlog" class="btn"><?php echo app('translator')->get("Go back"); ?></button>
+            <p><?php echo app('translator')->get("Category"); ?>:<a href="<?php echo e(route('tags_show', $post->tag)); ?>"><?php echo e($post->tag->name); ?></a></p><br>
         </div>
 
         <h1><?php echo e($post->title); ?></h1>
@@ -119,11 +118,11 @@
         <form id="comentarios" action="<?php echo e(route('comments.store', ['post_id' => $post->id])); ?>" method="POST">
             <?php echo csrf_field(); ?>
             <div class="mb-3">
-                <h3 for="comment" class="form-label">Deja un comentario:</h3>
+                <h3 for="comment" class="form-label"><?php echo app('translator')->get("Leave a comment"); ?></h3>
                 <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
             </div>
             <input type="hidden" name="post_id" value="<?php echo e($post->id); ?>">
-            <button type="submit" class="btn btn-primary">Comentar</button>
+            <button type="submit" class="btn btn-primary"><?php echo app('translator')->get("Comment"); ?></button>
         </form>
 
         <div class="post-comments">

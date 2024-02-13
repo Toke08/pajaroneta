@@ -99,7 +99,7 @@ img {
 @section('contenido')
     <div id="blog">
         <h1>Blog-oneta</h1>
-        <p>Publicaciones, opiniones y más...</p>
+        <p>@lang("Welcome to our space of our ideas, projects and posts :) ")</p>
         <div class="cates">
             @foreach ($tags as $tag)
                 <a href="{{ route('tags_show', $tag) }}">{{$tag->name}}</a>
@@ -113,7 +113,7 @@ img {
                     <a href="blog/{{ $post->id }}"><img src="{{asset('img/posts')}}/{{ $post->img }}"><img></a>
                     <br>
                     <h3>{{ $post->title }}</h3>
-                    <button> <a href="blog/{{ $post->id }}">Leer más</a></button>
+                    <button> <a href="blog/{{ $post->id }}">@lang("Read more")</a></button>
                 </div>
 
             @endforeach
@@ -123,8 +123,8 @@ img {
     </div>
 
     <div id="restaurant"></div>
-        <h2>Por si estamos lejos de ti...</h2>
-        <p>¡Encuentra restaurantes con opciones saludables cerca de ti!</p>
+        <h2>@lang("If we are not around...")</h2>
+        <p>@lang( "Here you have restaurants with healthy options!")</p>
         <div id="div-restaurantes">
             @foreach ($restaurants as $restaurant)
             <div class="restaurants">
@@ -136,7 +136,7 @@ img {
                     <br>
                     <img src="{{ asset('img/restaurants') . '/' . $restaurant->img }}" alt="{{ $restaurant->name }}"><br>
                 </a>
-                <a href="{{ $restaurant->url_maps }}" target="blank">Encuéntralos aquí</a>
+                <a href="{{ $restaurant->url_maps }}" target="blank">@lang("Find them here")</a>
             </div>
             @endforeach
         </div>

@@ -122,8 +122,31 @@
         "Our Blog and more":"Nuestro blog y más",
         "We invite you to read our recents blog's posts :)":"Te invitamos a leer las publicaciones recientes de nuestro blog :)",
         "Read more":"Leer más",
+        "Find them here":"Encuéntralos aquí",
         "If we are not around...":"Por si estamos lejos de ti...",
-        "Here you have restaurants with healthy options!":"¡Encuentra restaurantes con opciones saludables cerca de ti!"
+        "Here you have restaurants with healthy options!":"¡Encuentra restaurantes con opciones saludables cerca de ti!",
 
+    "/*COMENTARIO3*/": "FOOD GALLERY",
+        "Are you hungry?":"¿Con hambre?",
+        "Have a look at our products and come visit La Pajaroneta to try them!": "¡Échale un vistazo a nuestra galería de productos que puedes venir a comer en la Pajaroneta!",
+
+    "/*COMENTARIO4/": "FIND US",
+        "Today we are here...":"Hoy nos encontramos aquí...",
+        "Check our calendar and find where we´ll be!":"¡Échale un vistazo a nuestro calendario y descubre donde vamos a estar!",
+
+    "/*COMENTARIO5/": "BLOG",
+        "Welcome to our space of our ideas, projects and posts :) ": "Bienvenidos al nido de nuestras ideas, proyectos y publicaciones :)",
+        "Posts related with": "Publicaciones relacionadas con",
+        "Restaurants related with": "Restaurantes relacionados con",
+        "There is no content related to":"No hay contenido relacionado con",
+
+    "/*COMENTARIO5.1/": "BLOG:SHOW",
+        "Go back":"Volver al blog",
+        "Category":"Categoría",
+        "Leave a comment":"Deja un comentario",
+        "Comment":"Comentar",
+
+    "/*COMENTARIO6/": "Footer",
+        "Do you have any suggestion? Email us!": "¿Alguna sugerencia? ¡Escríbenos!"
 
 }

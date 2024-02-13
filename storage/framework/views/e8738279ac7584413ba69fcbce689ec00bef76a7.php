@@ -93,10 +93,14 @@
     object-fit: cover;
     border-radius: 10px;
 }
+.restaurantes img:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+}
 #restaurant, .publis, #comidas, #mapilla{
     margin-top: 10%;
 }
-.restaurants a{
+.restaurantes a{
     color: #000000;
     text-decoration: none;
 }
@@ -257,7 +261,7 @@
                     <br>
                     <img src="<?php echo e(asset('img/restaurants') . '/' . $restaurant->img); ?>" alt="<?php echo e($restaurant->name); ?>"><br>
                 </a>
-                <a href="<?php echo e($restaurant->url_maps); ?>" target="blank">Encuéntralos aquí</a>
+                <a href="<?php echo e($restaurant->url_maps); ?>" target="blank"><?php echo app('translator')->get("Find them here"); ?></a>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>

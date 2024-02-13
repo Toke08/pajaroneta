@@ -44,9 +44,9 @@ Crear comida nueva
                     <label class="custom-file-label" for="customFile">Elegir imagen</label>
                 </div>
             </div>
-            <div class="card-footer">
+            
                 <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
+            
         </div>
 
 

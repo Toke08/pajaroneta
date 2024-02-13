@@ -101,6 +101,7 @@ class DatabaseSeeder extends Seeder
             "img" => "burger1.jpg",
             "description" => "la mejor hamburguesa del mundo ñam ñam",
             "category_id" => 2,
+            "views"=> 2045,
         ]);
 
         \App\Models\Food::create([
@@ -252,6 +253,7 @@ class DatabaseSeeder extends Seeder
             "img"=> "post1.jpg",
             "status"=> "Published",
             "tag_id"=> 3,
+            "views"=> 3392,
         ]);
         \App\Models\Post::create([
             "title"=> "Somos lechosos",

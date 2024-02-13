@@ -132,6 +132,8 @@
 
     "/*COMENTARIO4/": "FIND US",
         "Today we are here...":"Hoy nos encontramos aquí...",
+        "Next events":"Próximos eventos",
+        "There are no events for today":"No hay eventos programados para hoy",
         "Check our calendar and find where we´ll be!":"¡Échale un vistazo a nuestro calendario y descubre donde vamos a estar!",
 
     "/*COMENTARIO5/": "BLOG",
@@ -141,7 +143,7 @@
         "There is no content related to":"No hay contenido relacionado con",
 
     "/*COMENTARIO5.1/": "BLOG.SHOW",
-        "Go back":"Volver al blog",
+        "Go back":"Volver",
         "Category":"Categoría",
         "Leave a comment":"Deja un comentario",
         "Comment":"Comentar",

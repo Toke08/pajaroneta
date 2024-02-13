@@ -16,13 +16,13 @@ Crear nuevo evento
         <div class="card-body">
 
                 <div class="form-group">
-                    <label for="title">Nombre evento*</label>
+                    <label for="title">Nombre evento:</label>
                     <input  class="form-control" type="text" id="title" name="title" placeholder="Nombre del evento" required>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="description">Descripción *</label>
+                    <label for="description">Descripción:</label>
                     <textarea class="form-control" type="text" id="description" name="description" placeholder="Descripción del evento" required></textarea>
                 </div>
 

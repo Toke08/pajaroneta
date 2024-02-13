@@ -344,7 +344,7 @@
 
     <div class="publis">
         <h2>@lang("Our Blog and more")</h2>
-        <p>@lang("We invite you to read our recent blog's posts :)")</p>
+        <p>@lang("We invite you to read our recent blog's posts:)")</p>
         <div id="posts">
             @foreach ($posts->take(2) as $post)
                 <div class="post">

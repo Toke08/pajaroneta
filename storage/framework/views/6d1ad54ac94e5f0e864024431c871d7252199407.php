@@ -36,7 +36,7 @@ Crear nueva Ubicación
             </div>
 
             <div class="form-group">
-                <label for="cp">Nombre evento:</label>
+                <label for="cp">Código postal:</label>
                 <input class="form-control" type="text" inputmode="numeric" id="cp" name="cp" placeholder="Código postal" required>
             </div>
 

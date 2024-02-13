@@ -49,7 +49,7 @@ Crear nuevo evento
             </div>
 
 
-            <input class="btn btn-primary"type="submit" value="Crear evento">
+            <input class="btn btn-primary" type="submit" value="Crear evento">
 
         </div>
     </form>

@@ -19,11 +19,12 @@
         <iframe src="{{ $url }}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 @else
-<p>No hay eventos programados para hoy.</p>
+<p>@lang("There are no events for today")
+</p>
 @endif
 
 <div id="tablaEventos">
-    <h2>Próximos eventos</h2>
+    <h2>@lang("Next events")</h2>
     <table class="table">
         <thead>
             <tr>

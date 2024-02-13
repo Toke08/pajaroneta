@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('titulo'); ?>
 
 <?php $__env->stopSection(); ?>
@@ -8,268 +10,194 @@
 
 <?php $__env->startSection('contenido'); ?>
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Calendar</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Calendar</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+<h1>Calendario</h1>
+<div id="calendario"></div>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="sticky-top mb-3">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Draggable Events</h4>
-                </div>
-                <div class="card-body">
-                  <!-- the events -->
-                  <div id="external-events">
-                    <div class="external-event bg-success">Lunch</div>
-                    <div class="external-event bg-warning">Go home</div>
-                    <div class="external-event bg-info">Do homework</div>
-                    <div class="external-event bg-primary">Work on UI design</div>
-                    <div class="external-event bg-danger">Sleep tight</div>
-                    <div class="checkbox">
-                      <label for="drop-remove">
-                        <input type="checkbox" id="drop-remove">
-                        remove after drop
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Create Event</h3>
-                </div>
-                <div class="card-body">
-                  <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
-                    <ul class="fc-color-picker" id="color-chooser">
-                      <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
-                    </ul>
-                  </div>
-                  <!-- /btn-group -->
-                  <div class="input-group">
-                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
 
-                    <div class="input-group-append">
-                      <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
-                    </div>
-                    <!-- /btn-group -->
-                  </div>
-                  <!-- /input-group -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-md-9">
-            <div class="card card-primary">
-              <div class="card-body p-0">
-                <!-- THE CALENDAR -->
-                <div id="calendar"></div>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event">
+    Añadir evento
+    </button>
+    <div class="modal fade" id="event" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Datos del evento</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <div class="modal-body">
+            <form action="" method="POST">
+
+                <?php echo csrf_field(); ?>
+                <!-- <div class="form-group">
+                    <label for="id">Id</label>
+                    <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId">
+                </div> -->
+
+                <div class="form-group">
+                    <label for="title">Nombre del evento</label>
+                    <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId">
+                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <textarea  class="form-control" name="description" id="description" rows="3"></textarea>
+                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
+                </div>
+                <div class="form-group">
+                    <label for="start">Fecha de inicio</label>
+                    <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId">
+                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
+                </div>
+                <div class="form-group">
+                    <label for="end">Fecha de fin</label>
+                    <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId">
+                    <small id="helpId" class="form-text text-muted"> Este campo es requerido</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" id="btn_save">Guardar</button>
+            <button type="button" class="btn btn-warning"  id="btn_modify">Editar</button>
+
+            <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.content-wrapper -->
+<?php $__env->stopSection(); ?>
 
-  <script>
-    $(function () {
+<?php $__env->startSection('script'); ?>
+<script>
 
-      /* initialize the external events
-       -----------------------------------------------------------------*/
-      function ini_events(ele) {
-        ele.each(function () {
+    document.addEventListener('DOMContentLoaded', function() {
+        // recoge los datos del form jquery
+        let formulario=document.querySelector("form");
 
-          // create an Event Object (https://fullcalendar.io/docs/event-object)
-          // it doesn't need to have a start or end
-          var eventObject = {
-            title: $.trim($(this).text()) // use the element's text as the event title
-          }
 
-          // store the Event Object in the DOM element so we can get to it later
-          $(this).data('eventObject', eventObject)
 
-          // make the event draggable using jQuery UI
-          $(this).draggable({
-            zIndex        : 1070,
-            revert        : true, // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-          })
+        var calendarEl = document.getElementById('calendario');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
 
-        })
-      }
 
-      ini_events($('#external-events div.external-event'))
+        locale:"es", //idioma español
+        displayEventTime:false,
+        events:"http://localhost/pajaroneta/public/eventos/mostrar",
 
-      /* initialize the calendar
-       -----------------------------------------------------------------*/
-      //Date for the calendar events (dummy data)
-      var date = new Date()
-      var d    = date.getDate(),
-          m    = date.getMonth(),
-          y    = date.getFullYear()
+        dateClick:function(info){  //la info recoge el día que haces click
+            formulario.reset();
 
-      var Calendar = FullCalendar.Calendar;
-      var Draggable = FullCalendar.Draggable;
+            formulario.start.value=info.dateStr;
+            // formulario.start.value=info.dateStr;
 
-      var containerEl = document.getElementById('external-events');
-      var checkbox = document.getElementById('drop-remove');
-      var calendarEl = document.getElementById('calendar');
-
-      // initialize the external events
-      // -----------------------------------------------------------------
-
-      new Draggable(containerEl, {
-        itemSelector: '.external-event',
-        eventData: function(eventEl) {
-          return {
-            title: eventEl.innerText,
-            backgroundColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-            borderColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-            textColor: window.getComputedStyle( eventEl ,null).getPropertyValue('color'),
-          };
-        }
-      });
-
-      var calendar = new Calendar(calendarEl, {
-        headerToolbar: {
-          left  : 'prev,next today',
-          center: 'title',
-          right : 'dayGridMonth,timeGridWeek,timeGridDay'
+            $("#event").modal("show"); //al hacer click en la fecha que salga el modal evento jjejjej
         },
-        themeSystem: 'bootstrap',
-        //Random default events
-        events: [
-          {
-            title          : 'All Day Event',
-            start          : new Date(y, m, 1),
-            backgroundColor: '#f56954', //red
-            borderColor    : '#f56954', //red
-            allDay         : true
-          },
-          {
-            title          : 'Long Event',
-            start          : new Date(y, m, d - 5),
-            end            : new Date(y, m, d - 2),
-            backgroundColor: '#f39c12', //yellow
-            borderColor    : '#f39c12' //yellow
-          },
-          {
-            title          : 'Meeting',
-            start          : new Date(y, m, d, 10, 30),
-            allDay         : false,
-            backgroundColor: '#0073b7', //Blue
-            borderColor    : '#0073b7' //Blue
-          },
-          {
-            title          : 'Lunch',
-            start          : new Date(y, m, d, 12, 0),
-            end            : new Date(y, m, d, 14, 0),
-            allDay         : false,
-            backgroundColor: '#00c0ef', //Info (aqua)
-            borderColor    : '#00c0ef' //Info (aqua)
-          },
-          {
-            title          : 'Birthday Party',
-            start          : new Date(y, m, d + 1, 19, 0),
-            end            : new Date(y, m, d + 1, 22, 30),
-            allDay         : false,
-            backgroundColor: '#00a65a', //Success (green)
-            borderColor    : '#00a65a' //Success (green)
-          },
-          {
-            title          : 'Click for Google',
-            start          : new Date(y, m, 28),
-            end            : new Date(y, m, 29),
-            url            : 'https://www.google.com/',
-            backgroundColor: '#3c8dbc', //Primary (light-blue)
-            borderColor    : '#3c8dbc' //Primary (light-blue)
-          }
-        ],
-        editable  : true,
-        droppable : true, // this allows things to be dropped onto the calendar !!!
-        drop      : function(info) {
-          // is the "remove after drop" checkbox checked?
-          if (checkbox.checked) {
-            // if so, remove the element from the "Draggable Events" list
-            info.draggedEl.parentNode.removeChild(info.draggedEl);
-          }
-        }
-      });
+        eventClick:function(info){
+            var event=info.event;
+            // console.log(event);
 
+            axios.post("http://localhost/pajaroneta/public/eventos/editar/"+info.event.id)
+            .then(
+                (respuesta)=>{
+                formulario.title.value=respuesta.data.title;
+                formulario.description.value=respuesta.data.description;
+                formulario.start.value=respuesta.data.start;
+                formulario.end.value=respuesta.data.end;
+                $("#event").modal("show");
+            }
+            )
+            .catch((error) => {
+            console.error('Error en la solicitud:', error);
+
+        if (error.response) {
+            console.error('Respuesta del servidor:', error.response.data);
+            // Muestra mensajes de error al usuario si es necesario
+        } else if (error.request) {
+            console.error('No se recibió respuesta del servidor');
+        } else {
+            console.error('Error durante la solicitud:', error.message);
+        }
+        });
+
+    }
+
+    });
       calendar.render();
-      // $('#calendar').fullCalendar()
 
-      /* ADDING EVENTS */
-      var currColor = '#3c8dbc' //Red by default
-      // Color chooser button
-      $('#color-chooser > li > a').click(function (e) {
-        e.preventDefault()
-        // Save color
-        currColor = $(this).css('color')
-        // Add color effect to button
-        $('#add-new-event').css({
-          'background-color': currColor,
-          'border-color'    : currColor
-        })
-      })
-      $('#add-new-event').click(function (e) {
-        e.preventDefault()
-        // Get value and make sure it is not null
-        var val = $('#new-event').val()
-        if (val.length == 0) {
-          return
-        }
+      //capturo la accion del btn guadar
+      document.getElementById("btn_save").addEventListener('click', function(){
+        enviarDatos("http://localhost/pajaroneta/public/eventos/agregar");
+      });
+      //eliminar eventos
+      document.getElementById("btn_delete").addEventListener('click', function(){
 
-        // Create events
-        var event = $('<div />')
-        event.css({
-          'background-color': currColor,
-          'border-color'    : currColor,
-          'color'           : '#fff'
-        }).addClass('external-event')
-        event.text(val)
-        $('#external-events').prepend(event)
+        url="http://localhost/pajaroneta/public/eventos/borrar/"+event.id;
 
-        // Add draggable funtionality
-        ini_events(event)
+        const datos= new FormData(formulario);
 
-        // Remove event from text input
-        $('#new-event').val('')
-      })
-    })
+
+
+
+            axios.post(url, datos)
+            .then(
+                (respuesta)=>{
+                //esto saca los eventos actualizando de forma automática
+                calendar.refetchEvents();
+                $("#event").modal("hide");
+            }
+            )
+            .catch((error) => {
+            console.error('Error en la solicitud:', error);
+
+            if (error.response) {
+            console.error('Respuesta del servidor:', error.response.data);
+            // Muestra mensajes de error al usuario si es necesario
+            } else if (error.request) {
+            console.error('No se recibió respuesta del servidor');
+            } else {
+            console.error('Error durante la solicitud:', error.message);
+            }
+            });
+
+
+
+
+
+
+
+
+    });
+
+    function enviarDatos(url){
+        const datos= new FormData(formulario);
+            axios.post(url, datos)
+            .then(
+                (respuesta)=>{
+                //esto saca los eventos actualizando de forma automática
+                calendar.refetchEvents();
+                $("#event").modal("hide");
+            }
+            )
+            .catch((error) => {
+            console.error('Error en la solicitud:', error);
+
+            if (error.response) {
+            console.error('Respuesta del servidor:', error.response.data);
+            // Muestra mensajes de error al usuario si es necesario
+            } else if (error.request) {
+            console.error('No se recibió respuesta del servidor');
+            } else {
+            console.error('Error durante la solicitud:', error.message);
+            }
+            });
+    }
+
+});
+
   </script>
 
 <?php $__env->stopSection(); ?>

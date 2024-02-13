@@ -1,20 +1,19 @@
-@extends('layout.adminlte-layout')
-@section('titulo')
+<?php $__env->startSection('titulo'); ?>
 Crear nueva Ubicación
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('estilos')
+<?php $__env->startSection('estilos'); ?>
 <style>
 
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 <div class="card card-primary">
 
-    <form action="{{route('ubicaciones.store')}}" method="post" enctype="multipart/form-data">
-        @csrf
+    <form action="<?php echo e(route('ubicaciones.store')); ?>" method="post" enctype="multipart/form-data">
+        <?php echo csrf_field(); ?>
         <div class="card-body">
             <div class="form-group">
                 <label for="province">Provincia:</label>
@@ -37,7 +36,7 @@ Crear nueva Ubicación
             </div>
 
             <div class="form-group">
-                <label for="cp">Código postal:</label>
+                <label for="cp">Nombre evento:</label>
                 <input class="form-control" type="text" inputmode="numeric" id="cp" name="cp" placeholder="Código postal" required>
             </div>
 
@@ -46,4 +45,6 @@ Crear nueva Ubicación
         </div>
     </form>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/admin/locations/create.blade.php ENDPATH**/ ?>

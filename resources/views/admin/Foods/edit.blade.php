@@ -1,6 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
-Editar comida nueva
+Editar Plato
 @endsection
 
 @section('estilos')
@@ -220,7 +220,7 @@ Editar comida nueva
                 <input class="form-control" type="text" id="name" name="name" value="{{ $food->name }}" required>
             </div>
             <div class="form-group">
-                <label for="description">Descripcion *</label>
+                <label for="description">Descripción *</label>
                 <textarea class="form-control" id="description" name="description" rows="4" cols="50"
                     required>{{ $food->description }}</textarea>
             </div>
@@ -229,7 +229,7 @@ Editar comida nueva
                 <input class="form-control" type="text" id="price" name="price" value="{{ $food->price }}" required>
             </div>
             <div class="form-group">
-                <label for="categories">categoria *</label>
+                <label for="categories">Categoría *</label>
                 <select class="form-control" name="category_id" id="">
                     @foreach($categories as $category)
                     <option @php if($category->id == $food->category->id) { echo("selected"); } @endphp
@@ -238,12 +238,12 @@ Editar comida nueva
                 </select>
             </div>
             <div class="form-group">
-               
+
                 <label for="image">Imagen actual:</label><br>
                 <img src="{{asset('img/foods')}}/{{$food->img}}" style="max-width: 200px;"><br>
             </div>
             <div class="form-group">
-                <label for="image">imagen *</label>
+                <label for="image">Imagen *</label>
                 <div class="custom-file">
 
                     <input type="file" class="custom-file-input" id="customFile" name="img">
@@ -251,9 +251,9 @@ Editar comida nueva
                 </div>
             </div>
 
-            
+
                 <button type="submit" class="btn btn-primary">Guardar</button>
-            
+
 
 
         </div>

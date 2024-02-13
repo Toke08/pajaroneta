@@ -1,6 +1,6 @@
 @extends('layout.adminlte-layout')
 @section('titulo')
-    Crear comida nueva
+    Editar publicaciones
 @endsection
 
 @section('estilos')
@@ -10,48 +10,59 @@
 @endsection
 
 @section('contenido')
-    <h1>Editar publicación</h1>
+<div class="card card-primary">
 
     <form action="{{ route('blog.update', $post->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+        <div class="card-body">
+            <div class="form-group">
+                <label for="title">Nuevo título:</label>
+                <input class="form-control" type="text" id="title" name="title" value="{{ $post->title }}" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Nuevo contenido:</label>
+                <textarea class="form-control" type="text" id="content" name="content" >{{ $post->content }}</textarea>
+            </div>
+            <div class="form-group">
+                <!-- Vista previa de la imagen actual -->
+                <label for="image">Imagen:</label><br>
+                <img src="{{ asset('img/posts/' . $post->img) }}" style="max-width: 300px;"><br>
+            </div>
+            <div class="form-group">
+                <label for="tag_id">Seleccionar etiqueta:</label>
+                <select class="form-control"  name="tag_id">
+                    @foreach($tags as $tag)
+                        <option value="{{ $tag->id }}" {{ $tag->id == $post->tag_id ? 'selected' : '' }}>
+                            {{ $tag->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-        <label for="title">Nuevo título:</label>
-        <input type="text" id="title" name="title" value="{{ $post->title }}" required>
-        <br>
-        <label for="content">Nuevo contenido:</label>
-        <input type="text" id="content" name="content" value="{{ $post->content }}">
-        <br>
-        <!-- Vista previa de la imagen actual -->
-        <label for="image">Imagen:</label><br>
-        <img src="{{ asset('img/posts/' . $post->img) }}" style="max-width: 300px;"><br>
+            <div class="form-group">
+                <label for="image">Imagen *</label>
+                <div class="custom-file">
 
-        <!-- Selección de la etiqueta -->
-        <label for="tag_id">Seleccionar etiqueta:</label>
-        <select name="tag_id">
-            @foreach($tags as $tag)
-                <option value="{{ $tag->id }}" {{ $tag->id == $post->tag_id ? 'selected' : '' }}>
-                    {{ $tag->name }}
-                </option>
-            @endforeach
-        </select>
-        <br>
+                    <input type="file" class="custom-file-input" id="customFile" name="img">
+                    <label class="custom-file-label" for="customFile">Elegir imagen</label>
+                </div>
+            </div>
 
-        <label for="image">Cambiar imagen:</label>
-        <input type="file" name="img">
-        <br>
+            <div class="form-group">
+                <!-- Sección de estado -->
+                <label for="status">Estado:</label>
+                <select class="form-control" name="status" id="status">
+                    <option value="Draft" {{ $post->status == 'Draft' ? 'selected' : '' }}>Borrador</option>
+                    <option value="Published" {{ $post->status == 'Published' ? 'selected' : '' }}>Publicado</option>
+                </select>
+            </div>
 
-         <!-- Sección de estado -->
-        <label for="status">Estado:</label>
-        <select name="status" id="status">
-            <option value="Draft" {{ $post->status == 'Draft' ? 'selected' : '' }}>Borrador</option>
-            <option value="Published" {{ $post->status == 'Published' ? 'selected' : '' }}>Publicado</option>
-        </select>
-        <br>
 
-        <br>
-        <input type="submit" value="Actualizar">
 
+            <input class="btn btn-primary" type="submit" value="Actualizar">
+        </div>
 
     </form>
+</div>
 @endsection

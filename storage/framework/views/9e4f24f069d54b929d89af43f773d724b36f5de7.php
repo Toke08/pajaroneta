@@ -1,6 +1,6 @@
 
 <?php $__env->startSection('titulo'); ?>
-Editar comida nueva
+Editar Plato
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
@@ -220,7 +220,7 @@ Editar comida nueva
                 <input class="form-control" type="text" id="name" name="name" value="<?php echo e($food->name); ?>" required>
             </div>
             <div class="form-group">
-                <label for="description">Descripcion *</label>
+                <label for="description">Descripción *</label>
                 <textarea class="form-control" id="description" name="description" rows="4" cols="50"
                     required><?php echo e($food->description); ?></textarea>
             </div>
@@ -229,7 +229,7 @@ Editar comida nueva
                 <input class="form-control" type="text" id="price" name="price" value="<?php echo e($food->price); ?>" required>
             </div>
             <div class="form-group">
-                <label for="categories">categoria *</label>
+                <label for="categories">Categoría *</label>
                 <select class="form-control" name="category_id" id="">
                     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option <?php if($category->id == $food->category->id) { echo("selected"); } ?>
@@ -238,12 +238,12 @@ Editar comida nueva
                 </select>
             </div>
             <div class="form-group">
-               
+
                 <label for="image">Imagen actual:</label><br>
                 <img src="<?php echo e(asset('img/foods')); ?>/<?php echo e($food->img); ?>" style="max-width: 200px;"><br>
             </div>
             <div class="form-group">
-                <label for="image">imagen *</label>
+                <label for="image">Imagen *</label>
                 <div class="custom-file">
 
                     <input type="file" class="custom-file-input" id="customFile" name="img">
@@ -251,9 +251,9 @@ Editar comida nueva
                 </div>
             </div>
 
-            
+
                 <button type="submit" class="btn btn-primary">Guardar</button>
-            
+
 
 
         </div>

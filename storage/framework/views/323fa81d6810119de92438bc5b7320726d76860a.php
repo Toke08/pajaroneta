@@ -1,12 +1,9 @@
-
-
 <?php $__env->startSection('titulo'); ?>
-Platos
+PajaroBlog
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('estilos'); ?>
 <style>
-
     /* Cambiar el color del enlace */
     a.enlaceNegro {
         color: #000;
@@ -25,7 +22,6 @@ Platos
         width: 100px;
         height: auto;
     }
-
 
     .sbx-medium {
         display: inline-block;
@@ -208,18 +204,9 @@ Platos
     }
 
 </style>
-
-
-
-
-
-
-
-</style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-
 
 <div class="row">
     <div class="col-12">
@@ -240,7 +227,7 @@ Platos
                         </symbol>
                     </svg>
 
-                    <form action="<?php echo e(route('galeria-comidas.index')); ?>" method="GET" novalidate="novalidate"
+                    <form action="<?php echo e(route('blog.index')); ?>" method="GET" novalidate="novalidate"
                         class="searchbox sbx-medium">
                         <div role="search" class="sbx-medium__wrapper">
                             <input type="search" name="search" placeholder="Search your website" autocomplete="off"
@@ -264,8 +251,8 @@ Platos
 
                     </script>
                     <div class="text-right">
-                        <a href="<?php echo e(route('galeria-comidas.create')); ?>"><button type="button" class="btn btn-primary">Crear nueva
-                                comida</button></a>
+                        <a href="<?php echo e(route('blog.create')); ?>"><button type="button" class="btn btn-primary">Crear nuevo
+                                post</button></a>
                     </div>
                 </nav>
 
@@ -279,47 +266,63 @@ Platos
                     <thead>
                         <tr>
                             <th>
-                                <a class="enlaceNegro" href="<?php echo e(route('galeria-comidas.index', ['column' => 'id', 'direction' => $direction])); ?>">
+                                <a class="enlaceNegro"
+                                    href="<?php echo e(route('blog.index', ['column' => 'id', 'direction' => $direction])); ?>">
                                     ID
                                     <i class="fa-solid fa-arrows-up-down"></i>
                                 </a>
                             </th>
-                            <th>nombre</th>
+                            <th>Título</th>
+                            <th>Tag</th>
+                            <th>Estado</th>
+                            <th>Imagen</th>
                             <th>
-                                <a class="enlaceNegro" href="<?php echo e(route('galeria-comidas.index', ['column' => 'price', 'direction' => $direction])); ?>">
-                                    precio
+                                <a class="enlaceNegro" href="<?php echo e(route('blog.index', ['column' => 'created_at', 'direction' => $direction])); ?>">
+                                    Fecha de creación
                                     <i class="fa-solid fa-arrows-up-down"></i>
                                 </a>
                             </th>
-                            <th>imagen</th>
-                            <th>descripcion</th>
-                            <th>categoria</th>
+                            <th>
+                                <a class="enlaceNegro" href="<?php echo e(route('blog.index', ['column' => 'updated_at', 'direction' => $direction])); ?>">
+                                    Ultima modificacion
+                                    <i class="fa-solid fa-arrows-up-down"></i>
+                                </a>
+                            </th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        <?php if(count($foods)<=0): ?> <tr>
+                        <?php if(count($posts)<=0): ?> <tr>
                             <td colspan="7">No hay registros disponibles.</td>
                             </tr>
                             <?php else: ?>
-                            <?php $__currentLoopData = $foods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $food): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <th scope="row"><?php echo e($food->id); ?></th>
-                                <td><a
-                                        href="<?php echo e(route('galeria-comidas.show', ['id' => $food->id])); ?>"><?php echo e($food->name); ?></a>
+                                <td><?php echo e($post->id); ?></td>
+                                <td><a href="blog/<?php echo e($post->id); ?>"><?php echo e($post->title); ?></a></td>
+                                <td><?php echo e($post->tag->name); ?></td>
+                                <td><?php echo e($post->status); ?>
+
+                                    
                                 </td>
-                                <td><?php echo e($food->price. "€"); ?></td>
-                                <td><img src="<?php echo e(asset('img/foods/'.$food->img)); ?>"></td>
-                                <td><?php echo e($food->description); ?></td>
-                                <td><?php echo e($food->category->name); ?></td>
+                                <td>
+                                    <img src="<?php echo e(asset('img/posts/'.$post->img)); ?>">
+                                </td>
+                                <td>
+                                    <?php echo e($post->created_at->format('Y-m-d')); ?>
+
+                                </td>
+                                <td>
+                                    <?php echo e($post->updated_at->format('Y-m-d')); ?>
+
+                                </td>
                                 <td style="display: flex; flex-direction:row; justify-content:center; gap: 0.5rem;">
-                                    <form action="<?php echo e(route('galeria-comidas.edit', $food->id)); ?>" method="GET">
+                                    <form action="<?php echo e(route('blog.edit', $post->id)); ?>" method="GET">
                                         <?php echo csrf_field(); ?>
                                         <button type="submit" class="btn btn-primary btn-sm">Editar</button>
                                     </form>
 
-                                    <form action="<?php echo e(route('galeria-comidas.destroy', $food->id)); ?>" method="POST">
+                                    <form action="<?php echo e(route('blog.destroy', $post->id)); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>
                                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
@@ -329,9 +332,8 @@ Platos
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
                     </tbody>
-
                 </table>
-                <?php echo e($foods->links()); ?>
+                <?php echo e($posts->links()); ?>
 
             </div>
             <!-- /.card-body -->
@@ -342,4 +344,4 @@ Platos
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\axelb\OneDrive\Escritorio\UniServerZ\www\pajaroneta\resources\views/admin/foods/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.adminlte-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\UniServerZ\www\pajaroneta\resources\views/admin/blog/index.blade.php ENDPATH**/ ?>

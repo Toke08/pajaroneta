@@ -164,6 +164,19 @@
         "Change profile pic":"Cambiar imagen",
         "Update":"Actualizar",
         "No account?":"¿No tienes cuenta?",
-        "The fields* are required":"Los campos* son obligatorios"
+        "The fields* are required":"Los campos* son obligatorios",
 
+
+        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!":
+        "¡Bienvenido a La Pajaroneta! Somos una apasionante empresa de food trucks que se especializa en ofrecer deliciosas opciones de comida rápida sin gluten ni lactosa. Nuestro compromiso con la calidad y la excelencia se refleja en cada plato que servimos, elaborado con ingredientes frescos y de alta calidad. Ya sea que te encuentres en un evento local o en tu vecindario, nuestro equipo dedicado está listo para deleitarte con opciones gastronómicas seguras y satisfactorias. ¡Descubre el placer de una comida rápida sin límites en La Pajaroneta!",
+
+        "Today we are at the event":"Hoy nos encontramos en el evento",
+        "Find us at":"Encuentranos en",
+        "There are no scheduled events for today.":"No hay eventos programados para hoy.",
+        "Upcoming events":"Próximos eventos",
+        "Title":"Titulo",
+        "Description":"Descripción",
+        "Start":"Inicio",
+        "End":"Fin",
+        "Location":"Ubicación"
 }

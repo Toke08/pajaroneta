@@ -34,6 +34,6 @@ class LandingPageController extends Controller
         }
 
         // Retorna la vista 'index' con todas las variables necesarias
-        return view('index', compact('locations', 'foods', 'posts', 'restaurants', 'url'));
+        return view('index', compact('events','locations', 'foods', 'posts', 'restaurants', 'url'));
     }
 }

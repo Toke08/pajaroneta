@@ -164,7 +164,20 @@
         "Change profile pic":"Change profile pic",
         "Update":"Update",
         "No account?":"No account?",
-        "The fields* are required":"The fields* are required"
+        "The fields* are required":"The fields* are required",
 
 
-}
+
+        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!":
+        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you're at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!",
+
+        "Today we are at the event":"Today we are at the event",
+        "Find us at":"Find us at",
+        "There are no scheduled events for today.":"There are no scheduled events for today.",
+        "Upcoming events":"Upcoming events",
+        "Title":"Title",
+        "Description":"Description",
+        "Start":"Start",
+        "End":"End",
+        "Location":"Location"
+    }

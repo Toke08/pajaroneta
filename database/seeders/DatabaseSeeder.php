@@ -419,37 +419,73 @@ class DatabaseSeeder extends Seeder
         \App\Models\Event::create([
             'title'=>'Salida libre',
             'description'=>'A comer bien',
-            'start'=>'2022-02-15',
-            'end'=>'2022-02-15',
+            'start'=>'2024-02-13',
+            'end'=>'2024-02-13',
             'id_location'=>'1',
         ]);
 
         \App\Models\Event::create([
             'title'=>'BBK LIVE',
             'description'=>'A comer con musica',
-            'start'=>'2022-02-16',
-            'end'=>'2022-02-16',
-            'id_location'=>'2',
+            'start'=>'2024-02-14',
+            'end'=>'2024-02-14',
+            'id_location'=>'3',
         ]);
         \App\Models\Event::create([
             'title'=>'Tomorrowland',
             'description'=>'A comer con musica en ingles',
-            'start'=>'2022-02-05',
-            'end'=>'2022-02-05',
-            'id_location'=>'2',
+            'start'=>'2024-02-15',
+            'end'=>'2024-02-15',
+            'id_location'=>'4',
         ]);
         \App\Models\Event::create([
             'title'=>'Festival Electro',
             'description'=>'A comer con musica en ingles electrónica',
-            'start'=>'2022-02-22',
-            'end'=>'2022-02-22',
-            'id_location'=>'2',
+            'start'=>'2024-02-16',
+            'end'=>'2024-02-16',
+            'id_location'=>'8',
         ]);
         \App\Models\Event::create([
             'title'=>'Rap Fest',
             'description'=>'A comer rapeando',
-            'start'=>'2022-02-26',
-            'end'=>'2022-02-26',
+            'start'=>'2024-02-17',
+            'end'=>'2024-02-17',
+            'id_location'=>'2',
+        ]);
+
+        \App\Models\Event::create([
+            'title'=>'Salida libre',
+            'description'=>'A comer bien',
+            'start'=>'2024-02-18',
+            'end'=>'2024-02-18',
+            'id_location'=>'1',
+        ]);
+        \App\Models\Event::create([
+            'title'=>'Mar de Copas Concert',
+            'description'=>'A comer con musica',
+            'start'=>'2024-02-19',
+            'end'=>'2024-02-19',
+            'id_location'=>'6',
+        ]);
+        \App\Models\Event::create([
+            'title'=>'Salida libre',
+            'description'=>'A comer con musica en ingles',
+            'start'=>'2024-02-20',
+            'end'=>'2024-02-20',
+            'id_location'=>'2',
+        ]);
+        \App\Models\Event::create([
+            'title'=>'Festival House',
+            'description'=>'A comer con musica en ingles electrónica',
+            'start'=>'2024-02-21',
+            'end'=>'2024-02-21',
+            'id_location'=>'2',
+        ]);
+        \App\Models\Event::create([
+            'title'=>'Rap Fest 2',
+            'description'=>'A comer rapeando',
+            'start'=>'2024-02-22',
+            'end'=>'2024-02-22',
             'id_location'=>'2',
         ]);
         /*

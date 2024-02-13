@@ -165,8 +165,18 @@
         "Change profile pic":"Aldatu irudia",
         "Update":"Eguneratu",
         "No account?":"Konturik gabe?",
-        "The fields* are required":"Eremuak* beharrezkoak dira"
+        "The fields* are required":"Eremuak* beharrezkoak dira",
+        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you're at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!":
+        "Ongi etorri La Pajaronetara! Gure kartzela-janari enpresak janari azkar eta laktosarik gabeko aukerak eskaintzen ditu, goxotasunaz beterikoak. Gure kalitate eta bikaintasun konpromisoa azpimarratzen da eskaintzen dugun plater bakoitzean, fresko eta kalitatezko osagaiak erabiliz eginda. Gertuko ekitaldian edo nahi duzun nekazaritza-gunean egon, gure talde predikatuak prest dago zuretzat seguru eta pozgarria izango den janari aukerak eskaintzeko. Deskubritu azkeneko azkar janarien plazer bat La Pajaronetan!",
 
-
-}
+        "Today we are at the event":"Gaur ekitaldian aurkitzen gara",
+        "Find us at":"Aurkitu gaitzazu hemen",
+        "There are no scheduled events for today.":"Ez dago gaur egun programatutako ekitaldirik",
+        "Upcoming events":"Hurrengo ekitaldiak",
+        "Title":"Izenburua",
+        "Description":"Deskribapena",
+        "Start":"Hasiera",
+        "End":"Amaiera",
+        "Location":"Kokapena"
+    }
 

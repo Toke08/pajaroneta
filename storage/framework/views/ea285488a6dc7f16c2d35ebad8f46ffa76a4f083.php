@@ -79,7 +79,6 @@
     scale: 0.9;
     rotate: 25deg;
     z-index:  0;
-    filter: saturate(70%);
 }
 
 @media screen and (max-width: 1660px) {
@@ -313,7 +312,7 @@
         <img src="<?php echo e(asset('img/landing_page/burger_izq.png')); ?>" alt="">
         <div class="who_info">
             <h2><?php echo app('translator')->get('Who are we?'); ?></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p><?php echo app('translator')->get('Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!'); ?></p>
         </div>
         <img src="<?php echo e(asset('img/landing_page/burger_der.png')); ?>" alt="">
     </div>

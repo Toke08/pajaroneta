@@ -30,7 +30,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
 Route::prefix('/admin')->group(function () {
     // Ruta para el método home del DashboardController
-    Route::get('/dashboard', [DashboardController::class, 'home'])->name('adminHome');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('adminHome');
 
     //rutas admin
     Route::resource('/roles', RoleController::class);

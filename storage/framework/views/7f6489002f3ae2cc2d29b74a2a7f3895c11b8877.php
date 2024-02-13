@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('estilos'); ?>
 
 <style>
@@ -75,7 +73,7 @@
         </div>
         <div class="part2">
             <img src="<?php echo e(asset('img/landing_page/pajaro-01.png')); ?>" alt="">
-            <p>Delicias para celiacos e intolerantes a través de toda España</p>
+            <p><?php echo app('translator')->get('Delicacies for celiac and intolerant people throughout Spain'); ?></p>
         </div>
         <div class="part3">
             <img src="<?php echo e(asset('img/landing_page/perro_caliente.png')); ?>" alt="">

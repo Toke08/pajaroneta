@@ -19,6 +19,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         --negro:#000000;
     }
 
+    .sombreado-blanco {
+
+    filter: drop-shadow(0 3px 7px rgba(255, 255, 255, 0.8));
+
+    }
+
+
+
+    [class*=sidebar-dark] .brand-link{
+        border-bottom: 1px solid #ffffff !important;
+    }
+
     body > div > aside{
         background-color: var(--rojoOscuro) !important;
     }
@@ -86,6 +98,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
+    <div class="preloader flex-column justify-content-center align-items-center" style="background-color: var(--rojoOscuro) !important;">
+        <img class="animation__shake img-fluid sombreado-blanco" src="<?php echo e(asset('img/logo/pajaro-01.png')); ?>" alt="AdminLTELogo" height="250" width="250">
+      </div>
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -127,9 +143,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
 
-    <a href="<?php echo e(route('home')); ?>" class="brand-link">
-      <img src="<?php echo e(asset('img/logo/pajaro-01.png')); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Pajaroneta</span>
+    <a href="<?php echo e(route('home')); ?>" class="brand-link" style="color: var(--blanco) !important;">
+      <img src="<?php echo e(asset('img/logo/pajaro-01.png')); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 " style="opacity: 1">
+      <span class="brand-text font-weight-light font-weight-normal" blanco>Pajaroneta</span>
 
     </a>
 
@@ -144,8 +160,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('adminHome')); ?>" class="nav-link">
-                <i class="fa-solid fa-square-poll-vertical"></i>
-              <p>
+                <i class="fa-solid fa-square-poll-vertical" style="color: var(--blanco) !important;"></i>
+              <p style="color: var(--blanco) !important;">
                 Dashboard
               </p>
             </a>
@@ -153,8 +169,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('user.index')); ?>" class="nav-link">
-            <i class="fa-solid fa-user"></i>
-              <p>
+            <i class="fa-solid fa-user" style="color: var(--blanco) !important;"></i>
+              <p style="color: var(--blanco) !important;">
                 Usuarios
               </p>
             </a>
@@ -163,8 +179,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('galeria-comidas.index')); ?>" class="nav-link">
-            <i class="fa-solid fa-utensils"></i>
-              <p>
+            <i class="fa-solid fa-utensils" style="color: var(--blanco) !important;"></i>
+              <p style="color: var(--blanco) !important;">
                 Comidas
               </p>
             </a>
@@ -172,8 +188,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('blog.index')); ?>" class="nav-link">
-            <i class="fa-solid fa-newspaper"></i>
-              <p>
+            <i class="fa-solid fa-newspaper" style="color: var(--blanco) !important;"></i>
+              <p style="color: var(--blanco) !important;">
                 Blog
               </p>
             </a>
@@ -181,8 +197,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a href="<?php echo e(route('calendario.index')); ?>" class="nav-link">
-            <i class="fa-solid fa-calendar-days"></i>
-              <p>
+            <i class="fa-solid fa-calendar-days" style="color: var(--blanco) !important;"></i>
+              <p style="color: var(--blanco) !important;">
                 Calendario
               </p>
             </a>

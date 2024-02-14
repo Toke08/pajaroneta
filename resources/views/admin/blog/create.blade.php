@@ -27,7 +27,7 @@ Crear publicación
 
                 <div class="custom-file">
 
-                    <input type="file" class="custom-file-input" id="customFile" name="image">
+                    <input type="file" class="custom-file-input" id="customFile" name="img">
                     <label class="custom-file-label" for="customFile">Elige una imagen</label>
                 </div>
             </div>

@@ -91,7 +91,7 @@
                             <label for="password" class="col-md-12 col-form-label text-md-end">{{ __('Password') }}*</label>
 
                             <div class="col-md-12">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Mínimo 8 caracteres">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>

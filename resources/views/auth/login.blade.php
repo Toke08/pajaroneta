@@ -48,6 +48,9 @@ input:focus {
     outline: none;
     border: none;
 }
+.reg a{
+    padding-left: 2%;
+}
 </style>
 
 @endsection
@@ -66,7 +69,7 @@ input:focus {
                         <div class="mb-3 col">
                             <label for="email" class="col-md-10 col-form-label">{{ __('Email Address') }}:</label>
 
-                            <div class="col-md-15">
+                            <div class="col-md-10">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -80,7 +83,7 @@ input:focus {
                         <div class="mb-3 col">
                             <label for="password" class="col-md-10 col-form-label text-md-end">{{ __('Password') }}:</label>
 
-                            <div class="col-md-15">
+                            <div class="col-md-10">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -91,7 +94,7 @@ input:focus {
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
+                        <div class="mb-3 row ml-5">
                             <div class="col-md-10">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -114,9 +117,9 @@ input:focus {
                                     </a>
                                 @endif
 
-                                <div class="row m0">
+                                <div class="row justify-content-center">
                                     <p>@lang("No account?")</p>
-                                    <a class="nav-link" href="{{ route('register') }}">@lang('Register')</a>
+                                    <a class="reg" href="{{ route('register') }}">@lang('Register')</a>
                                 </div>
                             </div>
                         </div>

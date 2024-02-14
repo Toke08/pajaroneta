@@ -9,7 +9,14 @@ button input{
     background-color: #E5A200;
     border: none;
     color: white;
+    height: 2em;
+    padding: 6%;
 }
+button{
+    border: none;
+    background-color: white;
+}
+
 #changePassword:hover{
     background-color: #CA8F00;
 }
@@ -56,7 +63,7 @@ button input{
                                     
                             </div>
                             <label for="image"><?php echo app('translator')->get( "Change profile pic"); ?></label>
-                                    <input type="file" name="img">
+                                    <input class="ig" type="file" name="img">
                             <ul class="list-group">
                                 <li class="list-group-item"><strong><?php echo app('translator')->get("Name"); ?>:</strong> <input type="text" id="name" name="name" value="<?php echo e($user->name); ?>" required></li>
                                 <li class="list-group-item"><strong><?php echo app('translator')->get("Email"); ?>:</strong> <?php echo e($user->email); ?></li>

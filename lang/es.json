@@ -108,10 +108,11 @@
         "Create Blog Category": "Crear categoría blog",
         "New Restaurant": "Nuevo restaurante",
         "View Restaurants": "Ver restaurantes",
-        "Register": "Registrarse",
+        "Register": "Regístrate",
         "Login": "Iniciar sesión",
         "Admin Panel": "Panel de administración",
         "Logout": "Cerrar sesión",
+        "Hello":"Hola",
 
     "/*COMENTARIO2*/": "LANDINGPAGE",
         "Yummy food for celiac and lactose intolerant people throughout Spain" :"Delicias para celiacos e intolerantes a través de toda España",
@@ -120,7 +121,7 @@
         "Our menu!": "¡Nuestro menú!",
         "Come and enjoy our products with us!":"¡Ven a disfutar de nuestra carta con nosotros!",
         "Our Blog and more":"Nuestro blog y más",
-        "We invite you to read our recents blog's posts :)":"Te invitamos a leer las publicaciones recientes de nuestro blog :)",
+        "We invite you to read our recents blog's posts!":"Te invitamos a leer las publicaciones recientes de nuestro blog :)",
         "Read more":"Leer más",
         "Find them here":"Encuéntralos aquí",
         "If we are not around...":"Por si estamos lejos de ti...",
@@ -167,9 +168,8 @@
         "The fields* are required":"Los campos* son obligatorios",
 
 
-        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!":
-        "¡Bienvenido a La Pajaroneta! Somos una apasionante empresa de food trucks que se especializa en ofrecer deliciosas opciones de comida rápida sin gluten ni lactosa. Nuestro compromiso con la calidad y la excelencia se refleja en cada plato que servimos, elaborado con ingredientes frescos y de alta calidad. Ya sea que te encuentres en un evento local o en tu vecindario, nuestro equipo dedicado está listo para deleitarte con opciones gastronómicas seguras y satisfactorias. ¡Descubre el placer de una comida rápida sin límites en La Pajaroneta!",
-
+        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options.":
+        "¡Bienvenido a La Pajaroneta! Somos una emocionante empresa de camiones de comida que se especializa en ofrecer deliciosas opciones de comida rápida sin gluten ni lactosa. Ya sea que esté en un evento local o en su vecindario, nuestro equipo dedicado está listo para deleitarlo con comida segura. y opciones culinarias satisfactorias.",
         "Today we are at the event":"Hoy nos encontramos en el evento",
         "Find us at":"Encuentranos en",
         "There are no scheduled events for today.":"No hay eventos programados para hoy.",

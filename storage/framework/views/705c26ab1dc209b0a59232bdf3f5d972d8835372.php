@@ -124,7 +124,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="new-password">
+unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="new-password" placeholder="Mínimo 8 caracteres">
 
                                 <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -153,7 +153,7 @@ unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary">
                                     <?php echo e(__('Register')); ?>
 

@@ -43,7 +43,7 @@
             @else
                 <!-- Si no es un administrador, mostrar el nombre del usuario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user_show', ['name' => auth()->user()->name]) }}">@lang('Hello,') {{ auth()->user()->name }}</a>
+                    <a class="nav-link" href="{{ route('user_show', ['name' => auth()->user()->name]) }}">@lang('Hello') {{ auth()->user()->name }}</a>
                 </li>
             @endif
 

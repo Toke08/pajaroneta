@@ -43,7 +43,7 @@
             <?php else: ?>
                 <!-- Si no es un administrador, mostrar el nombre del usuario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('user_show', ['name' => auth()->user()->name])); ?>"><?php echo app('translator')->get('Hello,'); ?> <?php echo e(auth()->user()->name); ?></a>
+                    <a class="nav-link" href="<?php echo e(route('user_show', ['name' => auth()->user()->name])); ?>"><?php echo app('translator')->get('Hello'); ?> <?php echo e(auth()->user()->name); ?></a>
                 </li>
             <?php endif; ?>
 

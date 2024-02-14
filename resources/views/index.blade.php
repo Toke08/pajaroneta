@@ -172,6 +172,9 @@
     display: flex;
     flex-direction:column;
 }
+.who_info p{
+   text-align: justify;
+}
 .who img{
     width:35em;
     height: 25em;
@@ -189,6 +192,8 @@
 }
 #mapilla iframe{
     width: 100%;
+    border-radius:1.5em;
+    box-shadow: 2px 4px 20px -3px rgba(0,0,0,0.54);
 }
 
 /* estilos restaurantes */
@@ -332,7 +337,7 @@
         <img src="{{ asset('img/landing_page/burger.png') }}" alt="" style="width: 300px; height: auto;">
         <div class="who_info">
             <h2>@lang('Who are we?')</h2>
-            <p>@lang('Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!')</p>
+            <p>@lang('Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options.')</p>
         </div>
         <img src="{{ asset('img/landing_page/burger.png') }}" alt="" style="width: 300px; height: auto;">
     </div>
@@ -363,7 +368,7 @@
 
     <div class="publis">
         <h2>@lang("Our Blog and more")</h2>
-        <p>@lang("We invite you to read our recent blog's posts:)")</p>
+        <p>@lang("We invite you to read our recent blog's posts!")</p>
         <div id="posts">
             @foreach ($posts->take(2) as $post)
                 <div class="post">

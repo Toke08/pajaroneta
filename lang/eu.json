@@ -112,7 +112,7 @@
         "Login": "Hasi saioa",
         "Admin Panel": "Admin Panela",
         "Logout": "Amaitu saioa",
-
+        "Hello":"Kaixo",
 
         "/*COMENTARIO2*/": "LANDINGPAGE",
         "Yummy food for celiac and lactose intolerant people throughout Spain" :"Zeliako eta intoleranteekin gozoak Espainiako zati guztietan",
@@ -121,7 +121,7 @@
         "Our menu!": "Gure menua!",
         "Come and enjoy our products with us!":"Etorri eta gozatu gure produktuekin!",
         "Our Blog and more":"Gure bloga eta gehiago",
-        "We invite you to read our recent blog's posts :)":"Gonbidatzen zaitugu gure blog-eko azken publikazioak irakurtzen :)",
+        "We invite you to read our recent blog's posts!":"Gonbidatzen zaitugu gure blog-eko azken publikazioak irakurtzen :)",
         "Read more":"Irakurri",
         "Find them here":"Hemen aurkitu",
         "If we are not around...":"Gure inguruan ez badira...",
@@ -166,8 +166,8 @@
         "Update":"Eguneratu",
         "No account?":"Konturik gabe?",
         "The fields* are required":"Eremuak* beharrezkoak dira",
-        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Our commitment to quality and excellence is reflected in every dish we serve, made with fresh, high-quality ingredients. Whether you're at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options. Discover the pleasure of limitless fast food at La Pajaroneta!":
-        "Ongi etorri La Pajaronetara! Gure kartzela-janari enpresak janari azkar eta laktosarik gabeko aukerak eskaintzen ditu, goxotasunaz beterikoak. Gure kalitate eta bikaintasun konpromisoa azpimarratzen da eskaintzen dugun plater bakoitzean, fresko eta kalitatezko osagaiak erabiliz eginda. Gertuko ekitaldian edo nahi duzun nekazaritza-gunean egon, gure talde predikatuak prest dago zuretzat seguru eta pozgarria izango den janari aukerak eskaintzeko. Deskubritu azkeneko azkar janarien plazer bat La Pajaronetan!",
+        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options.":
+        "Welcome to La Pajaroneta! We are an exciting food truck company specializing in offering delicious fast food options that are gluten and lactose-free. Whether you are at a local event or in your neighborhood, our dedicated team is ready to delight you with safe and satisfying culinary options.",
 
         "Today we are at the event":"Gaur ekitaldian aurkitzen gara",
         "Find us at":"Aurkitu gaitzazu hemen",

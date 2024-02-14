@@ -11,7 +11,14 @@ button input{
     background-color: #E5A200;
     border: none;
     color: white;
+    height: 2em;
+    padding: 6%;
 }
+button{
+    border: none;
+    background-color: white;
+}
+
 #changePassword:hover{
     background-color: #CA8F00;
 }
@@ -58,7 +65,7 @@ button input{
                                     {{-- cambiar imagen --}}
                             </div>
                             <label for="image">@lang( "Change profile pic")</label>
-                                    <input type="file" name="img">
+                                    <input class="ig" type="file" name="img">
                             <ul class="list-group">
                                 <li class="list-group-item"><strong>@lang("Name"):</strong> <input type="text" id="name" name="name" value="{{ $user->name }}" required></li>
                                 <li class="list-group-item"><strong>@lang("Email"):</strong> {{ $user->email }}</li>

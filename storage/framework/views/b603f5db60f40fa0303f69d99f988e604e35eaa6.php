@@ -45,6 +45,9 @@ input:focus {
     outline: none;
     border: none;
 }
+.reg a{
+    padding-left: 2%;
+}
 </style>
 
 <?php $__env->stopSection(); ?>
@@ -63,7 +66,7 @@ input:focus {
                         <div class="mb-3 col">
                             <label for="email" class="col-md-10 col-form-label"><?php echo e(__('Email Address')); ?>:</label>
 
-                            <div class="col-md-15">
+                            <div class="col-md-10">
                                 <input id="email" type="email" class="form-control <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -91,7 +94,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="mb-3 col">
                             <label for="password" class="col-md-10 col-form-label text-md-end"><?php echo e(__('Password')); ?>:</label>
 
-                            <div class="col-md-15">
+                            <div class="col-md-10">
                                 <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -116,7 +119,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
+                        <div class="mb-3 row ml-5">
                             <div class="col-md-10">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
@@ -142,9 +145,9 @@ unset($__errorArgs, $__bag); ?>
                                     </a>
                                 <?php endif; ?>
 
-                                <div class="row m0">
+                                <div class="row justify-content-center">
                                     <p><?php echo app('translator')->get("No account?"); ?></p>
-                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
+                                    <a class="reg" href="<?php echo e(route('register')); ?>"><?php echo app('translator')->get('Register'); ?></a>
                                 </div>
                             </div>
                         </div>

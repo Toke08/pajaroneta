@@ -178,5 +178,6 @@
         "Description":"Descripción",
         "Start":"Inicio",
         "End":"Fin",
-        "Location":"Ubicación"
+        "Location":"Ubicación",
+        "Today we will be...":"Hoy estamos en..."
 }

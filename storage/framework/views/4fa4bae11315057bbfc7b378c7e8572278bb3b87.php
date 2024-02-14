@@ -27,7 +27,7 @@ iframe{
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-<h1><?php echo app('translator')->get("Toady we will be..."); ?></h1>
+<h1><?php echo app('translator')->get("Today we will be..."); ?></h1>
 <?php if(!is_null($url)): ?>
 <div class="caj">
     <p><?php echo app('translator')->get("Today we are at the event"); ?>: <?php echo e($title); ?></p>

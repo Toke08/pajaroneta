@@ -8,13 +8,34 @@
 #tablaEventos{
     margin-top: 5%
 }
+iframe{
+    border-radius:1.5em;
+    box-shadow: 2px 4px 20px -3px rgba(0,0,0,0.54);
+}
+.caj{
+    background-color:#730000;
+    color: white;
+    border-radius: 1.5em;
+    padding: 3%;
+    width:45%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    box-shadow: 2px 4px 20px -3px rgba(0,0,0,0.54);
+}
+.caj p{
+    font-size:1.2em;
+}
 </style>
 @endsection
 
 @section('contenido')
+<h1>@lang("Toady we will be...")</h1>
 @if (!is_null($url))
-<h1>Hoy nos encontramos en el evento {{ $title }}</h1>
-<h3>Encuentrálos es: {{ $address }}</h3>
+<div class="caj">
+    <p>@lang("Today we are at the event"): {{ $title }}</p>
+    <p>@lang("Find us at"): {{ $address }}</p>
+</div>
+
     <div>
         <iframe src="{{ $url }}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
@@ -28,7 +49,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Titulo</th>
+                <th>Título</th>
                 <th>Descripción</th>
                 <th>Inicio</th>
                 <th>Fin</th>

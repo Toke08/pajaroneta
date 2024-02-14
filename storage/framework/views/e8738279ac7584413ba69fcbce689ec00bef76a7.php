@@ -366,7 +366,7 @@
 
     <div class="publis">
         <h2><?php echo app('translator')->get("Our Blog and more"); ?></h2>
-        <p><?php echo app('translator')->get("We invite you to read our recent blog's posts:)"); ?></p>
+        <p><?php echo app('translator')->get("We invite you to read our recent blog's posts!"); ?></p>
         <div id="posts">
             <?php $__currentLoopData = $posts->take(2); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="post">

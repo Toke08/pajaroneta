@@ -32,7 +32,7 @@ iframe{
 <h1>@lang("Today we will be...")</h1>
 @if (!is_null($url))
 <div class="caj">
-    <p>@lang("Today we are at the event"): {{ $title }}</p>
+   <h2> {{ $title }}</h2>
     <p>@lang("Find us at"): {{ $address }}</p>
 </div>
 
